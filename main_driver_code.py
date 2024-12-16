@@ -65,7 +65,7 @@ def test_personal_details():
                                  user_details.Monthly_Income,
                                  user_details.Monthly_Expense, user_details.Financially_Dependent,
                                  user_details.Has_Children, user_details.Range_0to4,
-                                 user_details.Range_5to12, user_details.Range_13to18, user_details.Range_18plus)
+                                 user_details.Range_5to12, user_details.Range_13to18, user_details.Range_18plus, user_details.selected_language)
 
 def test_address_details():
     address_details = Address_Page_Process(address_page_functions)

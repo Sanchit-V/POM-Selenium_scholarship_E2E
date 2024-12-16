@@ -57,11 +57,15 @@ class PersonalDetails:
 
         #Financial_Independent
         self.Financial_Independent_Yes = By.CSS_SELECTOR,'[data-test-id="radio-input-personal-financially-dependent-YES"]'
+        self.Financial_Independent_SI = By.CSS_SELECTOR, '[data-test-id="radio-input-personal-financially-dependent-SI"]'
         self.Financial_Independent_No = By.CSS_SELECTOR,'[data-test-id="radio-input-personal-financially-dependent-NO"]'
+        self.Financial_Independent_NO = By.CSS_SELECTOR, '[data-test-id="radio-input-personal-financially-dependent-NO"]'
 
         #Children_Details
         self.has_Children = By.CSS_SELECTOR,'[data-test-id="radio-input-personal-has-children-YES"]'
         self.does_Not_Have_Children = By.CSS_SELECTOR,'[data-test-id="radio-input-personal-has-children-NO"]'
+        self.has_Children_SI = By.CSS_SELECTOR, '[data-test-id="radio-input-personal-has-children-SI"]'
+        self.has_Children_NO = By.CSS_SELECTOR, '[data-test-id="radio-input-personal-has-children-NO"]'
 
         #Number_of_children
         self.zero_to_four = By.CSS_SELECTOR, '[data-test-id="input-personal-age-range-0-4"]'

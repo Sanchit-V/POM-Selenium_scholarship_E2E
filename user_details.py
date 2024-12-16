@@ -2,9 +2,9 @@
 url = "http://localhost:3000/"
 
 # Provide user details
-access_code = 'f820006' # Example access code
-previous_access_code = '6559cf5'
-selected_language = '1'  # 1 for English, 0 for Spanish
+access_code = '0632d17' # Example access code
+previous_access_code = '0632d17'
+selected_language = '0'  # 1 for English, 0 for Spanish
 
 dob_English = '09302001' #MMDDYYYY
 dob_Spanish = '30092001' #DDMMYYYY
@@ -65,11 +65,11 @@ additional_2=9088989765
 additional_3=9666777887
 
 
-country_0 = 'Afghanistan'
+country_0 = 'Angola'
 country_1 = 'Cuba'
 country_2 = 'China'
 country_3 = 'Nigeria'
-country_4 = 'France'
+country_4 = 'India'
 
 housing_type = 2   # 1 for department    # 2 for House
 housing_conditions = 3 # 1 for Family     # 2 for Own     # 3 for Rented
