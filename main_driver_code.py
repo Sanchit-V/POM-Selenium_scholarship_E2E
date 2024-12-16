@@ -6,6 +6,7 @@ from Page_Functions.Address_Page_Functions import Address_Page
 from Page_Functions.Login_Page_Functions import Login_Page
 from Page_Functions.PersonalDetails_Page_Functions import Personal_Details
 from Page_Functions.Submit_Page_Functions import Submit
+from Page_Functions.Submitted_Page_Functions import Submitted_Page
 from Page_Functions.Welcome_Page_Functions import Welcome_Page
 from Page_Functions.Additional_Informations_Page_Functions import Additional_Information
 from Page_Object.Summary_Page import Summary
@@ -16,6 +17,7 @@ from Import_Libraries import Import_libraries
 from Processes.Personal_Details_Process import Personal_Details_Process
 from Processes.Summary_Page_Process import Summary_Process
 from Processes.Welcome_Process import Welcome_Process
+from Processes.Submitted_Page_Processes import  Submitted_Page_Process
 
 import user_details
 
@@ -35,6 +37,7 @@ personal_details_functions = Personal_Details(driver)
 address_page_functions = Address_Page(driver)
 additional_page_functions = Additional_Information(driver)
 submit_report_page_functions = Submit(driver)
+final_page_functions = Submitted_Page(driver)
 
 
 
@@ -81,6 +84,12 @@ def test_additional_info_page():
 def test_submit_page():
     submit_page = Summary_Process(submit_report_page_functions)
     submit_page.run_process()
+
+def test_final_submit():
+    final_submit = Submitted_Page_Process(final_page_functions)
+    final_submit.run_process()
+
+
 
 
 

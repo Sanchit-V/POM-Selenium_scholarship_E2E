@@ -22,4 +22,8 @@ class Submit(Summary):
         Send_button = self.driver.find_element(*self.Submit)
         Send_button.click()
 
-        time.sleep(5)
+        time.sleep(2)
+
+        
+
+

@@ -319,12 +319,12 @@ class Address_Page(AddressPage):
         if housing_type == 1:
             Department = self.driver.find_element(*self.Department)
             Department.click()
-            print(housing_type)
+
 
         else:
             House = self.driver.find_element(*self.House)
             House.click()
-            print(housing_type)
+
 
         #housing_Type.send_keys(Keys.TAB)
 
