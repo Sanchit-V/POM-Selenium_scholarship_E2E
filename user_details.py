@@ -1,10 +1,13 @@
 #URL
+from deep_translator import GoogleTranslator
+
+
 url = "http://localhost:3000/"
 
 # Provide user details
-access_code = '0632d17' # Example access code
+access_code = '67d2e02' # Example access code
 previous_access_code = '0632d17'
-selected_language = '0'  # 1 for English, 0 for Spanish
+selected_language = 0  # 1 for English, 0 for Spanish
 
 dob_English = '09302001' #MMDDYYYY
 dob_Spanish = '30092001' #DDMMYYYY
@@ -27,11 +30,33 @@ Document_number = '1224435334'
 Martial_status = 3 # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
 
 Profession = 'Teacher'
-
 Country = 'India'
 State = 'Bihar'
 City = 'Patna'
 Nationality = 'India'
+
+if selected_language == 0:
+
+    Profession = GoogleTranslator(source='en', target='es').translate(Profession)
+    Country = GoogleTranslator(source='en', target='es').translate(Country)
+    State = GoogleTranslator(source='en', target='es').translate(State)
+    City = GoogleTranslator(source='en', target='es').translate(City)
+    Nationality = GoogleTranslator(source='en', target='es').translate(Nationality)
+
+
+else:
+    Profession = Profession
+    Country = Country
+    State = State
+    City = City
+    Nationality = Nationality
+
+
+
+print(Profession, Country, State, City, Nationality)
+
+
+
 
 Monthly_Income = '98767123'
 Monthly_Expense = '1234321'
@@ -65,11 +90,30 @@ additional_2=9088989765
 additional_3=9666777887
 
 
-country_0 = 'Angola'
-country_1 = 'Cuba'
-country_2 = 'China'
-country_3 = 'Nigeria'
-country_4 = 'India'
+country_0 = 'Afghanistan'
+country_1 = 'Ireland'
+country_2 = 'Russia'
+country_3 = 'Germany'
+country_4 = 'Italy'
+
+if selected_language == 0:
+
+    country_0 = GoogleTranslator(source='en', target='es').translate(country_0)
+    country_1 = GoogleTranslator(source='en', target='es').translate(country_1)
+    country_2 = GoogleTranslator(source='en', target='es').translate(country_2)
+    country_3 = GoogleTranslator(source='en', target='es').translate(country_3)
+    country_4 = GoogleTranslator(source='en', target='es').translate(country_4)
+
+
+else:
+    country_0 = country_0
+    country_1 = country_1
+    country_2 = country_2
+    country_3 = country_3
+    country_4 = country_4
+
+print(country_0, country_1, country_2, country_3, country_4)
+
 
 housing_type = 2   # 1 for department    # 2 for House
 housing_conditions = 3 # 1 for Family     # 2 for Own     # 3 for Rented
