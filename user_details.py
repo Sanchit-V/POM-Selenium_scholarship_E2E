@@ -5,7 +5,7 @@ from deep_translator import GoogleTranslator
 url = "http://localhost:3000/"
 
 # Provide user details
-access_code = '67d2e02' # Example access code
+access_code = '266839a' # Example access code
 previous_access_code = '0632d17'
 selected_language = 0  # 1 for English, 0 for Spanish
 
