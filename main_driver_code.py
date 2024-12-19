@@ -79,7 +79,7 @@ def test_address_details():
 
 def test_additional_info_page():
     addition_info = Additional_Info_Process(additional_page_functions)
-    addition_info.run_processes(user_details.additional_type,user_details.Text_Additional_field)
+    addition_info.run_processes(user_details.additional_type,user_details.Text_Additional_field, user_details.selected_language)
 
 def test_submit_page():
     submit_page = Summary_Process(submit_report_page_functions)

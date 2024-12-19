@@ -16,6 +16,12 @@ class AdditionalInfo:
         self.Text_Bar = By.CSS_SELECTOR, '[data-test-id="input-additional-information-referral-details"]'
         self.Finish_button = By.CSS_SELECTOR, '[data-test-id="btn-continue-additional"]'
 
+        self.referred_spanish = By.CSS_SELECTOR, '[data-test-id="radio-input-additional-information-knowledge-pathway-Referido"]'
+        self.company_spanish = By.CSS_SELECTOR, '[data-test-id="radio-input-additional-information-knowledge-pathway-Empresa"]'
+        self.agreement_spanish = By.CSS_SELECTOR, '[data-test-id="radio-input-additional-information-knowledge-pathway-Convenio"]'
+        self.university_spanish = By.CSS_SELECTOR, '[data-test-id="radio-input-additional-information-knowledge-pathway-Universidad"]'
+        self.speech_spanish = By.CSS_SELECTOR, '[data-test-id="radio-input-additional-information-knowledge-pathway-Charla"]'
+
 
 
 
