@@ -5,9 +5,9 @@ from deep_translator import GoogleTranslator
 url = "http://localhost:80/"
 
 # Provide user details
-access_code = '8c3c4c9' # Example access code
-previous_access_code = '8c3c4c9'
-selected_language = 0  # 1 for English, 0 for Spanish
+access_code = '31c65a4' # Example access code
+previous_access_code = '31c65a4'
+selected_language = 1  # 1 for English, 0 for Spanish
 
 dob_English = '09302001' #MMDDYYYY
 dob_Spanish = '30092001' #DDMMYYYY
