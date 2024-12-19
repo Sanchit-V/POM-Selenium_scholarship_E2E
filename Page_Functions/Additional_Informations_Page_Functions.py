@@ -78,6 +78,8 @@ class Additional_Information(AdditionalInfo):
                 Webinar = self.driver.find_element(*self.webinar)
                 Webinar.click()
 
+        time.sleep(2)
+
         try:
             text_field = self.driver.find_element(*self.Text_Bar)
             text_field.click()
