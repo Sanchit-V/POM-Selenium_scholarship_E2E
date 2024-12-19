@@ -10,7 +10,7 @@ class Login_Page(LoginPage):
         selected_language_button = self.driver.find_element(*self.Language_Button)
         selected_language_button.click()
 
-        if selected_language == '1':  # Ensure it's a string '1' and not integer 1
+        if selected_language == 1:
             select_english = self.driver.find_element(*self.Language_English)
             select_english.click()
             print("Selected Language: English")
