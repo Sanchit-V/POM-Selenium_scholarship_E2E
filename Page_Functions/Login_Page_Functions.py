@@ -27,6 +27,9 @@ class Login_Page(LoginPage):
         access_code_element.send_keys(access_code)
         print(f"Entered Access Code: {access_code}")
         time.sleep(2)
+        access_visible = self.driver.find_element(*self.Visible_Icon)
+        access_visible.click()
+        time.sleep(2)
 
 
 
