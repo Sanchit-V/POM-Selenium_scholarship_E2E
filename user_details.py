@@ -2,24 +2,24 @@
 from deep_translator import GoogleTranslator
 import json
 
-from robot.output.console.dotted import StatusReporter
+
 
 with open('user_details.json') as f:
      json_data = json.load(f)
 
 url = "http://localhost:80/"
-selected_language = 0     # 1 for English, 0 for Spanish
-document_type = 5 # 1 for NIC     # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
-Martial_status = 3 # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
+selected_language = 1     # 1 for English, 0 for Spanish
+document_type = 3 # 1 for NIC     # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
+Martial_status = 2 # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
 Financially_Dependent = 1   # 0 for No  # 1 for Yes
 Has_Children = 1   # 0 for No  # 1 for Yes
-additional_emails_to_be_added = 5
+additional_emails_to_be_added = 0
 number_of_additional_phone=1
-number_of_additional_whatsapp=2
+number_of_additional_whatsapp=1
 total_additionals = number_of_additional_phone + number_of_additional_whatsapp
-housing_type = 2   # 1 for department    # 2 for House
-housing_conditions = 3 # 1 for Family     # 2 for Own     # 3 for Rented
-additional_type = 8 # 1-Google 2-Facebook 3-Instagram 4-Referred 5-Company 6-Agreement 7-University 8-Speech 9-Webinar
+housing_type = 1   # 1 for department    # 2 for House
+housing_conditions = 1 # 1 for Family     # 2 for Own     # 3 for Rented
+additional_type = 4 # 1-Google 2-Facebook 3-Instagram 4-Referred 5-Company 6-Agreement 7-University 8-Speech 9-Webinar
 
 
 
@@ -99,31 +99,3 @@ else:
     country_2 = country_2
     country_3 = country_3
     country_4 = country_4
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

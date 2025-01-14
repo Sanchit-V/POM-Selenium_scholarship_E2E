@@ -197,116 +197,134 @@ class Address_Page(AddressPage):
 
 
     def country_code(self,country_0,country_1, country_2, country_3, country_4):  #, country_1, country_2, country_3, country_4
-        CC_0 = self.driver.find_element(*self.select_country_code_0)
-        CC_1 = self.driver.find_element(*self.select_country_code_1)
-        CC_2 = self.driver.find_element(*self.select_country_code_2)
-        CC_3 = self.driver.find_element(*self.select_country_code_3)
-        CC_4 = self.driver.find_element(*self.select_country_code_4)
+
+        try:
+            CC_0 = self.driver.find_element(*self.select_country_code_0)
+            CC_0.click()
+            time.sleep(1)
+            CC_Box = self.driver.find_element(*self.country_code_box)
+            CC_Box.click()
+            CC_Box.send_keys(country_0)
+            time.sleep(1)
+
+            if country_0 != 'India':
+                CC_LB = self.driver.find_element(*self.country_code_listbox)
+                CC_LB.click()
 
 
-        CC_0.click()
-        time.sleep(1)
-        CC_Box = self.driver.find_element(*self.country_code_box)
-        CC_Box.click()
-        CC_Box.send_keys(country_0)
-        time.sleep(1)
+            else:
+                try:
+                    CC_Ind = self.driver.find_element(*self.India_list_box)
+                    CC_Ind.click()
+                except:
+                    print(' ** ')
 
-        if country_0 != 'India':
-            CC_LB = self.driver.find_element(*self.country_code_listbox)
-            CC_LB.click()
-
-
-        else:
-            try:
-                CC_Ind = self.driver.find_element(*self.India_list_box)
-                CC_Ind.click()
-            except:
-                print(' ** ')
-
+        except:
+            print('Not Required.')
 
         time.sleep(2)
 
-        CC_1.click()
-        time.sleep(1)
-        CC_Box = self.driver.find_element(*self.country_code_box)
-        CC_Box.click()
-        CC_Box.send_keys(country_1)
-        time.sleep(1)
+        try:
+            CC_1 = self.driver.find_element(*self.select_country_code_1)
+            CC_1.click()
+            time.sleep(1)
+            CC_Box = self.driver.find_element(*self.country_code_box)
+            CC_Box.click()
+            CC_Box.send_keys(country_1)
+            time.sleep(1)
 
-        if country_1 != 'India':
-            CC_LB = self.driver.find_element(*self.country_code_listbox)
-            CC_LB.click()
-
-
-        else:
-            try:
-                CC_Ind = self.driver.find_element(*self.India_list_box)
-                CC_Ind.click()
-            except:
-                print(' ** ')
-
-        time.sleep(2)
-
-        CC_2.click()
-        time.sleep(1)
-        CC_Box = self.driver.find_element(*self.country_code_box)
-        CC_Box.click()
-        CC_Box.send_keys(country_2)
-        time.sleep(1)
-
-        if country_2 != 'India':
-            CC_LB = self.driver.find_element(*self.country_code_listbox)
-            CC_LB.click()
+            if country_1 != 'India':
+                CC_LB = self.driver.find_element(*self.country_code_listbox)
+                CC_LB.click()
 
 
-        else:
-            try:
-                CC_Ind = self.driver.find_element(*self.India_list_box)
-                CC_Ind.click()
-            except:
-                print(' ** ')
+            else:
+                try:
+                    CC_Ind = self.driver.find_element(*self.India_list_box)
+                    CC_Ind.click()
+                except:
+                    print(' ** ')
+
+        except:
+            print('Not Required.')
 
         time.sleep(2)
 
-        CC_3.click()
-        time.sleep(1)
-        CC_Box = self.driver.find_element(*self.country_code_box)
-        CC_Box.click()
-        CC_Box.send_keys(country_3)
-        time.sleep(1)
+        try:
+            CC_2 = self.driver.find_element(*self.select_country_code_2)
+            CC_2.click()
+            time.sleep(1)
+            CC_Box = self.driver.find_element(*self.country_code_box)
+            CC_Box.click()
+            CC_Box.send_keys(country_2)
+            time.sleep(1)
 
-        if country_3 != 'India':
-            CC_LB = self.driver.find_element(*self.country_code_listbox)
-            CC_LB.click()
+            if country_2 != 'India':
+                CC_LB = self.driver.find_element(*self.country_code_listbox)
+                CC_LB.click()
 
 
-        else:
-            try:
-                CC_Ind = self.driver.find_element(*self.India_list_box)
-                CC_Ind.click()
-            except:
-                print(' ** ')
+            else:
+                try:
+                    CC_Ind = self.driver.find_element(*self.India_list_box)
+                    CC_Ind.click()
+                except:
+                    print(' ** ')
+
+        except:
+            print("Not Required")
 
         time.sleep(2)
 
-        CC_4.click()
-        time.sleep(1)
-        CC_Box = self.driver.find_element(*self.country_code_box)
-        CC_Box.click()
-        CC_Box.send_keys(country_4)
-        time.sleep(1)
+        try:
+            CC_3 = self.driver.find_element(*self.select_country_code_3)
+            CC_3.click()
+            time.sleep(1)
+            CC_Box = self.driver.find_element(*self.country_code_box)
+            CC_Box.click()
+            CC_Box.send_keys(country_3)
+            time.sleep(1)
 
-        if country_4 != 'India':
-            CC_LB = self.driver.find_element(*self.country_code_listbox)
-            CC_LB.click()
+            if country_3 != 'India':
+                CC_LB = self.driver.find_element(*self.country_code_listbox)
+                CC_LB.click()
 
 
-        else:
-            try:
-                CC_Ind = self.driver.find_element(*self.India_list_box)
-                CC_Ind.click()
-            except:
-                print(' ** ')
+            else:
+                try:
+                    CC_Ind = self.driver.find_element(*self.India_list_box)
+                    CC_Ind.click()
+                except:
+                    print(' ** ')
+
+        except:
+            print('Not Required.')
+
+        time.sleep(2)
+
+        try:
+            CC_4 = self.driver.find_element(*self.select_country_code_4)
+            CC_4.click()
+            time.sleep(1)
+            CC_Box = self.driver.find_element(*self.country_code_box)
+            CC_Box.click()
+            CC_Box.send_keys(country_4)
+            time.sleep(1)
+
+            if country_4 != 'India':
+                CC_LB = self.driver.find_element(*self.country_code_listbox)
+                CC_LB.click()
+
+
+            else:
+                try:
+                    CC_Ind = self.driver.find_element(*self.India_list_box)
+                    CC_Ind.click()
+                except:
+                    print(' ** ')
+
+        except:
+            print('Not Required')
 
         time.sleep(2)
 
