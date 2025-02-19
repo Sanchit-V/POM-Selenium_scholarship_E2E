@@ -21,12 +21,14 @@ housing_type = 1   # 1 for department    # 2 for House
 housing_conditions = 1 # 1 for Family     # 2 for Own     # 3 for Rented
 additional_type = 4 # 1-Google 2-Facebook 3-Instagram 4-Referred 5-Company 6-Agreement 7-University 8-Speech 9-Webinar
 
-additional_education = 0
+additional_education = 2
 
-education_level = 4 # 1-Postgraduate 2-University 3-Technical 4-High School
-online_mode_study = 1 # 0 for No, 1 for Yes
-training_type_university = 1 # 0 for No, 1 for Yes
-training_type_employment = 1 # 0 for No, 1 for Yes
+education_level_1 = 4 # 1-Postgraduate 2-University 3-Technical 4-High School
+education_level_2 = 1 # 1-Postgraduate 2-University 3-Technical 4-High School
+education_level_3 = 2 # 1-Postgraduate 2-University 3-Technical 4-High School
+online_mode_study = 0 # 0 for No, 1 for Yes
+training_type_university = 0 # 0 for No, 1 for Yes
+training_type_employment = 0 # 0 for No, 1 for Yes
 training_type_second_language = 1 # 0 for No, 1 for Yes
 
 currently_working = 0 # 0 for No, 1 for Yes
@@ -153,3 +155,15 @@ else:
     country_2 = country_2
     country_3 = country_3
     country_4 = country_4
+
+print(Starting_Date)
+print(Graduation_Date)
+
+print(starting_Date_1)
+print(starting_Date_2)
+print(starting_Date_3)
+
+print(graduation_Date_1)
+print(graduation_Date_2)
+print(graduation_Date_3)
+

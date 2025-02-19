@@ -79,10 +79,12 @@ def test_address_details():
 
 def test_academic_records():
     academic_details = Academic_Records_Process(academic_page_functions)
-    academic_details.run_processes(user_details.additional_education,user_details.education_level,user_details.University_Institution_1,
-                                   user_details.degree_1, user_details.starting_Date_1, user_details.graduation_Date_1,
+    academic_details.run_processes(user_details.additional_education,user_details.education_level_1,user_details.education_level_2,user_details.education_level_3,
+                                   user_details.University_Institution_1,user_details.University_Institution_2,user_details.University_Institution_3,
+                                   user_details.degree_1,user_details.degree_2,user_details.degree_3,user_details.starting_Date_1,user_details.starting_Date_2,
+                                   user_details.starting_Date_3,user_details.graduation_Date_1,user_details.starting_Date_2,user_details.starting_Date_3,
                                    user_details.online_mode_study, user_details.training_type_university, user_details.training_type_employment,
-                                   user_details.training_type_second_language, user_details.Other_Expertise, user_details.previous_access_code, user_details.access_code)
+                                   user_details.training_type_second_language, user_details.Other_Expertise)
 
 # def test_additional_info_page():
 #     addition_info = Additional_Info_Process(additional_page_functions)
