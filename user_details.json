@@ -1,6 +1,6 @@
 {
-    "access_code": "1c5d631",
-    "previous_access_code": "1c5d631",
+    "access_code": "84d19cc",
+    "previous_access_code": "84d19cc",
     "dob_English": "09302001",
     "dob_Spanish": "30092001",
     "Document_number": "1224435334",
@@ -34,5 +34,46 @@
       "Russia",
       "Germany",
       "Italy"
-    ]
-  }
+    ],
+    "University/Institution": [
+        "Chandigarh University",
+        "Chandigarh Group of Colleges",
+        "Oxford University"
+    ],
+    "Degree": [
+        "Bachelor's in Engineering",
+        "Master's in Engineering",
+        "PhD."
+    ],
+    "Starting_Date": [
+        "082020",
+        "082024",
+        "092025"
+    ],
+    "Graduation_Date": [
+        "052024",
+        "052025",
+        "032027"
+    ],
+
+    "Other_Expertise": "German, French, English, Chinese, Arabic",
+
+    "Institution_Name": "Zenmonk",
+    "Position": "QA Engineer",
+    "Area": "Mohali, Punjab",
+    "Activity": "Software Testing",
+    "Monthly_Salary": "9000000",
+    "Emp_Country": "India",
+    "Emp_State": "Punjab",
+    "Emp_City": "Mohali",
+    "Zip_Code": "12QW00P",
+    "Address": "4433-B Housing Boards Flats, Sector-63, Chandigarh",
+    "Landline_Phone": "0171-2669764",
+    "Phone_Mobile": "9034430068",
+    "Website": "https://www.saucedemo.com/",
+    "Landline_Nation": "Italy",
+    "Mobile_Nation": "United Arab Emirates"
+
+
+
+}
