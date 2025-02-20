@@ -37,7 +37,8 @@ class AcademicRecords:
         self.Starting_Date__3 = By.CSS_SELECTOR, '[data-test-id="date-picker-input-academic-education-start-date-3"]'
         self.Graduation_Date__3 = By.CSS_SELECTOR, '[data-test-id="date-picker-input-academic-education-graduation-date-3"]'
 
-
+        self.delete_edu_2 = By.CSS_SELECTOR,'[data-test-id="button-delete-education-details-2"]'
+        self.delete_edu_3 = By.CSS_SELECTOR,'[data-test-id="button-delete-education-details-3"]'
 
         self.no_previous_service = By.CSS_SELECTOR, '[data-test-id="radio-input-academic-online-study-experience-No"]'
 

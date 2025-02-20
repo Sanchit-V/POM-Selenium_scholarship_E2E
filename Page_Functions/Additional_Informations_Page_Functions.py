@@ -1,3 +1,5 @@
+from selenium.webdriver import Keys
+
 from Page_Object.Additional_Informations_Page import AdditionalInfo
 import time
 
@@ -83,6 +85,10 @@ class Additional_Information(AdditionalInfo):
         try:
             text_field = self.driver.find_element(*self.Text_Bar)
             text_field.click()
+            time.sleep(1)
+            text_field.send_keys(Keys.CONTROL + "a")
+            text_field.send_keys(Keys.DELETE)
+            time.sleep(1)
             print('*****************************************\t')
             print('Web element found\t')
             print('*****************************************')

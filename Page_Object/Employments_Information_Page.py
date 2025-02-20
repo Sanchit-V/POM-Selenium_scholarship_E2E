@@ -3,6 +3,7 @@ By=Import_libraries.By
 
 class EmploymentInformation:
     def __init__(self, driver):
+        self.driver = Import_libraries.driver
         self.currently_working_yes = By.CSS_SELECTOR, '[data-test-id="radio-input-employment-status-Yes"]'
         self.currently_working_no = By.CSS_SELECTOR, '[data-test-id="radio-input-employment-status-No"]'
 
@@ -24,16 +25,26 @@ class EmploymentInformation:
         self.five_year = By.CSS_SELECTOR, '[data-test-id="li-employment-information-seniority-in-position-fiveYears"]'
         self.six_or_more = By.CSS_SELECTOR, '[data-test-id="li-employment-information-seniority-in-position-sixOrMoreYears"]'
 
+        self.monthly_salary_emp = By.CSS_SELECTOR, '[data-test-id="input-personal-monthly-expense"]'
+
         self.country = By.CSS_SELECTOR, '[data-test-id="autocomplete-input-employment-address-country"]'
+        self.state = By.CSS_SELECTOR, '[data-test-id="autocomplete-input-employment-address-state"]'
+        self.city = By.CSS_SELECTOR, '[data-test-id="autocomplete-input-employment-address-city"]'
         self.zip_code = By.CSS_SELECTOR, '[data-test-id="input-employment-address-zip-code"]'
         self.address = By.CSS_SELECTOR, '[data-test-id="input-employment-address-address"]'
 
-        self.landline_number = By.CSS_SELECTOR, '[data-test-id="input-employment-address-employment-contact-phone-number"]'
+        self.landline_number = By.CSS_SELECTOR, '[data-test-id="input-employment-address-employment-contact-landline-phone"]'
+        self.landline_number_country = By.CSS_SELECTOR, '[data-test-id="employment-contact-landline-phone-country-iso2-code-open-country-code-menu"]'
+        self.country_menu = By.CSS_SELECTOR, '[data-test-id="input-filter-flag"]'
+
         # [placeholder="Landline phone"]
         self.phone_number = By.CSS_SELECTOR, '[data-test-id="input-employment-address-employment-contact-phone-number"]'
+        self.phone_number_country = By.CSS_SELECTOR, '[data-test-id="employment-contact-phone-number-country-iso2-code-open-country-code-menu"]'
         # [placeholder="Phone number"]
 
-        self.url = By.CSS_SELECTOR, '[data-test-id="input-employment-information-position"]'
+
+
+        self.url = By.CSS_SELECTOR, '[data-test-id="input-employment-information-website"]'
 
         self.employment_back_button = By.CSS_SELECTOR, '[data-test-id="btn-back-employment"]'
         self.employment_cancel_button = By.CSS_SELECTOR, '[data-test-id="btn-cancel-employment"]'

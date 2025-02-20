@@ -26,15 +26,16 @@ additional_education = 2
 education_level_1 = 4 # 1-Postgraduate 2-University 3-Technical 4-High School
 education_level_2 = 1 # 1-Postgraduate 2-University 3-Technical 4-High School
 education_level_3 = 2 # 1-Postgraduate 2-University 3-Technical 4-High School
-online_mode_study = 0 # 0 for No, 1 for Yes
+online_mode_study = 1 # 0 for No, 1 for Yes
 training_type_university = 0 # 0 for No, 1 for Yes
-training_type_employment = 0 # 0 for No, 1 for Yes
+training_type_employment = 1 # 0 for No, 1 for Yes
 training_type_second_language = 1 # 0 for No, 1 for Yes
 
-currently_working = 0 # 0 for No, 1 for Yes
-work_category = 1 # 1 for Dependent, 1 for Independent
+currently_working = 1 # 0 for No, 1 for Yes
 
-seniority_position = 1 # Enter digits 1 to 6
+work_category =  0 # 1 for Dependent, 0 for Independent
+
+seniority_position = 4 # Enter digits 1 to 6
 
 
 
@@ -79,18 +80,18 @@ Graduation_Date = json_data['Graduation_Date']
 
 University_Institution_1 = University_Institution[0]
 degree_1 = Degree[0]
-starting_Date_1 = Starting_Date[0]
-graduation_Date_1 = Graduation_Date[0]
+starting_Date_0 = Starting_Date[0]
+graduation_Date_0 = Graduation_Date[0]
 
 University_Institution_2 = University_Institution[1]
 degree_2 = Degree[1]
-starting_Date_2 = Starting_Date[1]
-graduation_Date_2 = Graduation_Date[1]
+starting_Date_1 = Starting_Date[1]
+graduation_Date_1 = Graduation_Date[1]
 
 University_Institution_3 = University_Institution[2]
 degree_3 = Degree[2]
-starting_Date_3 = Starting_Date[2]
-graduation_Date_3 = Graduation_Date[2]
+starting_Date_2 = Starting_Date[2]
+graduation_Date_2 = Graduation_Date[2]
 
 Other_Expertise = json_data['Other_Expertise']
 
@@ -156,14 +157,40 @@ else:
     country_3 = country_3
     country_4 = country_4
 
-print(Starting_Date)
-print(Graduation_Date)
 
-print(starting_Date_1)
-print(starting_Date_2)
-print(starting_Date_3)
+if selected_language == 0:
+    Emp_Country = GoogleTranslator(source='en', target='es').translate(Emp_Country)
+    Emp_State = GoogleTranslator(source='en', target='es').translate(Emp_State)
+    Emp_City = GoogleTranslator(source='en', target='es').translate(Emp_City)
+    Landline_Nation = GoogleTranslator(source='en', target='es').translate(Landline_Nation)
+    Mobile_Nation = GoogleTranslator(source='en', target='es').translate(Mobile_Nation)
 
-print(graduation_Date_1)
-print(graduation_Date_2)
-print(graduation_Date_3)
+else:
+    Emp_Country =  Emp_Country
+    Emp_State = Emp_State
+    Emp_City = Emp_City
+    Landline_Nation = Landline_Nation
+    Mobile_Nation = Mobile_Nation
+
+
+
+
+
+
+
+
+
+
+
+
+# print(Starting_Date)
+# print(Graduation_Date)
+#
+# print(starting_Date_1)
+# print(starting_Date_2)
+# print(starting_Date_3)
+#
+# print(graduation_Date_1)
+# print(graduation_Date_2)
+# print(graduation_Date_3)
 

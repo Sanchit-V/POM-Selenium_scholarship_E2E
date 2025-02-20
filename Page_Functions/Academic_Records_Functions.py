@@ -21,7 +21,22 @@ class Academic_Records(AcademicRecords):
             print('No additional needed to be added.')
 
 
+    def del_added_edu(self):
+        try:
+            del_Edu_2 = self.driver.find_element(*self.delete_edu_2)
+            del_Edu_2.click()
+            time.sleep(2)
 
+        except:
+            print('Edu 2 box not found')
+
+        try:
+            del_Edu_3 = self.driver.find_element(*self.delete_edu_2)
+            del_Edu_3.click()
+            time.sleep(2)
+
+        except:
+            print('Edu 3 box not found')
 
 
     def education_Level_1(self, education_level_1):#, education_level
@@ -192,42 +207,42 @@ class Academic_Records(AcademicRecords):
             print('Other eduction level-3 not selected.')
 
 
-    def degree_date(self, starting_Date_1, graduation_Date_1, starting_Date_2, graduation_Date_2, starting_Date_3, graduation_Date_3):
+    def degree_date(self, starting_Date_0, graduation_Date_0, starting_Date_1, graduation_Date_1, starting_Date_2, graduation_Date_2):
         starting_date_1 = self.driver.find_element(*self.Starting_Date__1)
         starting_date_1.click()
         time.sleep(1)
-        starting_date_1.send_keys(Keys.CONTROL + "a")
-        starting_date_1.send_keys(Keys.DELETE)
-        time.sleep(1)
-        starting_date_1.send_keys(starting_Date_1)
+        # starting_date_1.send_keys(Keys.CONTROL + "a")
+        # starting_date_1.send_keys(Keys.DELETE)
+        # time.sleep(1)
+        starting_date_1.send_keys(starting_Date_0)
         time.sleep(1)
 
         graduation_date_1 = self.driver.find_element(*self.Graduation_Date__1)
         graduation_date_1.click()
         time.sleep(1)
-        graduation_date_1.send_keys(Keys.CONTROL + "a")
-        graduation_date_1.send_keys(Keys.DELETE)
-        time.sleep(1)
-        graduation_date_1.send_keys(graduation_Date_1)
+        # graduation_date_1.send_keys(Keys.CONTROL + "a")
+        # graduation_date_1.send_keys(Keys.DELETE)
+        # time.sleep(1)
+        graduation_date_1.send_keys(graduation_Date_0)
         time.sleep(1)
 
         try:
             starting_date_2 = self.driver.find_element(*self.Starting_Date__2)
             starting_date_2.click()
             time.sleep(1)
-            starting_date_2.send_keys(Keys.CONTROL + "a")
-            starting_date_2.send_keys(Keys.DELETE)
-            time.sleep(1)
-            starting_date_2.send_keys(starting_Date_2)
+            # starting_date_2.send_keys(Keys.CONTROL + "a")
+            # starting_date_2.send_keys(Keys.DELETE)
+            # time.sleep(1)
+            starting_date_2.send_keys(starting_Date_1)
             time.sleep(1)
 
             graduation_date_2 = self.driver.find_element(*self.Graduation_Date__2)
             graduation_date_2.click()
             time.sleep(1)
-            graduation_date_2.send_keys(Keys.CONTROL + "a")
-            graduation_date_2.send_keys(Keys.DELETE)
-            time.sleep(1)
-            graduation_date_2.send_keys(graduation_Date_2)
+            # graduation_date_2.send_keys(Keys.CONTROL + "a")
+            # graduation_date_2.send_keys(Keys.DELETE)
+            # time.sleep(1)
+            graduation_date_2.send_keys(graduation_Date_1)
             time.sleep(1)
 
         except:
@@ -237,19 +252,19 @@ class Academic_Records(AcademicRecords):
             starting_date_3 = self.driver.find_element(*self.Starting_Date__3)
             starting_date_3.click()
             time.sleep(1)
-            starting_date_3.send_keys(Keys.CONTROL + "a")
-            starting_date_3.send_keys(Keys.DELETE)
-            time.sleep(1)
-            starting_date_3.send_keys(starting_Date_3)
+            # starting_date_3.send_keys(Keys.CONTROL + "a")
+            # starting_date_3.send_keys(Keys.DELETE)
+            # time.sleep(1)
+            starting_date_3.send_keys(starting_Date_2)
             time.sleep(1)
 
             graduation_date_3 = self.driver.find_element(*self.Graduation_Date__3)
             graduation_date_3.click()
             time.sleep(1)
-            graduation_date_3.send_keys(Keys.CONTROL + "a")
-            graduation_date_3.send_keys(Keys.DELETE)
-            time.sleep(1)
-            graduation_date_3.send_keys(graduation_Date_3)
+            # graduation_date_3.send_keys(Keys.CONTROL + "a")
+            # graduation_date_3.send_keys(Keys.DELETE)
+            # time.sleep(1)
+            graduation_date_3.send_keys(graduation_Date_2)
             time.sleep(1)
 
         except:
@@ -417,7 +432,7 @@ class Academic_Records(AcademicRecords):
     def academic_continue(self):
         academic_continue = self.driver.find_element(*self.academic_continue_button)
         academic_continue.click()
-        time.sleep(50)
+        time.sleep(2)
 
 
 
