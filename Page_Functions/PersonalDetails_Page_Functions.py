@@ -173,63 +173,34 @@ class Personal_Details(PersonalDetails):
         time.sleep(1)
 
 
-    def Financial_Dependent(self, Financially_Dependent, selected_language):
+    def Financial_Dependent(self, Financially_Dependent):
 
-        if selected_language == 1:
-            not_dependent = self.driver.find_element(*self.Financial_Independent_Yes)
-            dependent = self.driver.find_element(*self.Financial_Independent_No)
+        not_dependent = self.driver.find_element(*self.Financial_Independent_Yes)
+        dependent = self.driver.find_element(*self.Financial_Independent_No)
 
-            if Financially_Dependent == 1:
+        if Financially_Dependent == 1:
                 dependent.click()
-
-            else:
-                not_dependent.click()
-
-            time.sleep(3)
 
         else:
-            not_dependent = self.driver.find_element(*self.Financial_Independent_SI)
-            dependent = self.driver.find_element(*self.Financial_Independent_NO)
-
-            if Financially_Dependent == 1:
-                dependent.click()
-
-            else:
                 not_dependent.click()
 
-            time.sleep(3)
+        time.sleep(3)
+
+
+    def Has_Children(self, Has_Children):                  #
+        has_children = self.driver.find_element(*self.has_Children)
+        does_not_have_children = self.driver.find_element(*self.does_Not_Have_Children)
+        if Has_Children == 1:
+            has_children.click()
+
+        else:
+            does_not_have_children.click()
+
+        time.sleep(3)
 
 
 
 
-
-    def Has_Children(self, Has_Children, selected_language):                  #
-
-       if selected_language == 1:
-            has_children = self.driver.find_element(*self.has_Children)
-            does_not_have_children = self.driver.find_element(*self.does_Not_Have_Children)
-            if Has_Children == 1:
-                has_children.click()
-
-                time.sleep(2)
-
-            else:
-                does_not_have_children.click()
-
-
-
-
-       else:
-           has_children = self.driver.find_element(*self.has_Children_SI)
-           does_not_have_children = self.driver.find_element(*self.has_Children_NO)
-
-           if Has_Children == 1:
-               has_children.click()
-
-               time.sleep(2)
-
-           else:
-               does_not_have_children.click()
 
 
 

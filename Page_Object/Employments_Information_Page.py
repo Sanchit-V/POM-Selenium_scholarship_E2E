@@ -4,8 +4,8 @@ By=Import_libraries.By
 class EmploymentInformation:
     def __init__(self, driver):
         self.driver = Import_libraries.driver
-        self.currently_working_yes = By.CSS_SELECTOR, '[data-test-id="radio-input-employment-status-Yes"]'
-        self.currently_working_no = By.CSS_SELECTOR, '[data-test-id="radio-input-employment-status-No"]'
+        self.currently_working_yes = By.CSS_SELECTOR, '[data-test-id="radio-input-employment-status-yes"]'
+        self.currently_working_no = By.CSS_SELECTOR, '[data-test-id="radio-input-employment-status-no"]'
 
         self.institution_name = By.CSS_SELECTOR, '[data-test-id="input-employment-information-institution-name"]'
         self.position = By.CSS_SELECTOR, '[data-test-id="input-employment-information-position"]'

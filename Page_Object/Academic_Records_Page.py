@@ -40,9 +40,9 @@ class AcademicRecords:
         self.delete_edu_2 = By.CSS_SELECTOR,'[data-test-id="button-delete-education-details-2"]'
         self.delete_edu_3 = By.CSS_SELECTOR,'[data-test-id="button-delete-education-details-3"]'
 
-        self.no_previous_service = By.CSS_SELECTOR, '[data-test-id="radio-input-academic-online-study-experience-No"]'
+        self.no_previous_service = By.CSS_SELECTOR, '[data-test-id="radio-input-academic-online-study-experience-no"]'
 
-        self.yes_previous_service = By.CSS_SELECTOR, '[data-test-id="radio-input-academic-online-study-experience-Yes"]'
+        self.yes_previous_service = By.CSS_SELECTOR, '[data-test-id="radio-input-academic-online-study-experience-yes"]'
 
         self.university_training = By.XPATH, "//input[@value='UNIVERSITY_TRAINING']"
         self.employment_training = By.XPATH, "//input[@value='EMPLOYMENT_TRAINING']"

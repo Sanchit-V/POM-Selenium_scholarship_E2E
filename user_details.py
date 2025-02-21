@@ -8,7 +8,7 @@ with open('user_details.json') as f:
      json_data = json.load(f)
 
 url = "http://localhost:80/"
-selected_language = 1     # 1 for English, 0 for Spanish
+selected_language = 0     # 1 for English, 0 for Spanish
 document_type = 3 # 1 for NIC     # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
 Martial_status = 2 # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
 Financially_Dependent = 1   # 0 for No  # 1 for Yes

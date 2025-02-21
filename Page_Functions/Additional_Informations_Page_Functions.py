@@ -5,82 +5,45 @@ import time
 
 
 class Additional_Information(AdditionalInfo):
-    def select_Option(self, additional_type,Text_Additional_field, selected_language):
-        if selected_language == 1:
-            if additional_type == 1:
+    def select_Option(self, additional_type,Text_Additional_field):
+
+        if additional_type == 1:
                 Google = self.driver.find_element(*self.google)
                 Google.click()
 
-            elif additional_type == 2:
+        elif additional_type == 2:
                 Facebook = self.driver.find_element(*self.facebook)
                 Facebook.click()
 
-            elif additional_type == 3:
+        elif additional_type == 3:
                 Instagram = self.driver.find_element(*self.instagram)
                 Instagram.click()
 
-            elif additional_type == 4:
+        elif additional_type == 4:
                 Reffered = self.driver.find_element(*self.referred)
                 Reffered.click()
 
-            elif additional_type == 5:
+        elif additional_type == 5:
                 Company = self.driver.find_element(*self.company)
                 Company.click()
 
-            elif additional_type == 6:
+        elif additional_type == 6:
                 Agreement = self.driver.find_element(*self.agreement)
                 Agreement.click()
 
-            elif additional_type == 7:
+        elif additional_type == 7:
                 University = self.driver.find_element(*self.university)
                 University.click()
 
-            elif additional_type == 8:
+        elif additional_type == 8:
                 Speech = self.driver.find_element(*self.speech)
                 Speech.click()
 
-            else:
-                Webinar = self.driver.find_element(*self.webinar)
-                Webinar.click()
-
         else:
-            if additional_type == 1:
-                Google = self.driver.find_element(*self.google)
-                Google.click()
-
-            elif additional_type == 2:
-                Facebook = self.driver.find_element(*self.facebook)
-                Facebook.click()
-
-            elif additional_type == 3:
-                Instagram = self.driver.find_element(*self.instagram)
-                Instagram.click()
-
-            elif additional_type == 4:
-                Reffered = self.driver.find_element(*self.referred_spanish)
-                Reffered.click()
-
-            elif additional_type == 5:
-                Company = self.driver.find_element(*self.company_spanish)
-                Company.click()
-
-            elif additional_type == 6:
-                Agreement = self.driver.find_element(*self.agreement_spanish)
-                Agreement.click()
-
-            elif additional_type == 7:
-                University = self.driver.find_element(*self.university_spanish)
-                University.click()
-
-            elif additional_type == 8:
-                Speech = self.driver.find_element(*self.speech_spanish)
-                Speech.click()
-
-            else:
                 Webinar = self.driver.find_element(*self.webinar)
                 Webinar.click()
 
-        time.sleep(2)
+
 
         try:
             text_field = self.driver.find_element(*self.Text_Bar)
