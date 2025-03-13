@@ -1,25 +1,26 @@
 #URL
 from deep_translator import GoogleTranslator
+from faker import Faker
 import json
 
-
+fake = Faker()
 
 with open('user_details.json') as f:
      json_data = json.load(f)
 
 url = "http://localhost:80/"
-selected_language = 0     # 1 for English, 0 for Spanish
+selected_language = 1     # 1 for English, 0 for Spanish
 document_type = 3 # 1 for NIC     # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
 Martial_status = 2 # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
 Financially_Dependent = 1   # 0 for No  # 1 for Yes
 Has_Children = 1   # 0 for No  # 1 for Yes
-additional_emails_to_be_added = 4
+additional_emails_to_be_added = 5
 number_of_additional_phone=1
-number_of_additional_whatsapp=1
+number_of_additional_whatsapp=2
 total_additionals = number_of_additional_phone + number_of_additional_whatsapp
 housing_type = 1   # 1 for department    # 2 for House
 housing_conditions = 1 # 1 for Family     # 2 for Own     # 3 for Rented
-additional_type = 4 # 1-Google 2-Facebook 3-Instagram 4-Referred 5-Company 6-Agreement 7-University 8-Speech 9-Webinar
+additional_type = 1 # 1-Google 2-Facebook 3-Instagram 4-Referred 5-Company 6-Agreement 7-University 8-Speech 9-Webinar
 
 additional_education = 2
 
@@ -27,21 +28,24 @@ education_level_1 = 4 # 1-Postgraduate 2-University 3-Technical 4-High School
 education_level_2 = 1 # 1-Postgraduate 2-University 3-Technical 4-High School
 education_level_3 = 2 # 1-Postgraduate 2-University 3-Technical 4-High School
 online_mode_study = 1 # 0 for No, 1 for Yes
-training_type_university = 0 # 0 for No, 1 for Yes
+training_type_university = 1 # 0 for No, 1 for Yes
 training_type_employment = 1 # 0 for No, 1 for Yes
 training_type_second_language = 1 # 0 for No, 1 for Yes
 
 currently_working = 1 # 0 for No, 1 for Yes
 
-work_category =  0 # 1 for Dependent, 0 for Independent
+work_category =  1 # 1 for Dependent, 0 for Independent
 
 seniority_position = 4 # Enter digits 1 to 6
 
 
 
 
+
 access_code = json_data['access_code']
 previous_access_code = json_data['previous_access_code']
+
+#dob_English = fake.date_between(start_date='-19y', end_date='today')
 dob_English = json_data['dob_English']
 dob_Spanish = json_data['dob_Spanish']
 Document_number = json_data['Document_number']

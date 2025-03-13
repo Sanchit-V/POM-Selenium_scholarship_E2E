@@ -1,6 +1,6 @@
 {
-    "access_code": "8298b4a",
-    "previous_access_code": "8298b4a",
+    "access_code": "ad48913",
+    "previous_access_code": "ad48913",
     "dob_English": "09302001",
     "dob_Spanish": "30092001",
     "Document_number": "1224435334",
@@ -12,9 +12,9 @@
     "Monthly_Income": "98767123",
     "Monthly_Expense": "1234321",
     "range_0to4": 2,
-    "range_5to12": 3,
-    "range_13to18": 3,
-    "range_18plus": 2,
+    "range_5to12":"",
+    "range_13to18":"",
+    "range_18plus":"",
     "email_ids": [
         "example1@gmail.com",
         "example2@yahoo.com",
