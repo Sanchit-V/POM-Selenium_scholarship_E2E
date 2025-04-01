@@ -8,11 +8,14 @@ from Page_Object.Academic_Records_Page import AcademicRecords
 class Academic_Records(AcademicRecords):
     def education_details(self, additional_education):
         try:
-            if 0 <= additional_education <= 2:
+            if 0 < additional_education <= 2:
                 for add_education in range(additional_education):
                     added_education = self.driver.find_element(*self.add_education)
                     added_education.click()
                     time.sleep(2)
+
+            elif additional_education == 0:
+                print('0 as option is selected.')
 
             else:
                 print("Wrong Input")

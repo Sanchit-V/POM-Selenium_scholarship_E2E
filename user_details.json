@@ -1,6 +1,6 @@
 {
-    "access_code": "ad48913",
-    "previous_access_code": "ad48913",
+    "access_code": "197a4cf",
+    "previous_access_code": "197a4cf",
     "dob_English": "09302001",
     "dob_Spanish": "30092001",
     "Document_number": "1224435334",
@@ -72,8 +72,66 @@
     "Phone_Mobile": "9034430068",
     "Website": "https://www.saucedemo.com/",
     "Landline_Nation": "Italy",
-    "Mobile_Nation": "United Arab Emirates"
+    "Mobile_Nation": "United Arab Emirates",
 
 
+    "Reference_1":
+    {
+        "First_Name": "Peter",
+        "Last_Name": "Griffin",
+        "Position/Occupation": "Engineer",
+        "Email_Address": "petergriffin111@gmail.com",
+        "Phone_Number": 9088282222,
+        "Landline_Number": 7674849032,
+        "Phone_CC": "Cuba",
+        "Landline_CC": "Cyprus"
+    },
 
+    "Reference_2":
+    {
+        "First_Name": "Glenn",
+        "Last_Name": "Quagmire",
+        "Position/Occupation": "Doctor",
+        "Email_Address": "gigityglen123@gmail.com",
+        "Phone_Number": 9088282221,
+        "Landline_Number": 7674849031,
+        "Phone_CC": "Yemen",
+        "Landline_CC": "Dominican Republic"
+    },
+
+    "Reference_3":
+    {
+        "First_Name": "Cleaveland",
+        "Last_Name": "Brown",
+        "Position/Occupation": "Driver",
+        "Email_Address": "browncleave124@gmail.com",
+        "Phone_Number": 9088281122,
+        "Landline_Number": 7674849232,
+        "Phone_CC": "Nicaragua",
+        "Landline_CC": "Estonia"
+    },
+
+    "Reference_4":
+    {
+        "First_Name": "Joe",
+        "Last_Name": "Swanson",
+        "Position/Occupation": "Policeman",
+        "Email_Address": "swansonjoe908@gmail.com",
+        "Phone_Number": 9088281112,
+        "Landline_Number": 7671119032,
+        "Phone_CC": "Malaysia",
+        "Landline_CC": "Croatia"
+    },
+
+    "Reference_5":
+    {
+        "First_Name": "Stewie",
+        "Last_Name": "Griffin",
+        "Position/Occupation": "Scientist",
+        "Email_Address": "endlouis001@gmail.com",
+        "Phone_Number": 9022282222,
+        "Landline_Number": 7656449032,
+        "Phone_CC": "Mongolia",
+        "Landline_CC": "Israel"
+    }
 }

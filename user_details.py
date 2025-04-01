@@ -9,7 +9,7 @@ with open('user_details.json') as f:
      json_data = json.load(f)
 
 url = "http://localhost:80/"
-selected_language = 1     # 1 for English, 0 for Spanish
+selected_language = 0     # 1 for English, 0 for Spanish
 document_type = 3 # 1 for NIC     # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
 Martial_status = 2 # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
 Financially_Dependent = 1   # 0 for No  # 1 for Yes
@@ -37,6 +37,8 @@ currently_working = 1 # 0 for No, 1 for Yes
 work_category =  1 # 1 for Dependent, 0 for Independent
 
 seniority_position = 4 # Enter digits 1 to 6
+
+additional_references = 2 # Enter digits 0 to 2
 
 
 
@@ -119,6 +121,52 @@ Mobile_Nation = json_data['Mobile_Nation']
 
 
 
+ref1_FirstName = json_data['Reference_1']['First_Name']
+ref1_LastName = json_data['Reference_1']['Last_Name']
+ref1_Pos_Occupation = json_data['Reference_1']['Position/Occupation']
+ref1_email = json_data['Reference_1']['Email_Address']
+ref1_phone_number = json_data['Reference_1']['Phone_Number']
+ref1_landline_number = json_data['Reference_1']['Landline_Number']
+ref1_phone_CC = json_data['Reference_1']['Phone_CC']
+ref1_landline_CC = json_data['Reference_1']['Landline_CC']
+
+ref2_FirstName = json_data['Reference_2']['First_Name']
+ref2_LastName = json_data['Reference_2']['Last_Name']
+ref2_Pos_Occupation = json_data['Reference_2']['Position/Occupation']
+ref2_email = json_data['Reference_2']['Email_Address']
+ref2_phone_number = json_data['Reference_2']['Phone_Number']
+ref2_landline_number = json_data['Reference_2']['Landline_Number']
+ref2_phone_CC = json_data['Reference_2']['Phone_CC']
+ref2_landline_CC = json_data['Reference_2']['Landline_CC']
+
+ref3_FirstName = json_data['Reference_3']['First_Name']
+ref3_LastName = json_data['Reference_3']['Last_Name']
+ref3_Pos_Occupation = json_data['Reference_3']['Position/Occupation']
+ref3_email = json_data['Reference_3']['Email_Address']
+ref3_phone_number = json_data['Reference_3']['Phone_Number']
+ref3_landline_number = json_data['Reference_3']['Landline_Number']
+ref3_phone_CC = json_data['Reference_3']['Phone_CC']
+ref3_landline_CC = json_data['Reference_3']['Landline_CC']
+
+ref4_FirstName = json_data['Reference_4']['First_Name']
+ref4_LastName = json_data['Reference_4']['Last_Name']
+ref4_Pos_Occupation = json_data['Reference_4']['Position/Occupation']
+ref4_email = json_data['Reference_4']['Email_Address']
+ref4_phone_number = json_data['Reference_4']['Phone_Number']
+ref4_landline_number = json_data['Reference_4']['Landline_Number']
+ref4_phone_CC = json_data['Reference_4']['Phone_CC']
+ref4_landline_CC = json_data['Reference_4']['Landline_CC']
+
+ref5_FirstName = json_data['Reference_5']['First_Name']
+ref5_LastName = json_data['Reference_5']['Last_Name']
+ref5_Pos_Occupation = json_data['Reference_5']['Position/Occupation']
+ref5_email = json_data['Reference_5']['Email_Address']
+ref5_phone_number = json_data['Reference_5']['Phone_Number']
+ref5_landline_number = json_data['Reference_5']['Landline_Number']
+ref5_phone_CC = json_data['Reference_5']['Phone_CC']
+ref5_landline_CC = json_data['Reference_5']['Landline_CC']
+
+
 if selected_language == 1:
     user_greeting = "Welcome to the online scholarship application form"
     expected_message = "Login successful"
@@ -176,6 +224,47 @@ else:
     Landline_Nation = Landline_Nation
     Mobile_Nation = Mobile_Nation
 
+if selected_language == 0:
+    ref1_phone_CC = GoogleTranslator(source='en', target='es').translate(ref1_phone_CC)
+    ref1_landline_CC = GoogleTranslator(source='en', target='es').translate( ref1_landline_CC)
+
+    ref2_phone_CC = GoogleTranslator(source='en', target='es').translate(ref2_phone_CC)
+    ref2_landline_CC = GoogleTranslator(source='en', target='es').translate(ref2_landline_CC)
+
+    ref3_phone_CC = GoogleTranslator(source='en', target='es').translate(ref3_phone_CC)
+    ref3_landline_CC = GoogleTranslator(source='en', target='es').translate(ref3_landline_CC)
+
+    ref4_phone_CC = GoogleTranslator(source='en', target='es').translate(ref4_phone_CC)
+    ref4_landline_CC = GoogleTranslator(source='en', target='es').translate(ref4_landline_CC)
+
+    ref5_phone_CC = GoogleTranslator(source='en', target='es').translate(ref5_phone_CC)
+    ref5_landline_CC = GoogleTranslator(source='en', target='es').translate(ref5_landline_CC)
+
+else:
+    ref1_phone_CC = ref1_phone_CC
+    ref1_landline_CC = ref1_landline_CC
+
+    ref2_phone_CC = ref2_phone_CC
+    ref2_landline_CC = ref2_landline_CC
+
+    ref3_phone_CC = ref3_phone_CC
+    ref3_landline_CC = ref3_landline_CC
+
+    ref4_phone_CC = ref4_phone_CC
+    ref3_landline_CC = ref3_landline_CC
+
+    ref5_phone_CC = ref5_phone_CC
+    ref5_landline_CC = ref5_landline_CC
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -197,4 +286,5 @@ else:
 # print(graduation_Date_1)
 # print(graduation_Date_2)
 # print(graduation_Date_3)
-
+# print(ref1_phone_CC, '#' , ref2_phone_CC, '#' , ref3_phone_CC, '#' , ref4_phone_CC, '#' , ref5_phone_CC)
+# print(ref1_landline_CC, '#', ref2_landline_CC, '#', ref3_landline_CC, '#', ref4_landline_CC, '#' , ref5_landline_CC)

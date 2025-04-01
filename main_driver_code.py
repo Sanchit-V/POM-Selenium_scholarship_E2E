@@ -6,6 +6,7 @@ from Page_Functions.Address_Page_Functions import Address_Page
 from Page_Functions.Employments_Information_Functions import Employmet_Information
 from Page_Functions.Login_Page_Functions import Login_Page
 from Page_Functions.PersonalDetails_Page_Functions import Personal_Details
+from Page_Functions.References_Page_Functions import References
 from Page_Functions.Submit_Page_Functions import Submit
 from Page_Functions.Submitted_Page_Functions import Submitted_Page
 from Page_Functions.Welcome_Page_Functions import Welcome_Page
@@ -18,6 +19,7 @@ from Processes.Employment_Info_Process import Employement_Info_Process
 from Processes.Login_Process import Login_Process
 from Import_Libraries import Import_libraries
 from Processes.Personal_Details_Process import Personal_Details_Process
+from Processes.References_Processes import Reference_Process
 from Processes.Summary_Page_Process import Summary_Process
 from Processes.Welcome_Process import Welcome_Process
 from Processes.Submitted_Page_Processes import  Submitted_Page_Process
@@ -43,6 +45,7 @@ submit_report_page_functions = Submit(driver)
 final_page_functions = Submitted_Page(driver)
 academic_page_functions = Academic_Records(driver)
 employment_page_functions = Employmet_Information(driver)
+reference_page_functions = References(driver)
 
 
 
@@ -97,6 +100,23 @@ def test_employment_information():
                       user_details.work_category, user_details.Activity, user_details.seniority_position, user_details.Monthly_Salary,
                         user_details.Emp_Country, user_details.Emp_State, user_details.Emp_City, user_details.Zip_Code, user_details.Address,
                                      user_details.Landline_Phone, user_details.Phone_Mobile, user_details.Website, user_details.Mobile_Nation, user_details.Landline_Nation)
+
+
+def test_reference_page():
+    references_page = Reference_Process(reference_page_functions)
+    references_page.run_processes(user_details.additional_references, user_details.ref1_FirstName, user_details.ref1_LastName,
+                                  user_details.ref1_Pos_Occupation, user_details.ref1_email, user_details.ref1_phone_number,
+                                  user_details.ref1_landline_number, user_details.ref1_phone_CC, user_details.ref1_landline_CC,
+                                  user_details.ref2_FirstName, user_details.ref2_LastName, user_details.ref2_Pos_Occupation, user_details.ref2_email,
+                                  user_details.ref2_phone_number, user_details.ref2_landline_number,
+                                  user_details.ref2_phone_CC, user_details.ref2_landline_CC, user_details.ref3_FirstName, user_details.ref3_LastName, user_details.ref3_Pos_Occupation,
+                                  user_details.ref3_email, user_details.ref3_phone_number, user_details.ref3_landline_number, user_details.ref3_phone_CC, user_details.ref3_landline_CC,
+                                  user_details.ref4_FirstName, user_details.ref4_LastName, user_details.ref4_Pos_Occupation, user_details.ref4_email, user_details.ref4_phone_number,
+                                  user_details.ref4_landline_number, user_details.ref4_phone_CC, user_details.ref4_landline_CC,user_details.ref5_FirstName, user_details.ref5_LastName,
+                                  user_details.ref5_Pos_Occupation, user_details.ref5_email, user_details.ref5_phone_number,user_details.ref5_landline_number,
+                                  user_details.ref5_phone_CC, user_details.ref5_landline_CC)
+
+
 def test_additional_info_page():
     addition_info = Additional_Info_Process(additional_page_functions)
     addition_info.run_processes(user_details.additional_type,user_details.Text_Additional_field)
