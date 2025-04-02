@@ -27,11 +27,13 @@ class References(ReferencesPage):
         except Exception as e:
             print(f'The error occurred:{e}')
 
-    def delete_references(self):
+    def delete_references(self, additional_references):
         try:
-            delete_reference = self.driver.find_element(*self.delete_additional_reference)
-            delete_reference.click()
-            time.sleep(1)
+            for delete in range (additional_references + 2):
+                delete_reference = self.driver.find_element(*self.delete_additional_reference)
+                delete_reference.click()
+                time.sleep(1)
+
 
         except:
             print("No additional field to be deleted.")

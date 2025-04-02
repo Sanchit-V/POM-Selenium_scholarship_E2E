@@ -10,7 +10,7 @@ class Reference_Process:
                                ref4_landline_number, ref4_phone_CC, ref4_landline_CC,ref5_FirstName, ref5_LastName, ref5_Pos_Occupation, ref5_email, ref5_phone_number,
                                ref5_landline_number, ref5_phone_CC, ref5_landline_CC ):
 
-        self.reference_page.delete_references()
+        self.reference_page.delete_references(additional_references)
 
         self.reference_page.add_references(additional_references)
 
