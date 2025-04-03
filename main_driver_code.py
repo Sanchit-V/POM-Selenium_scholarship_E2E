@@ -1,8 +1,10 @@
 import time
+
 from selenium import webdriver
 
 from Page_Functions.Academic_Records_Functions import Academic_Records
 from Page_Functions.Address_Page_Functions import Address_Page
+from Page_Functions.Documents_page_Functions import Documents_Page
 from Page_Functions.Employments_Information_Functions import Employmet_Information
 from Page_Functions.Login_Page_Functions import Login_Page
 from Page_Functions.PersonalDetails_Page_Functions import Personal_Details
@@ -15,6 +17,7 @@ from Page_Object.Summary_Page import Summary
 from Processes.Academic_Records_Processes import Academic_Records_Process
 from Processes.Additional_Info_Processes import Additional_Info_Process
 from Processes.Address_Page_Processes import Address_Page_Process
+from Processes.Documents_Page_Processes import Documents_Page_Process
 from Processes.Employment_Info_Process import Employement_Info_Process
 from Processes.Login_Process import Login_Process
 from Import_Libraries import Import_libraries
@@ -46,6 +49,8 @@ final_page_functions = Submitted_Page(driver)
 academic_page_functions = Academic_Records(driver)
 employment_page_functions = Employmet_Information(driver)
 reference_page_functions = References(driver)
+document_page_functions = Documents_Page(driver)
+
 
 
 
@@ -116,6 +121,10 @@ def test_reference_page():
                                   user_details.ref5_Pos_Occupation, user_details.ref5_email, user_details.ref5_phone_number,user_details.ref5_landline_number,
                                   user_details.ref5_phone_CC, user_details.ref5_landline_CC)
 
+def test_documents_upload_page():
+    documents_upload = Documents_Page_Process(document_page_functions)
+    documents_upload.run_processes(user_details.Passport_File, user_details.Curriculum_File,user_details.Letter_Of_Motive,user_details.Other_Document,user_details.have_degree_checkbox,user_details.Degree,
+                                   user_details.Transcript, user_details.Graduation_Certificate, user_details.Letter_Of_Commitment)
 
 def test_additional_info_page():
     addition_info = Additional_Info_Process(additional_page_functions)

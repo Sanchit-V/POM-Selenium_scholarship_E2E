@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 
 from Page_Object.References_Page import ReferencesPage
-from user_details import education_level_2
+
 
 
 class References(ReferencesPage):

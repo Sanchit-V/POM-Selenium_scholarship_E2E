@@ -40,6 +40,8 @@ seniority_position = 4 # Enter digits 1 to 6
 
 additional_references = 2 # Enter digits 0 to 2
 
+have_degree_checkbox = 0  # 0 for no(Check the checkbox) 1 for yes(Un-check the checkbox)
+
 
 
 
@@ -116,6 +118,15 @@ Phone_Mobile = json_data['Phone_Mobile']
 Website = json_data['Website']
 Landline_Nation = json_data['Landline_Nation']
 Mobile_Nation = json_data['Mobile_Nation']
+Passport_File = json_data['passport_file_path']
+Curriculum_File = json_data['curriculum_file_path']
+Letter_Of_Motive = json_data['letter_of_motive']
+Other_Document = json_data['other_document']
+Degree = json_data['degree']
+Transcript = json_data['transcript']
+Graduation_Certificate = json_data['graduation_certificate']
+Letter_Of_Commitment = json_data['letter_of_commitment']
+
 
 
 
