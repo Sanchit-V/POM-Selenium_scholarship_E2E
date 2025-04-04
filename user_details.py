@@ -9,7 +9,7 @@ with open('user_details.json') as f:
      json_data = json.load(f)
 
 url = "http://localhost:80/"
-selected_language = 0     # 1 for English, 0 for Spanish
+selected_language = 1     # 1 for English, 0 for Spanish
 document_type = 3 # 1 for NIC     # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
 Martial_status = 2 # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
 Financially_Dependent = 1   # 0 for No  # 1 for Yes
@@ -20,7 +20,7 @@ number_of_additional_whatsapp=2
 total_additionals = number_of_additional_phone + number_of_additional_whatsapp
 housing_type = 1   # 1 for department    # 2 for House
 housing_conditions = 1 # 1 for Family     # 2 for Own     # 3 for Rented
-additional_type = 1 # 1-Google 2-Facebook 3-Instagram 4-Referred 5-Company 6-Agreement 7-University 8-Speech 9-Webinar
+additional_type = 8 # 1-Google 2-Facebook 3-Instagram 4-Referred 5-Company 6-Agreement 7-University 8-Speech 9-Webinar
 
 additional_education = 2
 
@@ -40,7 +40,7 @@ seniority_position = 4 # Enter digits 1 to 6
 
 additional_references = 2 # Enter digits 0 to 2
 
-have_degree_checkbox = 0  # 0 for no(Check the checkbox) 1 for yes(Un-check the checkbox)
+have_degree_checkbox = 1  # 0 for no(Check the checkbox) 1 for yes(Un-check the checkbox)
 
 
 

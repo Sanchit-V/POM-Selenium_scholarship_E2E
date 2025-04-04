@@ -7,6 +7,8 @@ import time
 class Additional_Information(AdditionalInfo):
     def select_Option(self, additional_type,Text_Additional_field):
 
+        time.sleep(2)
+
         if additional_type == 1:
                 Google = self.driver.find_element(*self.google)
                 Google.click()
