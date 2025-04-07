@@ -23,6 +23,8 @@ class Documents_Page(DocumentsPage):
         except:
             print("Not able to click the upload option.")
 
+    time.sleep(1)
+
     def Curriculum(self,Curriculum_File):
         try:
             curriculum_File = self.driver.find_element(*self.bttn_curriculum)
@@ -37,6 +39,8 @@ class Documents_Page(DocumentsPage):
 
         except:
             print("Not able to click the upload option.")
+
+    time.sleep(1)
 
     def Letter_of_moTive(self,Letter_Of_Motive):
         try:
@@ -53,6 +57,8 @@ class Documents_Page(DocumentsPage):
         except:
             print("Not able to click the upload option.")
 
+    time.sleep(1)
+
     def other_Document(self,Other_Document):
         try:
             LoM = self.driver.find_element(*self.bttn_other_document)
@@ -67,6 +73,8 @@ class Documents_Page(DocumentsPage):
 
         except:
             print("Not able to click the upload option.")
+
+    time.sleep(1)
 
     def Have_degree_checkbox(self, have_degree_checkbox):
         try:
@@ -106,8 +114,7 @@ class Documents_Page(DocumentsPage):
         except:
             print('Web element not found.')
 
-
-
+    time.sleep(1)
 
 
     def deGree(self,Degree):
@@ -125,6 +132,8 @@ class Documents_Page(DocumentsPage):
         except:
             print("Not able to click the upload option.")
 
+    time.sleep(1)
+
     def transCript(self,Transcript):
         try:
             LoM = self.driver.find_element(*self.transcript)
@@ -139,6 +148,8 @@ class Documents_Page(DocumentsPage):
 
         except:
             print("Not able to click the upload option.")
+
+    time.sleep(1)
 
     def graDuation(self,Graduation_Certificate):
         try:
@@ -155,6 +166,8 @@ class Documents_Page(DocumentsPage):
         except:
             print("Not able to click the upload option.")
 
+    time.sleep(1)
+
     def LoM(self,Letter_Of_Commitment):
         try:
             LoM = self.driver.find_element(*self.letter_of_commitment)
@@ -169,6 +182,8 @@ class Documents_Page(DocumentsPage):
 
         except:
             print("Not able to click the upload option.")
+
+    time.sleep(1)
 
 
 
@@ -238,6 +253,8 @@ class Documents_Page(DocumentsPage):
 
         except:
             print("No file to be deleted.")
+
+    time.sleep(1)
 
 
 

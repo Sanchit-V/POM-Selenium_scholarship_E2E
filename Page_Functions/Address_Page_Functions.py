@@ -28,7 +28,7 @@ class Address_Page(AddressPage):
 
         if access_code == previous_access_code:
             try:
-                for delete in range(additional_emails_to_be_added):
+                for delete in range(additional_emails_to_be_added + 5):
 
                     delete_box = self.driver.find_element(*self.delete_email_0)
                     delete_box.click()
@@ -114,7 +114,7 @@ class Address_Page(AddressPage):
 
         if access_code == previous_access_code:
             try:
-                for delete in range(total_additionals):
+                for delete in range(total_additionals + 3):
 
                     delete_box = self.driver.find_element(*self.delete_added_phone_number)
                     delete_box.click()

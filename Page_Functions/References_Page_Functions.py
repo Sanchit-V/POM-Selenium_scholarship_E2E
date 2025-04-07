@@ -108,12 +108,12 @@ class References(ReferencesPage):
         Country_menu.send_keys(ref1_phone_CC)
         time.sleep(3)
         if ref1_phone_CC == 'India':
-            for i in range(2):
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+            #for i in range(2):
+                #self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 
-                time.sleep(1)
+            time.sleep(1)
 
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+            self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
 
         else:
             self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
@@ -133,13 +133,20 @@ class References(ReferencesPage):
         time.sleep(1)
         Country_menu.send_keys(ref1_landline_CC)
         time.sleep(3)
-        if ref1_landline_CC == 'India':
-            for i in range(2):
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+        # if ref1_landline_CC == 'India':
+        #     for i in range(2):
+        #         self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+        #
+        #         time.sleep(1)
+        #
+        #         self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+        if ref1_phone_CC == 'India':
+            #for i in range(2):
+                #self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 
-                time.sleep(1)
+            time.sleep(1)
 
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+            self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
 
         else:
             self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
@@ -222,12 +229,13 @@ class References(ReferencesPage):
         Country_menu.send_keys(ref2_phone_CC)
         time.sleep(3)
         if ref2_phone_CC == 'India':
-            for i in range(2):
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+            # for i in range(2):
+            # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 
-                time.sleep(1)
+            time.sleep(1)
 
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+            self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+
 
         else:
             self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
@@ -249,7 +257,8 @@ class References(ReferencesPage):
         time.sleep(3)
         if ref2_landline_CC == 'India':
             for i in range(2):
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+                # for i in range(2):
+                # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 
                 time.sleep(1)
 
@@ -338,7 +347,8 @@ class References(ReferencesPage):
         time.sleep(3)
         if ref3_phone_CC == 'India':
             for i in range(2):
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+                # for i in range(2):
+                # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 
                 time.sleep(1)
 
@@ -364,7 +374,8 @@ class References(ReferencesPage):
         time.sleep(3)
         if ref3_landline_CC == 'India':
             for i in range(2):
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+                # for i in range(2):
+                # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 
                 time.sleep(1)
 
@@ -451,7 +462,8 @@ class References(ReferencesPage):
             time.sleep(3)
             if ref4_phone_CC == 'India':
                 for i in range(2):
-                    self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+                    # for i in range(2):
+                    # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 
                     time.sleep(1)
 
@@ -477,7 +489,8 @@ class References(ReferencesPage):
             time.sleep(3)
             if ref4_landline_CC == 'India':
                 for i in range(2):
-                    self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+                    # for i in range(2):
+                    # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 
                     time.sleep(1)
 
@@ -567,7 +580,8 @@ class References(ReferencesPage):
             time.sleep(3)
             if ref5_phone_CC == 'India':
                 for i in range(2):
-                    self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+                    # for i in range(2):
+                    # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 
                     time.sleep(1)
 
@@ -593,7 +607,8 @@ class References(ReferencesPage):
             time.sleep(3)
             if ref5_landline_CC == 'India':
                 for i in range(2):
-                    self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+                    # for i in range(2):
+                    # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 
                     time.sleep(1)
 

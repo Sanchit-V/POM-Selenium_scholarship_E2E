@@ -1,4 +1,7 @@
 #URL
+import random
+import string
+
 from deep_translator import GoogleTranslator
 from faker import Faker
 import json
@@ -10,37 +13,40 @@ with open('user_details.json') as f:
 
 url = "http://localhost:80/"
 selected_language = 1     # 1 for English, 0 for Spanish
-document_type = 3 # 1 for NIC     # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
-Martial_status = 2 # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
-Financially_Dependent = 1   # 0 for No  # 1 for Yes
-Has_Children = 1   # 0 for No  # 1 for Yes
-additional_emails_to_be_added = 5
-number_of_additional_phone=1
-number_of_additional_whatsapp=2
+document_type = random.randint(1, 5) # 1 for NIC     # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
+Martial_status = random.randint(1, 5) # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
+Financially_Dependent = random.randint(0, 1)   # 0 for No  # 1 for Yes
+Has_Children = random.randint(0, 1)   # 0 for No  # 1 for Yes
+additional_emails_to_be_added = random.randint(1, 5)
+number_of_additional_phone=2
+number_of_additional_whatsapp=1
 total_additionals = number_of_additional_phone + number_of_additional_whatsapp
-housing_type = 1   # 1 for department    # 2 for House
-housing_conditions = 1 # 1 for Family     # 2 for Own     # 3 for Rented
-additional_type = 8 # 1-Google 2-Facebook 3-Instagram 4-Referred 5-Company 6-Agreement 7-University 8-Speech 9-Webinar
+housing_type = random.randint(1, 2)   # 1 for department    # 2 for House
+housing_conditions = random.randint(1, 3) # 1 for Family     # 2 for Own     # 3 for Rented
+additional_type = random.randint(1, 8) # 1-Google 2-Facebook 3-Instagram 4-Referred 5-Company 6-Agreement 7-University 8-Speech 9-Webinar
 
-additional_education = 2
+additional_education = random.randint(0, 2)
 
-education_level_1 = 4 # 1-Postgraduate 2-University 3-Technical 4-High School
-education_level_2 = 1 # 1-Postgraduate 2-University 3-Technical 4-High School
-education_level_3 = 2 # 1-Postgraduate 2-University 3-Technical 4-High School
-online_mode_study = 1 # 0 for No, 1 for Yes
-training_type_university = 1 # 0 for No, 1 for Yes
-training_type_employment = 1 # 0 for No, 1 for Yes
-training_type_second_language = 1 # 0 for No, 1 for Yes
+education_level_1 = random.randint(1, 4) # 1-Postgraduate 2-University 3-Technical 4-High School
+education_level_2 = random.randint(1, 4) # 1-Postgraduate 2-University 3-Technical 4-High School
+education_level_3 = random.randint(1, 4) # 1-Postgraduate 2-University 3-Technical 4-High School
+online_mode_study = random.randint(0, 1) # 0 for No, 1 for Yes
 
-currently_working = 1 # 0 for No, 1 for Yes
+training_type_university = random.randint(0, 1) # 0 for No, 1 for Yes
 
-work_category =  1 # 1 for Dependent, 0 for Independent
+training_type_employment = random.randint(0, 1) # 0 for No, 1 for Yes
 
-seniority_position = 4 # Enter digits 1 to 6
+training_type_second_language = 1 #random.randint(0, 1) # 0 for No, 1 for Yes
 
-additional_references = 2 # Enter digits 0 to 2
+currently_working =   random.randint(0, 1) # 0 for No, 1 for Yes
 
-have_degree_checkbox = 1  # 0 for no(Check the checkbox) 1 for yes(Un-check the checkbox)
+work_category =  random.randint(0, 1) # 1 for Dependent, 0 for Independent
+
+seniority_position = random.randint(1, 6) # Enter digits 1 to 6
+
+additional_references = random.randint(0, 2) # Enter digits 0 to 2
+
+have_degree_checkbox = random.randint(0, 1)  # 0 for no(Check the checkbox) 1 for yes(Un-check the checkbox)
 
 
 
@@ -49,75 +55,210 @@ have_degree_checkbox = 1  # 0 for no(Check the checkbox) 1 for yes(Un-check the 
 access_code = json_data['access_code']
 previous_access_code = json_data['previous_access_code']
 
-#dob_English = fake.date_between(start_date='-19y', end_date='today')
+
 dob_English = json_data['dob_English']
 dob_Spanish = json_data['dob_Spanish']
-Document_number = json_data['Document_number']
-Profession = json_data['Profession']
+
+#Document_number = json_data['Document_number']
+
+def alphanumeric_doc_number(length=10):
+    pattern = '?' * (length // 2) + '#' * (length - length // 2)
+    return fake.bothify(text=pattern).upper()
+
+#print(alphanumeric_doc_number())
+
+Document_number = alphanumeric_doc_number()
+#print(Document_number)
+
+Profession = fake.job()
 Country = json_data['Country']
 State = json_data['State']
 City = json_data['City']
 Nationality = json_data['Nationality']
-Monthly_Income = json_data['Monthly_Income']
-Monthly_Expense = json_data['Monthly_Expense']
-Range_0to4 = json_data['range_0to4']
-Range_5to12 = json_data['range_5to12']
-Range_13to18 = json_data['range_13to18']
-Range_18plus = json_data['range_18plus']
-email_Ids = json_data['email_ids']
-default_phone = json_data['default_phone']
-default_whatsapp = json_data['default_whatsapp']
-additional_numbers = json_data['additional_phones']
+
+def generate_financials():
+
+    income = random.randint(10_000_000, 99_999_999)
+    expense = int(income * random.uniform(0.5, 0.95))
+
+    return {
+        "income": income,
+        "expense": expense
+    }
+
+# Example usage
+finances = generate_financials()
+
+
+# Monthly_Income = json_data['Monthly_Income']
+# Monthly_Expense = json_data['Monthly_Expense']
+Monthly_Income = finances['income']
+Monthly_Expense = finances['expense']
+
+# print(Monthly_Income)
+# print(Monthly_Expense)
+
+#Range_0to4 = json_data['range_0to4']
+# Range_5to12 = json_data['range_5to12']
+# Range_13to18 = json_data['range_13to18']
+# Range_18plus = json_data['range_18plus']
+Range_0to4 = random.randint(0,99)
+Range_5to12 = random.randint(0,99)
+Range_13to18 = random.randint(0,99)
+Range_18plus = random.randint(0,99)
+
+# print(Range_0to4)
+# print(Range_5to12)
+# print(Range_13to18)
+# print(Range_18plus)
+
+
+# email_Ids = json_data['email_ids']
+
+
+email_Ids = [fake.email() for _ in range(5)]
+
+# print(email_Ids)
+
+# default_phone = json_data['default_phone']
+def generate_phone_number():
+    length = random.randint(10, 20)
+    return str(random.randint(10**(length - 1), 10**length - 1))
+
+# Example usage
+default_phone = generate_phone_number()
+#print(default_phone)
+
+# default_whatsapp = json_data['default_whatsapp']
+default_whatsapp = generate_phone_number()
+#print(default_whatsapp)
+
+#additional_numbers = json_data['additional_phones']
+
+
+additional_numbers = [generate_phone_number() for _ in range(3)]
+
 additional_1 = additional_numbers[0]
 additional_2 = additional_numbers[1]
 additional_3 = additional_numbers[2]
-countries = json_data['countries_visited']
-country_0 = countries[0]
-country_1 = countries[1]
-country_2 = countries[2]
-country_3 = countries[3]
-country_4 = countries[4]
-home_address = json_data['home_address']
-zip_code = json_data['zip_code']
-Text_Additional_field = json_data['text_additional_field']
 
-University_Institution = json_data['University/Institution']
-Degree = json_data['Degree']
-Starting_Date = json_data['Starting_Date']
-Graduation_Date = json_data['Graduation_Date']
+# print(additional_1)
+# print(additional_2)
+# print(additional_3)
+
+#countries = json_data['countries_visited']
+country_0 = random.choice(json_data['countries_visited'])
+#print(country_0)
+country_1 = random.choice(json_data['countries_visited'])
+#print(country_1)
+country_2 = random.choice(json_data['countries_visited'])
+#print(country_2)
+country_3 = random.choice(json_data['countries_visited'])
+#print(country_3)
+country_4 = random.choice(json_data['countries_visited'])
+#print(country_4)
+
+# home_address = json_data['home_address']
+home_address = fake.address().replace('\n', ', ')
+#print(home_address)
+
+# zip_code = json_data['zip_code']
+
+def zip(length=10):
+    chars = string.ascii_uppercase + string.digits
+    return ''.join(random.choices(chars, k=length))
+
+zip_code = zip()
+#print(zip_code)
+
+# Text_Additional_field = json_data['text_additional_field']
+description = ' '.join(fake.words(nb=30))
+Text_Additional_field=description
+#print(Text_Additional_field)
+
+#University_Institution = json_data['University/Institution']
+University_Institution = [fake.company() + " University" for _ in range(3)]
+# Degree = json_data['Degree']
+#Starting_Date = json_data['Starting_Date']
+#Graduation_Date = json_data['Graduation_Date']
 
 University_Institution_1 = University_Institution[0]
-degree_1 = Degree[0]
-starting_Date_0 = Starting_Date[0]
-graduation_Date_0 = Graduation_Date[0]
+#print(University_Institution_1)
+degree_1 = random.choice(json_data['Degree'])
+#print(degree_1)
+
+starting_Date_0 = random.choice(json_data['Starting_Date'])
+graduation_Date_0 = random.choice(json_data['Graduation_Date'])
+print(starting_Date_0)
+print(graduation_Date_0)
 
 University_Institution_2 = University_Institution[1]
-degree_2 = Degree[1]
-starting_Date_1 = Starting_Date[1]
-graduation_Date_1 = Graduation_Date[1]
+#print(University_Institution_2)
+
+degree_2 = random.choice(json_data['Degree'])
+#print(degree_2)
+
+starting_Date_1 = random.choice(json_data['Starting_Date'])
+graduation_Date_1 = random.choice(json_data['Graduation_Date'])
+# print(starting_Date_1)
+# print(graduation_Date_1)
 
 University_Institution_3 = University_Institution[2]
-degree_3 = Degree[2]
-starting_Date_2 = Starting_Date[2]
-graduation_Date_2 = Graduation_Date[2]
+#print(University_Institution_3)
+degree_3 = random.choice(json_data['Degree'])
+#print(degree_3)
 
-Other_Expertise = json_data['Other_Expertise']
+starting_Date_2 = random.choice(json_data['Starting_Date'])
+graduation_Date_2 = random.choice(json_data['Graduation_Date'])
+# print(starting_Date_2)
+# print(graduation_Date_2)
 
-Institution_Name = json_data['Institution_Name']
-Position = json_data['Position']
-Area = json_data['Area']
-Activity = json_data['Activity']
-Monthly_Salary = json_data['Monthly_Salary']
+Other_Expertise = random.choice(json_data['Other_Expertise'])
+#print(Other_Expertise)
+
+#Institution_Name = json_data['Institution_Name']
+Institution_Name = fake.company()
+#print(Institution_Name)
+
+#Position = json_data['Position']
+Position = fake.job()
+#print(Position)
+
+Area = random.choice(json_data['Area'])
+#print(Area)
+#Activity = json_data['Activity']
+Activity = fake.job()
+#print(Activity)
+
+#Monthly_Salary = json_data['Monthly_Salary']
+
+Monthly_Salary = random.randint(10_000_000_000, 99_999_999_999)
+#print(Monthly_Salary)
+
 Emp_Country = json_data['Emp_Country']
 Emp_State = json_data['Emp_State']
 Emp_City = json_data['Emp_City']
-Zip_Code = json_data['Zip_Code']
-Address = json_data['Address']
-Landline_Phone = json_data['Landline_Phone']
-Phone_Mobile = json_data['Phone_Mobile']
-Website = json_data['Website']
-Landline_Nation = json_data['Landline_Nation']
-Mobile_Nation = json_data['Mobile_Nation']
+
+#Zip_Code = json_data['Zip_Code']
+Zip_Code = zip()
+#print(Zip_Code)
+Address = fake.address().replace('\n', ', ')
+#print(Address)
+
+#Landline_Phone = json_data['Landline_Phone']
+Landline_Phone = generate_phone_number()
+#print(landline_Phone)
+#Phone_Mobile = json_data['Phone_Mobile']
+Phone_Mobile =generate_phone_number()
+#print(Phone_Mobile)
+#Website = json_data['Website']
+Website = fake.url()
+#print(Website)
+
+Landline_Nation = random.choice(json_data['countries_visited'])
+#print(Landline_Nation)
+Mobile_Nation = random.choice(json_data['countries_visited'])
+#print(Mobile_Nation)
 Passport_File = json_data['passport_file_path']
 Curriculum_File = json_data['curriculum_file_path']
 Letter_Of_Motive = json_data['letter_of_motive']
@@ -132,50 +273,65 @@ Letter_Of_Commitment = json_data['letter_of_commitment']
 
 
 
-ref1_FirstName = json_data['Reference_1']['First_Name']
-ref1_LastName = json_data['Reference_1']['Last_Name']
-ref1_Pos_Occupation = json_data['Reference_1']['Position/Occupation']
-ref1_email = json_data['Reference_1']['Email_Address']
-ref1_phone_number = json_data['Reference_1']['Phone_Number']
-ref1_landline_number = json_data['Reference_1']['Landline_Number']
-ref1_phone_CC = json_data['Reference_1']['Phone_CC']
-ref1_landline_CC = json_data['Reference_1']['Landline_CC']
+ref1_FirstName = fake.first_name()
+ref1_LastName = fake.last_name()
+#print(ref1_FirstName +' '+ref1_LastName)
+ref1_Pos_Occupation = fake.job()
+#print(ref1_Pos_Occupation)
+ref1_email = fake.email()
+#print(ref1_email)
+ref1_phone_number = generate_phone_number()
+ref1_landline_number = generate_phone_number()
+ref1_phone_CC = "India" #random.choice(json_data['countries_visited'])
+ref1_landline_CC ="India" #random.choice(json_data['countries_visited'])
 
-ref2_FirstName = json_data['Reference_2']['First_Name']
-ref2_LastName = json_data['Reference_2']['Last_Name']
-ref2_Pos_Occupation = json_data['Reference_2']['Position/Occupation']
-ref2_email = json_data['Reference_2']['Email_Address']
-ref2_phone_number = json_data['Reference_2']['Phone_Number']
-ref2_landline_number = json_data['Reference_2']['Landline_Number']
-ref2_phone_CC = json_data['Reference_2']['Phone_CC']
-ref2_landline_CC = json_data['Reference_2']['Landline_CC']
+ref2_FirstName = fake.first_name()
+ref2_LastName = fake.last_name()
+#print(ref2_FirstName +' '+ref2_LastName)
+ref2_Pos_Occupation = fake.job()
+#print(ref2_Pos_Occupation)
+ref2_email = fake.email()
+#print(ref2_email)
+ref2_phone_number = generate_phone_number()
+ref2_landline_number = generate_phone_number()
+ref2_phone_CC = random.choice(json_data['countries_visited'])
+ref2_landline_CC = random.choice(json_data['countries_visited'])
 
-ref3_FirstName = json_data['Reference_3']['First_Name']
-ref3_LastName = json_data['Reference_3']['Last_Name']
-ref3_Pos_Occupation = json_data['Reference_3']['Position/Occupation']
-ref3_email = json_data['Reference_3']['Email_Address']
-ref3_phone_number = json_data['Reference_3']['Phone_Number']
-ref3_landline_number = json_data['Reference_3']['Landline_Number']
-ref3_phone_CC = json_data['Reference_3']['Phone_CC']
-ref3_landline_CC = json_data['Reference_3']['Landline_CC']
+ref3_FirstName = fake.first_name()
+ref3_LastName = fake.last_name()
+#print(ref3_FirstName +' '+ref3_LastName)
+ref3_Pos_Occupation = fake.job()
+#print(ref3_Pos_Occupation)
+ref3_email = fake.email()
+#print(ref3_email)
+ref3_phone_number = generate_phone_number()
+ref3_landline_number = generate_phone_number()
+ref3_phone_CC = random.choice(json_data['countries_visited'])
+ref3_landline_CC = random.choice(json_data['countries_visited'])
 
-ref4_FirstName = json_data['Reference_4']['First_Name']
-ref4_LastName = json_data['Reference_4']['Last_Name']
-ref4_Pos_Occupation = json_data['Reference_4']['Position/Occupation']
-ref4_email = json_data['Reference_4']['Email_Address']
-ref4_phone_number = json_data['Reference_4']['Phone_Number']
-ref4_landline_number = json_data['Reference_4']['Landline_Number']
-ref4_phone_CC = json_data['Reference_4']['Phone_CC']
-ref4_landline_CC = json_data['Reference_4']['Landline_CC']
+ref4_FirstName = fake.first_name()
+ref4_LastName = fake.last_name()
+#print(ref4_FirstName +' '+ref4_LastName)
+ref4_Pos_Occupation = fake.job()
+#print(ref4_Pos_Occupation)
+ref4_email = fake.email()
+#print(ref4_email)
+ref4_phone_number = generate_phone_number()
+ref4_landline_number = generate_phone_number()
+ref4_phone_CC = random.choice(json_data['countries_visited'])
+ref4_landline_CC = random.choice(json_data['countries_visited'])
 
-ref5_FirstName = json_data['Reference_5']['First_Name']
-ref5_LastName = json_data['Reference_5']['Last_Name']
-ref5_Pos_Occupation = json_data['Reference_5']['Position/Occupation']
-ref5_email = json_data['Reference_5']['Email_Address']
-ref5_phone_number = json_data['Reference_5']['Phone_Number']
-ref5_landline_number = json_data['Reference_5']['Landline_Number']
-ref5_phone_CC = json_data['Reference_5']['Phone_CC']
-ref5_landline_CC = json_data['Reference_5']['Landline_CC']
+ref5_FirstName = fake.first_name()
+ref5_LastName = fake.last_name()
+#print(ref5_FirstName +' '+ref5_LastName)
+ref5_Pos_Occupation = fake.job()
+#print(ref5_Pos_Occupation)
+ref5_email = fake.email()
+#print(ref5_email)
+ref5_phone_number = generate_phone_number()
+ref5_landline_number = generate_phone_number()
+ref5_phone_CC = random.choice(json_data['countries_visited'])
+ref5_landline_CC = random.choice(json_data['countries_visited'])
 
 
 if selected_language == 1:
