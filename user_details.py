@@ -1,7 +1,10 @@
 #URL
+import calendar
 import random
 import string
+from datetime import datetime
 
+from dateutil.relativedelta import relativedelta
 from deep_translator import GoogleTranslator
 from faker import Faker
 import json
@@ -12,7 +15,7 @@ with open('user_details.json') as f:
      json_data = json.load(f)
 
 url = "http://localhost:80/"
-selected_language = 1     # 1 for English, 0 for Spanish
+selected_language = 0     # 1 for English, 0 for Spanish
 document_type = random.randint(1, 5) # 1 for NIC     # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
 Martial_status = random.randint(1, 5) # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
 Financially_Dependent = random.randint(0, 1)   # 0 for No  # 1 for Yes
@@ -48,16 +51,20 @@ additional_references = random.randint(0, 2) # Enter digits 0 to 2
 
 have_degree_checkbox = random.randint(0, 1)  # 0 for no(Check the checkbox) 1 for yes(Un-check the checkbox)
 
-
-
+time_long = 3
+time_med = 2
+time_short = 1
 
 
 access_code = json_data['access_code']
 previous_access_code = json_data['previous_access_code']
 
+fake_date = fake.date_object()
 
-dob_English = json_data['dob_English']
-dob_Spanish = json_data['dob_Spanish']
+dob_Spanish = fake_date.strftime("%d%m%Y")
+
+dob_English = fake_date.strftime("%m%d%Y")
+
 
 #Document_number = json_data['Document_number']
 
@@ -74,7 +81,7 @@ Profession = fake.job()
 Country = json_data['Country']
 State = json_data['State']
 City = json_data['City']
-Nationality = json_data['Nationality']
+Nationality = fake.country()
 
 def generate_financials():
 
@@ -147,15 +154,15 @@ additional_3 = additional_numbers[2]
 # print(additional_3)
 
 #countries = json_data['countries_visited']
-country_0 = random.choice(json_data['countries_visited'])
+country_0 = fake.country()#random.choice(json_data['countries_visited'])
 #print(country_0)
-country_1 = random.choice(json_data['countries_visited'])
+country_1 = fake.country()#random.choice(json_data['countries_visited'])
 #print(country_1)
-country_2 = random.choice(json_data['countries_visited'])
+country_2 = fake.country()#random.choice(json_data['countries_visited'])
 #print(country_2)
-country_3 = random.choice(json_data['countries_visited'])
+country_3 = fake.country()#random.choice(json_data['countries_visited'])
 #print(country_3)
-country_4 = random.choice(json_data['countries_visited'])
+country_4 = fake.country()#random.choice(json_data['countries_visited'])
 #print(country_4)
 
 # home_address = json_data['home_address']
@@ -187,8 +194,13 @@ University_Institution_1 = University_Institution[0]
 degree_1 = random.choice(json_data['Degree'])
 #print(degree_1)
 
-starting_Date_0 = random.choice(json_data['Starting_Date'])
-graduation_Date_0 = random.choice(json_data['Graduation_Date'])
+#starting_Date_0 = random.choice(json_data['Starting_Date'])
+#graduation_Date_0 = random.choice(json_data['Graduation_Date'])
+fake_date = fake.date_between(start_date='-10y', end_date='-5y')
+starting_Date_0 = fake_date.strftime("%m%Y")
+starting_datetime = datetime.strptime(starting_Date_0, "%m%Y")
+graduation_datetime = starting_datetime + relativedelta(years=5)
+graduation_Date_0 = graduation_datetime.strftime("%m%Y")
 print(starting_Date_0)
 print(graduation_Date_0)
 
@@ -198,8 +210,14 @@ University_Institution_2 = University_Institution[1]
 degree_2 = random.choice(json_data['Degree'])
 #print(degree_2)
 
-starting_Date_1 = random.choice(json_data['Starting_Date'])
-graduation_Date_1 = random.choice(json_data['Graduation_Date'])
+#starting_Date_1 = random.choice(json_data['Starting_Date'])
+starting_Date_1 = fake_date.strftime("%m%Y")
+starting_datetime = datetime.strptime(starting_Date_1, "%m%Y")
+graduation_datetime = starting_datetime + relativedelta(years=5)
+graduation_Date_1 = graduation_datetime.strftime("%m%Y")
+print(starting_Date_1)
+print(graduation_Date_1)
+#graduation_Date_1 = random.choice(json_data['Graduation_Date'])
 # print(starting_Date_1)
 # print(graduation_Date_1)
 
@@ -208,8 +226,14 @@ University_Institution_3 = University_Institution[2]
 degree_3 = random.choice(json_data['Degree'])
 #print(degree_3)
 
-starting_Date_2 = random.choice(json_data['Starting_Date'])
-graduation_Date_2 = random.choice(json_data['Graduation_Date'])
+# starting_Date_2 = random.choice(json_data['Starting_Date'])
+# graduation_Date_2 = random.choice(json_data['Graduation_Date'])
+starting_Date_2 = fake_date.strftime("%m%Y")
+starting_datetime = datetime.strptime(starting_Date_2, "%m%Y")
+graduation_datetime = starting_datetime + relativedelta(years=5)
+graduation_Date_2 = graduation_datetime.strftime("%m%Y")
+print(starting_Date_2)
+print(graduation_Date_2)
 # print(starting_Date_2)
 # print(graduation_Date_2)
 
@@ -255,9 +279,9 @@ Phone_Mobile =generate_phone_number()
 Website = fake.url()
 #print(Website)
 
-Landline_Nation = random.choice(json_data['countries_visited'])
+Landline_Nation = fake.country()#random.choice(json_data['countries_visited'])
 #print(Landline_Nation)
-Mobile_Nation = random.choice(json_data['countries_visited'])
+Mobile_Nation = fake.country()#random.choice(json_data['countries_visited'])
 #print(Mobile_Nation)
 Passport_File = json_data['passport_file_path']
 Curriculum_File = json_data['curriculum_file_path']
@@ -282,8 +306,8 @@ ref1_email = fake.email()
 #print(ref1_email)
 ref1_phone_number = generate_phone_number()
 ref1_landline_number = generate_phone_number()
-ref1_phone_CC = "India" #random.choice(json_data['countries_visited'])
-ref1_landline_CC ="India" #random.choice(json_data['countries_visited'])
+ref1_phone_CC = "Germany" #random.choice(json_data['countries_visited'])#fake.country() #"China"
+ref1_landline_CC = "Malaysia"#random.choice(json_data['countries_visited'])#fake.country()#"India" random.choice(json_data['countries_visited'])
 
 ref2_FirstName = fake.first_name()
 ref2_LastName = fake.last_name()
@@ -294,8 +318,8 @@ ref2_email = fake.email()
 #print(ref2_email)
 ref2_phone_number = generate_phone_number()
 ref2_landline_number = generate_phone_number()
-ref2_phone_CC = random.choice(json_data['countries_visited'])
-ref2_landline_CC = random.choice(json_data['countries_visited'])
+ref2_phone_CC = random.choice(json_data['countries_visited'])#fake.country()
+ref2_landline_CC = random.choice(json_data['countries_visited'])#fake.country()
 
 ref3_FirstName = fake.first_name()
 ref3_LastName = fake.last_name()
@@ -306,8 +330,8 @@ ref3_email = fake.email()
 #print(ref3_email)
 ref3_phone_number = generate_phone_number()
 ref3_landline_number = generate_phone_number()
-ref3_phone_CC = random.choice(json_data['countries_visited'])
-ref3_landline_CC = random.choice(json_data['countries_visited'])
+ref3_phone_CC = random.choice(json_data['countries_visited'])#fake.country()
+ref3_landline_CC = random.choice(json_data['countries_visited'])#fake.country()
 
 ref4_FirstName = fake.first_name()
 ref4_LastName = fake.last_name()
@@ -318,8 +342,8 @@ ref4_email = fake.email()
 #print(ref4_email)
 ref4_phone_number = generate_phone_number()
 ref4_landline_number = generate_phone_number()
-ref4_phone_CC = random.choice(json_data['countries_visited'])
-ref4_landline_CC = random.choice(json_data['countries_visited'])
+ref4_phone_CC = random.choice(json_data['countries_visited'])#fake.country()
+ref4_landline_CC = random.choice(json_data['countries_visited'])#fake.country()
 
 ref5_FirstName = fake.first_name()
 ref5_LastName = fake.last_name()
@@ -330,8 +354,8 @@ ref5_email = fake.email()
 #print(ref5_email)
 ref5_phone_number = generate_phone_number()
 ref5_landline_number = generate_phone_number()
-ref5_phone_CC = random.choice(json_data['countries_visited'])
-ref5_landline_CC = random.choice(json_data['countries_visited'])
+ref5_phone_CC = random.choice(json_data['countries_visited'])#fake.country()
+ref5_landline_CC = random.choice(json_data['countries_visited'])#fake.country()
 
 
 if selected_language == 1:
@@ -422,36 +446,3 @@ else:
 
     ref5_phone_CC = ref5_phone_CC
     ref5_landline_CC = ref5_landline_CC
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# print(Starting_Date)
-# print(Graduation_Date)
-#
-# print(starting_Date_1)
-# print(starting_Date_2)
-# print(starting_Date_3)
-#
-# print(graduation_Date_1)
-# print(graduation_Date_2)
-# print(graduation_Date_3)
-# print(ref1_phone_CC, '#' , ref2_phone_CC, '#' , ref3_phone_CC, '#' , ref4_phone_CC, '#' , ref5_phone_CC)
-# print(ref1_landline_CC, '#', ref2_landline_CC, '#', ref3_landline_CC, '#', ref4_landline_CC, '#' , ref5_landline_CC)

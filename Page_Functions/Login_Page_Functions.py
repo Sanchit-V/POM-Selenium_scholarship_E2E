@@ -1,15 +1,20 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+
+import user_details
 from Page_Object.Login_Page import LoginPage
 
+time_short = user_details.time_short
+time_med = user_details.time_med
+time_long = user_details.time_long
 
 class Login_Page(LoginPage):
 
     def select_language(self, selected_language):
         selected_language_button = self.driver.find_element(*self.Language_Button)
         selected_language_button.click()
-        time.sleep(2)
+        time.sleep(time_med)
 
         if selected_language == 1:
             select_english = self.driver.find_element(*self.Language_English)
@@ -20,16 +25,16 @@ class Login_Page(LoginPage):
             select_spanish.click()
             print("Selected Language: Spanish")
 
-        time.sleep(2)
+        time.sleep(time_med)
 
     def enter_access_code(self, access_code):
         access_code_element = self.driver.find_element(*self.Access_Code)
         access_code_element.send_keys(access_code)
         print(f"Entered Access Code: {access_code}")
-        time.sleep(2)
+        time.sleep(time_med)
         access_visible = self.driver.find_element(*self.Visible_Icon)
         access_visible.click()
-        time.sleep(2)
+        time.sleep(time_med)
 
 
 
@@ -49,4 +54,4 @@ class Login_Page(LoginPage):
             print(f"Error in clicking login button: {e}")
 
 
-        time.sleep(5)
+        time.sleep(time_long)

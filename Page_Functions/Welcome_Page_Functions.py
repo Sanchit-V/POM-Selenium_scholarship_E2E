@@ -3,9 +3,14 @@ from logging import exception
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+
+import user_details
 from Page_Object.Login_Page import LoginPage
 from Page_Object.Welcome_Page import WelcomePage
 
+time_short = user_details.time_short
+time_med = user_details.time_med
+time_long = user_details.time_long
 
 class Welcome_Page(WelcomePage):
     def Check_snack_bar(self, expected_message):
@@ -55,7 +60,7 @@ class Welcome_Page(WelcomePage):
             print(f"Error in clicking login button: {e}")
 
 
-        time.sleep(5)
+        time.sleep(time_long)
 
 
 

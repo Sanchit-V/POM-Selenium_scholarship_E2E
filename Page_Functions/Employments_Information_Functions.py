@@ -3,6 +3,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
+import user_details
+
+time_short = user_details.time_short
+time_med = user_details.time_med
+time_long = user_details.time_long
+
 from Page_Object.Employments_Information_Page import EmploymentInformation
 
 class Employmet_Information(EmploymentInformation):
@@ -10,12 +16,12 @@ class Employmet_Information(EmploymentInformation):
         if currently_working == 1:
             yes_radio = self.driver.find_element(*self.currently_working_yes)
             yes_radio.click()
-            time.sleep(2)
+            time.sleep(time_med)
 
         elif currently_working == 0:
             no_radio = self.driver.find_element(*self.currently_working_no)
             no_radio.click()
-            time.sleep(2)
+            time.sleep(time_med)
 
         else:
             print('Wrong input given.')
@@ -24,12 +30,12 @@ class Employmet_Information(EmploymentInformation):
         try:
             Institution_name = self.driver.find_element(*self.institution_name)
             Institution_name.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Institution_name.send_keys(Keys.CONTROL + "a")
             Institution_name.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             Institution_name.send_keys(Institution_Name)
-            time.sleep(1)
+            time.sleep(time_short)
 
         except:
             print('Institution details block not found.')
@@ -37,12 +43,12 @@ class Employmet_Information(EmploymentInformation):
         try:
             Position_name = self.driver.find_element(*self.position)
             Position_name.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Position_name.send_keys(Keys.CONTROL + "a")
             Position_name.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             Position_name.send_keys(Position)
-            time.sleep(1)
+            time.sleep(time_short)
 
         except:
             print('Position details block not found.')
@@ -50,12 +56,12 @@ class Employmet_Information(EmploymentInformation):
         try:
             Area_name = self.driver.find_element(*self.area)
             Area_name.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Area_name.send_keys(Keys.CONTROL + "a")
             Area_name.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             Area_name.send_keys(Area)
-            time.sleep(1)
+            time.sleep(time_short)
 
         except:
             print('Area details not found.')
@@ -63,17 +69,17 @@ class Employmet_Information(EmploymentInformation):
         try:
             Worker_category = self.driver.find_element(*self.work_category)
             Worker_category.click()
-            time.sleep(1)
+            time.sleep(time_short)
 
             if work_category == 1:
                 Dependent=self.driver.find_element(*self.dependent)
                 Dependent.click()
-                time.sleep(1)
+                time.sleep(time_short)
 
             elif work_category == 0:
                 Independent = self.driver.find_element(*self.independent)
                 Independent.click()
-                time.sleep(1)
+                time.sleep(time_short)
 
             else:
                 print('Wrong input selected.')
@@ -84,12 +90,12 @@ class Employmet_Information(EmploymentInformation):
         try:
             Activity_name = self.driver.find_element(*self.activity)
             Activity_name.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Activity_name.send_keys(Keys.CONTROL + "a")
             Activity_name.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             Activity_name.send_keys(Activity)
-            time.sleep(1)
+            time.sleep(time_short)
 
         except:
             print('Activity block not present.')
@@ -97,7 +103,7 @@ class Employmet_Information(EmploymentInformation):
         try:
             Seniority_position = self.driver.find_element(*self.seniority)
             Seniority_position.click()
-            time.sleep(1)
+            time.sleep(time_short)
 
             Seniority_1_year = self.driver.find_element(*self.one_year)
             Seniority_2_year = self.driver.find_element(*self.two_year)
@@ -108,27 +114,27 @@ class Employmet_Information(EmploymentInformation):
 
             if seniority_position == 1:
                 Seniority_1_year.click()
-                time.sleep(1)
+                time.sleep(time_short)
 
             elif seniority_position == 2:
                 Seniority_2_year.click()
-                time.sleep(1)
+                time.sleep(time_short)
 
             elif seniority_position == 3:
                 Seniority_3_year.click()
-                time.sleep(1)
+                time.sleep(time_short)
 
             elif seniority_position == 4:
                 Seniority_4_year.click()
-                time.sleep(1)
+                time.sleep(time_short)
 
             elif seniority_position == 5:
                 Seniority_5_year.click()
-                time.sleep(1)
+                time.sleep(time_short)
 
             elif seniority_position == 6:
                 Seniority_6_year.click()
-                time.sleep(1)
+                time.sleep(time_short)
 
             else:
                 print('Wrong input given.')
@@ -139,12 +145,12 @@ class Employmet_Information(EmploymentInformation):
         try:
             Monthly_salary = self.driver.find_element(*self.monthly_salary_emp)
             Monthly_salary.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Monthly_salary.send_keys(Keys.CONTROL + "a")
             Monthly_salary.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             Monthly_salary.send_keys(Monthly_Salary)
-            time.sleep(1)
+            time.sleep(time_short)
 
         except:
             print('Monthly salary section not available.')
@@ -155,7 +161,7 @@ class Employmet_Information(EmploymentInformation):
             country_select.click()
             country_select.send_keys(Keys.CONTROL + "a")
             country_select.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
 
             country_select.send_keys(Emp_Country)
 
@@ -163,7 +169,7 @@ class Employmet_Information(EmploymentInformation):
                 for i in range(2):
                     self.driver.find_element(*self.country).send_keys(Keys.ARROW_DOWN)
 
-                time.sleep(1)
+                time.sleep(time_short)
 
                 self.driver.find_element(*self.country).send_keys(Keys.ENTER)
 
@@ -171,7 +177,7 @@ class Employmet_Information(EmploymentInformation):
                 self.driver.find_element(*self.country).send_keys(Keys.ARROW_DOWN)
                 self.driver.find_element(*self.country).send_keys(Keys.ENTER)
 
-            time.sleep(2)
+            time.sleep(time_med)
 
         except:
             print('Country block not found.')
@@ -181,13 +187,13 @@ class Employmet_Information(EmploymentInformation):
             state_select.click()
             state_select.send_keys(Keys.CONTROL + "a")
             state_select.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
 
             state_select.send_keys(Emp_State)
             self.driver.find_element(*self.state).send_keys(Keys.ARROW_DOWN)
             self.driver.find_element(*self.state).send_keys(Keys.ENTER)
 
-            time.sleep(2)
+            time.sleep(time_med)
 
         except:
             print('State block not found')
@@ -197,13 +203,13 @@ class Employmet_Information(EmploymentInformation):
             city_select.click()
             city_select.send_keys(Keys.CONTROL + "a")
             city_select.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
 
             city_select.send_keys(Emp_City)
             self.driver.find_element(*self.city).send_keys(Keys.ARROW_DOWN)
             self.driver.find_element(*self.city).send_keys(Keys.ENTER)
 
-            time.sleep(2)
+            time.sleep(time_med)
 
         except:
             print('City block not found')
@@ -211,26 +217,26 @@ class Employmet_Information(EmploymentInformation):
         try:
             Zip_code = self.driver.find_element(*self.zip_code)
             Zip_code.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Zip_code.send_keys(Keys.CONTROL + "a")
-            time.sleep(1)
+            time.sleep(time_short)
             Zip_code.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             Zip_code.send_keys(Zip_Code)
-            time.sleep(1)
+            time.sleep(time_short)
         except:
             print('Zip code block not found')
 
         try:
             AddresS = self.driver.find_element(*self.address)
             AddresS.click()
-            time.sleep(1)
+            time.sleep(time_short)
             AddresS.send_keys(Keys.CONTROL + "a")
-            time.sleep(1)
+            time.sleep(time_short)
             AddresS.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             AddresS.send_keys(Address)
-            time.sleep(1)
+            time.sleep(time_short)
 
         except:
             print('Address block not found')
@@ -242,12 +248,12 @@ class Employmet_Information(EmploymentInformation):
         try:
             landline_phune = self.driver.find_element(*self.landline_number)
             landline_phune.click()
-            time.sleep(1)
+            time.sleep(time_short)
             landline_phune.send_keys(Keys.CONTROL + "a")
             landline_phune.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             landline_phune.send_keys(Landline_Phone)
-            time.sleep(1)
+            time.sleep(time_short)
 
         except:
             print('Landline block not found.')
@@ -256,12 +262,12 @@ class Employmet_Information(EmploymentInformation):
         try:
             mobile_phune = self.driver.find_element(*self.phone_number)
             mobile_phune.click()
-            time.sleep(1)
+            time.sleep(time_short)
             mobile_phune.send_keys(Keys.CONTROL + "a")
             mobile_phune.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             mobile_phune.send_keys(Phone_Mobile)
-            time.sleep(1)
+            time.sleep(time_short)
 
         except:
             print('Mobile number block not found')
@@ -270,12 +276,12 @@ class Employmet_Information(EmploymentInformation):
         try:
             website = self.driver.find_element(*self.url)
             website.click()
-            time.sleep(1)
+            time.sleep(time_short)
             website.send_keys(Keys.CONTROL + "a")
             website.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             website.send_keys(Website)
-            time.sleep(1)
+            time.sleep(time_short)
 
         except:
             print('Website block not found.')
@@ -286,21 +292,21 @@ class Employmet_Information(EmploymentInformation):
         try:
             landline_phune_country = self.driver.find_element(*self.landline_number_country)
             landline_phune_country.click()
-            time.sleep(1)
+            time.sleep(time_short)
             CountrY = self.driver.find_element(*self.country_menu)
             CountrY.click()
-            time.sleep(1)
+            time.sleep(time_short)
             CountrY.send_keys(Keys.CONTROL + "a")
             CountrY.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             CountrY.send_keys(Landline_Nation)
-            time.sleep(4)
+            time.sleep(time_long)
 
             if Landline_Nation == 'India':
                 for i in range(2):
                     self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 
-                    time.sleep(1)
+                    time.sleep(time_short)
 
                     self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
 
@@ -312,21 +318,21 @@ class Employmet_Information(EmploymentInformation):
 
             mobile_phune_country = self.driver.find_element(*self.phone_number_country)
             mobile_phune_country.click()
-            time.sleep(1)
+            time.sleep(time_short)
             CountrY = self.driver.find_element(*self.country_menu)
             CountrY.click()
-            time.sleep(1)
+            time.sleep(time_short)
             CountrY.send_keys(Keys.CONTROL + "a")
             CountrY.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             CountrY.send_keys(Mobile_Nation)
-            time.sleep(4)
+            time.sleep(time_long)
 
             if Mobile_Nation == 'India':
                 for i in range(2):
                     self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 
-                    time.sleep(1)
+                    time.sleep(time_short)
 
                     self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
 
@@ -334,7 +340,7 @@ class Employmet_Information(EmploymentInformation):
                 self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
                 self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
 
-            time.sleep(2)
+            time.sleep(time_med)
 
         except:
             print('Country entry fields not found.')
@@ -344,7 +350,7 @@ class Employmet_Information(EmploymentInformation):
     def emp_info_continue(self):
         continue_bttn = self.driver.find_element(*self.employment_continue_button)
         continue_bttn.click()
-        time.sleep(2)
+        time.sleep(time_med)
 
 
 

@@ -1,7 +1,10 @@
 import time
 
+import user_details
 from Page_Object.Summary_Page import Summary
-
+time_short = user_details.time_short
+time_med = user_details.time_med
+time_long = user_details.time_long
 
 class Submit(Summary):
 
@@ -17,12 +20,12 @@ class Submit(Summary):
             time.sleep(0.05)
 
         TnC_button.click()
-        time.sleep(1)
+        time.sleep(time_short)
 
         Send_button = self.driver.find_element(*self.Submit)
         Send_button.click()
 
-        time.sleep(2)
+        time.sleep(time_med)
 
         
 

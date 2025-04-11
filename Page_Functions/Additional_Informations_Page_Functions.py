@@ -1,13 +1,16 @@
 from selenium.webdriver import Keys
 
+import user_details
 from Page_Object.Additional_Informations_Page import AdditionalInfo
 import time
-
+time_short = user_details.time_short
+time_med = user_details.time_med
+time_long = user_details.time_long
 
 class Additional_Information(AdditionalInfo):
     def select_Option(self, additional_type,Text_Additional_field):
 
-        time.sleep(2)
+        time.sleep(time_med)
 
         if additional_type == 1:
                 Google = self.driver.find_element(*self.google)
@@ -62,11 +65,11 @@ class Additional_Information(AdditionalInfo):
         except:
             print("No text field found")
 
-        time.sleep(2)
+        time.sleep(time_med)
 
         Finish_bttn = self.driver.find_element(*self.Finish_button)
         Finish_bttn.click()
-        time.sleep(2)
+        time.sleep(time_med)
 
 
 

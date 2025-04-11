@@ -1,10 +1,16 @@
+from deep_translator import GoogleTranslator
 from selenium.webdriver import Keys
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
+import user_details
 from Page_Object.References_Page import ReferencesPage
-
+time_short = user_details.time_short
+time_med = user_details.time_med
+time_long = user_details.time_long
+selected_language = user_details.selected_language
 
 
 class References(ReferencesPage):
@@ -16,7 +22,7 @@ class References(ReferencesPage):
                 for additional_reference in range(additional_references):
                     added_references = self.driver.find_element(*self.add_reference)
                     added_references.click()
-                    time.sleep(1)
+                    time.sleep(time_short)
 
             elif additional_references == 0:
                 print("No references added, 0 option selected.")
@@ -32,7 +38,7 @@ class References(ReferencesPage):
             for delete in range (additional_references + 2):
                 delete_reference = self.driver.find_element(*self.delete_additional_reference)
                 delete_reference.click()
-                time.sleep(1)
+                time.sleep(time_short)
 
 
         except:
@@ -43,116 +49,119 @@ class References(ReferencesPage):
 
         ref_first_name = self.driver.find_element(*self.ref1_first_name)
         ref_first_name.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_first_name.send_keys(Keys.CONTROL + "a")
         ref_first_name.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_first_name.send_keys(ref1_FirstName)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_last_name = self.driver.find_element(*self.ref1_last_name)
         ref_last_name.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_last_name.send_keys(Keys.CONTROL + "a")
         ref_last_name.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_last_name.send_keys(ref1_LastName)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_position_occupation = self.driver.find_element(*self.ref1_occupation)
         ref_position_occupation.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_position_occupation.send_keys(Keys.CONTROL + "a")
         ref_position_occupation.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_position_occupation.send_keys(ref1_Pos_Occupation)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_email = self.driver.find_element(*self.ref1_email)
         ref_email.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_email.send_keys(Keys.CONTROL + "a")
         ref_email.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_email.send_keys(ref1_email)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_phone_number = self.driver.find_element(*self.ref1_phone_number)
         ref_phone_number.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_phone_number.send_keys(Keys.CONTROL + "a")
         ref_phone_number.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_phone_number.send_keys(ref1_phone_number)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_landline_number = self.driver.find_element(*self.ref1_landline)
         ref_landline_number.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_landline_number.send_keys(Keys.CONTROL + "a")
         ref_landline_number.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_landline_number.send_keys(ref1_landline_number)
-        time.sleep(1)
+        time.sleep(time_short)
 
         #Phone Number
         ref_phone_country = self.driver.find_element(*self.ref1_country_code_phone_number)
         ref_phone_country.click()
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu = self.driver.find_element(*self.country_menu)
         Country_menu.click()
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu.send_keys(Keys.CONTROL + "a")
         Country_menu.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu.send_keys(ref1_phone_CC)
-        time.sleep(3)
-        if ref1_phone_CC == 'India':
-            #for i in range(2):
-                #self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+        time.sleep(time_long)
+        country_lower=ref1_phone_CC.lower()
+        print(country_lower)
 
-            time.sleep(1)
-
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
-
+        if selected_language == 0:
+            english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
+            country_lower = english_country_lower.lower()
+        elif selected_language == 1:
+            country_lower = country_lower
         else:
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+            print("Issue in Country translation")
 
-        time.sleep(2)
+        country_selected = f"li-{country_lower}"
+        print(country_selected)
+        new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+        time.sleep(time_short)
+        new_datatest_ID.click()
+
+        time.sleep(time_short)
 
         #Landline Number
         ref_landline_country = self.driver.find_element(*self.ref1_country_code_landline)
         ref_landline_country.click()
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu = self.driver.find_element(*self.country_menu)
         Country_menu.click()
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu.send_keys(Keys.CONTROL + "a")
         Country_menu.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu.send_keys(ref1_landline_CC)
-        time.sleep(3)
-        # if ref1_landline_CC == 'India':
-        #     for i in range(2):
-        #         self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
-        #
-        #         time.sleep(1)
-        #
-        #         self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
-        if ref1_phone_CC == 'India':
-            #for i in range(2):
-                #self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+        time.sleep(time_long)
+        country_lower = ref1_landline_CC.lower()
+        print(country_lower)
 
-            time.sleep(1)
-
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
-
+        if selected_language == 0:
+            english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
+            country_lower = english_country_lower.lower()
+        elif selected_language == 1:
+            country_lower = country_lower
         else:
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+            print("Issue in Country translation")
+        country_selected = f"li-{country_lower}"
+        print(country_selected)
+        new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+        time.sleep(time_short)
+        new_datatest_ID.click()
 
-        time.sleep(2)
+        time.sleep(time_med)
+
 
 
     def add_reference2_details(self, ref2_FirstName, ref2_LastName, ref2_Pos_Occupation, ref2_email,
@@ -160,115 +169,126 @@ class References(ReferencesPage):
 
         dropdown_2 = self.driver.find_element(*self.ref2_dropdown)
         dropdown_2.click()
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_first_name = self.driver.find_element(*self.ref2_first_name)
         ref_first_name.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_first_name.send_keys(Keys.CONTROL + "a")
         ref_first_name.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_first_name.send_keys(ref2_FirstName)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_last_name = self.driver.find_element(*self.ref2_last_name)
         ref_last_name.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_last_name.send_keys(Keys.CONTROL + "a")
         ref_last_name.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_last_name.send_keys(ref2_LastName)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_position_occupation = self.driver.find_element(*self.ref2_occupation)
         ref_position_occupation.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_position_occupation.send_keys(Keys.CONTROL + "a")
         ref_position_occupation.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_position_occupation.send_keys(ref2_Pos_Occupation)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_email = self.driver.find_element(*self.ref2_email)
         ref_email.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_email.send_keys(Keys.CONTROL + "a")
         ref_email.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_email.send_keys(ref2_email)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_phone_number = self.driver.find_element(*self.ref2_phone_number)
         ref_phone_number.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_phone_number.send_keys(Keys.CONTROL + "a")
         ref_phone_number.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_phone_number.send_keys(ref2_phone_number)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_landline_number = self.driver.find_element(*self.ref2_landline)
         ref_landline_number.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_landline_number.send_keys(Keys.CONTROL + "a")
         ref_landline_number.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_landline_number.send_keys(ref2_landline_number)
-        time.sleep(1)
+        time.sleep(time_short)
 
         #Phone Number
         ref_phone_country = self.driver.find_element(*self.ref2_country_code_phone_number)
         ref_phone_country.click()
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu = self.driver.find_element(*self.country_menu)
         Country_menu.click()
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu.send_keys(Keys.CONTROL + "a")
         Country_menu.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
+
         Country_menu.send_keys(ref2_phone_CC)
-        time.sleep(3)
-        if ref2_phone_CC == 'India':
-            # for i in range(2):
-            # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+        time.sleep(time_long)
+        country_lower = ref2_phone_CC.lower()
+        print(country_lower)
 
-            time.sleep(1)
-
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
-
-
+        if selected_language == 0:
+            english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
+            country_lower = english_country_lower.lower()
+        elif selected_language == 1:
+            country_lower = country_lower
         else:
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+            print("Issue in Country translation")
+        country_selected = f"li-{country_lower}"
+        print(country_selected)
 
-        time.sleep(2)
+        new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+        time.sleep(time_short)
+        new_datatest_ID.click()
+
+        time.sleep(time_short)
+
 
         #Landline Number
         ref_landline_country = self.driver.find_element(*self.ref2_country_code_landline)
         ref_landline_country.click()
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu = self.driver.find_element(*self.country_menu)
         Country_menu.click()
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu.send_keys(Keys.CONTROL + "a")
         Country_menu.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
+
         Country_menu.send_keys(ref2_landline_CC)
-        time.sleep(3)
-        if ref2_landline_CC == 'India':
-            for i in range(2):
-                # for i in range(2):
-                # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+        time.sleep(time_long)
+        country_lower = ref2_landline_CC.lower()
+        print(country_lower)
 
-                time.sleep(1)
-
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
-
+        if selected_language == 0:
+            english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
+            country_lower = english_country_lower.lower()
+        elif selected_language == 1:
+            country_lower = country_lower
         else:
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+            print("Issue in Country translation")
+        country_selected = f"li-{country_lower}"
+        print(country_selected)
+        new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+        time.sleep(time_short)
+        new_datatest_ID.click()
 
-        time.sleep(2)
+        time.sleep(time_med)
+
 
 
 
@@ -277,231 +297,246 @@ class References(ReferencesPage):
 
         dropdown_3 = self.driver.find_element(*self.ref3_dropdown)
         dropdown_3.click()
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_first_name = self.driver.find_element(*self.ref3_first_name)
         ref_first_name.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_first_name.send_keys(Keys.CONTROL + "a")
         ref_first_name.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_first_name.send_keys(ref3_FirstName)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_last_name = self.driver.find_element(*self.ref3_last_name)
         ref_last_name.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_last_name.send_keys(Keys.CONTROL + "a")
         ref_last_name.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_last_name.send_keys(ref3_LastName)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_position_occupation = self.driver.find_element(*self.ref3_occupation)
         ref_position_occupation.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_position_occupation.send_keys(Keys.CONTROL + "a")
         ref_position_occupation.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_position_occupation.send_keys(ref3_Pos_Occupation)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_email = self.driver.find_element(*self.ref3_email)
         ref_email.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_email.send_keys(Keys.CONTROL + "a")
         ref_email.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_email.send_keys(ref3_email)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_phone_number = self.driver.find_element(*self.ref3_phone_number)
         ref_phone_number.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_phone_number.send_keys(Keys.CONTROL + "a")
         ref_phone_number.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_phone_number.send_keys(ref3_phone_number)
-        time.sleep(1)
+        time.sleep(time_short)
 
         ref_landline_number = self.driver.find_element(*self.ref3_landline)
         ref_landline_number.click()
-        time.sleep(1)
+        time.sleep(time_short)
         ref_landline_number.send_keys(Keys.CONTROL + "a")
         ref_landline_number.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
         ref_landline_number.send_keys(ref3_landline_number)
-        time.sleep(1)
+        time.sleep(time_short)
 
         #Phone Number
         ref_phone_country = self.driver.find_element(*self.ref3_country_code_phone_number)
         ref_phone_country.click()
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu = self.driver.find_element(*self.country_menu)
         Country_menu.click()
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu.send_keys(Keys.CONTROL + "a")
         Country_menu.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
+
         Country_menu.send_keys(ref3_phone_CC)
-        time.sleep(3)
-        if ref3_phone_CC == 'India':
-            for i in range(2):
-                # for i in range(2):
-                # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+        time.sleep(time_long)
+        country_lower = ref3_phone_CC.lower()
+        print(country_lower)
 
-                time.sleep(1)
-
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
-
+        if selected_language == 0:
+            english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
+            country_lower = english_country_lower.lower()
+        elif selected_language == 1:
+            country_lower = country_lower
         else:
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+            print("Issue in Country translation")
+        country_selected = f"li-{country_lower}"
+        print(country_selected)
+        new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+        time.sleep(time_short)
+        new_datatest_ID.click()
 
-        time.sleep(2)
+        time.sleep(time_short)
 
         #Landline Number
         ref_landline_country = self.driver.find_element(*self.ref3_country_code_landline)
         ref_landline_country.click()
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu = self.driver.find_element(*self.country_menu)
         Country_menu.click()
-        time.sleep(1)
+        time.sleep(time_short)
         Country_menu.send_keys(Keys.CONTROL + "a")
         Country_menu.send_keys(Keys.DELETE)
-        time.sleep(1)
+        time.sleep(time_short)
+
         Country_menu.send_keys(ref3_landline_CC)
-        time.sleep(3)
-        if ref3_landline_CC == 'India':
-            for i in range(2):
-                # for i in range(2):
-                # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+        time.sleep(time_long)
+        country_lower = ref3_landline_CC.lower()
+        print(country_lower)
 
-                time.sleep(1)
-
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
-
+        if selected_language == 0:
+            english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
+            country_lower = english_country_lower.lower()
+        elif selected_language == 1:
+            country_lower = country_lower
         else:
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
-            self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+            print("Issue in Country translation")
+        country_selected = f"li-{country_lower}"
+        print(country_selected)
+        new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+        time.sleep(time_short)
+        new_datatest_ID.click()
 
-        time.sleep(2)
+        time.sleep(time_med)
 
     def add_reference4_details(self, ref4_FirstName, ref4_LastName, ref4_Pos_Occupation, ref4_email, ref4_phone_number,
                                ref4_landline_number, ref4_phone_CC, ref4_landline_CC):
         try:
             dropdown_4 = self.driver.find_element(*self.ref4_dropdown)
             dropdown_4.click()
-            time.sleep(1)
+            time.sleep(time_short)
 
             ref_first_name = self.driver.find_element(*self.ref4_first_name)
             ref_first_name.click()
-            time.sleep(1)
+            time.sleep(time_short)
             ref_first_name.send_keys(Keys.CONTROL + "a")
             ref_first_name.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             ref_first_name.send_keys(ref4_FirstName)
-            time.sleep(1)
+            time.sleep(time_short)
 
             ref_last_name = self.driver.find_element(*self.ref4_last_name)
             ref_last_name.click()
-            time.sleep(1)
+            time.sleep(time_short)
             ref_last_name.send_keys(Keys.CONTROL + "a")
             ref_last_name.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             ref_last_name.send_keys(ref4_LastName)
-            time.sleep(1)
+            time.sleep(time_short)
 
             ref_position_occupation = self.driver.find_element(*self.ref4_occupation)
             ref_position_occupation.click()
-            time.sleep(1)
+            time.sleep(time_short)
             ref_position_occupation.send_keys(Keys.CONTROL + "a")
             ref_position_occupation.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             ref_position_occupation.send_keys(ref4_Pos_Occupation)
-            time.sleep(1)
+            time.sleep(time_short)
 
             ref_email = self.driver.find_element(*self.ref4_email)
             ref_email.click()
-            time.sleep(1)
+            time.sleep(time_short)
             ref_email.send_keys(Keys.CONTROL + "a")
             ref_email.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             ref_email.send_keys(ref4_email)
-            time.sleep(1)
+            time.sleep(time_short)
 
             ref_phone_number = self.driver.find_element(*self.ref4_phone_number)
             ref_phone_number.click()
-            time.sleep(1)
+            time.sleep(time_short)
             ref_phone_number.send_keys(Keys.CONTROL + "a")
             ref_phone_number.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             ref_phone_number.send_keys(ref4_phone_number)
-            time.sleep(1)
+            time.sleep(time_short)
 
             ref_landline_number = self.driver.find_element(*self.ref4_landline)
             ref_landline_number.click()
-            time.sleep(1)
+            time.sleep(time_short)
             ref_landline_number.send_keys(Keys.CONTROL + "a")
             ref_landline_number.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             ref_landline_number.send_keys(ref4_landline_number)
-            time.sleep(1)
+            time.sleep(time_short)
 
             # Phone Number
             ref_phone_country = self.driver.find_element(*self.ref4_country_code_phone_number)
             ref_phone_country.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Country_menu = self.driver.find_element(*self.country_menu)
             Country_menu.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Country_menu.send_keys(Keys.CONTROL + "a")
             Country_menu.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
+
             Country_menu.send_keys(ref4_phone_CC)
-            time.sleep(3)
-            if ref4_phone_CC == 'India':
-                for i in range(2):
-                    # for i in range(2):
-                    # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+            time.sleep(time_long)
+            country_lower = ref4_phone_CC.lower()
+            print(country_lower)
 
-                    time.sleep(1)
-
-                    self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
-
+            if selected_language == 0:
+                english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
+                country_lower = english_country_lower.lower()
+            elif selected_language == 1:
+                country_lower = country_lower
             else:
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+                print("Issue in Country translation")
+            country_selected = f"li-{country_lower}"
+            print(country_selected)
+            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+            time.sleep(time_short)
+            new_datatest_ID.click()
 
-            time.sleep(2)
+            time.sleep(time_short)
 
             # Landline Number
             ref_landline_country = self.driver.find_element(*self.ref4_country_code_landline)
             ref_landline_country.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Country_menu = self.driver.find_element(*self.country_menu)
             Country_menu.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Country_menu.send_keys(Keys.CONTROL + "a")
             Country_menu.send_keys(Keys.DELETE)
-            time.sleep(1)
-            Country_menu.send_keys(ref4_landline_CC)
-            time.sleep(3)
-            if ref4_landline_CC == 'India':
-                for i in range(2):
-                    # for i in range(2):
-                    # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+            time.sleep(time_short)
 
-                    time.sleep(1)
+            Country_menu.send_keys(ref4_phone_CC)
+            time.sleep(time_long)
+            country_lower = ref4_landline_CC.lower()
+            print(country_lower)
 
-                    self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
-
+            if selected_language == 0:
+                english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
+                country_lower = (english_country_lower).lower()
+            elif selected_language == 1:
+                country_lower = country_lower
             else:
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+                print("Issue in Country translation")
+            country_selected = f"li-{country_lower}"
+            print(country_selected)
+            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+            time.sleep(time_short)
+            new_datatest_ID.click()
 
-            time.sleep(2)
-
+            time.sleep(time_med)
         except:
             print("Reference block not found")
 
@@ -510,125 +545,133 @@ class References(ReferencesPage):
         try:
             dropdown_5 = self.driver.find_element(*self.ref5_dropdown)
             dropdown_5.click()
-            time.sleep(1)
+            time.sleep(time_short)
 
             ref_first_name = self.driver.find_element(*self.ref5_first_name)
             ref_first_name.click()
-            time.sleep(1)
+            time.sleep(time_short)
             ref_first_name.send_keys(Keys.CONTROL + "a")
             ref_first_name.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             ref_first_name.send_keys(ref5_FirstName)
-            time.sleep(1)
+            time.sleep(time_short)
 
             ref_last_name = self.driver.find_element(*self.ref5_last_name)
             ref_last_name.click()
-            time.sleep(1)
+            time.sleep(time_short)
             ref_last_name.send_keys(Keys.CONTROL + "a")
             ref_last_name.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             ref_last_name.send_keys(ref5_LastName)
-            time.sleep(1)
+            time.sleep(time_short)
 
             ref_position_occupation = self.driver.find_element(*self.ref5_occupation)
             ref_position_occupation.click()
-            time.sleep(1)
+            time.sleep(time_short)
             ref_position_occupation.send_keys(Keys.CONTROL + "a")
             ref_position_occupation.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             ref_position_occupation.send_keys(ref5_Pos_Occupation)
-            time.sleep(1)
+            time.sleep(time_short)
 
             ref_email = self.driver.find_element(*self.ref5_email)
             ref_email.click()
-            time.sleep(1)
+            time.sleep(time_short)
             ref_email.send_keys(Keys.CONTROL + "a")
             ref_email.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             ref_email.send_keys(ref5_email)
-            time.sleep(1)
+            time.sleep(time_short)
 
             ref_phone_number = self.driver.find_element(*self.ref5_phone_number)
             ref_phone_number.click()
-            time.sleep(1)
+            time.sleep(time_short)
             ref_phone_number.send_keys(Keys.CONTROL + "a")
             ref_phone_number.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             ref_phone_number.send_keys(ref5_phone_number)
-            time.sleep(1)
+            time.sleep(time_short)
 
             ref_landline_number = self.driver.find_element(*self.ref5_landline)
             ref_landline_number.click()
-            time.sleep(1)
+            time.sleep(time_short)
             ref_landline_number.send_keys(Keys.CONTROL + "a")
             ref_landline_number.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
             ref_landline_number.send_keys(ref5_landline_number)
-            time.sleep(1)
+            time.sleep(time_short)
 
             # Phone Number
             ref_phone_country = self.driver.find_element(*self.ref5_country_code_phone_number)
             ref_phone_country.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Country_menu = self.driver.find_element(*self.country_menu)
             Country_menu.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Country_menu.send_keys(Keys.CONTROL + "a")
             Country_menu.send_keys(Keys.DELETE)
-            time.sleep(1)
+            time.sleep(time_short)
+
             Country_menu.send_keys(ref5_phone_CC)
-            time.sleep(3)
-            if ref5_phone_CC == 'India':
-                for i in range(2):
-                    # for i in range(2):
-                    # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+            time.sleep(time_long)
+            country_lower = ref5_phone_CC.lower()
+            print(country_lower)
 
-                    time.sleep(1)
-
-                    self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
-
+            if selected_language == 0:
+                english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
+                country_lower = english_country_lower.lower()
+            elif selected_language == 1:
+                country_lower = country_lower
             else:
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+                print("Issue in Country translation")
+            country_selected = f"li-{country_lower}"
+            print(country_selected)
+            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+            time.sleep(time_short)
+            new_datatest_ID.click()
 
-            time.sleep(2)
+            time.sleep(time_short)
 
             # Landline Number
             ref_landline_country = self.driver.find_element(*self.ref5_country_code_landline)
             ref_landline_country.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Country_menu = self.driver.find_element(*self.country_menu)
             Country_menu.click()
-            time.sleep(1)
+            time.sleep(time_short)
             Country_menu.send_keys(Keys.CONTROL + "a")
             Country_menu.send_keys(Keys.DELETE)
-            time.sleep(1)
-            Country_menu.send_keys(ref5_landline_CC)
-            time.sleep(3)
-            if ref5_landline_CC == 'India':
-                for i in range(2):
-                    # for i in range(2):
-                    # self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
+            time.sleep(time_short)
 
-                    time.sleep(1)
+            Country_menu.send_keys(ref5_phone_CC)
+            time.sleep(time_long)
+            country_lower = ref5_landline_CC.lower()
+            print(country_lower)
 
-                    self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
-
+            if selected_language == 0:
+                english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
+                country_lower = english_country_lower.lower()
+            elif selected_language == 1:
+                country_lower = country_lower
             else:
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
-                self.driver.find_element(*self.country_menu).send_keys(Keys.ENTER)
+                print("Issue in Country translation")
+            country_selected = f"li-{country_lower}"
+            print(country_selected)
+            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+            time.sleep(time_short)
+            new_datatest_ID.click()
 
-            time.sleep(2)
+            time.sleep(time_med)
 
         except:
             print("Reference block not found")
 
 
     def continue_references(self):
-        time.sleep(6)
+        time.sleep(time_long)
         continue_reference_bttn = self.driver.find_element(*self.continue_bttn_reference)
         continue_reference_bttn.click()
-        time.sleep(2)
+        time.sleep(time_med)
 
 
 

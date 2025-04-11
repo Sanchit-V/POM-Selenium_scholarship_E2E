@@ -1,6 +1,12 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+
+import user_details
+
+time_short = user_details.time_short
+time_med = user_details.time_med
+time_long = user_details.time_long
 from Page_Object.Submitted_Page import SubmittedPage
 
 class Submitted_Page(SubmittedPage):
@@ -15,5 +21,5 @@ class Submitted_Page(SubmittedPage):
         print('***************************************')
 
 
-        time.sleep(4)
+        time.sleep(time_long)
 

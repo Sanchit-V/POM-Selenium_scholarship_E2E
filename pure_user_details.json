@@ -1,10 +1,33 @@
 {
-    "access_code": "f29c6d5",
-    "previous_access_code": "f29c6d5",
+    "access_code": "c6d5b58",
+    "previous_access_code": "c6d5b58",
+    "dob_English": "09302001",
+    "dob_Spanish": "30092001",
+    "Document_number": "1224435334",
+    "Profession": "Teacher",
     "Country": "India",
     "State": "Bihar",
     "City": "Patna",
     "Nationality": "India",
+    "Monthly_Income": "98767123",
+    "Monthly_Expense": "1234321",
+    "range_0to4": 2,
+    "range_5to12":4,
+    "range_13to18":4,
+    "range_18plus":5,
+    "email_ids": [
+        "example1@gmail.com",
+        "example2@yahoo.com",
+        "example3@outlook.com",
+        "example4@gmail.com",
+        "example5@yahoo.com"
+      ],
+    "default_phone": 9800199911,
+    "default_whatsapp": 8766223432,
+    "additional_phones": [7676716221,9088989765, 9666777887],
+    "home_address": "7684 Cambridge Road, Lake Noramouth, NY 12345",
+    "zip_code": "QW12321",
+    "text_additional_field": "Hello 12343213 Hello hello hello",
     "countries_visited": [
         "India",
         "United States",
@@ -58,7 +81,11 @@
         "Qatar",
         "Kuwait"
     ],
-
+    "University/Institution": [
+        "Chandigarh University",
+        "Chandigarh Group of Colleges",
+        "Oxford University"
+    ],
     "Degree": [
         "Bachelor of Science in Computer Science",
         "Master of Business Administration",
@@ -70,6 +97,20 @@
         "Bachelor of Commerce",
         "Master of Public Health",
         "Bachelor of Design"
+    ],
+    "Starting_Date": [
+        "052020",
+        "042021",
+        "072022",
+        "062020",
+        "092021"
+    ],
+    "Graduation_Date": [
+        "062025",
+        "082026",
+        "122030",
+        "112033",
+        "012029"
     ],
 
     "Other_Expertise": [
@@ -111,10 +152,18 @@
         "Kohima, Nagaland",
         "Itanagar, Arunachal Pradesh"],
 
-
+    "Activity": "Software Testing",
+    "Monthly_Salary": "9000000",
     "Emp_Country": "India",
     "Emp_State": "Punjab",
     "Emp_City": "Mohali",
+    "Zip_Code": "12QW00P",
+    "Address": "4433-B Housing Boards Flats, Sector-63, Chandigarh",
+    "Landline_Phone": "0171-2669764",
+    "Phone_Mobile": "9034430068",
+    "Website": "https://www.saucedemo.com/",
+    "Landline_Nation": "Italy",
+    "Mobile_Nation": "United Arab Emirates",
 
 
     "Reference_1":
