@@ -159,12 +159,17 @@ class Personal_Details(PersonalDetails):
         nationality.send_keys(Nationality)
 
         time.sleep(time_med)
-        nationality_options = self.driver.find_elements(*self.dropdown)
-        for option in nationality_options:
-            option_text = option.text.strip()
-            if option_text == Nationality:
-                option.click()
-                break
+        try:
+
+            nationality_options = self.driver.find_elements(*self.dropdown)
+            for option in nationality_options:
+                option_text = option.text.strip()
+                if option_text == Nationality:
+                    option.click()
+                    break
+
+        except:
+            print("Error finding Nationality.")
 
         time.sleep(time_short)
 

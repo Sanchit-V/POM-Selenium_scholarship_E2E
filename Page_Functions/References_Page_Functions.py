@@ -101,65 +101,75 @@ class References(ReferencesPage):
         ref_landline_number.send_keys(ref1_landline_number)
         time.sleep(time_short)
 
-        #Phone Number
-        ref_phone_country = self.driver.find_element(*self.ref1_country_code_phone_number)
-        ref_phone_country.click()
-        time.sleep(time_short)
-        Country_menu = self.driver.find_element(*self.country_menu)
-        Country_menu.click()
-        time.sleep(time_short)
-        Country_menu.send_keys(Keys.CONTROL + "a")
-        Country_menu.send_keys(Keys.DELETE)
-        time.sleep(time_short)
-        Country_menu.send_keys(ref1_phone_CC)
-        time.sleep(time_long)
-        country_lower=ref1_phone_CC.lower()
-        print(country_lower)
+        try:
+            # Phone Number
+            ref_phone_country = self.driver.find_element(*self.ref1_country_code_phone_number)
+            ref_phone_country.click()
+            time.sleep(time_short)
+            Country_menu = self.driver.find_element(*self.country_menu)
+            Country_menu.click()
+            time.sleep(time_short)
+            Country_menu.send_keys(Keys.CONTROL + "a")
+            Country_menu.send_keys(Keys.DELETE)
+            time.sleep(time_short)
+            Country_menu.send_keys(ref1_phone_CC)
+            time.sleep(time_long)
+            country_lower = ref1_phone_CC.lower()
+            print(country_lower)
 
-        if selected_language == 0:
-            english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
-            country_lower = english_country_lower.lower()
-        elif selected_language == 1:
-            country_lower = country_lower
-        else:
-            print("Issue in Country translation")
+            if selected_language == 0:
+                english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
+                country_lower = english_country_lower.lower()
+            elif selected_language == 1:
+                country_lower = country_lower
+            else:
+                print("Issue in Country translation")
 
-        country_selected = f"li-{country_lower}"
-        print(country_selected)
-        new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
-        time.sleep(time_short)
-        new_datatest_ID.click()
+            country_selected = f"li-{country_lower}"
+            print(country_selected)
+            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+            time.sleep(time_short)
+            new_datatest_ID.click()
+
+
+        except:
+            print('Country-Code not found')
 
         time.sleep(time_short)
 
-        #Landline Number
-        ref_landline_country = self.driver.find_element(*self.ref1_country_code_landline)
-        ref_landline_country.click()
-        time.sleep(time_short)
-        Country_menu = self.driver.find_element(*self.country_menu)
-        Country_menu.click()
-        time.sleep(time_short)
-        Country_menu.send_keys(Keys.CONTROL + "a")
-        Country_menu.send_keys(Keys.DELETE)
-        time.sleep(time_short)
-        Country_menu.send_keys(ref1_landline_CC)
-        time.sleep(time_long)
-        country_lower = ref1_landline_CC.lower()
-        print(country_lower)
 
-        if selected_language == 0:
-            english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
-            country_lower = english_country_lower.lower()
-        elif selected_language == 1:
-            country_lower = country_lower
-        else:
-            print("Issue in Country translation")
-        country_selected = f"li-{country_lower}"
-        print(country_selected)
-        new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
-        time.sleep(time_short)
-        new_datatest_ID.click()
+        try:
+            #Landline Number
+            ref_landline_country = self.driver.find_element(*self.ref1_country_code_landline)
+            ref_landline_country.click()
+            time.sleep(time_short)
+            Country_menu = self.driver.find_element(*self.country_menu)
+            Country_menu.click()
+            time.sleep(time_short)
+            Country_menu.send_keys(Keys.CONTROL + "a")
+            Country_menu.send_keys(Keys.DELETE)
+            time.sleep(time_short)
+            Country_menu.send_keys(ref1_landline_CC)
+            time.sleep(time_long)
+            country_lower = ref1_landline_CC.lower()
+            print(country_lower)
 
+            if selected_language == 0:
+                english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
+                country_lower = english_country_lower.lower()
+            elif selected_language == 1:
+                country_lower = country_lower
+            else:
+                print("Issue in Country translation")
+            country_selected = f"li-{country_lower}"
+            print(country_selected)
+            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+            time.sleep(time_short)
+            new_datatest_ID.click()
+
+
+        except:
+            print('Country-Code not found')
         time.sleep(time_med)
 
 
@@ -225,67 +235,75 @@ class References(ReferencesPage):
         ref_landline_number.send_keys(ref2_landline_number)
         time.sleep(time_short)
 
-        #Phone Number
-        ref_phone_country = self.driver.find_element(*self.ref2_country_code_phone_number)
-        ref_phone_country.click()
-        time.sleep(time_short)
-        Country_menu = self.driver.find_element(*self.country_menu)
-        Country_menu.click()
-        time.sleep(time_short)
-        Country_menu.send_keys(Keys.CONTROL + "a")
-        Country_menu.send_keys(Keys.DELETE)
+        try:
+
+            #Phone Number
+            ref_phone_country = self.driver.find_element(*self.ref2_country_code_phone_number)
+            ref_phone_country.click()
+            time.sleep(time_short)
+            Country_menu = self.driver.find_element(*self.country_menu)
+            Country_menu.click()
+            time.sleep(time_short)
+            Country_menu.send_keys(Keys.CONTROL + "a")
+            Country_menu.send_keys(Keys.DELETE)
+            time.sleep(time_short)
+
+            Country_menu.send_keys(ref2_phone_CC)
+            time.sleep(time_long)
+            country_lower = ref2_phone_CC.lower()
+            print(country_lower)
+
+            if selected_language == 0:
+                english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
+                country_lower = english_country_lower.lower()
+            elif selected_language == 1:
+                country_lower = country_lower
+            else:
+                print("Issue in Country translation")
+            country_selected = f"li-{country_lower}"
+            print(country_selected)
+
+            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+            time.sleep(time_short)
+            new_datatest_ID.click()
+
+        except:
+            print('Country-Code not found')
+
         time.sleep(time_short)
 
-        Country_menu.send_keys(ref2_phone_CC)
-        time.sleep(time_long)
-        country_lower = ref2_phone_CC.lower()
-        print(country_lower)
+        try:
+            #Landline Number
+            ref_landline_country = self.driver.find_element(*self.ref2_country_code_landline)
+            ref_landline_country.click()
+            time.sleep(time_short)
+            Country_menu = self.driver.find_element(*self.country_menu)
+            Country_menu.click()
+            time.sleep(time_short)
+            Country_menu.send_keys(Keys.CONTROL + "a")
+            Country_menu.send_keys(Keys.DELETE)
+            time.sleep(time_short)
 
-        if selected_language == 0:
-            english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
-            country_lower = english_country_lower.lower()
-        elif selected_language == 1:
-            country_lower = country_lower
-        else:
-            print("Issue in Country translation")
-        country_selected = f"li-{country_lower}"
-        print(country_selected)
+            Country_menu.send_keys(ref2_landline_CC)
+            time.sleep(time_long)
+            country_lower = ref2_landline_CC.lower()
+            print(country_lower)
 
-        new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
-        time.sleep(time_short)
-        new_datatest_ID.click()
+            if selected_language == 0:
+                english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
+                country_lower = english_country_lower.lower()
+            elif selected_language == 1:
+                country_lower = country_lower
+            else:
+                print("Issue in Country translation")
+            country_selected = f"li-{country_lower}"
+            print(country_selected)
+            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+            time.sleep(time_short)
+            new_datatest_ID.click()
 
-        time.sleep(time_short)
-
-
-        #Landline Number
-        ref_landline_country = self.driver.find_element(*self.ref2_country_code_landline)
-        ref_landline_country.click()
-        time.sleep(time_short)
-        Country_menu = self.driver.find_element(*self.country_menu)
-        Country_menu.click()
-        time.sleep(time_short)
-        Country_menu.send_keys(Keys.CONTROL + "a")
-        Country_menu.send_keys(Keys.DELETE)
-        time.sleep(time_short)
-
-        Country_menu.send_keys(ref2_landline_CC)
-        time.sleep(time_long)
-        country_lower = ref2_landline_CC.lower()
-        print(country_lower)
-
-        if selected_language == 0:
-            english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
-            country_lower = english_country_lower.lower()
-        elif selected_language == 1:
-            country_lower = country_lower
-        else:
-            print("Issue in Country translation")
-        country_selected = f"li-{country_lower}"
-        print(country_selected)
-        new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
-        time.sleep(time_short)
-        new_datatest_ID.click()
+        except:
+            print('Country-Code not found')
 
         time.sleep(time_med)
 
@@ -353,65 +371,73 @@ class References(ReferencesPage):
         ref_landline_number.send_keys(ref3_landline_number)
         time.sleep(time_short)
 
-        #Phone Number
-        ref_phone_country = self.driver.find_element(*self.ref3_country_code_phone_number)
-        ref_phone_country.click()
-        time.sleep(time_short)
-        Country_menu = self.driver.find_element(*self.country_menu)
-        Country_menu.click()
-        time.sleep(time_short)
-        Country_menu.send_keys(Keys.CONTROL + "a")
-        Country_menu.send_keys(Keys.DELETE)
+        try:
+            #Phone Number
+            ref_phone_country = self.driver.find_element(*self.ref3_country_code_phone_number)
+            ref_phone_country.click()
+            time.sleep(time_short)
+            Country_menu = self.driver.find_element(*self.country_menu)
+            Country_menu.click()
+            time.sleep(time_short)
+            Country_menu.send_keys(Keys.CONTROL + "a")
+            Country_menu.send_keys(Keys.DELETE)
+            time.sleep(time_short)
+
+            Country_menu.send_keys(ref3_phone_CC)
+            time.sleep(time_long)
+            country_lower = ref3_phone_CC.lower()
+            print(country_lower)
+
+            if selected_language == 0:
+                english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
+                country_lower = english_country_lower.lower()
+            elif selected_language == 1:
+                country_lower = country_lower
+            else:
+                print("Issue in Country translation")
+            country_selected = f"li-{country_lower}"
+            print(country_selected)
+            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+            time.sleep(time_short)
+            new_datatest_ID.click()
+
+        except:
+            print('Country-Code not found')
+
         time.sleep(time_short)
 
-        Country_menu.send_keys(ref3_phone_CC)
-        time.sleep(time_long)
-        country_lower = ref3_phone_CC.lower()
-        print(country_lower)
+        try:
+            # Landline Number
+            ref_landline_country = self.driver.find_element(*self.ref3_country_code_landline)
+            ref_landline_country.click()
+            time.sleep(time_short)
+            Country_menu = self.driver.find_element(*self.country_menu)
+            Country_menu.click()
+            time.sleep(time_short)
+            Country_menu.send_keys(Keys.CONTROL + "a")
+            Country_menu.send_keys(Keys.DELETE)
+            time.sleep(time_short)
 
-        if selected_language == 0:
-            english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
-            country_lower = english_country_lower.lower()
-        elif selected_language == 1:
-            country_lower = country_lower
-        else:
-            print("Issue in Country translation")
-        country_selected = f"li-{country_lower}"
-        print(country_selected)
-        new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
-        time.sleep(time_short)
-        new_datatest_ID.click()
+            Country_menu.send_keys(ref3_landline_CC)
+            time.sleep(time_long)
+            country_lower = ref3_landline_CC.lower()
+            print(country_lower)
 
-        time.sleep(time_short)
+            if selected_language == 0:
+                english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
+                country_lower = english_country_lower.lower()
+            elif selected_language == 1:
+                country_lower = country_lower
+            else:
+                print("Issue in Country translation")
+            country_selected = f"li-{country_lower}"
+            print(country_selected)
+            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+            time.sleep(time_short)
+            new_datatest_ID.click()
 
-        #Landline Number
-        ref_landline_country = self.driver.find_element(*self.ref3_country_code_landline)
-        ref_landline_country.click()
-        time.sleep(time_short)
-        Country_menu = self.driver.find_element(*self.country_menu)
-        Country_menu.click()
-        time.sleep(time_short)
-        Country_menu.send_keys(Keys.CONTROL + "a")
-        Country_menu.send_keys(Keys.DELETE)
-        time.sleep(time_short)
-
-        Country_menu.send_keys(ref3_landline_CC)
-        time.sleep(time_long)
-        country_lower = ref3_landline_CC.lower()
-        print(country_lower)
-
-        if selected_language == 0:
-            english_country_lower = GoogleTranslator(source='es', target ='en').translate(country_lower)
-            country_lower = english_country_lower.lower()
-        elif selected_language == 1:
-            country_lower = country_lower
-        else:
-            print("Issue in Country translation")
-        country_selected = f"li-{country_lower}"
-        print(country_selected)
-        new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
-        time.sleep(time_short)
-        new_datatest_ID.click()
+        except:
+            print('Country-Code not found')
 
         time.sleep(time_med)
 
@@ -476,69 +502,76 @@ class References(ReferencesPage):
             ref_landline_number.send_keys(ref4_landline_number)
             time.sleep(time_short)
 
-            # Phone Number
-            ref_phone_country = self.driver.find_element(*self.ref4_country_code_phone_number)
-            ref_phone_country.click()
-            time.sleep(time_short)
-            Country_menu = self.driver.find_element(*self.country_menu)
-            Country_menu.click()
-            time.sleep(time_short)
-            Country_menu.send_keys(Keys.CONTROL + "a")
-            Country_menu.send_keys(Keys.DELETE)
-            time.sleep(time_short)
+            try:
+                # Phone Number
+                ref_phone_country = self.driver.find_element(*self.ref4_country_code_phone_number)
+                ref_phone_country.click()
+                time.sleep(time_short)
+                Country_menu = self.driver.find_element(*self.country_menu)
+                Country_menu.click()
+                time.sleep(time_short)
+                Country_menu.send_keys(Keys.CONTROL + "a")
+                Country_menu.send_keys(Keys.DELETE)
+                time.sleep(time_short)
 
-            Country_menu.send_keys(ref4_phone_CC)
-            time.sleep(time_long)
-            country_lower = ref4_phone_CC.lower()
-            print(country_lower)
+                Country_menu.send_keys(ref4_phone_CC)
+                time.sleep(time_long)
+                country_lower = ref4_phone_CC.lower()
+                print(country_lower)
 
-            if selected_language == 0:
-                english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
-                country_lower = english_country_lower.lower()
-            elif selected_language == 1:
-                country_lower = country_lower
-            else:
-                print("Issue in Country translation")
-            country_selected = f"li-{country_lower}"
-            print(country_selected)
-            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
-            time.sleep(time_short)
-            new_datatest_ID.click()
+                if selected_language == 0:
+                    english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
+                    country_lower = english_country_lower.lower()
+                elif selected_language == 1:
+                    country_lower = country_lower
+                else:
+                    print("Issue in Country translation")
+                country_selected = f"li-{country_lower}"
+                print(country_selected)
+                new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+                time.sleep(time_short)
+                new_datatest_ID.click()
+
+            except:
+                print('Country-Code not found')
 
             time.sleep(time_short)
+            try:
+                # Landline Number
+                ref_landline_country = self.driver.find_element(*self.ref4_country_code_landline)
+                ref_landline_country.click()
+                time.sleep(time_short)
+                Country_menu = self.driver.find_element(*self.country_menu)
+                Country_menu.click()
+                time.sleep(time_short)
+                Country_menu.send_keys(Keys.CONTROL + "a")
+                Country_menu.send_keys(Keys.DELETE)
+                time.sleep(time_short)
 
-            # Landline Number
-            ref_landline_country = self.driver.find_element(*self.ref4_country_code_landline)
-            ref_landline_country.click()
-            time.sleep(time_short)
-            Country_menu = self.driver.find_element(*self.country_menu)
-            Country_menu.click()
-            time.sleep(time_short)
-            Country_menu.send_keys(Keys.CONTROL + "a")
-            Country_menu.send_keys(Keys.DELETE)
-            time.sleep(time_short)
+                Country_menu.send_keys(ref4_phone_CC)
+                time.sleep(time_long)
+                country_lower = ref4_landline_CC.lower()
+                print(country_lower)
 
-            Country_menu.send_keys(ref4_phone_CC)
-            time.sleep(time_long)
-            country_lower = ref4_landline_CC.lower()
-            print(country_lower)
+                if selected_language == 0:
+                    english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
+                    country_lower = (english_country_lower).lower()
+                elif selected_language == 1:
+                    country_lower = country_lower
+                else:
+                    print("Issue in Country translation")
+                country_selected = f"li-{country_lower}"
+                print(country_selected)
+                new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+                time.sleep(time_short)
+                new_datatest_ID.click()
 
-            if selected_language == 0:
-                english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
-                country_lower = (english_country_lower).lower()
-            elif selected_language == 1:
-                country_lower = country_lower
-            else:
-                print("Issue in Country translation")
-            country_selected = f"li-{country_lower}"
-            print(country_selected)
-            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
-            time.sleep(time_short)
-            new_datatest_ID.click()
+            except:
+                print('Country-Code not found')
 
             time.sleep(time_med)
         except:
-            print("Reference block not found")
+            print("Reference block 4 not found")
 
     def add_reference5_details(self, ref5_FirstName, ref5_LastName, ref5_Pos_Occupation, ref5_email, ref5_phone_number,
                                ref5_landline_number, ref5_phone_CC, ref5_landline_CC):
@@ -601,70 +634,77 @@ class References(ReferencesPage):
             ref_landline_number.send_keys(ref5_landline_number)
             time.sleep(time_short)
 
-            # Phone Number
-            ref_phone_country = self.driver.find_element(*self.ref5_country_code_phone_number)
-            ref_phone_country.click()
-            time.sleep(time_short)
-            Country_menu = self.driver.find_element(*self.country_menu)
-            Country_menu.click()
-            time.sleep(time_short)
-            Country_menu.send_keys(Keys.CONTROL + "a")
-            Country_menu.send_keys(Keys.DELETE)
+            try:
+                # Phone Number
+                ref_phone_country = self.driver.find_element(*self.ref5_country_code_phone_number)
+                ref_phone_country.click()
+                time.sleep(time_short)
+                Country_menu = self.driver.find_element(*self.country_menu)
+                Country_menu.click()
+                time.sleep(time_short)
+                Country_menu.send_keys(Keys.CONTROL + "a")
+                Country_menu.send_keys(Keys.DELETE)
+                time.sleep(time_short)
+
+                Country_menu.send_keys(ref5_phone_CC)
+                time.sleep(time_long)
+                country_lower = ref5_phone_CC.lower()
+                print(country_lower)
+
+                if selected_language == 0:
+                    english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
+                    country_lower = english_country_lower.lower()
+                elif selected_language == 1:
+                    country_lower = country_lower
+                else:
+                    print("Issue in Country translation")
+                country_selected = f"li-{country_lower}"
+                print(country_selected)
+                new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+                time.sleep(time_short)
+                new_datatest_ID.click()
+
+            except:
+                print('Country-Code not found')
             time.sleep(time_short)
 
-            Country_menu.send_keys(ref5_phone_CC)
-            time.sleep(time_long)
-            country_lower = ref5_phone_CC.lower()
-            print(country_lower)
+            try:
+                # Landline Number
+                ref_landline_country = self.driver.find_element(*self.ref5_country_code_landline)
+                ref_landline_country.click()
+                time.sleep(time_short)
+                Country_menu = self.driver.find_element(*self.country_menu)
+                Country_menu.click()
+                time.sleep(time_short)
+                Country_menu.send_keys(Keys.CONTROL + "a")
+                Country_menu.send_keys(Keys.DELETE)
+                time.sleep(time_short)
 
-            if selected_language == 0:
-                english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
-                country_lower = english_country_lower.lower()
-            elif selected_language == 1:
-                country_lower = country_lower
-            else:
-                print("Issue in Country translation")
-            country_selected = f"li-{country_lower}"
-            print(country_selected)
-            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
-            time.sleep(time_short)
-            new_datatest_ID.click()
+                Country_menu.send_keys(ref5_phone_CC)
+                time.sleep(time_long)
+                country_lower = ref5_landline_CC.lower()
+                print(country_lower)
 
-            time.sleep(time_short)
+                if selected_language == 0:
+                    english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
+                    country_lower = english_country_lower.lower()
+                elif selected_language == 1:
+                    country_lower = country_lower
+                else:
+                    print("Issue in Country translation")
+                country_selected = f"li-{country_lower}"
+                print(country_selected)
+                new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
+                time.sleep(time_short)
+                new_datatest_ID.click()
 
-            # Landline Number
-            ref_landline_country = self.driver.find_element(*self.ref5_country_code_landline)
-            ref_landline_country.click()
-            time.sleep(time_short)
-            Country_menu = self.driver.find_element(*self.country_menu)
-            Country_menu.click()
-            time.sleep(time_short)
-            Country_menu.send_keys(Keys.CONTROL + "a")
-            Country_menu.send_keys(Keys.DELETE)
-            time.sleep(time_short)
-
-            Country_menu.send_keys(ref5_phone_CC)
-            time.sleep(time_long)
-            country_lower = ref5_landline_CC.lower()
-            print(country_lower)
-
-            if selected_language == 0:
-                english_country_lower = GoogleTranslator(source='es', target='en').translate(country_lower)
-                country_lower = english_country_lower.lower()
-            elif selected_language == 1:
-                country_lower = country_lower
-            else:
-                print("Issue in Country translation")
-            country_selected = f"li-{country_lower}"
-            print(country_selected)
-            new_datatest_ID = self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{country_selected}"]')
-            time.sleep(time_short)
-            new_datatest_ID.click()
+            except:
+                print('Country-Code not found')
 
             time.sleep(time_med)
 
         except:
-            print("Reference block not found")
+            print("Reference block 5 not found")
 
 
     def continue_references(self):

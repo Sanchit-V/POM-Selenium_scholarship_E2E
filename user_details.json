@@ -1,6 +1,6 @@
 {
-    "access_code": "f29c6d5",
-    "previous_access_code": "f29c6d5",
+    "access_code": "3738422",
+    "previous_access_code": "3738422",
     "Country": "India",
     "State": "Bihar",
     "City": "Patna",
@@ -29,14 +29,12 @@
         "Austria",
         "Greece",
         "Turkey",
-        "Saudi Arabia",
         "United Arab Emirates",
         "South Africa",
         "Egypt",
         "Nigeria",
         "Kenya",
         "Morocco",
-        "China",
         "Japan",
         "South Korea",
         "Vietnam",
@@ -117,66 +115,7 @@
     "Emp_City": "Mohali",
 
 
-    "Reference_1":
-    {
-        "First_Name": "Peter",
-        "Last_Name": "Griffin",
-        "Position/Occupation": "Engineer",
-        "Email_Address": "petergriffin111@gmail.com",
-        "Phone_Number": 9088282222,
-        "Landline_Number": 7674849032,
-        "Phone_CC": "Cuba",
-        "Landline_CC": "Cyprus"
-    },
-
-    "Reference_2":
-    {
-        "First_Name": "Glenn",
-        "Last_Name": "Quagmire",
-        "Position/Occupation": "Doctor",
-        "Email_Address": "gigityglen123@gmail.com",
-        "Phone_Number": 9088282221,
-        "Landline_Number": 7674849031,
-        "Phone_CC": "Yemen",
-        "Landline_CC": "Dominican Republic"
-    },
-
-    "Reference_3":
-    {
-        "First_Name": "Cleaveland",
-        "Last_Name": "Brown",
-        "Position/Occupation": "Driver",
-        "Email_Address": "browncleave124@gmail.com",
-        "Phone_Number": 9088281122,
-        "Landline_Number": 7674849232,
-        "Phone_CC": "Nicaragua",
-        "Landline_CC": "Estonia"
-    },
-
-    "Reference_4":
-    {
-        "First_Name": "Joe",
-        "Last_Name": "Swanson",
-        "Position/Occupation": "Policeman",
-        "Email_Address": "swansonjoe908@gmail.com",
-        "Phone_Number": 9088281112,
-        "Landline_Number": 7671119032,
-        "Phone_CC": "Malaysia",
-        "Landline_CC": "Croatia"
-    },
-
-    "Reference_5":
-    {
-        "First_Name": "Stewie",
-        "Last_Name": "Griffin",
-        "Position/Occupation": "Scientist",
-        "Email_Address": "endlouis001@gmail.com",
-        "Phone_Number": 9022282222,
-        "Landline_Number": 7656449032,
-        "Phone_CC": "Mongolia",
-        "Landline_CC": "Israel"
-    },
-
+    "base_folder_path" : "C:\\Users\\Sanchit\\Desktop\\scholarship-POM_E2E\\Upload_Files",
     "passport_file_path" : "C:\\Users\\Sanchit\\Downloads\\qa-flow_table_UKqseWvf-VHbx5NSJe2OW-1742884493205 (1).pdf",
     "curriculum_file_path" : "C:\\Users\\Sanchit\\Downloads\\ACFrOgBBwKeNkDk5X5gynBWENQAIjssNmHHMeUWa1GbOeu2nwvAVEN31iky6_0clOoRh11YmsJCMzUrWYX8mQUHyAj5jMZMEfC6xEDkcO9eMjiZ-MR_XbsaeF54vFgqPZ-3kYnL9fG6PiSYQEmHgx_6kj6vLJ88J6QU3j6dNIX9zIDjMPe2vZy6BM_zXvWfdOFUzrN7rUCOJo3Kc (4).pdf",
     "letter_of_motive" : "C:\\Users\\Sanchit\\Downloads\\d2a5c329e16701bd460b4a59a6a90f5d-1742898210632-1742967921657.jpg",
