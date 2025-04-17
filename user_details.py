@@ -81,7 +81,7 @@ Profession = fake.job()
 Country = json_data['Country']
 State = json_data['State']
 City = json_data['City']
-Nationality = "India"#random.choice(json_data['countries_visited'])#fake.country()
+Nationality = random.choice(json_data['countries_visited'])#fake.country()
 
 def generate_financials():
 
@@ -154,15 +154,15 @@ additional_3 = additional_numbers[2]
 # print(additional_3)
 
 #countries = json_data['countries_visited']
-country_0 =fake.country() #random.choice(json_data['countries_visited'])
+country_0 =random.choice(json_data['countries_visited']) #fake.country()
 #print(country_0)
-country_1 =fake.country() #random.choice(json_data['countries_visited'])
+country_1 =random.choice(json_data['countries_visited']) #fake.country()
 #print(country_1)
-country_2 =fake.country() #random.choice(json_data['countries_visited'])
+country_2 =random.choice(json_data['countries_visited']) #fake.country()
 #print(country_2)
-country_3 =fake.country() #random.choice(json_data['countries_visited'])
+country_3 =random.choice(json_data['countries_visited']) #fake.country()
 #print(country_3)
-country_4 =fake.country() #random.choice(json_data['countries_visited'])
+country_4 =random.choice(json_data['countries_visited']) #fake.country()
 #print(country_4)
 
 # home_address = json_data['home_address']
@@ -279,9 +279,9 @@ Phone_Mobile =generate_phone_number()
 Website = fake.url()
 #print(Website)
 
-Landline_Nation = fake.country()#random.choice(json_data['countries_visited'])
+Landline_Nation = random.choice(json_data['countries_visited']) #fake.country()
 #print(Landline_Nation)
-Mobile_Nation = fake.country()#random.choice(json_data['countries_visited'])
+Mobile_Nation = random.choice(json_data['countries_visited']) #fake.country()
 #print(Mobile_Nation)
 Base_Folder_Path = "C:\\Users\\Sanchit\\Desktop\\scholarship-POM_E2E\\Upload_Files"
 
@@ -324,8 +324,8 @@ ref1_email = fake.email()
 #print(ref1_email)
 ref1_phone_number = generate_phone_number()
 ref1_landline_number = generate_phone_number()
-ref1_phone_CC = fake.country()#random.choice(json_data['countries_visited'])
-ref1_landline_CC = fake.country()#random.choice(json_data['countries_visited'])
+ref1_phone_CC = random.choice(json_data['countries_visited']) #fake.country()
+ref1_landline_CC = random.choice(json_data['countries_visited']) #fake.country()
 
 ref2_FirstName = fake.first_name()
 ref2_LastName = fake.last_name()
@@ -336,8 +336,8 @@ ref2_email = fake.email()
 #print(ref2_email)
 ref2_phone_number = generate_phone_number()
 ref2_landline_number = generate_phone_number()
-ref2_phone_CC =fake.country() #random.choice(json_data['countries_visited'])
-ref2_landline_CC =fake.country() #random.choice(json_data['countries_visited'])
+ref2_phone_CC =random.choice(json_data['countries_visited']) #fake.country()
+ref2_landline_CC =random.choice(json_data['countries_visited']) #fake.country()
 
 ref3_FirstName = fake.first_name()
 ref3_LastName = fake.last_name()
@@ -348,8 +348,8 @@ ref3_email = fake.email()
 #print(ref3_email)
 ref3_phone_number = generate_phone_number()
 ref3_landline_number = generate_phone_number()
-ref3_phone_CC = fake.country()#random.choice(json_data['countries_visited'])
-ref3_landline_CC = fake.country()#random.choice(json_data['countries_visited'])
+ref3_phone_CC = random.choice(json_data['countries_visited']) #fake.country()
+ref3_landline_CC = random.choice(json_data['countries_visited']) #fake.country()
 
 ref4_FirstName = fake.first_name()
 ref4_LastName = fake.last_name()
@@ -360,8 +360,8 @@ ref4_email = fake.email()
 #print(ref4_email)
 ref4_phone_number = generate_phone_number()
 ref4_landline_number = generate_phone_number()
-ref4_phone_CC = fake.country()#random.choice(json_data['countries_visited'])
-ref4_landline_CC = fake.country()#random.choice(json_data['countries_visited'])
+ref4_phone_CC = random.choice(json_data['countries_visited']) #fake.country()
+ref4_landline_CC = random.choice(json_data['countries_visited']) #fake.country()
 
 ref5_FirstName = fake.first_name()
 ref5_LastName = fake.last_name()
@@ -372,8 +372,8 @@ ref5_email = fake.email()
 #print(ref5_email)
 ref5_phone_number = generate_phone_number()
 ref5_landline_number = generate_phone_number()
-ref5_phone_CC =fake.country() #random.choice(json_data['countries_visited'])
-ref5_landline_CC =fake.country() #random.choice(json_data['countries_visited'])
+ref5_phone_CC =random.choice(json_data['countries_visited']) #fake.country()
+ref5_landline_CC =random.choice(json_data['countries_visited']) #fake.country()
 
 
 if selected_language == 1:

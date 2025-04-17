@@ -1,3 +1,5 @@
+import os
+
 from deep_translator import GoogleTranslator
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
@@ -42,6 +44,13 @@ class References(ReferencesPage):
 
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/delete references{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print("No additional field to be deleted.")
 
     def add_reference1_details(self, ref1_FirstName, ref1_LastName, ref1_Pos_Occupation, ref1_email,
@@ -133,6 +142,13 @@ class References(ReferencesPage):
 
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/mobile reference 1{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Country-Code not found')
 
         time.sleep(time_short)
@@ -169,6 +185,13 @@ class References(ReferencesPage):
 
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/landline reference 1{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Country-Code not found')
         time.sleep(time_med)
 
@@ -268,6 +291,13 @@ class References(ReferencesPage):
             new_datatest_ID.click()
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/landline reference 2{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Country-Code not found')
 
         time.sleep(time_short)
@@ -303,6 +333,13 @@ class References(ReferencesPage):
             new_datatest_ID.click()
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/landline reference 2{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Country-Code not found')
 
         time.sleep(time_med)
@@ -402,6 +439,13 @@ class References(ReferencesPage):
             new_datatest_ID.click()
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/mobile reference 3{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Country-Code not found')
 
         time.sleep(time_short)
@@ -437,6 +481,13 @@ class References(ReferencesPage):
             new_datatest_ID.click()
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/landline reference 3{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Country-Code not found')
 
         time.sleep(time_med)
@@ -533,6 +584,13 @@ class References(ReferencesPage):
                 new_datatest_ID.click()
 
             except:
+                folder_path = "screenshots"
+                os.makedirs(folder_path, exist_ok=True)
+                timestamp = time.strftime("%Y%m%d-%H%M%S")
+                screenshot_name = f"{folder_path}/mobile reference 4{timestamp}.png"
+
+                # Take screenshot
+                self.driver.save_screenshot(screenshot_name)
                 print('Country-Code not found')
 
             time.sleep(time_short)
@@ -567,10 +625,25 @@ class References(ReferencesPage):
                 new_datatest_ID.click()
 
             except:
+                folder_path = "screenshots"
+                os.makedirs(folder_path, exist_ok=True)
+                timestamp = time.strftime("%Y%m%d-%H%M%S")
+                screenshot_name = f"{folder_path}/landline reference 4{timestamp}.png"
+
+                # Take screenshot
+                self.driver.save_screenshot(screenshot_name)
+
                 print('Country-Code not found')
 
             time.sleep(time_med)
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/reference 4{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print("Reference block 4 not found")
 
     def add_reference5_details(self, ref5_FirstName, ref5_LastName, ref5_Pos_Occupation, ref5_email, ref5_phone_number,
@@ -665,6 +738,13 @@ class References(ReferencesPage):
                 new_datatest_ID.click()
 
             except:
+                folder_path = "screenshots"
+                os.makedirs(folder_path, exist_ok=True)
+                timestamp = time.strftime("%Y%m%d-%H%M%S")
+                screenshot_name = f"{folder_path}/country_code_5_mobile{timestamp}.png"
+
+                # Take screenshot
+                self.driver.save_screenshot(screenshot_name)
                 print('Country-Code not found')
             time.sleep(time_short)
 
@@ -699,11 +779,25 @@ class References(ReferencesPage):
                 new_datatest_ID.click()
 
             except:
+                folder_path = "screenshots"
+                os.makedirs(folder_path, exist_ok=True)
+                timestamp = time.strftime("%Y%m%d-%H%M%S")
+                screenshot_name = f"{folder_path}/country_code_5_landline{timestamp}.png"
+
+                # Take screenshot
+                self.driver.save_screenshot(screenshot_name)
                 print('Country-Code not found')
 
             time.sleep(time_med)
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/reference 5{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print("Reference block 5 not found")
 
 

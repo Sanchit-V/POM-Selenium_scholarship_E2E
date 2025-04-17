@@ -1,3 +1,5 @@
+import os
+
 from selenium.webdriver import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -260,6 +262,13 @@ class Personal_Details(PersonalDetails):
 
         except Exception as e:
             print(f"No children Field, found : {e}")
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/snackbar_exception_{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             time.sleep(time_med)
 
     def Continue_button(self):

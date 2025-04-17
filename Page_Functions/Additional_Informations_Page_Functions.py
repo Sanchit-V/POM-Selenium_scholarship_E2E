@@ -1,3 +1,5 @@
+import os
+
 from selenium.webdriver import Keys
 
 import user_details
@@ -64,6 +66,13 @@ class Additional_Information(AdditionalInfo):
 
         except:
             print("No text field found")
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/additional_info_page{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
 
         time.sleep(time_med)
 

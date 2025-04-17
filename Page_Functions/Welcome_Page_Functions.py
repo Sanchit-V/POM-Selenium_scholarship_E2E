@@ -1,3 +1,4 @@
+import os
 from logging import exception
 
 from selenium.webdriver.support.ui import WebDriverWait
@@ -22,6 +23,16 @@ class Welcome_Page(WelcomePage):
             print("Snack-Bar message Extracted as: " + actual_message)
 
         except Exception as e:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/snackbar_exception_{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
+
+            # Print exception log with screenshot path
+            print(f"[ERROR] No Snackbar Encountered: {e}\n[Screenshot captured] --> {screenshot_name}")
             print(f"No Snackbar Encountered.:{e}")
 
 
@@ -38,6 +49,16 @@ class Welcome_Page(WelcomePage):
             print("Greetings Extracted as: " + actual_greeting)
 
         except Exception as e:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/snackbar_exception_{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
+
+            # Print exception log with screenshot path
+            print(f"[ERROR] No Snackbar Encountered: {e}\n[Screenshot captured] --> {screenshot_name}")
             print(f"No Greeting-Message Encountered.:{e}")
 
 

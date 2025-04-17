@@ -1,3 +1,5 @@
+import os
+
 from selenium.webdriver import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -27,6 +29,14 @@ class Academic_Records(AcademicRecords):
                 print("Wrong Input")
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/add education{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
+
             print('No additional needed to be added.')
 
 
@@ -37,6 +47,14 @@ class Academic_Records(AcademicRecords):
             time.sleep(time_med)
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/delete education 2{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
+
             print('Edu 2 box not found')
 
         try:
@@ -45,6 +63,14 @@ class Academic_Records(AcademicRecords):
             time.sleep(time_med)
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/delete education 3{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
+
             print('Edu 3 box not found')
 
 
@@ -107,6 +133,13 @@ class Academic_Records(AcademicRecords):
                 print('Correct option not selected.')
             time.sleep(time_short)
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/education level 2{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Education 2 not selected.')
 
     def education_Level_3(self, education_level_3):
@@ -140,6 +173,13 @@ class Academic_Records(AcademicRecords):
             time.sleep(time_short)
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/education level 3{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Education 3 not selected.')
 
     def university_institute(self, University_Institution_1, University_Institution_2, University_Institution_3):
@@ -163,6 +203,13 @@ class Academic_Records(AcademicRecords):
             time.sleep(time_med)
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/education level 2 university{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Other eduction level-2 not selected.')
 
         try:
@@ -176,6 +223,13 @@ class Academic_Records(AcademicRecords):
             time.sleep(time_med)
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/education level 3 university{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Other eduction level-3 not selected.')
 
 
@@ -200,6 +254,13 @@ class Academic_Records(AcademicRecords):
             time.sleep(time_short)
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/education level 2 degree{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Other eduction level-2 not selected.')
 
         try:
@@ -213,6 +274,13 @@ class Academic_Records(AcademicRecords):
             time.sleep(time_short)
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/education level 3 degree{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Other eduction level-3 not selected.')
 
 
@@ -255,6 +323,13 @@ class Academic_Records(AcademicRecords):
             time.sleep(time_short)
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/education level 2 date{timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Other eduction level-2 not selected.')
 
         try:
@@ -277,6 +352,13 @@ class Academic_Records(AcademicRecords):
             time.sleep(time_short)
 
         except:
+            folder_path = "screenshots"
+            os.makedirs(folder_path, exist_ok=True)
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_name = f"{folder_path}/education level 3 date {timestamp}.png"
+
+            # Take screenshot
+            self.driver.save_screenshot(screenshot_name)
             print('Other eduction level-2 not selected.')
 
 
@@ -304,6 +386,13 @@ class Academic_Records(AcademicRecords):
                             print('University training not selected.')
 
                     except:
+                        folder_path = "screenshots"
+                        os.makedirs(folder_path, exist_ok=True)
+                        timestamp = time.strftime("%Y%m%d-%H%M%S")
+                        screenshot_name = f"{folder_path}/previous mode online{timestamp}.png"
+
+                        # Take screenshot
+                        self.driver.save_screenshot(screenshot_name)
                         print('*****Uni-Error already selected*****')
             except:
                 print('Web element not found, unchecked_uni')
@@ -321,6 +410,13 @@ class Academic_Records(AcademicRecords):
                             print('Employment training not selected.')
 
                     except:
+                        folder_path = "screenshots"
+                        os.makedirs(folder_path, exist_ok=True)
+                        timestamp = time.strftime("%Y%m%d-%H%M%S")
+                        screenshot_name = f"{folder_path}/employment{timestamp}.png"
+
+                        # Take screenshot
+                        self.driver.save_screenshot(screenshot_name)
                         print('*****Emp-Error already selected*****')
             except:
                 print('Web element not found, unchecked_emp')
@@ -338,6 +434,13 @@ class Academic_Records(AcademicRecords):
                             print('Second language training not selected.')
 
                     except:
+                        folder_path = "screenshots"
+                        os.makedirs(folder_path, exist_ok=True)
+                        timestamp = time.strftime("%Y%m%d-%H%M%S")
+                        screenshot_name = f"{folder_path}/second language{timestamp}.png"
+
+                        # Take screenshot
+                        self.driver.save_screenshot(screenshot_name)
                         print('*****Sec-Lang already selected*****')
 
             except:
@@ -356,6 +459,13 @@ class Academic_Records(AcademicRecords):
                             print('University training still selected.')
 
                     except:
+                        folder_path = "screenshots"
+                        os.makedirs(folder_path, exist_ok=True)
+                        timestamp = time.strftime("%Y%m%d-%H%M%S")
+                        screenshot_name = f"{folder_path}/previous mode online{timestamp}.png"
+
+                        # Take screenshot
+                        self.driver.save_screenshot(screenshot_name)
                         print('*****Uni-Error already not-selected*****')
             except:
                 print("Web element not found, checked_uni")
@@ -373,6 +483,13 @@ class Academic_Records(AcademicRecords):
                             print('Employment training still selected.')
 
                     except:
+                        folder_path = "screenshots"
+                        os.makedirs(folder_path, exist_ok=True)
+                        timestamp = time.strftime("%Y%m%d-%H%M%S")
+                        screenshot_name = f"{folder_path}/employment{timestamp}.png"
+
+                        # Take screenshot
+                        self.driver.save_screenshot(screenshot_name)
                         print('*****Emp-Error already not-selected*****')
             except:
                 print("Web element not found, checked_emp")
@@ -390,6 +507,13 @@ class Academic_Records(AcademicRecords):
                             print('Second language training still selected.')
 
                     except:
+                        folder_path = "screenshots"
+                        os.makedirs(folder_path, exist_ok=True)
+                        timestamp = time.strftime("%Y%m%d-%H%M%S")
+                        screenshot_name = f"{folder_path}/second language{timestamp}.png"
+
+                        # Take screenshot
+                        self.driver.save_screenshot(screenshot_name)
                         print('*****Sec-Lang already not-selected*****')
 
             except:
