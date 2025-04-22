@@ -20,10 +20,10 @@ Base_Folder_Path = "C:\\Users\\Sanchit\\Desktop\\scholarship-POM_E2E\\Upload_Fil
 
 
 
-document_type = random.randint(1, 5) # 1 for NIC     # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
+document_type = random.randint(1, 5) # 1 for NIC # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
 Martial_status = random.randint(1, 5) # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
-Financially_Dependent = random.randint(0, 1)   # 0 for No  # 1 for Yes
-Has_Children = random.randint(0, 1)   # 0 for No  # 1 for Yes
+Financially_Dependent = random.randint(0, 1)   # 0 for No    # 1 for Yes
+Has_Children = random.randint(0, 1)   # 0 for No     # 1 for Yes
 additional_emails_to_be_added = random.randint(1, 5)
 number_of_additional_phone=2
 number_of_additional_whatsapp=1
