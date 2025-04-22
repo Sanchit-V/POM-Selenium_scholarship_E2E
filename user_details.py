@@ -15,7 +15,7 @@ with open('user_details.json') as f:
      json_data = json.load(f)
 
 url = "http://localhost:80/"
-selected_language = 0     # 1 for English, 0 for Spanish
+selected_language = 1     # 1 for English, 0 for Spanish
 document_type = random.randint(1, 5) # 1 for NIC     # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
 Martial_status = random.randint(1, 5) # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
 Financially_Dependent = random.randint(0, 1)   # 0 for No  # 1 for Yes
@@ -54,6 +54,8 @@ have_degree_checkbox = random.randint(0, 1)  # 0 for no(Check the checkbox) 1 fo
 time_long = 3
 time_med = 2
 time_short = 1
+
+file_type = random.randint(0, 1)  #0 for .pdf and 1 for .jpg
 
 
 access_code = json_data['access_code']
@@ -293,22 +295,43 @@ def jpg_file_path():
     random_number = random.randint(1,9)
     return "a" + str(random_number)
 
-Passport_File = Base_Folder_Path + "\\" +str(pdf_file_path()) + ".pdf"
-print(Passport_File)
-Curriculum_File = Base_Folder_Path + "\\" +str(pdf_file_path()) + ".pdf"
-print(Curriculum_File)
-Letter_Of_Motive = Base_Folder_Path + "\\" +str(jpg_file_path()) + ".jpg"
-print(Letter_Of_Motive)
-Other_Document = Base_Folder_Path + "\\" +str(jpg_file_path()) + ".jpg"
-print(Other_Document)
-Degree = Base_Folder_Path + "\\" +str(jpg_file_path()) + ".jpg"
-print(Degree)
-Transcript = Base_Folder_Path + "\\" +str(pdf_file_path()) + ".pdf"
-print(Transcript)
-Graduation_Certificate = Base_Folder_Path + "\\" +str(pdf_file_path()) + ".pdf"
-print(Graduation_Certificate)
-Letter_Of_Commitment = Base_Folder_Path + "\\" +str(pdf_file_path()) + ".pdf"
-print(Letter_Of_Commitment)
+if file_type == 0:
+    Passport_File = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
+    print(Passport_File)
+    Curriculum_File = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
+    print(Curriculum_File)
+    Letter_Of_Motive = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
+    print(Letter_Of_Motive)
+    Other_Document = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
+    print(Other_Document)
+    Degree = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
+    print(Degree)
+    Transcript = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
+    print(Transcript)
+    Graduation_Certificate = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
+    print(Graduation_Certificate)
+    Letter_Of_Commitment = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
+    print(Letter_Of_Commitment)
+
+elif file_type == 1:
+    Passport_File = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
+    print(Passport_File)
+    Curriculum_File = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
+    print(Curriculum_File)
+    Letter_Of_Motive = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
+    print(Letter_Of_Motive)
+    Other_Document = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
+    print(Other_Document)
+    Degree = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
+    print(Degree)
+    Transcript = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
+    print(Transcript)
+    Graduation_Certificate = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
+    print(Graduation_Certificate)
+    Letter_Of_Commitment = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
+    print(Letter_Of_Commitment)
+
+
 
 
 
