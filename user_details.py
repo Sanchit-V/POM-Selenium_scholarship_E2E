@@ -16,6 +16,10 @@ with open('user_details.json') as f:
 
 url = "http://localhost:80/"
 selected_language = 1     # 1 for English, 0 for Spanish
+Base_Folder_Path = "C:\\Users\\Sanchit\\Desktop\\scholarship-POM_E2E\\Upload_Files"
+
+
+
 document_type = random.randint(1, 5) # 1 for NIC     # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
 Martial_status = random.randint(1, 5) # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
 Financially_Dependent = random.randint(0, 1)   # 0 for No  # 1 for Yes
@@ -285,7 +289,7 @@ Landline_Nation = random.choice(json_data['countries_visited']) #fake.country()
 #print(Landline_Nation)
 Mobile_Nation = random.choice(json_data['countries_visited']) #fake.country()
 #print(Mobile_Nation)
-Base_Folder_Path = "C:\\Users\\Sanchit\\Desktop\\scholarship-POM_E2E\\Upload_Files"
+
 
 def pdf_file_path():
     random_number= random.randint(1,15)
