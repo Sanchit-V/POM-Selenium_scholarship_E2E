@@ -599,7 +599,7 @@ class References(ReferencesPage):
                 Country_menu.send_keys(Keys.DELETE)
                 time.sleep(time_short)
 
-                Country_menu.send_keys(ref4_phone_CC)
+                Country_menu.send_keys(ref4_landline_CC)
                 time.sleep(time_long)
                 country_lower = ref4_landline_CC.lower()
                 print(country_lower)
@@ -753,7 +753,7 @@ class References(ReferencesPage):
                 Country_menu.send_keys(Keys.DELETE)
                 time.sleep(time_short)
 
-                Country_menu.send_keys(ref5_phone_CC)
+                Country_menu.send_keys(ref5_landline_CC)
                 time.sleep(time_long)
                 country_lower = ref5_landline_CC.lower()
                 print(country_lower)
