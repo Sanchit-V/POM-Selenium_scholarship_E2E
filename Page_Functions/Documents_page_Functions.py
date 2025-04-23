@@ -29,13 +29,6 @@ class Documents_Page(DocumentsPage):
 
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/passport{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print("Not able to click the upload option.")
 
     time.sleep(time_short)
@@ -53,13 +46,6 @@ class Documents_Page(DocumentsPage):
 
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/curriculum{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print("Not able to click the upload option.")
 
     time.sleep(time_short)
@@ -77,13 +63,6 @@ class Documents_Page(DocumentsPage):
 
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/LOM{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print("Not able to click the upload option.")
 
     time.sleep(time_short)
@@ -101,13 +80,6 @@ class Documents_Page(DocumentsPage):
 
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/other document{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print("Not able to click the upload option.")
 
     time.sleep(time_short)
@@ -126,23 +98,9 @@ class Documents_Page(DocumentsPage):
                         print('Applicant has degree')
 
                 except:
-                    folder_path = "screenshots"
-                    os.makedirs(folder_path, exist_ok=True)
-                    timestamp = time.strftime("%Y%m%d-%H%M%S")
-                    screenshot_name = f"{folder_path}/{timestamp}.png"
-
-                    # Take screenshot
-                    self.driver.save_screenshot(screenshot_name)
                     print('Already checked.')
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/Degree checkbox{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Web element not found.')
 
 
@@ -159,23 +117,9 @@ class Documents_Page(DocumentsPage):
                         print('Applicant does not have a degree')
 
                 except:
-                    folder_path = "screenshots"
-                    os.makedirs(folder_path, exist_ok=True)
-                    timestamp = time.strftime("%Y%m%d-%H%M%S")
-                    screenshot_name = f"{folder_path}/{timestamp}.png"
-
-                    # Take screenshot
-                    self.driver.save_screenshot(screenshot_name)
                     print('Already un-checked.')
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/Degree checkbox{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Web element not found.')
 
     time.sleep(time_short)
@@ -288,14 +232,7 @@ class Documents_Page(DocumentsPage):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/delete passport button{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
-            print("No file to be deleted.")
+            print("No file to be deleted(Passport).")
 
         try:
             del_Curriculum  = self.driver.find_element(*self.bttn_delete_curriculum)
@@ -303,14 +240,7 @@ class Documents_Page(DocumentsPage):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/delete curriculum button{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
-            print("No file to be deleted.")
+            print("No file to be deleted(Curriculum).")
 
         try:
             del_Letter_of_motive  = self.driver.find_element(*self.bttn_delete_letter_of_motive)
@@ -318,14 +248,7 @@ class Documents_Page(DocumentsPage):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/delete letter of motive button{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
-            print("No file to be deleted.")
+            print("No file to be deleted(LOM).")
 
         try:
             del_other_files  = self.driver.find_element(*self.bttn_delete_other_documents)
@@ -333,14 +256,7 @@ class Documents_Page(DocumentsPage):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/delete other files button{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
-            print("No file to be deleted.")
+            print("No file to be deleted(Other Files).")
 
         try:
             del_degree = self.driver.find_element(*self.bttn_delete_degree)
@@ -348,14 +264,7 @@ class Documents_Page(DocumentsPage):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/delete degree button{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
-            print("No file to be deleted.")
+            print("No file to be deleted(Degree).")
 
         try:
             del_transcript = self.driver.find_element(*self.bttn_delete_transcript)
@@ -363,14 +272,7 @@ class Documents_Page(DocumentsPage):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/delete transcript button{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
-            print("No file to be deleted.")
+            print("No file to be deleted(Transcript).")
 
         try:
             del_graduation = self.driver.find_element(*self.bttn_delete_graduation_certificate)
@@ -378,14 +280,7 @@ class Documents_Page(DocumentsPage):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/delete graduation button{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
-            print("No file to be deleted.")
+            print("No file to be deleted(Graduation).")
 
         try:
             del_commitment = self.driver.find_element(*self.bttn_delete_letter_of_commitment)
@@ -393,14 +288,7 @@ class Documents_Page(DocumentsPage):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/delete commitment button{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
-            print("No file to be deleted.")
+            print("No file to be deleted.(Commitment)")
 
     time.sleep(time_short)
 

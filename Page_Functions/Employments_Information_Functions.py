@@ -40,13 +40,6 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/employment institution name{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Institution details block not found.')
 
         try:
@@ -60,13 +53,6 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/employment position name{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Position details block not found.')
 
         try:
@@ -80,13 +66,6 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/employment area{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Area details not found.')
 
         try:
@@ -108,13 +87,6 @@ class Employmet_Information(EmploymentInformation):
                 print('Wrong input selected.')
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/employment work category{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Worker category not found.')
 
         try:
@@ -128,13 +100,6 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/employment activity{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Activity block not present.')
 
         try:
@@ -177,13 +142,6 @@ class Employmet_Information(EmploymentInformation):
                 print('Wrong input given.')
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/employment position seniority{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Seniority section not available.')
 
         try:
@@ -197,13 +155,6 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/employment monthly salary{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Monthly salary section not available.')
 
     def employment_country(self, Emp_Country, Emp_State, Emp_City, Zip_Code, Address): #, Zip_Code, Address
@@ -231,13 +182,6 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_med)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/employment country{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Country block not found.')
 
         try:
@@ -254,13 +198,6 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_med)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/employment state{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('State block not found')
 
         try:
@@ -277,13 +214,6 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_med)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/employment city{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('City block not found')
 
         try:
@@ -296,14 +226,8 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_short)
             Zip_code.send_keys(Zip_Code)
             time.sleep(time_short)
-        except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/employment zipcode{timestamp}.png"
 
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
+        except:
             print('Zip code block not found')
 
         try:
@@ -318,13 +242,6 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/employment address{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Address block not found')
 
 
@@ -342,13 +259,6 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/landline number employment{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Landline block not found.')
 
 
@@ -363,13 +273,6 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/phone number employment{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Mobile number block not found')
 
 
@@ -384,13 +287,6 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/Website{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Website block not found.')
 
 
@@ -450,13 +346,6 @@ class Employmet_Information(EmploymentInformation):
             time.sleep(time_med)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/CC_Landline_Mobile_Employments{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Country entry fields not found.')
 
 

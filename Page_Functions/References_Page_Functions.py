@@ -44,13 +44,6 @@ class References(ReferencesPage):
 
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/delete references{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print("No additional field to be deleted.")
 
     def add_reference1_details(self, ref1_FirstName, ref1_LastName, ref1_Pos_Occupation, ref1_email,

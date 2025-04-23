@@ -139,13 +139,6 @@ class Address_Page(AddressPage):
                         confirm_delete.click()
                         time.sleep(1)
                     except:
-                        folder_path = "screenshots"
-                        os.makedirs(folder_path, exist_ok=True)
-                        timestamp = time.strftime("%Y%m%d-%H%M%S")
-                        screenshot_name = f"{folder_path}/no phone deletion{timestamp}.png"
-
-                        # Take screenshot
-                        self.driver.save_screenshot(screenshot_name)
                         print('Empty phone number fields')
 
 
