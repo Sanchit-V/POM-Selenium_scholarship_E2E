@@ -13,3 +13,4 @@ class Import_libraries:
     def initialize_driver():
         Import_libraries.driver = Import_libraries.webdriver.Chrome()
         return Import_libraries.driver
+
