@@ -15,7 +15,7 @@ services:
     restart: always
     shm_size: 2gb
     networks:
-      - selenium
+      - scholarship-application-requests-shared-network
 
   app:
     build:
@@ -27,13 +27,14 @@ services:
     tty: true
     environment: []
     command: >
-      python3 /var/www/app/main_driver_code_headless.py
+      sh -c "Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset 
+      & xvfb-run -a python3 /var/www/app/main_driver_code_headless.py
     volumes:
       - C:/Users/Sanchit/Desktop/scholarship-POM_E2E:/var/www/app
     shm_size: 2gb
     networks:
-      - selenium
+      - scholarship-application-requests-shared-network
 
 networks:
-  selenium:
+  scholarship-application-requests-shared-network:
     driver: bridge

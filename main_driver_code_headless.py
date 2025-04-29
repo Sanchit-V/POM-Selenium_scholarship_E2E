@@ -1,5 +1,7 @@
+# In your Python code, add this before importing pyautogui
 import os
-os.environ['DISPLAY'] = ':0'
+os.environ['DISPLAY'] = ':99'  # Must match compose file
+os.environ['XAUTHORITY'] = '/tmp/.Xauthority'
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
