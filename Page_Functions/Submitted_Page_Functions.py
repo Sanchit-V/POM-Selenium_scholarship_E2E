@@ -11,6 +11,8 @@ from Page_Object.Submitted_Page import SubmittedPage
 
 class Submitted_Page(SubmittedPage):
     def final_page(self):
+        
+        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.form_submitted_final))
 
         final_form_submitted = self.driver.find_element(*self.form_submitted_final)
         print(final_form_submitted.text)

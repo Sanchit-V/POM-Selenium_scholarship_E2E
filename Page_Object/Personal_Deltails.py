@@ -29,7 +29,8 @@ class PersonalDetails:
         self.profession = By.CSS_SELECTOR, '[data-test-id="input-personal-profession"]'
 
         #Birth Details
-        self.DOB = By.CSS_SELECTOR, '[data-test-id="date-picker-input-personal-birth-date"]' #Main-Dialogue Box
+        self.DOB = By.CSS_SELECTOR, '[data-test-id="date-picker-input-personal-birth-date"]'#By.XPATH, '/html/body/div[2]/div/main/div/div[2]/form/div[2]/div[1]/div/div/div[2]/div[1]/div/div/div/input' # #Main-Dialogue Box
+        #self.DOB = By.CSS_SELECTOR, '[data-test-id="btn-date-picker-open-personal-birth-date"]'
 
 
         #Nation

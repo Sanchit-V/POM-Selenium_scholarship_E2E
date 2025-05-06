@@ -1,7 +1,8 @@
 import os
 
 from selenium.webdriver import Keys
-
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import user_details
 from Page_Object.Additional_Informations_Page import AdditionalInfo
 import time
@@ -11,6 +12,7 @@ time_long = user_details.time_long
 
 class Additional_Information(AdditionalInfo):
     def select_Option(self, additional_type,Text_Additional_field):
+        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.google))
 
         time.sleep(time_med)
 

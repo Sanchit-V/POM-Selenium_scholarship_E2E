@@ -15,6 +15,7 @@ from Page_Object.Employments_Information_Page import EmploymentInformation
 
 class Employmet_Information(EmploymentInformation):
     def Currently_working(self, currently_working):
+        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.currently_working_yes))
         if currently_working == 1:
             yes_radio = self.driver.find_element(*self.currently_working_yes)
             yes_radio.click()

@@ -17,6 +17,7 @@ time_long = user_details.time_long
 
 class Address_Page(AddressPage):
     def default_Email(self):
+        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.default_email))
         try:
             default_email_element = self.driver.find_element(*self.default_email)
             Default_email = default_email_element.text or default_email_element.get_attribute("value")
@@ -538,6 +539,9 @@ class Address_Page(AddressPage):
         time.sleep(time_long)
 
     def Continue_address(self):
+
+        
+        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.continue_button))
 
         continue_bttn = self.driver.find_element(*self.continue_button)
         continue_bttn.click()

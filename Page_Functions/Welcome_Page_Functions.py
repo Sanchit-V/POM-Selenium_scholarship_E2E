@@ -15,6 +15,7 @@ time_long = user_details.time_long
 
 class Welcome_Page(WelcomePage):
     def Check_snack_bar(self, expected_message):
+        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.logged_in_snack))
 
         try:
             snack_bar = self.driver.find_element(*self.logged_in_snack)
@@ -80,7 +81,7 @@ class Welcome_Page(WelcomePage):
         except Exception as e:
             print(f"Error in clicking login button: {e}")
 
-
+        
         time.sleep(time_long)
 
 

@@ -14,7 +14,7 @@ fake = Faker()
 with open('user_details.json') as f:
      json_data = json.load(f)
 
-url = "http://localhost:80/"
+url = "https://sales-scholarship-application-requests-develop-iymj66chvq-uc.a.run.app/"  #http://host.docker.internal:80/"  "localhost:80/"
 selected_language = 1     # 1 for English, 0 for Spanish
 Base_Folder_Path = "C:\\Users\\Sanchit\\Desktop\\scholarship-POM_E2E\\Upload_Files"
 number_of_pdf = 15

@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  selenium:
+    image: selenium/standalone-chrome:latest
+    container_name: chrome_selenium_scholarship
+    ports:
+      - "4444:4444"
+    shm_size: 2gb
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test-selenium-scholarship
+    working_dir: /var/www/app
+    depends_on:
+      - selenium
+    volumes:
+      - .:/var/www/app
+    command: >
+      sh -c "
+        echo 'Starting Xvfb...';
+        Xvfb :99 -screen 0 1920x1080x24 &
+        export DISPLAY=:99;
+        echo 'Waiting for Selenium...';
+        until curl -s http://selenium:4444/wd/hub/status | grep -q 'running'; do
+          sleep 1;
+        done;
+        echo 'Selenium is ready!';
+        pytest -v /var/www/app/main_driver_code.py
+      "
+    shm_size: 2gb
+
+
+#xvfb-run -a pytest -v /var/www/app/main_driver_code.py

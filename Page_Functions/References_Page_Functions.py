@@ -18,7 +18,7 @@ selected_language = user_details.selected_language
 class References(ReferencesPage):
 
     def add_references(self, additional_references):
-
+        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.add_reference))
         try:
             if 0 < additional_references <=2 :
                 for additional_reference in range(additional_references):

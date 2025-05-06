@@ -2,13 +2,17 @@ import time
 
 import user_details
 from Page_Object.Summary_Page import Summary
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
 
 class Submit(Summary):
 
+
     def submitReport(self):
+        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.TnC))
         TnC_button = self.driver.find_element(*self.TnC)
         y_position = TnC_button.location['y']
 

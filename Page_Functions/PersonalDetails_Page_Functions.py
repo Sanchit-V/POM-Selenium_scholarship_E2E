@@ -18,6 +18,7 @@ selected_language = user_details.selected_language
 
 class Personal_Details(PersonalDetails):
     def document_type_selection(self, document_type):
+        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.document_type_button))
         Document_click = self.driver.find_element(*self.document_type_button)
         Document_click.click()
 
@@ -104,13 +105,21 @@ class Personal_Details(PersonalDetails):
 
         month_name = calendar.month_name[int(month)]
         print(month_name)
-
+        print(Date_Of_Birth)
+        print(enter_DOB)
         enter_DOB.click()
+        folder_path = "screenshots"
+        os.makedirs(folder_path, exist_ok=True)
+        timestamp = time.strftime("%Y%m%d-%H%M%S")
+        screenshot_name = f"{folder_path}/date of birth.{timestamp}.png"
+        self.driver.save_screenshot(screenshot_name)
+
         enter_DOB.send_keys(Date_Of_Birth)
 
-        time.sleep(time_med)
+        #time.sleep(time_med)
 
     def Applicant_Nation(self, Country):
+        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.Country))
         country = self.driver.find_element(*self.Country)
         country.click()
         country.send_keys(Country)
@@ -270,6 +279,8 @@ class Personal_Details(PersonalDetails):
             # Take screenshot
             self.driver.save_screenshot(screenshot_name)
             time.sleep(time_med)
+
+
 
     def Continue_button(self):
         continue_bttn = self.driver.find_element(*self.continue_button)

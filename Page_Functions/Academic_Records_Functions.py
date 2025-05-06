@@ -15,6 +15,7 @@ from Page_Object.Academic_Records_Page import AcademicRecords
 
 class Academic_Records(AcademicRecords):
     def education_details(self, additional_education):
+        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.add_education))
         try:
             if 0 < additional_education <= 2:
                 for add_education in range(additional_education):
