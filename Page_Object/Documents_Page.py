@@ -3,7 +3,7 @@ By=Import_libraries.By
 
 class DocumentsPage:
     def __init__(self, driver):
-        self.driver = Import_libraries.driver
+        self.driver = Import_libraries._driver
 
         self.bttn_id_passport = By.CSS_SELECTOR, '[data-test-id="upload-btn-documents-id/passport"]'
         self.bttn_curriculum = By.CSS_SELECTOR, '[data-test-id="upload-btn-documents-curriculum-vitae"]'

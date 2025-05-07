@@ -3,7 +3,7 @@ By=Import_libraries.By
 
 class AddressPage:
     def __init__(self, driver):
-        self.driver = Import_libraries.driver
+        self.driver = Import_libraries._driver
 
         #############################################################################################################################
 

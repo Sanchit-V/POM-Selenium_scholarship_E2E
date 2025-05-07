@@ -5,7 +5,7 @@ By=Import_libraries.By
 
 class LoginPage:
     def __init__(self, driver):
-        self.driver=Import_libraries.driver
+        self.driver=Import_libraries._driver
         self.Language_Button=By.CSS_SELECTOR, '[data-test-id="select-language"]'
         self.Access_Code = By.CSS_SELECTOR, '[data-test-id="input-login-access-code"]'
         self.Language_English = By.CSS_SELECTOR, '[data-test-id="li-en-US-language"]'

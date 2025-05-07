@@ -29,27 +29,31 @@ from Processes.Submitted_Page_Processes import  Submitted_Page_Process
 
 import user_details
 
-# Initialize WebDriver
-driver = Import_libraries.initialize_driver()
+# # Initialize WebDriver
+# driver = Import_libraries.initialize_driver()
 
-# Navigate to the URL
-driver.get(user_details.url)
-driver.maximize_window()
+# # Navigate to the URL
+# driver.get(user_details.url)
+# driver.maximize_window()
+
+_driver = Import_libraries.get_driver()
+_driver.get(user_details.url)
+
 
 time.sleep(4)
 
 # Create an instance of Pages
-login_page_functions = Login_Page(driver)
-welcome_page_functions = Welcome_Page(driver)
-personal_details_functions = Personal_Details(driver)
-address_page_functions = Address_Page(driver)
-additional_page_functions = Additional_Information(driver)
-submit_report_page_functions = Submit(driver)
-final_page_functions = Submitted_Page(driver)
-academic_page_functions = Academic_Records(driver)
-employment_page_functions = Employmet_Information(driver)
-reference_page_functions = References(driver)
-document_page_functions = Documents_Page(driver)
+login_page_functions = Login_Page(_driver)
+welcome_page_functions = Welcome_Page(_driver)
+personal_details_functions = Personal_Details(_driver)
+address_page_functions = Address_Page(_driver)
+additional_page_functions = Additional_Information(_driver)
+submit_report_page_functions = Submit(_driver)
+final_page_functions = Submitted_Page(_driver)
+academic_page_functions = Academic_Records(_driver)
+employment_page_functions = Employmet_Information(_driver)
+reference_page_functions = References(_driver)
+document_page_functions = Documents_Page(_driver)
 
 
 
@@ -76,72 +80,72 @@ def test_personal_details():
                                  user_details.Monthly_Income,
                                  user_details.Monthly_Expense, user_details.Financially_Dependent,
                                  user_details.Has_Children, user_details.Range_0to4,
-                                 user_details.Range_5to12, user_details.Range_13to18, user_details.Range_18plus)
+                                 user_details.Range_5to12, user_details.Range_13to18, user_details.Range_18plus) 
 
-# def test_address_details():
-#     address_details = Address_Page_Process(address_page_functions)
-#     address_details.run_processes(user_details.additional_emails_to_be_added, user_details.email_Ids,user_details.default_phone,
-#                                   user_details.default_whatsapp,user_details.total_additionals, user_details.number_of_additional_phone,
-#                                   user_details.number_of_additional_whatsapp, user_details.additional_1, user_details.additional_2,
-#                                   user_details.additional_3,user_details.country_0,user_details.country_1,
-#                                   user_details.country_2, user_details.country_3, user_details.country_4,user_details.housing_type,
-#                                   user_details.housing_conditions, user_details.Country,user_details.State,
-#                                   user_details.City, user_details.home_address, user_details.zip_code)
+def test_address_details():
+    address_details = Address_Page_Process(address_page_functions)
+    address_details.run_processes(user_details.additional_emails_to_be_added, user_details.email_Ids,user_details.default_phone,
+                                  user_details.default_whatsapp,user_details.total_additionals, user_details.number_of_additional_phone,
+                                  user_details.number_of_additional_whatsapp, user_details.additional_1, user_details.additional_2,
+                                  user_details.additional_3,user_details.country_0,user_details.country_1,
+                                  user_details.country_2, user_details.country_3, user_details.country_4,user_details.housing_type,
+                                  user_details.housing_conditions, user_details.Country,user_details.State,
+                                  user_details.City, user_details.home_address, user_details.zip_code)
 
-# def test_academic_records():
-#     academic_details = Academic_Records_Process(academic_page_functions)
-#     academic_details.run_processes(user_details.additional_education,user_details.education_level_1,user_details.education_level_2,user_details.education_level_3,
-#                                    user_details.University_Institution_1,user_details.University_Institution_2,user_details.University_Institution_3,
-#                                    user_details.degree_1,user_details.degree_2,user_details.degree_3,
-#                                    user_details.starting_Date_0,user_details.graduation_Date_0,
-#                                    user_details.starting_Date_1,user_details.graduation_Date_1,
-#                                    user_details.starting_Date_2,user_details.graduation_Date_2,
-#                                    user_details.online_mode_study, user_details.training_type_university, user_details.training_type_employment,
-#                                    user_details.training_type_second_language, user_details.Other_Expertise)
+def test_academic_records():
+    academic_details = Academic_Records_Process(academic_page_functions)
+    academic_details.run_processes(user_details.additional_education,user_details.education_level_1,user_details.education_level_2,user_details.education_level_3,
+                                   user_details.University_Institution_1,user_details.University_Institution_2,user_details.University_Institution_3,
+                                   user_details.degree_1,user_details.degree_2,user_details.degree_3,
+                                   user_details.starting_Date_0,user_details.graduation_Date_0,
+                                   user_details.starting_Date_1,user_details.graduation_Date_1,
+                                   user_details.starting_Date_2,user_details.graduation_Date_2,
+                                   user_details.online_mode_study, user_details.training_type_university, user_details.training_type_employment,
+                                   user_details.training_type_second_language, user_details.Other_Expertise)
 
-# def test_employment_information():
-#     employment_details = Employement_Info_Process(employment_page_functions)
-#     employment_details.run_processes(user_details.currently_working,user_details.Institution_Name, user_details.Position, user_details.Area,
-#                       user_details.work_category, user_details.Activity, user_details.seniority_position, user_details.Monthly_Salary,
-#                         user_details.Emp_Country, user_details.Emp_State, user_details.Emp_City, user_details.Zip_Code, user_details.Address,
-#                                      user_details.Landline_Phone, user_details.Phone_Mobile, user_details.Website, user_details.Mobile_Nation, user_details.Landline_Nation)
-
-
-# def test_reference_page():
-#     references_page = Reference_Process(reference_page_functions)
-#     references_page.run_processes(user_details.additional_references, user_details.ref1_FirstName, user_details.ref1_LastName,
-#                                   user_details.ref1_Pos_Occupation, user_details.ref1_email, user_details.ref1_phone_number,
-#                                   user_details.ref1_landline_number, user_details.ref1_phone_CC, user_details.ref1_landline_CC,
-#                                   user_details.ref2_FirstName, user_details.ref2_LastName, user_details.ref2_Pos_Occupation, user_details.ref2_email,
-#                                   user_details.ref2_phone_number, user_details.ref2_landline_number,
-#                                   user_details.ref2_phone_CC, user_details.ref2_landline_CC, user_details.ref3_FirstName, user_details.ref3_LastName, user_details.ref3_Pos_Occupation,
-#                                   user_details.ref3_email, user_details.ref3_phone_number, user_details.ref3_landline_number, user_details.ref3_phone_CC, user_details.ref3_landline_CC,
-#                                   user_details.ref4_FirstName, user_details.ref4_LastName, user_details.ref4_Pos_Occupation, user_details.ref4_email, user_details.ref4_phone_number,
-#                                   user_details.ref4_landline_number, user_details.ref4_phone_CC, user_details.ref4_landline_CC,user_details.ref5_FirstName, user_details.ref5_LastName,
-#                                   user_details.ref5_Pos_Occupation, user_details.ref5_email, user_details.ref5_phone_number,user_details.ref5_landline_number,
-#                                   user_details.ref5_phone_CC, user_details.ref5_landline_CC)
-
-# def test_documents_upload_page():
-#     documents_upload = Documents_Page_Process(document_page_functions)
-#     documents_upload.run_processes(user_details.Passport_File, user_details.Curriculum_File,user_details.Letter_Of_Motive,user_details.Other_Document,user_details.have_degree_checkbox,user_details.Degree,
-#                                    user_details.Transcript, user_details.Graduation_Certificate, user_details.Letter_Of_Commitment)
-
-# def test_additional_info_page():
-#     addition_info = Additional_Info_Process(additional_page_functions)
-#     addition_info.run_processes(user_details.additional_type,user_details.Text_Additional_field)
-
-# def test_submit_page():
-#     submit_page = Summary_Process(submit_report_page_functions)
-#     submit_page.run_process()
-
-# def test_final_submit():
-#     final_submit = Submitted_Page_Process(final_page_functions)
-#     final_submit.run_process()
+def test_employment_information():
+    employment_details = Employement_Info_Process(employment_page_functions)
+    employment_details.run_processes(user_details.currently_working,user_details.Institution_Name, user_details.Position, user_details.Area,
+                      user_details.work_category, user_details.Activity, user_details.seniority_position, user_details.Monthly_Salary,
+                        user_details.Emp_Country, user_details.Emp_State, user_details.Emp_City, user_details.Zip_Code, user_details.Address,
+                                     user_details.Landline_Phone, user_details.Phone_Mobile, user_details.Website, user_details.Mobile_Nation, user_details.Landline_Nation)
 
 
-test_login_process()
-test_welcome_page()
-test_personal_details()
+def test_reference_page():
+    references_page = Reference_Process(reference_page_functions)
+    references_page.run_processes(user_details.additional_references, user_details.ref1_FirstName, user_details.ref1_LastName,
+                                  user_details.ref1_Pos_Occupation, user_details.ref1_email, user_details.ref1_phone_number,
+                                  user_details.ref1_landline_number, user_details.ref1_phone_CC, user_details.ref1_landline_CC,
+                                  user_details.ref2_FirstName, user_details.ref2_LastName, user_details.ref2_Pos_Occupation, user_details.ref2_email,
+                                  user_details.ref2_phone_number, user_details.ref2_landline_number,
+                                  user_details.ref2_phone_CC, user_details.ref2_landline_CC, user_details.ref3_FirstName, user_details.ref3_LastName, user_details.ref3_Pos_Occupation,
+                                  user_details.ref3_email, user_details.ref3_phone_number, user_details.ref3_landline_number, user_details.ref3_phone_CC, user_details.ref3_landline_CC,
+                                  user_details.ref4_FirstName, user_details.ref4_LastName, user_details.ref4_Pos_Occupation, user_details.ref4_email, user_details.ref4_phone_number,
+                                  user_details.ref4_landline_number, user_details.ref4_phone_CC, user_details.ref4_landline_CC,user_details.ref5_FirstName, user_details.ref5_LastName,
+                                  user_details.ref5_Pos_Occupation, user_details.ref5_email, user_details.ref5_phone_number,user_details.ref5_landline_number,
+                                  user_details.ref5_phone_CC, user_details.ref5_landline_CC)
+
+def test_documents_upload_page():
+    documents_upload = Documents_Page_Process(document_page_functions)
+    documents_upload.run_processes(user_details.Passport_File, user_details.Curriculum_File,user_details.Letter_Of_Motive,user_details.Other_Document,user_details.have_degree_checkbox,user_details.Degree,
+                                   user_details.Transcript, user_details.Graduation_Certificate, user_details.Letter_Of_Commitment)
+
+def test_additional_info_page():
+    addition_info = Additional_Info_Process(additional_page_functions)
+    addition_info.run_processes(user_details.additional_type,user_details.Text_Additional_field)
+
+def test_submit_page():
+    submit_page = Summary_Process(submit_report_page_functions)
+    submit_page.run_process()
+
+def test_final_submit():
+    final_submit = Submitted_Page_Process(final_page_functions)
+    final_submit.run_process()
+
+
+# test_login_process()
+# test_welcome_page()
+# test_personal_details()
 # test_address_details()
 # test_academic_records()
 # test_employment_information()

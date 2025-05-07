@@ -2,7 +2,7 @@ class Personal_Details_Process:
     def __init__(self, personal_details):
         self.personal_details = personal_details
 
-    def run_process(self, document_type, Document_number, Martial_status, Profession, Date_Of_Birth, Country, State, City, Nationality, Monthly_Income, Monthly_Expense, Financially_Dependent, Has_Children, Range_0to4, Range_5to12, Range_13to18, Range_18plus):
+    def run_process(self, document_type, Document_number, Martial_status, Profession, Date_Of_Birth,Country, State, City, Nationality, Monthly_Income, Monthly_Expense, Financially_Dependent, Has_Children, Range_0to4, Range_5to12, Range_13to18, Range_18plus):
         self.personal_details.document_type_selection(document_type)
         self.personal_details.document_number(Document_number)
         self.personal_details.martial_Status(Martial_status)

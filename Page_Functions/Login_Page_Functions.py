@@ -12,7 +12,7 @@ time_long = user_details.time_long
 class Login_Page(LoginPage):
 
     def select_language(self, selected_language):
-        WebDriverWait(self.driver, 12).until(EC.presence_of_element_located(self.Language_Button))
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.Access_Code))
         
         selected_language_button = self.driver.find_element(*self.Language_Button)
         

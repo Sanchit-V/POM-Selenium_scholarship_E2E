@@ -16,7 +16,7 @@ with open('user_details.json') as f:
 
 url = "https://sales-scholarship-application-requests-develop-iymj66chvq-uc.a.run.app/"  #http://host.docker.internal:80/"  "localhost:80/"
 selected_language = 1     # 1 for English, 0 for Spanish
-Base_Folder_Path = "C:\\Users\\Sanchit\\Desktop\\scholarship-POM_E2E\\Upload_Files"
+Base_Folder_Path = "/home/seluser/Local_Paste_Files"
 number_of_pdf = 15
 number_of_jpg = 9
 

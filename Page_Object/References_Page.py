@@ -3,7 +3,7 @@ By=Import_libraries.By
 
 class ReferencesPage:
     def __init__(self, driver):
-        self.driver =  Import_libraries.driver
+        self.driver =  Import_libraries._driver
 
         self.add_reference = By.CSS_SELECTOR, '[data-test-id="label-add-references"]'
 

@@ -116,7 +116,7 @@ class Personal_Details(PersonalDetails):
 
         enter_DOB.send_keys(Date_Of_Birth)
 
-        #time.sleep(time_med)
+        time.sleep(time_med)
 
     def Applicant_Nation(self, Country):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.Country))
@@ -218,7 +218,7 @@ class Personal_Details(PersonalDetails):
         time.sleep(time_long)
 
 
-    def Has_Children(self, Has_Children):                  #
+    def Has_Children(self, Has_Children):                  
         has_children = self.driver.find_element(*self.has_Children)
         does_not_have_children = self.driver.find_element(*self.does_Not_Have_Children)
         if Has_Children == 1:

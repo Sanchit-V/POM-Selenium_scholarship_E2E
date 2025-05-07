@@ -1,6 +1,8 @@
 
 import os
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 class Import_libraries:
     
@@ -11,32 +13,47 @@ class Import_libraries:
     from google.cloud import translate_v2 as translate
     from selenium.webdriver import Remote
     
-    
-    driver = None
+    _driver = None
+    keep_browser_open = True
 
-    @staticmethod
-    def initialize_driver():
-        """
-        Initialize a Selenium Remote WebDriver, reading the Grid hub URL
-        from the SELENIUM_HUB_URL environment variable (with default).
-        """
-        # Read hub URL from environment, fallback to 'selenium' for Docker Compose
-        hub_url = os.getenv("SELENIUM_HUB_URL", "http://selenium:4444/wd/hub")
+    @classmethod
+    def get_driver(cls):
+        if cls._driver is None:
+            # Check if we should use a remote Selenium server
+            remote_url = os.environ.get('SELENIUM_REMOTE_URL')
 
-        # Configure Chrome options
-        options = Options()
-        options.add_argument('--headless')       # run without GUI
-        options.add_argument('--no-sandbox')     # needed in many Linux CI environments
-        options.add_argument('--disable-dev-shm-usage')  # avoid shared memory issues
-        options.add_argument('--window-size=1920,1080')
+            # Check if we should run in headless mode
+            headless = os.environ.get('SELENIUM_HEADLESS', '0') == '1'
 
-        # Instantiate Remote WebDriver
-        Import_libraries.driver = webdriver.Remote(
-            command_executor=hub_url,
-            options=options
-        )
-        return Import_libraries.driver
+            if remote_url:
+                print(f"Using remote Selenium server at {remote_url}")
+                options = Options()
+                if headless:
+                    options.add_argument('--headless')
+                    print("Running in headless mode")
 
+                cls._driver = webdriver.Remote(
+                    command_executor=remote_url,
+                    options=options
+                )
+            else:
+                print("Using local Chrome driver")
+                options = Options()
+                if headless:
+                    options.add_argument('--headless')
+                    print("Running in headless mode")
+
+                service = Service(ChromeDriverManager().install())
+                cls._driver = webdriver.Chrome(service=service, options=options)
+
+            cls._driver.maximize_window()
+        return cls._driver
+
+    @classmethod
+    def quit_driver(cls):
+        if not cls.keep_browser_open and cls._driver is not None:
+            cls._driver.quit()
+            cls._driver = None
 
 
 

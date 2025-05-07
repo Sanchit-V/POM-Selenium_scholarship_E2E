@@ -21,21 +21,21 @@ class Documents_Page(DocumentsPage):
     Extends DocumentsPage to handle file uploads via PyAutoGUI
     in a headless environment using a virtual display.
     """
-    def __init__(self, driver):
-        super().__init__(driver)
-        # Start virtual X display for PyAutoGUI
-        self._disp = Display(visible=False, size=(1920, 1080), backend="xvfb")
-        self._disp.start()
-        os.environ['DISPLAY'] = self._disp.new_display_var
+    # def __init__(self, driver):
+    #     super().__init__(driver)
+    #     # Start virtual X display for PyAutoGUI
+    #     self._disp = Display(visible=False, size=(1920, 1080), backend="xvfb")
+    #     self._disp.start()
+    #     os.environ['DISPLAY'] = self._disp.new_display_var
 
-    def _get_pyautogui(self):
-        # Import and attach PyAutoGUI to the virtual display
-        import pyautogui
-        pyautogui._pyautogui_x11._display = Xlib.display.Display(os.environ['DISPLAY'])
-        return pyautogui
+    # def _get_pyautogui(self):
+    #     # Import and attach PyAutoGUI to the virtual display
+    #     import pyautogui
+    #     pyautogui._pyautogui_x11._display = Xlib.display.Display(os.environ['DISPLAY'])
+    #     return pyautogui
 
     def ID_Passport(self, Passport_File):
-        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.bttn_id_passport))
+        # WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.bttn_id_passport))
         try:
             self.driver.find_element(*self.bttn_id_passport).click()
             time.sleep(time_med)

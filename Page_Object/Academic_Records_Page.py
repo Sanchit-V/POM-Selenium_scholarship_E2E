@@ -3,7 +3,7 @@ By=Import_libraries.By
 
 class AcademicRecords:
     def __init__(self, driver):
-        self.driver = Import_libraries.driver
+        self.driver = Import_libraries._driver
 
         self.add_education = By.CSS_SELECTOR, '[data-test-id="button-add-education-details-text"]'
 

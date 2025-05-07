@@ -3,7 +3,7 @@ By=Import_libraries.By
 
 class AdditionalInfo:
     def __init__(self, driver):
-        self.driver = Import_libraries.driver
+        self.driver = Import_libraries._driver
         self.google = By.CSS_SELECTOR, '[data-test-id="radio-input-additional-information-knowledge-pathway-no"][value="GOOGLE"]'
         self.facebook = By.CSS_SELECTOR, '[data-test-id="radio-input-additional-information-knowledge-pathway-no"][value="FACEBOOK"]'
         self.instagram = By.CSS_SELECTOR, '[data-test-id="radio-input-additional-information-knowledge-pathway-no"][value="INSTAGRAM"]'
