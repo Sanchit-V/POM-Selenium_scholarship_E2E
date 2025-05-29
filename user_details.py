@@ -8,6 +8,7 @@ from dateutil.relativedelta import relativedelta
 from deep_translator import GoogleTranslator
 from faker import Faker
 import json
+import os
 
 fake = Faker()
 
@@ -16,7 +17,7 @@ with open('user_details.json') as f:
 
 url = "https://sales-scholarship-application-requests-develop-iymj66chvq-uc.a.run.app/"  #http://host.docker.internal:80/"  "localhost:80/"
 selected_language = 1     # 1 for English, 0 for Spanish
-Base_Folder_Path = "/home/seluser/Local_Paste_Files"
+Base_Folder_Path = "/home/seluser/Upload_Files"
 number_of_pdf = 15
 number_of_jpg = 9
 
@@ -293,50 +294,34 @@ Mobile_Nation = random.choice(json_data['countries_visited']) #fake.country()
 
 
 def pdf_file_path():
-    random_number= random.randint(1, number_of_pdf)
-    return random_number
+    random_number = random.randint(1, number_of_pdf)
+    return str(random_number)
 
 def jpg_file_path():
     random_number = random.randint(1, number_of_jpg)
     return "a" + str(random_number)
 
+# Generate file paths using os.path.join for proper path handling
 if file_type == 0:
-    Passport_File = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
-    print(Passport_File)
-    Curriculum_File = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
-    print(Curriculum_File)
-    Letter_Of_Motive = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
-    print(Letter_Of_Motive)
-    Other_Document = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
-    print(Other_Document)
-    Degree = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
-    print(Degree)
-    Transcript = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
-    print(Transcript)
-    Graduation_Certificate = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
-    print(Graduation_Certificate)
-    Letter_Of_Commitment = Base_Folder_Path + "\\" + str(pdf_file_path()) + ".pdf"
-    print(Letter_Of_Commitment)
-
-elif file_type == 1:
-    Passport_File = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
-    print(Passport_File)
-    Curriculum_File = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
-    print(Curriculum_File)
-    Letter_Of_Motive = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
-    print(Letter_Of_Motive)
-    Other_Document = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
-    print(Other_Document)
-    Degree = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
-    print(Degree)
-    Transcript = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
-    print(Transcript)
-    Graduation_Certificate = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
-    print(Graduation_Certificate)
-    Letter_Of_Commitment = Base_Folder_Path + "\\" + str(jpg_file_path()) + ".jpg"
-    print(Letter_Of_Commitment)
-
-
+    # For PDF files
+    Passport_File = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+    Curriculum_File = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+    Letter_Of_Motive = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+    Other_Document = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+    Degree = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+    Transcript = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+    Graduation_Certificate = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+    Letter_Of_Commitment = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+else:
+    # For JPG files
+    Passport_File = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+    Curriculum_File = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+    Letter_Of_Motive = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+    Other_Document = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+    Degree = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+    Transcript = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+    Graduation_Certificate = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+    Letter_Of_Commitment = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
 
 
 

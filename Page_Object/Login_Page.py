@@ -12,4 +12,5 @@ class LoginPage:
         self.Language_Spanish = By.CSS_SELECTOR, '[data-test-id="li-es-ES-language"]'
         self.Login_Button = By.CSS_SELECTOR,'[data-test-id="btn-submit-login"]'
         self.Visible_Icon = By.CSS_SELECTOR, '[data-test-id="icon-visibility-on-access-code-login"]'
+        self.red_docs = By.CSS_SELECTOR, '[data-test-id="label-step-Documents"]'
 
