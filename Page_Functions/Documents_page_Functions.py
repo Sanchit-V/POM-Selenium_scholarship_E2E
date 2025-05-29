@@ -123,8 +123,44 @@ class Documents_Page(DocumentsPage):
 
 
     def Have_degree_checkbox(self, have_degree_checkbox):
-        # ... (unchanged) ...
-        pass  # retain existing logic here
+        try:
+            unchecked_degree = self.driver.find_element(*self.unchecked_degree_box)
+            if unchecked_degree:
+                try:
+                    if have_degree_checkbox == 0:
+                        checkbox = self.driver.find_element(*self.checkbox_no_degree)
+                        checkbox.click()
+                        time.sleep(time_short)
+
+                    else:
+                        print('Applicant has degree')
+
+                except:
+                    print('Already checked.')
+
+        except:
+            print('Web element not found.')
+
+
+        try:
+            checked_degree = self.driver.find_element(*self.checked_degree_box)
+            if checked_degree:
+                try:
+                    if have_degree_checkbox == 1:
+                        checkbox = self.driver.find_element(*self.checkbox_no_degree)
+                        checkbox.click()
+                        time.sleep(time_short)
+
+                    else:
+                        print('Applicant does not have a degree')
+
+                except:
+                    print('Already un-checked.')
+
+        except:
+            print('Web element not found.')
+
+    time.sleep(time_short)
 
     def deGree(self, Degree):
         try:
@@ -154,43 +190,131 @@ class Documents_Page(DocumentsPage):
 
     def transCript(self, Transcript):
         try:
-            self.driver.find_element(*self.transcript).click()
-            time.sleep(time_med)
-            pag = self._get_pyautogui()
-            pag.write(Transcript)
+            wait = WebDriverWait(self.driver, 10)
+            upload_button = wait.until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-test-id='upload-btn-documents-transcript-of-records']"))
+            )
+
+            upload_button.click()
+
+            file_input = wait.until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "input[data-test-id='input-documents-transcript-of-records']")))
+
+            file_input.send_keys("/home/seluser/Upload_Files/6.pdf")
             time.sleep(time_short)
-            pag.press('enter')
-            time.sleep(time_short)
-        except Exception:
+
+        except Exception as e:
+            print("Could not upload Transcript document:", e)
             self._take_screenshot("Transcript document")
 
     def graDuation(self, Graduation_Certificate):
         try:
-            self.driver.find_element(*self.graduate_certificate).click()
-            time.sleep(time_med)
-            pag = self._get_pyautogui()
-            pag.write(Graduation_Certificate)
+            wait = WebDriverWait(self.driver, 10)
+            upload_button = wait.until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-test-id='upload-btn-documents-graduation-certificates']"))
+            )
+
+            upload_button.click()
+
+            file_input = wait.until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "input[data-test-id='input-documents-graduation-certificates']")))
+
+            file_input.send_keys("/home/seluser/Upload_Files/7.pdf")
             time.sleep(time_short)
-            pag.press('enter')
-            time.sleep(time_short)
-        except Exception:
+
+        except Exception as e:
+            print("Could not upload Graduation document:", e)
             self._take_screenshot("Graduation document")
+
+
 
     def LoM(self, Letter_Of_Commitment):
         try:
-            self.driver.find_element(*self.letter_of_commitment).click()
-            time.sleep(time_med)
-            pag = self._get_pyautogui()
-            pag.write(Letter_Of_Commitment)
+            wait = WebDriverWait(self.driver, 10)
+            upload_button = wait.until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-test-id='upload-btn-documents-letter-of-commitment']"))
+            )
+
+            upload_button.click()
+
+            file_input = wait.until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "input[data-test-id='input-documents-letter-of-commitment']")))
+
+            file_input.send_keys("/home/seluser/Upload_Files/8.pdf")
             time.sleep(time_short)
-            pag.press('enter')
-            time.sleep(time_short)
-        except Exception:
-            self._take_screenshot("LOM document")
+
+        except Exception as e:
+            print("Could not upload Letter_Of_Commitment document:", e)
+            self._take_screenshot("Letter_Of_Commitment")
+
 
     def delete_documents(self):
-        # ... (unchanged) ...
-        pass
+        try:
+            del_Id_pass = self.driver.find_element(*self.bttn_delete_id_passport)
+            del_Id_pass.click()
+            time.sleep(time_short)
+
+        except:
+            print("No file to be deleted(Passport).")
+
+        try:
+            del_Curriculum  = self.driver.find_element(*self.bttn_delete_curriculum)
+            del_Curriculum.click()
+            time.sleep(time_short)
+
+        except:
+            print("No file to be deleted(Curriculum).")
+
+        try:
+            del_Letter_of_motive  = self.driver.find_element(*self.bttn_delete_letter_of_motive)
+            del_Letter_of_motive.click()
+            time.sleep(time_short)
+
+        except:
+            print("No file to be deleted(LOM).")
+
+        try:
+            del_other_files  = self.driver.find_element(*self.bttn_delete_other_documents)
+            del_other_files.click()
+            time.sleep(time_short)
+
+        except:
+            print("No file to be deleted(Other Files).")
+
+        try:
+            del_degree = self.driver.find_element(*self.bttn_delete_degree)
+            del_degree.click()
+            time.sleep(time_short)
+
+        except:
+            print("No file to be deleted(Degree).")
+
+        try:
+            del_transcript = self.driver.find_element(*self.bttn_delete_transcript)
+            del_transcript.click()
+            time.sleep(time_short)
+
+        except:
+            print("No file to be deleted(Transcript).")
+
+        try:
+            del_graduation = self.driver.find_element(*self.bttn_delete_graduation_certificate)
+            del_graduation .click()
+            time.sleep(time_short)
+
+        except:
+            print("No file to be deleted(Graduation).")
+
+        try:
+            del_commitment = self.driver.find_element(*self.bttn_delete_letter_of_commitment)
+            del_commitment.click()
+            time.sleep(time_short)
+
+        except:
+            print("No file to be deleted.(Commitment)")
+
+    time.sleep(time_short)
+
 
     def continue_documents(self):
         time.sleep(time_long)
