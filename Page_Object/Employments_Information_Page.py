@@ -25,7 +25,7 @@ class EmploymentInformation:
         self.five_year = By.CSS_SELECTOR, '[data-test-id="li-employment-information-seniority-in-position-fiveYears"]'
         self.six_or_more = By.CSS_SELECTOR, '[data-test-id="li-employment-information-seniority-in-position-sixOrMoreYears"]'
 
-        self.monthly_salary_emp = By.CSS_SELECTOR, '[data-test-id="input-personal-monthly-expense"]'
+        self.monthly_salary_emp = By.CSS_SELECTOR, '[data-test-id="input-employment-monthly-salary"]'
 
         self.country = By.CSS_SELECTOR, '[data-test-id="autocomplete-input-employment-address-country"]'
         self.state = By.CSS_SELECTOR, '[data-test-id="autocomplete-input-employment-address-state"]'

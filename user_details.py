@@ -15,8 +15,8 @@ fake = Faker()
 with open('user_details.json') as f:
      json_data = json.load(f)
 
-url = "https://sales-scholarship-application-requests-develop-iymj66chvq-uc.a.run.app/"  #http://host.docker.internal:80/"  "localhost:80/"
-selected_language = 1     # 1 for English, 0 for Spanish
+url = "https://sales-scholarship-application-requests-develop-iymj66chvq-uc.a.run.app/" #"https://sales-scholarship-application-requests-develop-iymj66chvq-uc.a.run.app/"  #http://host.docker.internal:80/"  "localhost:80/"
+selected_language = 0     # 1 for English, 0 for Spanish
 Base_Folder_Path = "/home/seluser/Upload_Files"
 number_of_pdf = 15
 number_of_jpg = 9
@@ -24,6 +24,7 @@ number_of_jpg = 9
 
 document_type = random.randint(1, 5) # 1 for NIC # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
 Martial_status = random.randint(1, 5) # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
+Currency = random.randint(1, 26)
 Financially_Dependent = random.randint(0, 1)   # 0 for No    # 1 for Yes
 Has_Children = random.randint(0, 1)   # 0 for No     # 1 for Yes
 additional_emails_to_be_added = random.randint(1, 5)

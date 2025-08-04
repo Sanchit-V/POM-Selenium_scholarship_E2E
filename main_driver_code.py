@@ -83,7 +83,7 @@ def test_personal_details():
     personal_details.run_process(user_details.document_type, user_details.Document_number, user_details.Martial_status,
                                  user_details.Profession, user_details.Date_Of_Birth,
                                  user_details.Country, user_details.State, user_details.City, user_details.Nationality,
-                                 user_details.Monthly_Income,
+                                 user_details.Currency,user_details.Monthly_Income,
                                  user_details.Monthly_Expense, user_details.Financially_Dependent,
                                  user_details.Has_Children, user_details.Range_0to4,
                                  user_details.Range_5to12, user_details.Range_13to18, user_details.Range_18plus) 
@@ -149,17 +149,7 @@ def test_final_submit():
     final_submit.run_process()
 
 
-# test_login_process()
-# test_welcome_page()
-# test_personal_details()
-# test_address_details()
-# test_academic_records()
-# test_employment_information()
-# test_reference_page()
-# test_documents_upload_page()
-# test_additional_info_page()
-# test_submit_page()
-# test_final_submit()
+
 
 
 
