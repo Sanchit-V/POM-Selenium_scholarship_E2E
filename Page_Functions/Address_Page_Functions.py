@@ -64,43 +64,23 @@ class Address_Page(AddressPage):
 
     def email_add(self, email_Ids, additional_emails_to_be_added):
 
-        if additional_emails_to_be_added == 1:
+        if additional_emails_to_be_added >= 1:
             self.driver.find_element(*self.add_email_dialogue_box_0).click()
             self.driver.find_element(*self.add_email_dialogue_box_0).send_keys(email_Ids[0])
 
-        elif additional_emails_to_be_added == 2:
-            self.driver.find_element(*self.add_email_dialogue_box_0).click()
-            self.driver.find_element(*self.add_email_dialogue_box_0).send_keys(email_Ids[0])
+        if additional_emails_to_be_added >= 2:
             self.driver.find_element(*self.add_email_dialogue_box_1).click()
             self.driver.find_element(*self.add_email_dialogue_box_1).send_keys(email_Ids[1])
 
-        elif additional_emails_to_be_added == 3:
-            self.driver.find_element(*self.add_email_dialogue_box_0).click()
-            self.driver.find_element(*self.add_email_dialogue_box_0).send_keys(email_Ids[0])
-            self.driver.find_element(*self.add_email_dialogue_box_1).click()
-            self.driver.find_element(*self.add_email_dialogue_box_1).send_keys(email_Ids[1])
+        if additional_emails_to_be_added >= 3:
             self.driver.find_element(*self.add_email_dialogue_box_2).click()
             self.driver.find_element(*self.add_email_dialogue_box_2).send_keys(email_Ids[2])
 
-        elif additional_emails_to_be_added == 4:
-            self.driver.find_element(*self.add_email_dialogue_box_0).click()
-            self.driver.find_element(*self.add_email_dialogue_box_0).send_keys(email_Ids[0])
-            self.driver.find_element(*self.add_email_dialogue_box_1).click()
-            self.driver.find_element(*self.add_email_dialogue_box_1).send_keys(email_Ids[1])
-            self.driver.find_element(*self.add_email_dialogue_box_2).click()
-            self.driver.find_element(*self.add_email_dialogue_box_2).send_keys(email_Ids[2])
+        if additional_emails_to_be_added >= 4:
             self.driver.find_element(*self.add_email_dialogue_box_3).click()
             self.driver.find_element(*self.add_email_dialogue_box_3).send_keys(email_Ids[3])
 
-        elif additional_emails_to_be_added == 5:
-            self.driver.find_element(*self.add_email_dialogue_box_0).click()
-            self.driver.find_element(*self.add_email_dialogue_box_0).send_keys(email_Ids[0])
-            self.driver.find_element(*self.add_email_dialogue_box_1).click()
-            self.driver.find_element(*self.add_email_dialogue_box_1).send_keys(email_Ids[1])
-            self.driver.find_element(*self.add_email_dialogue_box_2).click()
-            self.driver.find_element(*self.add_email_dialogue_box_2).send_keys(email_Ids[2])
-            self.driver.find_element(*self.add_email_dialogue_box_3).click()
-            self.driver.find_element(*self.add_email_dialogue_box_3).send_keys(email_Ids[3])
+        if additional_emails_to_be_added >= 5:
             self.driver.find_element(*self.add_email_dialogue_box_4).click()
             self.driver.find_element(*self.add_email_dialogue_box_4).send_keys(email_Ids[4])
 

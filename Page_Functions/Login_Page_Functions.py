@@ -1,9 +1,12 @@
+from Page_Object.Personal_Deltails import By
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
 import user_details
 from Page_Object.Login_Page import LoginPage
+
 
 time_short = user_details.time_short
 time_med = user_details.time_med
@@ -55,3 +58,4 @@ class Login_Page(LoginPage):
 
 
         time.sleep(time_long)
+

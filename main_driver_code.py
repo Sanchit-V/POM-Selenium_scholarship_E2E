@@ -1,11 +1,12 @@
 import time
 
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 from Page_Functions.Academic_Records_Functions import Academic_Records
 from Page_Functions.Address_Page_Functions import Address_Page
 from Page_Functions.Documents_page_Functions import Documents_Page
-from Page_Functions.Employments_Information_Functions import Employmet_Information
+from Page_Functions.Employments_Information_Functions import Employmet_Information, time_short
 from Page_Functions.Login_Page_Functions import Login_Page
 from Page_Functions.PersonalDetails_Page_Functions import Personal_Details
 from Page_Functions.References_Page_Functions import References
@@ -72,8 +73,8 @@ def test_personal_details():
     personal_details = Personal_Details_Process(personal_details_functions)
     personal_details.run_process(user_details.document_type, user_details.Document_number, user_details.Martial_status,
                                  user_details.Profession, user_details.Date_Of_Birth,
-                                 user_details.Country, user_details.State, user_details.City, user_details.Nationality,
-                                 user_details.Monthly_Income,
+                                 user_details.Country, user_details.State, user_details.City, user_details.Nationality
+                                 ,user_details.Currency,user_details.Monthly_Income,
                                  user_details.Monthly_Expense, user_details.Financially_Dependent,
                                  user_details.Has_Children, user_details.Range_0to4,
                                  user_details.Range_5to12, user_details.Range_13to18, user_details.Range_18plus)
@@ -99,12 +100,13 @@ def test_academic_records():
                                    user_details.online_mode_study, user_details.training_type_university, user_details.training_type_employment,
                                    user_details.training_type_second_language, user_details.Other_Expertise)
 
+
 def test_employment_information():
     employment_details = Employement_Info_Process(employment_page_functions)
     employment_details.run_processes(user_details.currently_working,user_details.Institution_Name, user_details.Position, user_details.Area,
-                      user_details.work_category, user_details.Activity, user_details.seniority_position, user_details.Monthly_Salary,
-                        user_details.Emp_Country, user_details.Emp_State, user_details.Emp_City, user_details.Zip_Code, user_details.Address,
-                                     user_details.Landline_Phone, user_details.Phone_Mobile, user_details.Website, user_details.Mobile_Nation, user_details.Landline_Nation)
+                      user_details.work_category, user_details.Activity, user_details.seniority_position, user_details.Monthly_Salary,user_details.Emp_Country,
+                        user_details.Emp_State, user_details.Emp_City, user_details.Zip_Code, user_details.Address,
+                        user_details.Landline_Phone, user_details.Phone_Mobile, user_details.Website, user_details.Mobile_Nation, user_details.Landline_Nation)
 
 
 def test_reference_page():

@@ -28,7 +28,7 @@ class Employmet_Information(EmploymentInformation):
         else:
             print('Wrong input given.')
 
-    def position_info(self, Institution_Name, Position, Area, work_category, Activity, seniority_position, Monthly_Salary):
+    def position_info(self, Institution_Name, Position, Area, work_category, Activity, seniority_position,Monthly_Salary):
         try:
             Institution_name = self.driver.find_element(*self.institution_name)
             Institution_name.click()
@@ -145,6 +145,123 @@ class Employmet_Information(EmploymentInformation):
             print('Seniority section not available.')
 
         try:
+        #     Employment_Currency = self.driver.find_element(*self.currency_employment)
+        #     Employment_Currency.click()
+        #     time.sleep(time_med)
+        #
+        #     print("***********"+Currency)
+        #
+        #     if Currency == 1:
+        #         ARS = self.driver.find_element(*self.currency_code_ARS)
+        #         ARS.click()
+        #
+        #     elif Currency == 2:
+        #         BOB = self.driver.find_element(*self.currency_code_BOB)
+        #         BOB.click()
+        #
+        #     elif Currency == 3:
+        #         BRL = self.driver.find_element(*self.currency_code_BRL)
+        #         BRL.click()
+        #
+        #     elif Currency == 4:
+        #         CLP = self.driver.find_element(*self.currency_code_COP)
+        #         CLP.click()
+        #
+        #     elif Currency == 5:
+        #         USD = self.driver.find_element(*self.currency_code_USD)
+        #         USD.click()
+        #
+        #     elif Currency == 6:
+        #         EUR = self.driver.find_element(*self.currency_code_EUR)
+        #         EUR.click()
+        #
+        #     elif Currency == 7:
+        #         MXN = self.driver.find_element(*self.currency_code_MXN)
+        #         MXN.click()
+        #
+        #     elif Currency == 8:
+        #         PAB = self.driver.find_element(*self.currency_code_PAB)
+        #         PAB.click()
+        #
+        #     elif Currency == 9:
+        #         PEN = self.driver.find_element(*self.currency_code_PEN)
+        #         PEN.click()
+        #
+        #     elif Currency == 10:
+        #         GTQ = self.driver.find_element(*self.currency_code_GTQ)
+        #         GTQ.click()
+        #
+        #     elif Currency == 11:
+        #         UYU = self.driver.find_element(*self.currency_code_UYU)
+        #         UYU.click()
+        #
+        #     elif Currency == 12:
+        #         C = self.driver.find_element(*self.currency_code_C)
+        #         C.click()
+        #
+        #     elif Currency == 13:
+        #         DOP = self.driver.find_element(*self.currency_code_DOP)
+        #         DOP.click()
+        #
+        #     elif Currency == 14:
+        #         AOA = self.driver.find_element(*self.currency_code_AOA)
+        #         AOA.click()
+        #
+        #     elif Currency == 15:
+        #         CVE = self.driver.find_element(*self.currency_code_CVE)
+        #         CVE.click()
+        #
+        #     elif Currency == 16:
+        #         MZN = self.driver.find_element(*self.currency_code_MZN)
+        #         MZN.click()
+        #
+        #     elif Currency == 17:
+        #         VEF = self.driver.find_element(*self.currency_code_VEF)
+        #         VEF.click()
+        #
+        #     elif Currency == 18:
+        #         PYG = self.driver.find_element(*self.currency_code_PYG)
+        #         PYG.click()
+        #
+        #     elif Currency == 19:
+        #         HNL = self.driver.find_element(*self.currency_code_HNL)
+        #         HNL.click()
+        #
+        #     elif Currency == 20:
+        #         NIO = self.driver.find_element(*self.currency_code_NIO)
+        #         NIO.click()
+        #
+        #     elif Currency == 21:
+        #         XAF = self.driver.find_element(*self.currency_code_XAF)
+        #         XAF.click()
+        #
+        #     elif Currency == 22:
+        #         XOF = self.driver.find_element(*self.currency_code_XOF)
+        #         XOF.click()
+        #
+        #     elif Currency == 23:
+        #         BLU = self.driver.find_element(*self.currency_code_BLU)
+        #         BLU.click()
+        #
+        #     elif Currency == 24:
+        #         COP = self.driver.find_element(*self.currency_code_COP)
+        #         COP.click()
+        #
+        #     elif Currency == 25:
+        #         SIM = self.driver.find_element(*self.currency_code_SIM)
+        #         SIM.click()
+        #
+        #     elif Currency == 26:
+        #         VES = self.driver.find_element(*self.currency_code_VES)
+        #         VES.click()
+        #
+        #     else:
+        #         print('Wrong Input')
+        #
+        #     time.sleep(time_med)
+
+
+
             Monthly_salary = self.driver.find_element(*self.monthly_salary_emp)
             Monthly_salary.click()
             time.sleep(time_short)

@@ -3,7 +3,7 @@ import calendar
 import random
 import string
 from datetime import datetime
-
+from datetime import date
 from dateutil.relativedelta import relativedelta
 from deep_translator import GoogleTranslator
 from faker import Faker
@@ -14,15 +14,16 @@ fake = Faker()
 with open('user_details.json') as f:
      json_data = json.load(f)
 
-url = "http://localhost:80/"
-selected_language = 1     # 1 for English, 0 for Spanish
-Base_Folder_Path = "C:\\Users\\Sanchit\\Desktop\\scholarship-POM_E2E\\Upload_Files"
+url = "http://localhost:3000/"
+selected_language = 0     # 1 for English, 0 for Spanish
+Base_Folder_Path = "C:\\Users\\Sanchit\\Desktop\\Scholarship_E2E\\Faker\\POM-Selenium_scholarship_E2E\\Upload_Files"
 number_of_pdf = 15
 number_of_jpg = 9
 
 
 document_type = random.randint(1, 5) # 1 for NIC # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
-Martial_status = random.randint(1, 5) # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
+Martial_status = random.randint(1, 5)# 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
+Currency = random.randint(1, 26)
 Financially_Dependent = random.randint(0, 1)   # 0 for No    # 1 for Yes
 Has_Children = random.randint(0, 1)   # 0 for No     # 1 for Yes
 additional_emails_to_be_added = random.randint(1, 5)
@@ -46,11 +47,12 @@ training_type_employment = random.randint(0, 1) # 0 for No, 1 for Yes
 
 training_type_second_language = 1 #random.randint(0, 1) # 0 for No, 1 for Yes
 
-currently_working =   random.randint(0, 1) # 0 for No, 1 for Yes
+currently_working = 1  #random.randint(0, 1) # 0 for No, 1 for Yes
 
 work_category =  random.randint(0, 1) # 1 for Dependent, 0 for Independent
 
 seniority_position = random.randint(1, 6) # Enter digits 1 to 6
+
 
 additional_references = random.randint(0, 2) # Enter digits 0 to 2
 
@@ -60,18 +62,22 @@ time_long = 3
 time_med = 2
 time_short = 1
 
-file_type = random.randint(0, 1)  #0 for .pdf and 1 for .jpg
+file_type = 1 #random.randint(0, 1)  #0 for .pdf and 1 for .jpg
 
 
 access_code = json_data['access_code']
 previous_access_code = json_data['previous_access_code']
 
+today = date.today()
 fake_date = fake.date_object()
+new_year_eighteen = fake_date - relativedelta(years=18)
+fake_date = fake.date_between(start_date='-100y', end_date=new_year_eighteen)
 
-dob_Spanish = fake_date.strftime("%d%m%Y")
+dob_Spanish = new_year_eighteen.strftime("%d%m%Y")
+dob_English = new_year_eighteen.strftime("%m%d%Y")
 
-dob_English = fake_date.strftime("%m%d%Y")
-
+# print(dob_English)
+# print(dob_Spanish)
 
 #Document_number = json_data['Document_number']
 
@@ -88,7 +94,7 @@ Profession = fake.job()
 Country = json_data['Country']
 State = json_data['State']
 City = json_data['City']
-Nationality = random.choice(json_data['countries_visited'])#fake.country()
+Nationality = json_data['Nationality']#random.choice(json_data['countries_visited'])#fake.country()
 
 def generate_financials():
 
