@@ -141,8 +141,8 @@ def test_final_submit():
     final_submit.run_process()
 
 
-
-
+def test_quit_driver():
+    driver.quit()
 
 
 
