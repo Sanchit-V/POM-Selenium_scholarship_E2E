@@ -16,3 +16,4 @@ coverage/
 .cache/
 *.swp
 screenshots
+Pytest_Logs
