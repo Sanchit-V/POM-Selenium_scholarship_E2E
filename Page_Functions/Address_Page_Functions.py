@@ -8,14 +8,14 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 
 import user_details
-from Page_Object.Address_Page import AddressPage
+from Page_Objects.Address_Page import AddressPageObjects
 from user_details import previous_access_code, access_code
 
 time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
 
-class Address_Page(AddressPage):
+class AddressPageFunctions(AddressPageObjects):
     def default_Email(self):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.default_email))
         try:
@@ -63,52 +63,33 @@ class Address_Page(AddressPage):
         else:
             print("No previously added emails found")
 
-    def email_add(self, email_Ids, additional_emails_to_be_added):
+    def add_additional_emails(self, email_ids):
+    # Map index to locators
+        try:
 
-        if additional_emails_to_be_added == 1:
-            self.driver.find_element(*self.add_email_dialogue_box_0).click()
-            self.driver.find_element(*self.add_email_dialogue_box_0).send_keys(email_Ids[0])
+            email_boxes = [
+                self.add_email_dialogue_box_0,
+                self.add_email_dialogue_box_1,
+                self.add_email_dialogue_box_2,
+                self.add_email_dialogue_box_3,
+                self.add_email_dialogue_box_4
+            ]
 
-        elif additional_emails_to_be_added == 2:
-            self.driver.find_element(*self.add_email_dialogue_box_0).click()
-            self.driver.find_element(*self.add_email_dialogue_box_0).send_keys(email_Ids[0])
-            self.driver.find_element(*self.add_email_dialogue_box_1).click()
-            self.driver.find_element(*self.add_email_dialogue_box_1).send_keys(email_Ids[1])
+            if not email_ids:  # empty list check
+                print("No additional mails added, just default is present")
+                return
 
-        elif additional_emails_to_be_added == 3:
-            self.driver.find_element(*self.add_email_dialogue_box_0).click()
-            self.driver.find_element(*self.add_email_dialogue_box_0).send_keys(email_Ids[0])
-            self.driver.find_element(*self.add_email_dialogue_box_1).click()
-            self.driver.find_element(*self.add_email_dialogue_box_1).send_keys(email_Ids[1])
-            self.driver.find_element(*self.add_email_dialogue_box_2).click()
-            self.driver.find_element(*self.add_email_dialogue_box_2).send_keys(email_Ids[2])
-
-        elif additional_emails_to_be_added == 4:
-            self.driver.find_element(*self.add_email_dialogue_box_0).click()
-            self.driver.find_element(*self.add_email_dialogue_box_0).send_keys(email_Ids[0])
-            self.driver.find_element(*self.add_email_dialogue_box_1).click()
-            self.driver.find_element(*self.add_email_dialogue_box_1).send_keys(email_Ids[1])
-            self.driver.find_element(*self.add_email_dialogue_box_2).click()
-            self.driver.find_element(*self.add_email_dialogue_box_2).send_keys(email_Ids[2])
-            self.driver.find_element(*self.add_email_dialogue_box_3).click()
-            self.driver.find_element(*self.add_email_dialogue_box_3).send_keys(email_Ids[3])
-
-        elif additional_emails_to_be_added == 5:
-            self.driver.find_element(*self.add_email_dialogue_box_0).click()
-            self.driver.find_element(*self.add_email_dialogue_box_0).send_keys(email_Ids[0])
-            self.driver.find_element(*self.add_email_dialogue_box_1).click()
-            self.driver.find_element(*self.add_email_dialogue_box_1).send_keys(email_Ids[1])
-            self.driver.find_element(*self.add_email_dialogue_box_2).click()
-            self.driver.find_element(*self.add_email_dialogue_box_2).send_keys(email_Ids[2])
-            self.driver.find_element(*self.add_email_dialogue_box_3).click()
-            self.driver.find_element(*self.add_email_dialogue_box_3).send_keys(email_Ids[3])
-            self.driver.find_element(*self.add_email_dialogue_box_4).click()
-            self.driver.find_element(*self.add_email_dialogue_box_4).send_keys(email_Ids[4])
-
-        else:
-            print("No additional mails added, just default is present")
+            # Loop safely within available locators and provided emails
+            for i, email in enumerate(email_ids[:len(email_boxes)]):
+                box = self.driver.find_element(*email_boxes[i])
+                box.click()
+                box.send_keys(email)
+        
+        except:
+            print("No Dialogue box found for additional emails")
 
         time.sleep(time_med)
+
 
     def phone_number(self, default_phone, default_whatsapp):   #number_of_additional_phone, number_of_additional_whatsapp, total_additionals
         Default_Phone = self.driver.find_element(*self.add_default_phone_number)

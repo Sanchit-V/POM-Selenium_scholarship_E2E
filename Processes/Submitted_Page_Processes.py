@@ -1,4 +1,4 @@
-class Submitted_Page_Process:
+class SubmittedPageProcess:
     def __init__(self, submitted_page):
         self.submitted_page = submitted_page
 

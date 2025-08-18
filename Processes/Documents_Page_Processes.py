@@ -1,4 +1,4 @@
-class Documents_Page_Process:
+class DocumentsPageProcess:
     def __init__(self, documents_page):
         self.documents_page = documents_page
 

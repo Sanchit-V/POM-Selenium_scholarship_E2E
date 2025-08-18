@@ -1,4 +1,4 @@
-class Additional_Info_Process:
+class AdditionalInfoProcess:
     def __init__(self, additional_info):
         self.additional_info = additional_info
 

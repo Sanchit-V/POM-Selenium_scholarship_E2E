@@ -1,4 +1,4 @@
-class Login_Process:
+class LoginPageProcess:
     def __init__(self, login_page):  # Accept instance of Login_Page
         self.login_page = login_page
 

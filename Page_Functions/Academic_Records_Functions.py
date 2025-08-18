@@ -11,9 +11,9 @@ time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
 
-from Page_Object.Academic_Records_Page import AcademicRecords
+from Page_Objects.Academic_Records_Page import AcademicRecordObjects
 
-class Academic_Records(AcademicRecords):
+class AcademicRecordsFunctions(AcademicRecordObjects):
     def education_details(self, additional_education):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.add_education))
         try:

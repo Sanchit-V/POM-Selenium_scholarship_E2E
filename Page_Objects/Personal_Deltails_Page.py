@@ -1,7 +1,7 @@
 from Import_Libraries import Import_libraries
 By=Import_libraries.By
 
-class PersonalDetails:
+class PersonalDetailObjects:
     def __init__(self, driver):
         #Document Type Web-Elements
         self.driver = Import_libraries._driver

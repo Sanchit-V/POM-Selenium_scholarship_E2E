@@ -1,4 +1,4 @@
-class Summary_Process:
+class SummaryPageProcess:
     def __init__(self, summary_send):
         self.summary_send = summary_send
 

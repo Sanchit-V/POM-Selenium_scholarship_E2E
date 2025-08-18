@@ -1,4 +1,4 @@
-class Reference_Process:
+class ReferencePageProcess:
     def __init__(self, reference_page):
         self.reference_page = reference_page
 

@@ -12,7 +12,7 @@ This project uses **Selenium WebDriver** with **Python** to automate **Scholarsh
 - Selenium
 - WebDriver
 - Pytest 
-- HTML reporting (e.g., pytest-html)
+- Git-Bash
 
 ---
 

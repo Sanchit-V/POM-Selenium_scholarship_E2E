@@ -1,8 +1,11 @@
 #URL
+import os
+from dotenv import load_dotenv, dotenv_values
 import calendar
 import random
 import string
 from datetime import datetime
+from datetime import date
 
 from dateutil.relativedelta import relativedelta
 from deep_translator import GoogleTranslator
@@ -10,17 +13,37 @@ from faker import Faker
 import json
 import os
 
+load_dotenv()
 fake = Faker()
 
 with open('user_details.json') as f:
      json_data = json.load(f)
 
-url = "https://sales-scholarship-application-requests-develop-iymj66chvq-uc.a.run.app/" #"https://sales-scholarship-application-requests-develop-iymj66chvq-uc.a.run.app/"  #http://host.docker.internal:80/"  "localhost:80/"
-selected_language = 0     # 1 for English, 0 for Spanish
+url = "https://sales-scholarship-application-requests-develop-iymj66chvq-uc.a.run.app/"
+selected_language = os.getenv("SELECTED_LANGUAGE")
+print(selected_language)
 Base_Folder_Path = "/home/seluser/Upload_Files"
 number_of_pdf = 15
 number_of_jpg = 9
 
+
+def get_language_code(selected_language):
+    # Normalize input (lowercase and remove accents for consistency)
+    normalized = selected_language.strip().lower()
+
+    language_map = {
+        0: {"spanish", "español", "espana", "españa"},
+        1: {"english", "inglés", "united states", "estados unidos"},
+    }
+
+    for code, variants in language_map.items():
+        if normalized in variants:
+            return code
+
+    print("Please select a valid language option.")
+    return None
+
+selected_language = get_language_code(selected_language)
 
 document_type = random.randint(1, 5) # 1 for NIC # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
 Martial_status = random.randint(1, 5) # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
@@ -65,14 +88,21 @@ time_short = 1
 file_type = random.randint(0, 1)  #0 for .pdf and 1 for .jpg
 
 
-access_code = json_data['access_code']
-previous_access_code = json_data['previous_access_code']
+access_code = os.getenv("ACCESS_CODE")    #json_data['access_code']
+previous_access_code = os.getenv("PREVIOUS_ACCESS_CODE")       #json_data['previous_access_code']
 
+print(access_code)
+print(previous_access_code)
+
+
+today = date.today()
 fake_date = fake.date_object()
+new_year_eighteen = fake_date - relativedelta(years=18)
+fake_date = fake.date_between(start_date='-100y', end_date=new_year_eighteen)
 
-dob_Spanish = fake_date.strftime("%d%m%Y")
+dob_Spanish = new_year_eighteen.strftime("%d%m%Y")
+dob_English = new_year_eighteen.strftime("%m%d%Y")
 
-dob_English = fake_date.strftime("%m%d%Y")
 
 
 #Document_number = json_data['Document_number']
@@ -134,7 +164,7 @@ Range_18plus = random.randint(0,99)
 
 email_Ids = [fake.email() for _ in range(5)]
 
-# print(email_Ids)
+print(email_Ids)
 
 # default_phone = json_data['default_phone']
 def generate_phone_number():

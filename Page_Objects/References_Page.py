@@ -1,7 +1,7 @@
 from Import_Libraries import Import_libraries
 By=Import_libraries.By
 
-class ReferencesPage:
+class ReferencesPageObjects:
     def __init__(self, driver):
         self.driver =  Import_libraries._driver
 

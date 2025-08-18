@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import user_details
 
 
-from Page_Object.Documents_Page import DocumentsPage
+from Page_Objects.Documents_Page import DocumentsPageObjects
 from pyvirtualdisplay import Display
 import Xlib.display
 
@@ -17,17 +17,17 @@ time_med = user_details.time_med
 
 time_long = user_details.time_long
 
-class Documents_Page(DocumentsPage):
+class DocumentsPageFunctions(DocumentsPageObjects):
     """
     Extends DocumentsPage to handle file uploads via PyAutoGUI
     in a headless environment using a virtual display.
     """
-    # def __init__(self, driver):
-    #     super().__init__(driver)
-    #     # Start virtual X display for PyAutoGUI
-    #     self._disp = Display(visible=False, size=(1920, 1080), backend="xvfb")
-    #     self._disp.start()
-    #     os.environ['DISPLAY'] = self._disp.new_display_var
+    def __init__(self, driver):
+        super().__init__(driver)
+        # Start virtual X display for PyAutoGUI
+        self._disp = Display(visible=False, size=(1920, 1080), backend="xvfb")
+        self._disp.start()
+        os.environ['DISPLAY'] = self._disp.new_display_var
 
     # def _get_pyautogui(self):
     #     # Import and attach PyAutoGUI to the virtual display

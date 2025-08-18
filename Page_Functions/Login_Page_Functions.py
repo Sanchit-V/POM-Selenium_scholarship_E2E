@@ -3,13 +3,13 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import os
 import user_details
-from Page_Object.Login_Page import LoginPage
+from Page_Objects.Login_Page import LoginPageObjects
 
 time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
 
-class Login_Page(LoginPage):
+class LoginPageFunctions(LoginPageObjects):
 
     def select_language(self, selected_language):
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.Access_Code))
@@ -19,11 +19,12 @@ class Login_Page(LoginPage):
         selected_language_button.click()
         time.sleep(time_med)
 
-        if selected_language == 1:
+        if selected_language == 1 :
             select_english = self.driver.find_element(*self.Language_English)
             select_english.click()
             print("Selected Language: English")
-        else:
+        
+        if selected_language == 0:
             select_spanish = self.driver.find_element(*self.Language_Spanish)
             select_spanish.click()
             print("Selected Language: Spanish")

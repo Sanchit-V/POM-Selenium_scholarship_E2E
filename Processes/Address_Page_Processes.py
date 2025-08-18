@@ -1,4 +1,4 @@
-class Address_Page_Process:
+class AddressPageProcess:
     def __init__(self, address_page):
         self.address_page = address_page
 
@@ -10,7 +10,7 @@ class Address_Page_Process:
         self.address_page.default_Email()
         self.address_page.delete_email(additional_emails_to_be_added)
         self.address_page.add_email(additional_emails_to_be_added)
-        self.address_page.email_add(email_Ids, additional_emails_to_be_added)
+        self.address_page.add_additional_emails(email_Ids)
         self.address_page.phone_number(default_phone, default_whatsapp)
         self.address_page.delete_phone(total_additionals)
         self.address_page.add_phone_number(number_of_additional_phone)

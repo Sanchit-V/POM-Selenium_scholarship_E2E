@@ -6,8 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 
 import user_details
-from Page_Object.Login_Page import LoginPage
-from Page_Object.Welcome_Page import WelcomePage
+
+from Page_Objects.Welcome_Page import WelcomePage
 
 time_short = user_details.time_short
 time_med = user_details.time_med

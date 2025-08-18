@@ -1,7 +1,7 @@
 from Import_Libraries import Import_libraries
 By=Import_libraries.By
 
-class EmploymentInformation:
+class EmploymentInformationObjects:
     def __init__(self, driver):
         self.driver = Import_libraries._driver
         self.currently_working_yes = By.CSS_SELECTOR, '[data-test-id="radio-input-employment-status-yes"]'

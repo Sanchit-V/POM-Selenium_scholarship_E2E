@@ -1,7 +1,7 @@
 from Import_Libraries import Import_libraries
 By=Import_libraries.By
 
-class SubmittedPage:
+class SubmittedPageObjects:
     def __init__(self, driver):
         self.driver = Import_libraries._driver
         self.form_submitted_final = By.CSS_SELECTOR, '[data-test-td="text-blocked-title"]'

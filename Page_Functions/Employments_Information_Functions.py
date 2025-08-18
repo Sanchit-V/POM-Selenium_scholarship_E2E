@@ -11,9 +11,9 @@ time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
 
-from Page_Object.Employments_Information_Page import EmploymentInformation
+from Page_Objects.Employments_Information_Page import EmploymentInformationObjects
 
-class Employmet_Information(EmploymentInformation):
+class EmploymentInformationFunction(EmploymentInformationObjects):
     def Currently_working(self, currently_working):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.currently_working_yes))
         if currently_working == 1:

@@ -7,9 +7,9 @@ import user_details
 time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
-from Page_Object.Submitted_Page import SubmittedPage
+from Page_Objects.Submitted_Page import SubmittedPageObjects 
 
-class Submitted_Page(SubmittedPage):
+class SubmittedPageFunctions(SubmittedPageObjects):
     def final_page(self):
         
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.form_submitted_final))

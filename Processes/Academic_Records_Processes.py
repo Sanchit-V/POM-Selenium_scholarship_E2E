@@ -1,4 +1,4 @@
-class Academic_Records_Process:
+class AcademicRecordsProcess:
     def __init__(self, academic_records_page):
         self.academic_records_page = academic_records_page
 

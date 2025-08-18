@@ -1,14 +1,14 @@
 import time
 
 import user_details
-from Page_Object.Summary_Page import Summary
+from Page_Objects.Summary_Page import SummaryPageObjects
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
 
-class Submit(Summary):
+class SubmitPageFunctions(SummaryPageObjects):
 
 
     def submitReport(self):

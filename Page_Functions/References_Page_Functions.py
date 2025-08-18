@@ -8,14 +8,14 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 
 import user_details
-from Page_Object.References_Page import ReferencesPage
+from Page_Objects.References_Page import ReferencesPageObjects
 time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
 selected_language = user_details.selected_language
 
 
-class References(ReferencesPage):
+class ReferencesPageFunctions (ReferencesPageObjects):
 
     def add_references(self, additional_references):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.add_reference))

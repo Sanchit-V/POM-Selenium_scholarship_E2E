@@ -1,4 +1,4 @@
-class Employement_Info_Process:
+class EmployementInfoProcess:
     def __init__(self, employment_info_page):
         self.employment_info_page = employment_info_page
 

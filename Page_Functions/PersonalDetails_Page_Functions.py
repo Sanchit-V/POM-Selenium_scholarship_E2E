@@ -7,7 +7,7 @@ import time
 import calendar
 
 import user_details
-from Page_Object.Personal_Deltails import PersonalDetails
+from Page_Objects.Personal_Deltails_Page import PersonalDetailObjects
 from user_details import Has_Children, expected_message
 
 time_short = user_details.time_short
@@ -16,31 +16,25 @@ time_long = user_details.time_long
 selected_language = user_details.selected_language
 
 
-class Personal_Details(PersonalDetails):
+class PersonalDetailsFunctions(PersonalDetailObjects):
     def document_type_selection(self, document_type):
-        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.document_type_button))
+        WebDriverWait(self.driver, 12).until(EC.presence_of_element_located(self.document_type_button))
         Document_click = self.driver.find_element(*self.document_type_button)
         Document_click.click()
 
-        if document_type == 1:
-            NIC = self.driver.find_element(*self.NIC)
-            NIC.click()
+        # Map document_type numbers to locators
+        doc_map = {
+            1: self.NIC,
+            2: self.passport,
+            3: self.foreign_identity_card,
+            4: self.RUC
+        }
 
-        elif document_type == 2:
-            Passport = self.driver.find_element(*self.passport)
-            Passport.click()
+        # Get locator or fallback to "Other"
+        locator = doc_map.get(document_type, self.other_document)
 
-        elif document_type == 3:
-            FIC = self.driver.find_element(*self.foreign_identity_card)
-            FIC.click()
-
-        elif document_type == 4:
-            RUC = self.driver.find_element(*self.RUC)
-            RUC.click()
-
-        else:
-            Other = self.driver.find_element(*self.other_document)
-            Other.click()
+        self.driver.find_element(*locator).click()
+        time.sleep(time_short)
 
     def document_number(self, Document_number):
         Doc_number_click = self.driver.find_element(*self.document_number_field)
@@ -52,34 +46,26 @@ class Personal_Details(PersonalDetails):
 
         number = self.driver.find_element(*self.document_number_enter)
         number.send_keys(Document_number)
+        time.sleep(time_short)
 
-    def martial_Status(self, Martial_status):
+    def marital_status(self, Martial_status):
+        # Open marital status dropdown
+        marital_status_click = self.driver.find_element(*self.martial_status)
+        marital_status_click.click()
 
-        Martial_status_click = self.driver.find_element(*self.martial_status)
-        Martial_status_click.click()
+        # Map status codes to locators
+        status_map = {
+            1: self.married,
+            2: self.single,
+            3: self.divorced,
+            4: self.widowed
+        }
 
-        time.sleep(time_long)
+        # Default to "separated" if not found
+        locator = status_map.get(Martial_status, self.separated)
 
-        if Martial_status == 1:
-            married = self.driver.find_element(*self.married)
-            married.click()
-
-        elif Martial_status == 2:
-            single = self.driver.find_element(*self.single)
-            single.click()
-
-        elif Martial_status == 3:
-            divorced = self.driver.find_element(*self.divorced)
-            divorced.click()
-
-        elif Martial_status == 4:
-            widowed = self.driver.find_element(*self.widowed)
-            widowed.click()
-
-        else:
-            separated = self.driver.find_element(*self.separated)
-            separated.click()
-
+        self.driver.find_element(*locator).click()
+        time.sleep(time_short)
 
     def Applicant_profession(self, Profession):
         prof_click = self.driver.find_element(*self.profession_field)
@@ -192,110 +178,40 @@ class Personal_Details(PersonalDetails):
 
         print(Currency)
 
-        if Currency == 1:
-            ARS = self.driver.find_element(*self.currency_code_ARS)
-            ARS.click()
+        currency_map = {
+            1: self.currency_code_ARS,
+            2: self.currency_code_BOB,
+            3: self.currency_code_BRL,
+            4: self.currency_code_COP,   
+            5: self.currency_code_USD,
+            6: self.currency_code_EUR,
+            7: self.currency_code_MXN,
+            8: self.currency_code_PAB,
+            9: self.currency_code_PEN,
+            10: self.currency_code_GTQ,
+            11: self.currency_code_UYU,
+            12: self.currency_code_C,
+            13: self.currency_code_DOP,
+            14: self.currency_code_AOA,
+            15: self.currency_code_CVE,
+            16: self.currency_code_MZN,
+            17: self.currency_code_VEF,
+            18: self.currency_code_PYG,
+            19: self.currency_code_HNL,
+            20: self.currency_code_NIO,
+            21: self.currency_code_XAF,
+            22: self.currency_code_XOF,
+            23: self.currency_code_BLU,
+            24: self.currency_code_COP,
+            25: self.currency_code_SIM,
+            26: self.currency_code_VES,
+        }
 
-        elif Currency == 2:
-            BOB = self.driver.find_element(*self.currency_code_BOB)
-            BOB.click()
+        # Get locator from map
+        locator = currency_map.get(Currency)
 
-        elif Currency == 3:
-            BRL = self.driver.find_element(*self.currency_code_BRL)
-            BRL.click()
-
-        elif Currency == 4:
-            CLP = self.driver.find_element(*self.currency_code_COP)
-            CLP.click()
-
-        elif Currency == 5:
-            USD = self.driver.find_element(*self.currency_code_USD)
-            USD.click()
-
-        elif Currency == 6:
-            EUR = self.driver.find_element(*self.currency_code_EUR)
-            EUR.click()
-
-        elif Currency == 7:
-            MXN = self.driver.find_element(*self.currency_code_MXN)
-            MXN.click()
-
-        elif Currency == 8:
-            PAB = self.driver.find_element(*self.currency_code_PAB)
-            PAB.click()
-
-        elif Currency == 9:
-            PEN = self.driver.find_element(*self.currency_code_PEN)
-            PEN.click()
-
-        elif Currency == 10:
-            GTQ = self.driver.find_element(*self.currency_code_GTQ)
-            GTQ.click()
-
-        elif Currency == 11:
-            UYU = self.driver.find_element(*self.currency_code_UYU)
-            UYU.click()
-
-        elif Currency == 12:
-            C = self.driver.find_element(*self.currency_code_C)
-            C.click()
-
-        elif Currency == 13:
-            DOP = self.driver.find_element(*self.currency_code_DOP)
-            DOP.click()
-
-        elif Currency == 14:
-            AOA = self.driver.find_element(*self.currency_code_AOA)
-            AOA.click()
-
-        elif Currency == 15:
-            CVE = self.driver.find_element(*self.currency_code_CVE)
-            CVE.click()
-
-        elif Currency == 16:
-            MZN = self.driver.find_element(*self.currency_code_MZN)
-            MZN.click()
-
-        elif Currency == 17:
-            VEF = self.driver.find_element(*self.currency_code_VEF)
-            VEF.click()
-
-        elif Currency == 18:
-            PYG = self.driver.find_element(*self.currency_code_PYG)
-            PYG.click()
-
-        elif Currency == 19:
-            HNL = self.driver.find_element(*self.currency_code_HNL)
-            HNL.click()
-
-        elif Currency == 20:
-            NIO = self.driver.find_element(*self.currency_code_NIO)
-            NIO.click()
-
-        elif Currency == 21:
-            XAF = self.driver.find_element(*self.currency_code_XAF)
-            XAF.click()
-
-        elif Currency == 22:
-            XOF = self.driver.find_element(*self.currency_code_XOF)
-            XOF.click()
-
-        elif Currency == 23:
-            BLU = self.driver.find_element(*self.currency_code_BLU)
-            BLU.click()
-
-        elif Currency == 24:
-            COP = self.driver.find_element(*self.currency_code_COP)
-            COP.click()
-
-        elif Currency == 25:
-            SIM = self.driver.find_element(*self.currency_code_SIM)
-            SIM.click()
-
-        elif Currency == 26:
-            VES = self.driver.find_element(*self.currency_code_VES)
-            VES.click()
-
+        if locator:
+            self.driver.find_element(*locator).click()
         else:
             print('Wrong Input')
 
