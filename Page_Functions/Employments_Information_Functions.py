@@ -104,43 +104,29 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             print('Activity block not present.')
 
         try:
-            Seniority_position = self.driver.find_element(*self.seniority)
-            Seniority_position.click()
+            seniority_dropdown = self.driver.find_element(*self.seniority)
+            seniority_dropdown.click()
             time.sleep(time_short)
 
-            Seniority_1_year = self.driver.find_element(*self.one_year)
-            Seniority_2_year = self.driver.find_element(*self.two_year)
-            Seniority_3_year = self.driver.find_element(*self.three_year)
-            Seniority_4_year = self.driver.find_element(*self.four_year)
-            Seniority_5_year = self.driver.find_element(*self.five_year)
-            Seniority_6_year = self.driver.find_element(*self.six_or_more)
+            # Map numeric input to web elements
+            seniority_map = {
+                1: self.driver.find_element(*self.one_year),
+                2: self.driver.find_element(*self.two_year),
+                3: self.driver.find_element(*self.three_year),
+                4: self.driver.find_element(*self.four_year),
+                5: self.driver.find_element(*self.five_year),
+                6: self.driver.find_element(*self.six_or_more)
+            }
 
-            if seniority_position == 1:
-                Seniority_1_year.click()
+            # Select based on input
+            selected_option = seniority_map.get(seniority_position)
+
+            if selected_option:
+                selected_option.click()
                 time.sleep(time_short)
-
-            elif seniority_position == 2:
-                Seniority_2_year.click()
-                time.sleep(time_short)
-
-            elif seniority_position == 3:
-                Seniority_3_year.click()
-                time.sleep(time_short)
-
-            elif seniority_position == 4:
-                Seniority_4_year.click()
-                time.sleep(time_short)
-
-            elif seniority_position == 5:
-                Seniority_5_year.click()
-                time.sleep(time_short)
-
-            elif seniority_position == 6:
-                Seniority_6_year.click()
-                time.sleep(time_short)
-
             else:
-                print('Wrong input given.')
+                print("Wrong input given.")
+
 
         except:
             print('Seniority section not available.')
@@ -158,6 +144,56 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
         except:
             print('Monthly salary section not available.')
 
+    def Currency_Selection(self, Emp_Currency):
+        try:
+
+            currency = self.driver.find_element(*self.currency_code_dropdown)
+            currency.click()
+            time.sleep(time_short)
+
+            print(Emp_Currency)
+
+            currency_map = {
+                1: self.currency_code_ARS,
+                2: self.currency_code_BOB,
+                3: self.currency_code_BRL,
+                4: self.currency_code_COP,   
+                5: self.currency_code_USD,
+                6: self.currency_code_EUR,
+                7: self.currency_code_MXN,
+                8: self.currency_code_PAB,
+                9: self.currency_code_PEN,
+                10: self.currency_code_GTQ,
+                11: self.currency_code_UYU,
+                12: self.currency_code_C,
+                13: self.currency_code_DOP,
+                14: self.currency_code_AOA,
+                15: self.currency_code_CVE,
+                16: self.currency_code_MZN,
+                17: self.currency_code_VEF,
+                18: self.currency_code_PYG,
+                19: self.currency_code_HNL,
+                20: self.currency_code_NIO,
+                21: self.currency_code_XAF,
+                22: self.currency_code_XOF,
+                23: self.currency_code_BLU,
+                24: self.currency_code_COP,
+                25: self.currency_code_SIM,
+                26: self.currency_code_VES,
+            }
+
+            # Get locator from map
+            locator = currency_map.get(Emp_Currency)
+
+            if locator:
+                self.driver.find_element(*locator).click()
+            else:
+                print('Wrong Input')
+
+            time.sleep(time_med)
+        except:
+            print('Currency selection not available.')
+            
     def employment_country(self, Emp_Country, Emp_State, Emp_City, Zip_Code, Address): #, Zip_Code, Address
         try:
             country_select = self.driver.find_element(*self.country)

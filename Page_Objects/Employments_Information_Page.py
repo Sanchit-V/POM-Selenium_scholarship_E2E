@@ -42,7 +42,35 @@ class EmploymentInformationObjects:
         self.phone_number_country = By.CSS_SELECTOR, '[data-test-id="employment-contact-phone-number-country-iso2-code-open-country-code-menu"]'
         # [placeholder="Phone number"]
 
+        #Currency Fields
+        self.currency_code_dropdown = By.CSS_SELECTOR, '[data-test-id="select-display-employment-currency-code"]'
 
+        self.currency_code_ARS = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-$"][data-value="ARS"]'
+        self.currency_code_BOB = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-Bs"][data-value="BOB"]'
+        self.currency_code_BRL = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-R$"][data-value="BRL"]'
+        self.currency_code_CLP = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-$"][data-value="CLP"]'
+        self.currency_code_COP = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-$"][data-value="COP"]'
+        self.currency_code_USD = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-$"][data-value="USD"]'
+        self.currency_code_EUR = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-€"][data-value="EUR"]'
+        self.currency_code_MXN = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-$"][data-value="MXN"]'
+        self.currency_code_PAB = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-B/."][data-value="PAB"]'
+        self.currency_code_PEN = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-S/."][data-value="PEN"]'
+        self.currency_code_GTQ = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-Q"][data-value="GTQ"]'
+        self.currency_code_UYU = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-$"][data-value="UYU"]'
+        self.currency_code_C = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-C"][data-value="CRC"]'
+        self.currency_code_DOP = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-RD$"][data-value="DOP"]'
+        self.currency_code_AOA = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-Kz"][data-value="AOA"]'
+        self.currency_code_CVE = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-Esc."][data-value="CVE"]'
+        self.currency_code_MZN = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-MZN"][data-value="MZN"]'
+        self.currency_code_VEF = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-Bs.F."][data-value="VEF"]'
+        self.currency_code_PYG = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-Gs."][data-value="PYG"]'
+        self.currency_code_HNL = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-L"][data-value="HNL"]'
+        self.currency_code_NIO = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-C$"][data-value="NIO"]'
+        self.currency_code_XAF = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-FCFA"][data-value="XAF"]'
+        self.currency_code_XOF = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-FCFA"][data-value="XOF"]'
+        self.currency_code_BLU = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-$B"][data-value="BLU"]'
+        self.currency_code_SIM = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-$S"][data-value="SIM"]'
+        self.currency_code_VES = By.CSS_SELECTOR, '[data-test-id="li-employment-currency-code-Bs.S."][data-value="VES"]'    
 
         self.url = By.CSS_SELECTOR, '[data-test-id="input-employment-information-website"]'
 

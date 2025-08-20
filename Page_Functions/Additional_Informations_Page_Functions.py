@@ -15,44 +15,24 @@ class AdditionalInformationFunctions(AdditionalInfoObjects):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.google))
 
         time.sleep(time_med)
+     
+        option_map = {
+                1: self.google,
+                2: self.facebook,
+                3: self.instagram,
+                4: self.referred,
+                5: self.company,
+                6: self.agreement,
+                7: self.university,
+                8: self.speech
+    }
 
-        if additional_type == 1:
-                Google = self.driver.find_element(*self.google)
-                Google.click()
+        # Get locator from map (default to webinar if not found)
+        locator = option_map.get(additional_type, self.webinar)
 
-        elif additional_type == 2:
-                Facebook = self.driver.find_element(*self.facebook)
-                Facebook.click()
-
-        elif additional_type == 3:
-                Instagram = self.driver.find_element(*self.instagram)
-                Instagram.click()
-
-        elif additional_type == 4:
-                Reffered = self.driver.find_element(*self.referred)
-                Reffered.click()
-
-        elif additional_type == 5:
-                Company = self.driver.find_element(*self.company)
-                Company.click()
-
-        elif additional_type == 6:
-                Agreement = self.driver.find_element(*self.agreement)
-                Agreement.click()
-
-        elif additional_type == 7:
-                University = self.driver.find_element(*self.university)
-                University.click()
-
-        elif additional_type == 8:
-                Speech = self.driver.find_element(*self.speech)
-                Speech.click()
-
-        else:
-                Webinar = self.driver.find_element(*self.webinar)
-                Webinar.click()
-
-
+        # Find and click
+        element = self.driver.find_element(*locator)
+        element.click()
 
         try:
             text_field = self.driver.find_element(*self.Text_Bar)

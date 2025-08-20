@@ -48,6 +48,7 @@ selected_language = get_language_code(selected_language)
 document_type = random.randint(1, 5) # 1 for NIC # 2 for Passport    # 3 for FIC    # 4 for RUC    # 5 for Other
 Martial_status = random.randint(1, 5) # 1 for Married    # 2 for Single    # 3 for Divorced   # 4 for Widowed      # 5 for Separated
 Currency = random.randint(1, 26)
+Emp_Currency = random.randint(1, 26) # 1 for USD    # 2 for EUR    # 3 for GBP    # 4 for JPY    # 5 for CNY    # 6 for INR    # 7 for RUB    # 8 for BRL    # 9 for CAD    # 10 for AUD   # 11 for CHF   # 12 for SEK   # 13 for NZD   # 14 for MXN   # 15 for SGD   # 16 for HKD   # 17 for KRW   # 18 for NOK   # 19 for TRY   # 20 for ZAR   # 21 for DKK   # 22 for PLN   # 23 for TWD   # 24 for THB   # 25 for IDR   # 26 for MYR
 Financially_Dependent = random.randint(0, 1)   # 0 for No    # 1 for Yes
 Has_Children = random.randint(0, 1)   # 0 for No     # 1 for Yes
 additional_emails_to_be_added = random.randint(1, 5)
@@ -69,13 +70,13 @@ training_type_university = random.randint(0, 1) # 0 for No, 1 for Yes
 
 training_type_employment = random.randint(0, 1) # 0 for No, 1 for Yes
 
-training_type_second_language = 1 #random.randint(0, 1) # 0 for No, 1 for Yes
+training_type_second_language =  1 #random.randint(0, 1) # 0 for No, 1 for Yes
 
-currently_working =   random.randint(0, 1) # 0 for No, 1 for Yes
+currently_working = random.randint(0, 1) # 0 for No, 1 for Yes
 
 work_category =  random.randint(0, 1) # 1 for Dependent, 0 for Independent
 
-seniority_position = random.randint(1, 6) # Enter digits 1 to 6
+seniority_position = 4 #random.randint(1, 6) # Enter digits 1 to 6
 
 additional_references = random.randint(0, 2) # Enter digits 0 to 2
 

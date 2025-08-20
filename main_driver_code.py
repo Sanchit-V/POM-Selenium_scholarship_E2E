@@ -105,7 +105,7 @@ def test_academic_records():
 def test_employment_information():
     employment_details = EmployementInfoProcess(employment_page_functions)
     employment_details.run_processes(user_details.currently_working,user_details.Institution_Name, user_details.Position, user_details.Area,
-                      user_details.work_category, user_details.Activity, user_details.seniority_position, user_details.Monthly_Salary,
+                      user_details.work_category, user_details.Activity, user_details.seniority_position, user_details.Monthly_Salary,user_details.Emp_Currency,
                         user_details.Emp_Country, user_details.Emp_State, user_details.Emp_City, user_details.Zip_Code, user_details.Address,
                                      user_details.Landline_Phone, user_details.Phone_Mobile, user_details.Website, user_details.Mobile_Nation, user_details.Landline_Nation)
 
