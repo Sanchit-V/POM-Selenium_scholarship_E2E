@@ -170,7 +170,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
                 EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-test-id='upload-btn-documents-degree']"))
             )
     
-            # Click the upload button
+            # # Click the upload button
             upload_button.click()
     
             # Wait for file input to be present
@@ -225,6 +225,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
         except Exception as e:
             print("Could not upload Graduation document:", e)
             self._take_screenshot("Graduation document")
+        
 
 
 
@@ -241,7 +242,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
                 EC.presence_of_element_located((By.CSS_SELECTOR, "input[data-test-id='input-documents-letter-of-commitment']")))
 
             file_input.send_keys("/home/seluser/Upload_Files/a4.jpg")
-            time.sleep(time_short)
+            time.sleep(time_long)
 
         except Exception as e:
             print("Could not upload Letter_Of_Commitment document:", e)
@@ -313,8 +314,16 @@ class DocumentsPageFunctions(DocumentsPageObjects):
         except:
             print("No file to be deleted.(Commitment)")
 
-    time.sleep(time_short)
+    
 
+    time.sleep(time_med)
+
+    def quit(self):
+        # Stop virtual display when done
+        if hasattr(self, '_disp') and self._disp:
+            self._disp.stop()
+    
+    time.sleep(time_short)
 
     def continue_documents(self):
         time.sleep(time_long)
@@ -328,7 +337,4 @@ class DocumentsPageFunctions(DocumentsPageObjects):
         self.driver.save_screenshot(path)
         print(f"Screenshot saved: {path}")
 
-    def quit(self):
-        # Stop virtual display when done
-        if hasattr(self, '_disp') and self._disp:
-            self._disp.stop()
+

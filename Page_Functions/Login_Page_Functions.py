@@ -73,7 +73,7 @@ class LoginPageFunctions(LoginPageObjects):
 
         time.sleep(time_long)
         
-        # additional_redirect = self.driver.find_element(*self.red_additional)
+        # additional_redirect = self.driver.find_element(*self.red_docs)
         # WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(additional_redirect))
 
   
