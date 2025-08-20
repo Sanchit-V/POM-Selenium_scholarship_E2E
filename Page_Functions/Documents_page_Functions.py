@@ -35,7 +35,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
     #     pyautogui._pyautogui_x11._display = Xlib.display.Display(os.environ['DISPLAY'])
     #     return pyautogui
 
-    def ID_Passport(self, Passport_File):
+    def ID_Passport(self):
         try:
             # Optional: click upload button to make sure any animation finishes
             self.driver.find_element(By.CSS_SELECTOR, "[data-test-id='upload-btn-documents-id/passport']").click()
@@ -55,7 +55,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
         except Exception as e:
             print("Not able to upload ID/Passport file:", e)
 
-    def Curriculum(self, curriculum_file_name):
+    def Curriculum(self):
         try:
             # Optional: Click the upload button to trigger file input visibility/activation
             self.driver.find_element(By.CSS_SELECTOR, "[data-test-id='upload-btn-documents-curriculum-vitae']").click()
@@ -67,7 +67,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
             )
 
             # Construct the full file path inside the Docker container
-            full_path = "/home/seluser/Upload_Files/2.pdf"
+            full_path = "/home/seluser/Upload_Files/a2.jpg"
 
             # Upload the file directly
             file_input.send_keys(full_path)
@@ -77,7 +77,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
         except Exception as e:
             print("Not able to upload Curriculum file:", e)
 
-    def Letter_of_moTive(self, Letter_Of_Motive):
+    def Letter_of_moTive(self):
         try:
             # Click the upload button to trigger the file input
             self.driver.find_element(By.CSS_SELECTOR, "[data-test-id='upload-btn-documents-letter-of-motive']").click()
@@ -99,7 +99,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
         except Exception as e:
             print("Not able to upload Letter of Motive file:", e)
 
-    def other_Document(self, Other_Document):
+    def other_Document(self):
         try:
             # Click the upload button
             self.driver.find_element(By.CSS_SELECTOR, "[data-test-id='upload-btn-documents-other']").click()
@@ -111,7 +111,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
             )
     
             # Full path to the file inside Docker container
-            full_path = "/home/seluser/Upload_Files/4.pdf"
+            full_path = "/home/seluser/Upload_Files/a2.jpg"
     
             # Upload the file
             file_input.send_keys(full_path)
@@ -162,7 +162,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
 
     time.sleep(time_short)
 
-    def deGree(self, Degree):
+    def deGree(self):
         try:
             # Wait until the input becomes enabled and clickable
             wait = WebDriverWait(self.driver, 10)
@@ -188,7 +188,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
             self._take_screenshot("Degree document")
 
 
-    def transCript(self, Transcript):
+    def transCript(self):
         try:
             wait = WebDriverWait(self.driver, 10)
             upload_button = wait.until(
@@ -200,14 +200,14 @@ class DocumentsPageFunctions(DocumentsPageObjects):
             file_input = wait.until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, "input[data-test-id='input-documents-transcript-of-records']")))
 
-            file_input.send_keys("/home/seluser/Upload_Files/6.pdf")
+            file_input.send_keys("/home/seluser/Upload_Files/a3.jpg")
             time.sleep(time_short)
 
         except Exception as e:
             print("Could not upload Transcript document:", e)
             self._take_screenshot("Transcript document")
 
-    def graDuation(self, Graduation_Certificate):
+    def graDuation(self):
         try:
             wait = WebDriverWait(self.driver, 10)
             upload_button = wait.until(
@@ -228,7 +228,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
 
 
 
-    def LoM(self, Letter_Of_Commitment):
+    def LoM(self):
         try:
             wait = WebDriverWait(self.driver, 10)
             upload_button = wait.until(
@@ -240,7 +240,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
             file_input = wait.until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, "input[data-test-id='input-documents-letter-of-commitment']")))
 
-            file_input.send_keys("/home/seluser/Upload_Files/8.pdf")
+            file_input.send_keys("/home/seluser/Upload_Files/a4.jpg")
             time.sleep(time_short)
 
         except Exception as e:

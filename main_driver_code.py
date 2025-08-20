@@ -126,8 +126,7 @@ def test_reference_page():
 
 def test_documents_upload_page():
     documents_upload = DocumentsPageProcess(document_page_functions)
-    documents_upload.run_processes(user_details.Passport_File, user_details.Curriculum_File,user_details.Letter_Of_Motive,user_details.Other_Document,user_details.have_degree_checkbox,user_details.Degree,
-                                   user_details.Transcript, user_details.Graduation_Certificate, user_details.Letter_Of_Commitment)
+    documents_upload.run_processes(user_details.have_degree_checkbox)
 
 def test_additional_info_page():
     addition_info = AdditionalInfoProcess(additional_page_functions)

@@ -19,7 +19,8 @@ fake = Faker()
 with open('user_details.json') as f:
      json_data = json.load(f)
 
-url = "https://sales-scholarship-application-requests-develop-iymj66chvq-uc.a.run.app/"
+url = os.getenv("URL")  #"https://sales-scholarship-application-requests-develop-iymj66chvq-uc.a.run.app/"
+
 selected_language = os.getenv("SELECTED_LANGUAGE")
 print(selected_language)
 Base_Folder_Path = "/home/seluser/Upload_Files"
@@ -325,35 +326,35 @@ Mobile_Nation = random.choice(json_data['countries_visited']) #fake.country()
 #print(Mobile_Nation)
 
 
-def pdf_file_path():
-    random_number = random.randint(1, number_of_pdf)
-    return str(random_number)
+# def pdf_file_path():
+#     random_number = random.randint(1, number_of_pdf)
+#     return str(random_number)
 
-def jpg_file_path():
-    random_number = random.randint(1, number_of_jpg)
-    return "a" + str(random_number)
+# def jpg_file_path():
+#     random_number = random.randint(1, number_of_jpg)
+#     return "a" + str(random_number)
 
-# Generate file paths using os.path.join for proper path handling
-if file_type == 0:
-    # For PDF files
-    Passport_File = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-    Curriculum_File = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-    Letter_Of_Motive = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-    Other_Document = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-    Degree = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-    Transcript = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-    Graduation_Certificate = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-    Letter_Of_Commitment = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-else:
-    # For JPG files
-    Passport_File = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-    Curriculum_File = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-    Letter_Of_Motive = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-    Other_Document = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-    Degree = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-    Transcript = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-    Graduation_Certificate = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-    Letter_Of_Commitment = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+# # Generate file paths using os.path.join for proper path handling
+# if file_type == 0:
+#     # For PDF files
+#     Passport_File = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+#     Curriculum_File = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+#     Letter_Of_Motive = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+#     Other_Document = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+#     Degree = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+#     Transcript = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+#     Graduation_Certificate = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+#     Letter_Of_Commitment = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
+# else:
+#     # For JPG files
+#     Passport_File = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+#     Curriculum_File = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+#     Letter_Of_Motive = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+#     Other_Document = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+#     Degree = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+#     Transcript = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+#     Graduation_Certificate = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+#     Letter_Of_Commitment = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
 
 
 
