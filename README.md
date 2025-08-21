@@ -67,3 +67,5 @@ This project uses **Selenium WebDriver** with **Python** to automate **Scholarsh
 5. The code comprises of certain sections of delebrate time-based stops to replicate real-time scenarios for conditions like Uploading documents and entering a long string of data, kindly refer to the respective QA member before making any changes.
 
 6. Most of the Country, State or Cities have been added using a **.json** file due to related language and translation based constraints.
+
+7. In the **Documents Upload Page** once the files are uploaded and the user is redirected to the **Additional Informations Page** please press the **Escape** Key manually, to close the OS interaction window.
