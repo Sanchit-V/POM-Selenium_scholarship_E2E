@@ -81,7 +81,7 @@ seniority_position =  random.randint(1, 6) # Enter digits 1 to 6
 
 additional_references = random.randint(0, 2) # Enter digits 0 to 2
 
-have_degree_checkbox =   0 #random.randint(0, 1)  # 0 for no(Check the checkbox) 1 for yes(Un-check the checkbox)
+have_degree_checkbox = random.randint(0, 1)  # 0 for no(Check the checkbox) 1 for yes(Un-check the checkbox)
 
 time_long = int(os.getenv("TIME_LONG"))  # Default to 5 seconds if not set
 time_med = int(os.getenv("TIME_MED"))  # Default to 2 seconds if not set
