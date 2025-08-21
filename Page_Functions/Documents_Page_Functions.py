@@ -101,7 +101,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
 
     def other_Document(self):
         try:
-            # Click the upload button
+            #Click the upload button
             self.driver.find_element(By.CSS_SELECTOR, "[data-test-id='upload-btn-documents-other']").click()
     
             # Wait until the file input becomes present
@@ -160,7 +160,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
         except:
             print('Web element not found.')
 
-    time.sleep(time_short)
+    time.sleep(time_med)
 
     def deGree(self):
         try:
@@ -169,7 +169,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
             upload_button = wait.until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-test-id='upload-btn-documents-degree']"))
             )
-    
+
             # # Click the upload button
             upload_button.click()
     
@@ -177,9 +177,11 @@ class DocumentsPageFunctions(DocumentsPageObjects):
             file_input = wait.until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, "input[data-test-id='input-documents-degree']"))
             )
-    
-            # Send file path
+
+
             file_input.send_keys("/home/seluser/Upload_Files/5.pdf")
+            # Send file path
+            
     
             time.sleep(time_short)
     
