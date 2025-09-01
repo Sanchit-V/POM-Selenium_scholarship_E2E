@@ -77,7 +77,6 @@ def test_employment_information():
     employment_details = EmployementInfoProcess(employment_page_functions)
     employment_details.run_processes(user_details)
 
-
 def test_reference_page():
     references_page = ReferencePageProcess(reference_page_functions)
     references_page.run_processes(user_details)
