@@ -1,15 +1,14 @@
 import os
 from unittest import skipIf
 
-from scapy.volatile import DelayedEval
 from selenium.webdriver import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-import user_details
+import Data.user_details as user_details
 from Page_Objects.Address_Page import AddressPageObjects
-from user_details import previous_access_code, access_code
+from Data.user_details import previous_access_code, access_code
 
 time_short = user_details.time_short
 time_med = user_details.time_med
@@ -22,8 +21,8 @@ class AddressPageFunctions(AddressPageObjects):
             default_email_element = self.driver.find_element(*self.default_email)
             Default_email = default_email_element.text or default_email_element.get_attribute("value")
             print(f"Default Email: {Default_email}")
-        except Exception as e:
-            print(f"Error locating default email: {e}")
+        except :
+            print(f"Error locating default email.")
 
     def add_email(self, additional_emails_to_be_added):
         for email in range(additional_emails_to_be_added):
@@ -50,14 +49,6 @@ class AddressPageFunctions(AddressPageObjects):
 
 
             except:
-                folder_path = "screenshots"
-                os.makedirs(folder_path, exist_ok=True)
-                timestamp = time.strftime("%Y%m%d-%H%M%S")
-                screenshot_name = f"{folder_path}/no email deletion{timestamp}.png"
-
-                # Take screenshot
-                self.driver.save_screenshot(screenshot_name)
-                print('Empty Email fields.')
                 print("+++++++")
 
         else:
@@ -126,13 +117,6 @@ class AddressPageFunctions(AddressPageObjects):
 
 
             except:
-                folder_path = "screenshots"
-                os.makedirs(folder_path, exist_ok=True)
-                timestamp = time.strftime("%Y%m%d-%H%M%S")
-                screenshot_name = f"{folder_path}/snackbar_exception_{timestamp}.png"
-
-                # Take screenshot
-                self.driver.save_screenshot(screenshot_name)
                 print('Empty Email fields.')
                 print("+++++++")
 
@@ -177,13 +161,6 @@ class AddressPageFunctions(AddressPageObjects):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/phone_1_additional_address_page{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print("No Dialogue box found")
 
         try:
@@ -193,13 +170,6 @@ class AddressPageFunctions(AddressPageObjects):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/phone_2_additional_address_page{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print("No Dialogue box found")
 
         try:
@@ -209,13 +179,6 @@ class AddressPageFunctions(AddressPageObjects):
             time.sleep(time_short)
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/phone_3_additional_address_page{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print("No Dialogue box found")
 
         time.sleep(time_med)
@@ -245,13 +208,6 @@ class AddressPageFunctions(AddressPageObjects):
                     print(' ** ')
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/CC_0_AddressPage{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Not Required.')
 
         time.sleep(time_med)
@@ -278,13 +234,6 @@ class AddressPageFunctions(AddressPageObjects):
                     print(' ** ')
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/CC_1_AddressPage{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Not Required.')
 
         time.sleep(time_med)
@@ -311,13 +260,6 @@ class AddressPageFunctions(AddressPageObjects):
                     print(' ** ')
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/CC_2_AddressPage{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print("Not Required")
 
         time.sleep(time_med)
@@ -344,13 +286,6 @@ class AddressPageFunctions(AddressPageObjects):
                     print(' ** ')
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/CC_3_AddressPage{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Not Required.')
 
         time.sleep(time_med)
@@ -377,13 +312,6 @@ class AddressPageFunctions(AddressPageObjects):
                     print(' ** ')
 
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/CC_4_AddressPage{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             print('Not Required')
 
         time.sleep(time_med)
@@ -461,15 +389,8 @@ class AddressPageFunctions(AddressPageObjects):
             home_State.send_keys(State)
             home_State.send_keys(Keys.ARROW_DOWN)
             home_State.send_keys(Keys.ENTER)
+
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/home_state_address_page{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
-
             print('No State')
 
         print('***************************************\t')
@@ -485,15 +406,8 @@ class AddressPageFunctions(AddressPageObjects):
             home_City.send_keys(City)
             home_City.send_keys(Keys.ARROW_DOWN)
             home_City.send_keys(Keys.ENTER)
+            
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/home_city_address_page{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
-
             print('No City')
 
         time.sleep(time_long)

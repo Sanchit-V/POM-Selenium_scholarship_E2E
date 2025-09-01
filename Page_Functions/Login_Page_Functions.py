@@ -2,7 +2,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import os
-import user_details
+import Data.user_details as user_details
 from Page_Objects.Login_Page import LoginPageObjects
 
 time_short = user_details.time_short
@@ -45,15 +45,9 @@ class LoginPageFunctions(LoginPageObjects):
             access_visible = self.driver.find_element(*self.Visible_Icon)
             access_visible.click()
             time.sleep(time_med)
+
         except:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/eye_button_login_page{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
-
+            print("No visible icon found.")
         
     def login(self):
         try:
@@ -67,14 +61,14 @@ class LoginPageFunctions(LoginPageObjects):
             
             login_button.click()
             print("Clicked Login Button")
-        except Exception as e:
-            print(f"Error in clicking login button: {e}")
+        except:
+            print(f"Error in clicking login button.")
 
 
         time.sleep(time_long)
         
-        # additional_redirect = self.driver.find_element(*self.red_docs)
-        # WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(additional_redirect))
+        # additional_redirect = self.driver.find_element(*self.red_ref)
+        # WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(additional_redirect))
 
   
         # additional_redirect.click()

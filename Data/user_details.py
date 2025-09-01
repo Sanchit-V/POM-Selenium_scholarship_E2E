@@ -16,7 +16,7 @@ import os
 load_dotenv()
 fake = Faker()
 
-with open('user_details.json') as f:
+with open('Data/user_details.json') as f:
      json_data = json.load(f)
 
 url = os.getenv("URL")  #"https://sales-scholarship-application-requests-develop-iymj66chvq-uc.a.run.app/"
@@ -79,9 +79,9 @@ work_category =  random.randint(0, 1) # 1 for Dependent, 0 for Independent
 
 seniority_position =  random.randint(1, 6) # Enter digits 1 to 6
 
-additional_references = random.randint(0, 2) # Enter digits 0 to 2
+additional_references =  random.randint(0, 2)  
 
-have_degree_checkbox = random.randint(0, 1)  # 0 for no(Check the checkbox) 1 for yes(Un-check the checkbox)
+have_degree_checkbox =  random.randint(0, 1)  # 0 for no(Check the checkbox) 1 for yes(Un-check the checkbox)
 
 time_long = int(os.getenv("TIME_LONG"))  # Default to 5 seconds if not set
 time_med = int(os.getenv("TIME_MED"))  # Default to 2 seconds if not set
@@ -326,100 +326,17 @@ Mobile_Nation = random.choice(json_data['countries_visited']) #fake.country()
 #print(Mobile_Nation)
 
 
-# def pdf_file_path():
-#     random_number = random.randint(1, number_of_pdf)
-#     return str(random_number)
-
-# def jpg_file_path():
-#     random_number = random.randint(1, number_of_jpg)
-#     return "a" + str(random_number)
-
-# # Generate file paths using os.path.join for proper path handling
-# if file_type == 0:
-#     # For PDF files
-#     Passport_File = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-#     Curriculum_File = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-#     Letter_Of_Motive = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-#     Other_Document = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-#     Degree = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-#     Transcript = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-#     Graduation_Certificate = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-#     Letter_Of_Commitment = os.path.join(Base_Folder_Path, f"{pdf_file_path()}.pdf")
-# else:
-#     # For JPG files
-#     Passport_File = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-#     Curriculum_File = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-#     Letter_Of_Motive = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-#     Other_Document = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-#     Degree = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-#     Transcript = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-#     Graduation_Certificate = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
-#     Letter_Of_Commitment = os.path.join(Base_Folder_Path, f"{jpg_file_path()}.jpg")
+#print("***********************************************************")
+ref_First_Name = [fake.first_name() for _ in range(5)]
+ref_Last_Name = [fake.last_name() for _ in range(5)]
+ref_Pos_Occupation = [fake.job() for _ in range(5)]
+ref_Emails = [fake.email() for _ in range(5)]
+ref_phone_numbers = [generate_phone_number() for _ in range(5)]
+ref_landline_numbers = [generate_phone_number() for _ in range(5)]
+ref_phone_CC = [random.choice(json_data['countries_visited']) for _ in range(5)]
+ref_landline_CC = [random.choice(json_data['countries_visited']) for _ in range(5)]
 
 
-
-
-
-
-ref1_FirstName = fake.first_name()
-ref1_LastName = fake.last_name()
-#print(ref1_FirstName +' '+ref1_LastName)
-ref1_Pos_Occupation = fake.job()
-#print(ref1_Pos_Occupation)
-ref1_email = fake.email()
-#print(ref1_email)
-ref1_phone_number = generate_phone_number()
-ref1_landline_number = generate_phone_number()
-ref1_phone_CC = random.choice(json_data['countries_visited']) #fake.country()
-ref1_landline_CC = random.choice(json_data['countries_visited']) #fake.country()
-
-ref2_FirstName = fake.first_name()
-ref2_LastName = fake.last_name()
-#print(ref2_FirstName +' '+ref2_LastName)
-ref2_Pos_Occupation = fake.job()
-#print(ref2_Pos_Occupation)
-ref2_email = fake.email()
-#print(ref2_email)
-ref2_phone_number = generate_phone_number()
-ref2_landline_number = generate_phone_number()
-ref2_phone_CC =random.choice(json_data['countries_visited']) #fake.country()
-ref2_landline_CC =random.choice(json_data['countries_visited']) #fake.country()
-
-ref3_FirstName = fake.first_name()
-ref3_LastName = fake.last_name()
-#print(ref3_FirstName +' '+ref3_LastName)
-ref3_Pos_Occupation = fake.job()
-#print(ref3_Pos_Occupation)
-ref3_email = fake.email()
-#print(ref3_email)
-ref3_phone_number = generate_phone_number()
-ref3_landline_number = generate_phone_number()
-ref3_phone_CC = random.choice(json_data['countries_visited']) #fake.country()
-ref3_landline_CC = random.choice(json_data['countries_visited']) #fake.country()
-
-ref4_FirstName = fake.first_name()
-ref4_LastName = fake.last_name()
-#print(ref4_FirstName +' '+ref4_LastName)
-ref4_Pos_Occupation = fake.job()
-#print(ref4_Pos_Occupation)
-ref4_email = fake.email()
-#print(ref4_email)
-ref4_phone_number = generate_phone_number()
-ref4_landline_number = generate_phone_number()
-ref4_phone_CC = random.choice(json_data['countries_visited']) #fake.country()
-ref4_landline_CC = random.choice(json_data['countries_visited']) #fake.country()
-
-ref5_FirstName = fake.first_name()
-ref5_LastName = fake.last_name()
-#print(ref5_FirstName +' '+ref5_LastName)
-ref5_Pos_Occupation = fake.job()
-#print(ref5_Pos_Occupation)
-ref5_email = fake.email()
-#print(ref5_email)
-ref5_phone_number = generate_phone_number()
-ref5_landline_number = generate_phone_number()
-ref5_phone_CC =random.choice(json_data['countries_visited']) #fake.country()
-ref5_landline_CC =random.choice(json_data['countries_visited']) #fake.country()
 
 
 if selected_language == 1:
@@ -480,33 +397,40 @@ else:
     Mobile_Nation = Mobile_Nation
 
 if selected_language == 0:
-    ref1_phone_CC = GoogleTranslator(source='en', target='es').translate(ref1_phone_CC)
-    ref1_landline_CC = GoogleTranslator(source='en', target='es').translate( ref1_landline_CC)
+    for i in range(5):
+        ref_phone_CC[i] = GoogleTranslator(source='en', target='es').translate(ref_phone_CC[i])
+        ref_landline_CC[i] = GoogleTranslator(source='en', target='es').translate( ref_landline_CC[i])
 
-    ref2_phone_CC = GoogleTranslator(source='en', target='es').translate(ref2_phone_CC)
-    ref2_landline_CC = GoogleTranslator(source='en', target='es').translate(ref2_landline_CC)
+    # print(ref_phone_CC)
+    # print(ref_landline_CC)
 
-    ref3_phone_CC = GoogleTranslator(source='en', target='es').translate(ref3_phone_CC)
-    ref3_landline_CC = GoogleTranslator(source='en', target='es').translate(ref3_landline_CC)
+    # ref2_phone_CC = GoogleTranslator(source='en', target='es').translate(ref2_phone_CC)
+    # ref2_landline_CC = GoogleTranslator(source='en', target='es').translate(ref2_landline_CC)
 
-    ref4_phone_CC = GoogleTranslator(source='en', target='es').translate(ref4_phone_CC)
-    ref4_landline_CC = GoogleTranslator(source='en', target='es').translate(ref4_landline_CC)
+    # ref3_phone_CC = GoogleTranslator(source='en', target='es').translate(ref3_phone_CC)
+    # ref3_landline_CC = GoogleTranslator(source='en', target='es').translate(ref3_landline_CC)
 
-    ref5_phone_CC = GoogleTranslator(source='en', target='es').translate(ref5_phone_CC)
-    ref5_landline_CC = GoogleTranslator(source='en', target='es').translate(ref5_landline_CC)
+    # ref4_phone_CC = GoogleTranslator(source='en', target='es').translate(ref4_phone_CC)
+    # ref4_landline_CC = GoogleTranslator(source='en', target='es').translate(ref4_landline_CC)
+
+    # ref5_phone_CC = GoogleTranslator(source='en', target='es').translate(ref5_phone_CC)
+    # ref5_landline_CC = GoogleTranslator(source='en', target='es').translate(ref5_landline_CC)
 
 else:
-    ref1_phone_CC = ref1_phone_CC
-    ref1_landline_CC = ref1_landline_CC
+    ref_phone_CC = ref_phone_CC
+    ref_landline_CC = ref_landline_CC
 
-    ref2_phone_CC = ref2_phone_CC
-    ref2_landline_CC = ref2_landline_CC
+    print(ref_phone_CC)
+    print(ref_landline_CC)
 
-    ref3_phone_CC = ref3_phone_CC
-    ref3_landline_CC = ref3_landline_CC
+    # ref2_phone_CC = ref2_phone_CC
+    # ref2_landline_CC = ref2_landline_CC
 
-    ref4_phone_CC = ref4_phone_CC
-    ref3_landline_CC = ref3_landline_CC
+    # ref3_phone_CC = ref3_phone_CC
+    # ref3_landline_CC = ref3_landline_CC
 
-    ref5_phone_CC = ref5_phone_CC
-    ref5_landline_CC = ref5_landline_CC
+    # ref4_phone_CC = ref4_phone_CC
+    # ref3_landline_CC = ref4_landline_CC
+
+    # ref5_phone_CC = ref5_phone_CC
+    # ref5_landline_CC = ref5_landline_CC

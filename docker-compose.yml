@@ -41,7 +41,7 @@ services:
       - ./Upload_Files:/app/Upload_Files:rw
     networks:
       - scholarship-application-requests-shared-network
-    command: python -m pytest main_driver_code.py -v
+    command: python -m pytest main.py -v
 
 networks:
   scholarship-application-requests-shared-network:

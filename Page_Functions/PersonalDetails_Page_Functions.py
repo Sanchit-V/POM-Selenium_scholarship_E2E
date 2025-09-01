@@ -6,9 +6,9 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import calendar
 
-import user_details
+import Data.user_details as user_details
 from Page_Objects.Personal_Deltails_Page import PersonalDetailObjects
-from user_details import Has_Children, expected_message
+from Data.user_details import Has_Children, expected_message
 
 time_short = user_details.time_short
 time_med = user_details.time_med
@@ -94,12 +94,6 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         print(Date_Of_Birth)
         print(enter_DOB)
         enter_DOB.click()
-        folder_path = "screenshots"
-        os.makedirs(folder_path, exist_ok=True)
-        timestamp = time.strftime("%Y%m%d-%H%M%S")
-        screenshot_name = f"{folder_path}/date of birth.{timestamp}.png"
-        self.driver.save_screenshot(screenshot_name)
-
         enter_DOB.send_keys(Date_Of_Birth)
 
         time.sleep(time_med)

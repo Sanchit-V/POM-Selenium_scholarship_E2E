@@ -3,7 +3,7 @@ import os
 from selenium.webdriver import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import user_details
+import Data.user_details as user_details
 from Page_Objects.Additional_Informations_Page import AdditionalInfoObjects
 import time
 time_short = user_details.time_short
@@ -48,13 +48,6 @@ class AdditionalInformationFunctions(AdditionalInfoObjects):
 
         except:
             print("No text field found")
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/additional_info_page{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
 
         time.sleep(time_med)
 

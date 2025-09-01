@@ -1,4 +1,4 @@
-from Import_Libraries import Import_libraries
+from Libraries.Libraries import Import_libraries
 By=Import_libraries.By
 
 class SummaryPageObjects:

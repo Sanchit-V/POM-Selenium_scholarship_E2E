@@ -4,7 +4,7 @@ from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import user_details
+import Data.user_details as user_details
 
 
 from Page_Objects.Documents_Page import DocumentsPageObjects
@@ -187,7 +187,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
     
         except Exception as e:
             print("Could not upload Degree document:", e)
-            self._take_screenshot("Degree document")
+
 
 
     def transCript(self):
@@ -206,8 +206,8 @@ class DocumentsPageFunctions(DocumentsPageObjects):
             time.sleep(time_short)
 
         except Exception as e:
-            print("Could not upload Transcript document:", e)
-            self._take_screenshot("Transcript document")
+            print("Could not upload Transcript document:")
+
 
     def graDuation(self):
         try:
@@ -225,8 +225,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
             time.sleep(time_short)
 
         except Exception as e:
-            print("Could not upload Graduation document:", e)
-            self._take_screenshot("Graduation document")
+            print("Could not upload Graduation document:")
         
 
 
@@ -246,10 +245,12 @@ class DocumentsPageFunctions(DocumentsPageObjects):
             file_input.send_keys("/home/seluser/Upload_Files/a4.jpg")
             time.sleep(time_long)
 
+            
+
         except Exception as e:
             print("Could not upload Letter_Of_Commitment document:", e)
-            self._take_screenshot("Letter_Of_Commitment")
 
+    time.sleep(time_short)
 
     def delete_documents(self):
         try:
@@ -331,12 +332,5 @@ class DocumentsPageFunctions(DocumentsPageObjects):
         time.sleep(time_long)
         self.driver.find_element(*self.bttn_continue_documents).click()
 
-    def _take_screenshot(self, name_prefix):
-        folder = "screenshots"
-        os.makedirs(folder, exist_ok=True)
-        ts = time.strftime("%Y%m%d-%H%M%S")
-        path = f"{folder}/{name_prefix}-{ts}.png"
-        self.driver.save_screenshot(path)
-        print(f"Screenshot saved: {path}")
-
+    
 

@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-import user_details
+import Data.user_details as user_details
 
 from Page_Objects.Welcome_Page import WelcomePage
 
@@ -23,18 +23,8 @@ class Welcome_Page(WelcomePage):
 
             print("Snack-Bar message Extracted as: " + actual_message)
 
-        except Exception as e:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/snackbar_exception_{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
-
-            # Print exception log with screenshot path
-            print(f"[ERROR] No Snackbar Encountered: {e}\n[Screenshot captured] --> {screenshot_name}")
-            print(f"No Snackbar Encountered.:{e}")
+        except :
+            print(f"No Snackbar Encountered.")
 
 
 
@@ -49,18 +39,8 @@ class Welcome_Page(WelcomePage):
 
             print("Greetings Extracted as: " + actual_greeting)
 
-        except Exception as e:
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/snackbar_exception_{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
-
-            # Print exception log with screenshot path
-            print(f"[ERROR] No Snackbar Encountered: {e}\n[Screenshot captured] --> {screenshot_name}")
-            print(f"No Greeting-Message Encountered.:{e}")
+        except:
+            print(f"No Greeting-Message Encountered.")
 
 
 
@@ -78,8 +58,9 @@ class Welcome_Page(WelcomePage):
 
             get_Started_button.click()
             print("Clicked Login Button")
-        except Exception as e:
-            print(f"Error in clicking login button: {e}")
+
+        except:
+            print(f"Error in clicking login button.")
 
         
         time.sleep(time_long)

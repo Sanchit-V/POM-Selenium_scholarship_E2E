@@ -2,7 +2,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-import user_details
+import Data.user_details as user_details
 
 time_short = user_details.time_short
 time_med = user_details.time_med

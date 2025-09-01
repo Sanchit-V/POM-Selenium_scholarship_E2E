@@ -1,6 +1,6 @@
 import time
 
-import user_details
+import Data.user_details as user_details
 from Page_Objects.Summary_Page import SummaryPageObjects
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -12,24 +12,31 @@ class SubmitPageFunctions(SummaryPageObjects):
 
 
     def submitReport(self):
-        WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.TnC))
-        TnC_button = self.driver.find_element(*self.TnC)
-        y_position = TnC_button.location['y']
+        try:
 
-        current_position = 0
-        step = 100
-        while current_position < y_position:
-            self.driver.execute_script(f"window.scrollTo(0, {current_position});")
-            current_position += step
-            time.sleep(0.05)
+            WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.TnC))
+            TnC_button = self.driver.find_element(*self.TnC)
+            y_position = TnC_button.location['y']
 
-        TnC_button.click()
-        time.sleep(time_short)
+            current_position = 0
+            step = 100
+            while current_position < y_position:
+                self.driver.execute_script(f"window.scrollTo(0, {current_position});")
+                current_position += step
+                time.sleep(0.05)
+
+            TnC_button.click()
+            time.sleep(time_short)
+
+        except:
+            print("TnC Checkbox not found")
 
         Send_button = self.driver.find_element(*self.Submit)
         Send_button.click()
 
         time.sleep(time_med)
+        
+        
 
         
 

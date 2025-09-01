@@ -21,21 +21,14 @@ from Processes.Address_Page_Processes import AddressPageProcess
 from Processes.Documents_Page_Processes import DocumentsPageProcess
 from Processes.Employment_Info_Process import EmployementInfoProcess
 from Processes.Login_Process import LoginPageProcess
-from Import_Libraries import Import_libraries
+from Libraries.Libraries import Import_libraries
 from Processes.Personal_Details_Process import PersonalDetailsProcess
 from Processes.References_Page_Processes import ReferencePageProcess
 from Processes.Summary_Page_Process import SummaryPageProcess
 from Processes.Welcome_Process import Welcome_Process
 from Processes.Submitted_Page_Processes import SubmittedPageProcess
 
-import user_details
-
-# # Initialize WebDriver
-# driver = Import_libraries.initialize_driver()
-
-# # Navigate to the URL
-# driver.get(user_details.url)
-# driver.maximize_window()
+import Data.user_details as user_details
 
 _driver = Import_libraries.get_driver()
 _driver.get(user_details.url)
@@ -43,7 +36,7 @@ _driver.get(user_details.url)
 
 time.sleep(4)
 
-# Create an instance of Pages
+
 login_page_functions = LoginPageFunctions(_driver)
 welcome_page_functions = Welcome_Page(_driver)
 personal_details_functions = PersonalDetailsFunctions(_driver)
@@ -58,9 +51,6 @@ document_page_functions = DocumentsPageFunctions(_driver)
 
 
 
-
-
-# Create an instance of Login_Process and run the process
 
 def test_login_process():
     login_process = LoginPageProcess(login_page_functions)
@@ -112,17 +102,9 @@ def test_employment_information():
 
 def test_reference_page():
     references_page = ReferencePageProcess(reference_page_functions)
-    references_page.run_processes(user_details.additional_references, user_details.ref1_FirstName, user_details.ref1_LastName,
-                                  user_details.ref1_Pos_Occupation, user_details.ref1_email, user_details.ref1_phone_number,
-                                  user_details.ref1_landline_number, user_details.ref1_phone_CC, user_details.ref1_landline_CC,
-                                  user_details.ref2_FirstName, user_details.ref2_LastName, user_details.ref2_Pos_Occupation, user_details.ref2_email,
-                                  user_details.ref2_phone_number, user_details.ref2_landline_number,
-                                  user_details.ref2_phone_CC, user_details.ref2_landline_CC, user_details.ref3_FirstName, user_details.ref3_LastName, user_details.ref3_Pos_Occupation,
-                                  user_details.ref3_email, user_details.ref3_phone_number, user_details.ref3_landline_number, user_details.ref3_phone_CC, user_details.ref3_landline_CC,
-                                  user_details.ref4_FirstName, user_details.ref4_LastName, user_details.ref4_Pos_Occupation, user_details.ref4_email, user_details.ref4_phone_number,
-                                  user_details.ref4_landline_number, user_details.ref4_phone_CC, user_details.ref4_landline_CC,user_details.ref5_FirstName, user_details.ref5_LastName,
-                                  user_details.ref5_Pos_Occupation, user_details.ref5_email, user_details.ref5_phone_number,user_details.ref5_landline_number,
-                                  user_details.ref5_phone_CC, user_details.ref5_landline_CC)
+    references_page.run_processes(user_details.additional_references, user_details.ref_First_Name, user_details.ref_Last_Name,
+                                  user_details.ref_Pos_Occupation, user_details.ref_Emails, user_details.ref_phone_numbers,
+                                  user_details.ref_landline_numbers, user_details.ref_phone_CC, user_details.ref_landline_CC)
 
 def test_documents_upload_page():
     documents_upload = DocumentsPageProcess(document_page_functions)
