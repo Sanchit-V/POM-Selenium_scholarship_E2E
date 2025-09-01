@@ -27,11 +27,12 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
             1: self.NIC,
             2: self.passport,
             3: self.foreign_identity_card,
-            4: self.RUC
+            4: self.RUC,
+            5: self.other_document
         }
 
         # Get locator or fallback to "Other"
-        locator = doc_map.get(data.document_type, self.other_document)
+        locator = doc_map.get(data.document_type)
 
         self.driver.find_element(*locator).click()
         time.sleep(time_short)
