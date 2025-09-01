@@ -1,9 +1,10 @@
+from Pydentic_Model.models import AdditionalInfoData
 class AdditionalInfoProcess:
     def __init__(self, additional_info):
         self.additional_info = additional_info
 
-    def run_processes(self, additional_type, Text_Additional_field):
-        self.additional_info.select_Option(additional_type, Text_Additional_field)
+    def run_processes(self, data:AdditionalInfoData):
+        self.additional_info.select_Option(data)
 
 
 

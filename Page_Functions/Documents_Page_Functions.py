@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import Data.user_details as user_details
+from Pydentic_Model.models import DocumentUploadData
 
 
 from Page_Objects.Documents_Page import DocumentsPageObjects
@@ -122,12 +123,12 @@ class DocumentsPageFunctions(DocumentsPageObjects):
             print("Not able to upload 'Other' document:", e)
 
 
-    def Have_degree_checkbox(self, have_degree_checkbox):
+    def Have_degree_checkbox(self, data:DocumentUploadData):
         try:
             unchecked_degree = self.driver.find_element(*self.unchecked_degree_box)
             if unchecked_degree:
                 try:
-                    if have_degree_checkbox == 0:
+                    if data.have_degree_checkbox == 0:
                         checkbox = self.driver.find_element(*self.checkbox_no_degree)
                         checkbox.click()
                         time.sleep(time_short)
@@ -146,7 +147,7 @@ class DocumentsPageFunctions(DocumentsPageObjects):
             checked_degree = self.driver.find_element(*self.checked_degree_box)
             if checked_degree:
                 try:
-                    if have_degree_checkbox == 1:
+                    if data.have_degree_checkbox == 1:
                         checkbox = self.driver.find_element(*self.checkbox_no_degree)
                         checkbox.click()
                         time.sleep(time_short)

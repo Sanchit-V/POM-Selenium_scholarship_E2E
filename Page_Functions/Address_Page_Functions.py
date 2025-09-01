@@ -8,7 +8,7 @@ import time
 
 import Data.user_details as user_details
 from Page_Objects.Address_Page import AddressPageObjects
-from Data.user_details import previous_access_code, access_code
+from Pydentic_Model.models import AddressDetailsData
 
 time_short = user_details.time_short
 time_med = user_details.time_med
@@ -24,17 +24,17 @@ class AddressPageFunctions(AddressPageObjects):
         except :
             print(f"Error locating default email.")
 
-    def add_email(self, additional_emails_to_be_added):
-        for email in range(additional_emails_to_be_added):
+    def add_email(self, data:AddressDetailsData):
+        for email in range(data.additional_emails_to_be_added):
             added_emails = self.driver.find_element(*self.add_email_button)
             added_emails.click()
             time.sleep(time_short)
 
-    def delete_email(self, additional_emails_to_be_added):
+    def delete_email(self, data:AddressDetailsData):
 
-        if access_code == previous_access_code:
+        if data.access_code == data.previous_access_code:
             try:
-                for delete in range(additional_emails_to_be_added + 5):
+                for delete in range(data.additional_emails_to_be_added + 5):
 
                     delete_box = self.driver.find_element(*self.delete_email_0)
                     delete_box.click()
@@ -54,27 +54,25 @@ class AddressPageFunctions(AddressPageObjects):
         else:
             print("No previously added emails found")
 
-    def add_additional_emails(self, email_ids):
+    def add_additional_emails(self, data:AddressDetailsData):
     # Map index to locators
         try:
 
             email_boxes = [
-                self.add_email_dialogue_box_0,
-                self.add_email_dialogue_box_1,
-                self.add_email_dialogue_box_2,
-                self.add_email_dialogue_box_3,
-                self.add_email_dialogue_box_4
+                    self.add_email_dialogue_box_0,
+                    self.add_email_dialogue_box_1,
+                    self.add_email_dialogue_box_2,
+                    self.add_email_dialogue_box_3,
+                    self.add_email_dialogue_box_4
             ]
 
-            if not email_ids:  # empty list check
-                print("No additional mails added, just default is present")
-                return
 
-            # Loop safely within available locators and provided emails
-            for i, email in enumerate(email_ids[:len(email_boxes)]):
-                box = self.driver.find_element(*email_boxes[i])
-                box.click()
-                box.send_keys(email)
+                # Loop safely within available locators and provided emails
+            for i, email in enumerate(data.email_Ids[:len(email_boxes)]):
+                    box = self.driver.find_element(*email_boxes[i])
+                    print(f"Adding email: {email}")
+                    box.click()
+                    box.send_keys(email)
         
         except:
             print("No Dialogue box found for additional emails")
@@ -82,26 +80,26 @@ class AddressPageFunctions(AddressPageObjects):
         time.sleep(time_med)
 
 
-    def phone_number(self, default_phone, default_whatsapp):   #number_of_additional_phone, number_of_additional_whatsapp, total_additionals
+    def phone_number(self, data:AddressDetailsData):   #number_of_additional_phone, number_of_additional_whatsapp, total_additionals
         Default_Phone = self.driver.find_element(*self.add_default_phone_number)
         Default_Phone.click()
         Default_Phone.send_keys(Keys.CONTROL + "a")
         Default_Phone.send_keys(Keys.DELETE)
-        Default_Phone.send_keys(default_phone)
+        Default_Phone.send_keys(data.default_phone)
         time.sleep(time_short)
 
         Default_Whatsapp = self.driver.find_element(*self.add_default_whatsapp_number)
         Default_Whatsapp.click()
         Default_Whatsapp.send_keys(Keys.CONTROL + "a")
         Default_Whatsapp.send_keys(Keys.DELETE)
-        Default_Whatsapp.send_keys(default_whatsapp)
+        Default_Whatsapp.send_keys(data.default_whatsapp)
         time.sleep(time_short)
 
-    def delete_phone(self, total_additionals):
+    def delete_phone(self, data:AddressDetailsData):
 
-        if access_code == previous_access_code:
+        if data.access_code == data.previous_access_code:
             try:
-                for delete in range(total_additionals + 3):
+                for delete in range(data.total_additionals + 3):
 
                     delete_box = self.driver.find_element(*self.delete_added_phone_number)
                     delete_box.click()
@@ -125,10 +123,10 @@ class AddressPageFunctions(AddressPageObjects):
 
 
 
-    def add_phone_number(self, number_of_additional_phone):
+    def add_phone_number(self, data:AddressDetailsData):
         add_new_number = self.driver.find_element(*self.add_additional_phone_number_button)
 
-        for i in range (number_of_additional_phone):
+        for i in range (data.number_of_additional_phone):
             add_new_number.click()
             add_phone = self.driver.find_element(*self.add_additional_phone_option)
             add_phone.click()
@@ -139,10 +137,10 @@ class AddressPageFunctions(AddressPageObjects):
 
         time.sleep(time_med)
 
-    def add_whats_number(self, number_of_additional_whatsapp):
+    def add_whats_number(self, data:AddressDetailsData):
         add_new_number = self.driver.find_element(*self.add_additional_phone_number_button)
 
-        for i in range(number_of_additional_whatsapp):
+        for i in range(data.number_of_additional_whatsapp):
             add_new_number.click()
             add_whats = self.driver.find_element(*self.add_additional_whatsapp_option)
             add_whats.click()
@@ -153,11 +151,11 @@ class AddressPageFunctions(AddressPageObjects):
 
         time.sleep(time_med)
 
-    def add_the_additional_numbers(self, additional_1, additional_2, additional_3):
+    def add_the_additional_numbers(self, data:AddressDetailsData):
         try:
             add_1 = self.driver.find_element(*self.add_new_phone_2)
             add_1.click()
-            add_1.send_keys(additional_1)
+            add_1.send_keys(data.additional_numbers[0])
             time.sleep(time_short)
 
         except:
@@ -166,7 +164,7 @@ class AddressPageFunctions(AddressPageObjects):
         try:
             add_2 = self.driver.find_element(*self.add_new_phone_3)
             add_2.click()
-            add_2.send_keys(additional_2)
+            add_2.send_keys(data.additional_numbers[1])
             time.sleep(time_short)
 
         except:
@@ -175,7 +173,7 @@ class AddressPageFunctions(AddressPageObjects):
         try:
             add_3 = self.driver.find_element(*self.add_new_phone_4)
             add_3.click()
-            add_3.send_keys(additional_3)
+            add_3.send_keys(data.additional_numbers[2])
             time.sleep(time_short)
 
         except:
@@ -184,7 +182,7 @@ class AddressPageFunctions(AddressPageObjects):
         time.sleep(time_med)
 
 
-    def country_code(self,country_0,country_1, country_2, country_3, country_4):  #, country_1, country_2, country_3, country_4
+    def country_code(self,data:AddressDetailsData):  #, country_1, country_2, country_3, country_4
 
         try:
             CC_0 = self.driver.find_element(*self.select_country_code_0)
@@ -192,10 +190,10 @@ class AddressPageFunctions(AddressPageObjects):
             time.sleep(time_short)
             CC_Box = self.driver.find_element(*self.country_code_box)
             CC_Box.click()
-            CC_Box.send_keys(country_0)
+            CC_Box.send_keys(data.country[0])
             time.sleep(time_short)
 
-            if country_0 != 'India':
+            if data.country[0] != 'India':
                 CC_LB = self.driver.find_element(*self.country_code_listbox)
                 CC_LB.click()
 
@@ -218,10 +216,10 @@ class AddressPageFunctions(AddressPageObjects):
             time.sleep(time_short)
             CC_Box = self.driver.find_element(*self.country_code_box)
             CC_Box.click()
-            CC_Box.send_keys(country_1)
+            CC_Box.send_keys(data.country[1])
             time.sleep(time_short)
 
-            if country_1 != 'India':
+            if data.country[1] != 'India':
                 CC_LB = self.driver.find_element(*self.country_code_listbox)
                 CC_LB.click()
 
@@ -244,10 +242,10 @@ class AddressPageFunctions(AddressPageObjects):
             time.sleep(time_short)
             CC_Box = self.driver.find_element(*self.country_code_box)
             CC_Box.click()
-            CC_Box.send_keys(country_2)
+            CC_Box.send_keys(data.country[2])
             time.sleep(time_short)
 
-            if country_2 != 'India':
+            if data.country[2] != 'India':
                 CC_LB = self.driver.find_element(*self.country_code_listbox)
                 CC_LB.click()
 
@@ -270,10 +268,10 @@ class AddressPageFunctions(AddressPageObjects):
             time.sleep(time_short)
             CC_Box = self.driver.find_element(*self.country_code_box)
             CC_Box.click()
-            CC_Box.send_keys(country_3)
+            CC_Box.send_keys(data.country[3])
             time.sleep(time_short)
 
-            if country_3 != 'India':
+            if data.country[3] != 'India':
                 CC_LB = self.driver.find_element(*self.country_code_listbox)
                 CC_LB.click()
 
@@ -296,10 +294,10 @@ class AddressPageFunctions(AddressPageObjects):
             time.sleep(time_short)
             CC_Box = self.driver.find_element(*self.country_code_box)
             CC_Box.click()
-            CC_Box.send_keys(country_4)
+            CC_Box.send_keys(data.country[4])
             time.sleep(time_short)
 
-            if country_4 != 'India':
+            if data.country[4] != 'India':
                 CC_LB = self.driver.find_element(*self.country_code_listbox)
                 CC_LB.click()
 
@@ -316,13 +314,13 @@ class AddressPageFunctions(AddressPageObjects):
 
         time.sleep(time_med)
 
-    def housing_details(self, housing_type):
+    def housing_details(self, data:AddressDetailsData):
         housing_Type = self.driver.find_element(*self.housing_type)
         housing_Type.click()
 
         time.sleep(time_short)
 
-        if housing_type == 1:
+        if data.housing_type == 1:
             Department = self.driver.find_element(*self.Department)
             Department.click()
 
@@ -338,16 +336,16 @@ class AddressPageFunctions(AddressPageObjects):
 
 
 
-    def housing_Conditions(self, housing_conditions):
+    def housing_Conditions(self, data:AddressDetailsData):
         housing_Conditions = self.driver.find_element(*self.Housing_conditions)
         housing_Conditions.click()
         time.sleep(time_short)
 
-        if housing_conditions == 1:
+        if data.housing_conditions == 1:
              Family = self.driver.find_element(*self.Family)
              Family.click()
 
-        elif housing_conditions == 2:
+        elif data.housing_conditions == 2:
              Own = self.driver.find_element(*self.Own)
              Own.click()
 
@@ -358,13 +356,13 @@ class AddressPageFunctions(AddressPageObjects):
         time.sleep(time_med)
 
 
-    def Nationality(self, Country, State, City):
+    def Nationality(self, data:AddressDetailsData):
         country_select = self.driver.find_element(*self.country_residence)
         country_select.click()
 
-        country_select.send_keys(Country)
+        country_select.send_keys(data.Country)
 
-        if Country == 'India':
+        if data.Country == 'India':
             for i in range (2):
                 self.driver.find_element(*self.country_residence).send_keys(Keys.ARROW_DOWN)
 
@@ -386,7 +384,7 @@ class AddressPageFunctions(AddressPageObjects):
             print('\t')
             print('***************************************\t')
             print('Web Element found for home state.')
-            home_State.send_keys(State)
+            home_State.send_keys(data.State)
             home_State.send_keys(Keys.ARROW_DOWN)
             home_State.send_keys(Keys.ENTER)
 
@@ -403,7 +401,7 @@ class AddressPageFunctions(AddressPageObjects):
             print('Web Element found for home city.\t')
             print('***************************************\t')
 
-            home_City.send_keys(City)
+            home_City.send_keys(data.City)
             home_City.send_keys(Keys.ARROW_DOWN)
             home_City.send_keys(Keys.ENTER)
             
@@ -413,7 +411,7 @@ class AddressPageFunctions(AddressPageObjects):
         time.sleep(time_long)
 
 
-    def Address_ZipCode(self, home_address, zip_code):
+    def Address_ZipCode(self, data:AddressDetailsData):
 
         address_box = self.driver.find_element(*self.address)
         address_box.click()
@@ -421,7 +419,7 @@ class AddressPageFunctions(AddressPageObjects):
         address_box.send_keys(Keys.DELETE)
 
         time.sleep(time_short)
-        address_box.send_keys(home_address)
+        address_box.send_keys(data.home_address)
         time.sleep(time_short)
 
         Zip_code = self.driver.find_element(*self.zipcode)
@@ -430,7 +428,7 @@ class AddressPageFunctions(AddressPageObjects):
         Zip_code.send_keys(Keys.CONTROL + "a")
         Zip_code.send_keys(Keys.DELETE)
 
-        Zip_code.send_keys(zip_code)
+        Zip_code.send_keys(data.zip_code)
         time.sleep(time_long)
 
     def Continue_address(self):

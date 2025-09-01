@@ -8,7 +8,7 @@ import calendar
 
 import Data.user_details as user_details
 from Page_Objects.Personal_Deltails_Page import PersonalDetailObjects
-from Data.user_details import Has_Children, expected_message
+from Pydentic_Model.models import PersonalDetailsData
 
 time_short = user_details.time_short
 time_med = user_details.time_med
@@ -17,7 +17,7 @@ selected_language = user_details.selected_language
 
 
 class PersonalDetailsFunctions(PersonalDetailObjects):
-    def document_type_selection(self, document_type):
+    def document_type_selection(self, data:PersonalDetailsData):
         WebDriverWait(self.driver, 12).until(EC.presence_of_element_located(self.document_type_button))
         Document_click = self.driver.find_element(*self.document_type_button)
         Document_click.click()
@@ -31,12 +31,12 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         }
 
         # Get locator or fallback to "Other"
-        locator = doc_map.get(document_type, self.other_document)
+        locator = doc_map.get(data.document_type, self.other_document)
 
         self.driver.find_element(*locator).click()
         time.sleep(time_short)
 
-    def document_number(self, Document_number):
+    def document_number(self, data:PersonalDetailsData):
         Doc_number_click = self.driver.find_element(*self.document_number_field)
         Doc_number_click.click()
 
@@ -45,10 +45,10 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         time.sleep(time_short)
 
         number = self.driver.find_element(*self.document_number_enter)
-        number.send_keys(Document_number)
+        number.send_keys(data.Document_number)
         time.sleep(time_short)
 
-    def marital_status(self, Martial_status):
+    def marital_status(self, data:PersonalDetailsData):
         # Open marital status dropdown
         marital_status_click = self.driver.find_element(*self.martial_status)
         marital_status_click.click()
@@ -62,12 +62,12 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         }
 
         # Default to "separated" if not found
-        locator = status_map.get(Martial_status, self.separated)
+        locator = status_map.get(data.Martial_status, self.separated)
 
         self.driver.find_element(*locator).click()
         time.sleep(time_short)
 
-    def Applicant_profession(self, Profession):
+    def Applicant_profession(self, data:PersonalDetailsData):
         prof_click = self.driver.find_element(*self.profession_field)
         prof_click.click()
 
@@ -76,78 +76,78 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         time.sleep(time_short)
 
         prof_enter = self.driver.find_element(*self.profession)
-        prof_enter.send_keys(Profession)
+        prof_enter.send_keys(data.Profession)
 
         time.sleep(time_med)
 
-    def Applicant_DOB(self,Date_Of_Birth):
+    def Applicant_DOB(self,data:PersonalDetailsData):
         enter_DOB = self.driver.find_element(*self.DOB)
         if selected_language == 1:
-            month = Date_Of_Birth[0:2]
+            month = data.Date_Of_Birth[0:2]
         elif selected_language == 0:
-            month = Date_Of_Birth[2:4]
+            month = data.Date_Of_Birth[2:4]
         else:
             print('Error in DOB')
 
         month_name = calendar.month_name[int(month)]
         print(month_name)
-        print(Date_Of_Birth)
+        print(data.Date_Of_Birth)
         print(enter_DOB)
         enter_DOB.click()
-        enter_DOB.send_keys(Date_Of_Birth)
+        enter_DOB.send_keys(data.Date_Of_Birth)
 
         time.sleep(time_med)
 
-    def Applicant_Nation(self, Country):
+    def Applicant_Nation(self, data:PersonalDetailsData):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.Country))
         country = self.driver.find_element(*self.Country)
         country.click()
-        country.send_keys(Country)
+        country.send_keys(data.Country)
 
         time.sleep(time_med)
         nation_options = self.driver.find_elements(*self.dropdown)
         for option in nation_options:
             option_text = option.text.strip()
-            if option_text == Country:
+            if option_text == data.Country:
                 option.click()
                 break
 
         time.sleep(time_short)
 
-    def Applicant_State(self, State):
+    def Applicant_State(self, data:PersonalDetailsData):
         state = self.driver.find_element(*self.State)
         state.click()
-        state.send_keys(State)
+        state.send_keys(data.State)
 
         time.sleep(time_med)
         state_options = self.driver.find_elements(*self.dropdown)
         for option in state_options:
             option_text = option.text.strip()
-            if option_text == State:
+            if option_text == data.State:
                 option.click()
                 break
 
         time.sleep(time_short)
 
-    def Applicant_City(self, City):
+    def Applicant_City(self, data:PersonalDetailsData):
         city = self.driver.find_element(*self.City)
         city.click()
-        city.send_keys(City)
+        city.send_keys(data.City)
 
         time.sleep(time_med)
         city_options = self.driver.find_elements(*self.dropdown)
         for option in city_options:
             option_text = option.text.strip()
-            if option_text == City:
+            if option_text == data.City:
                 option.click()
                 break
 
         time.sleep(time_short)
 
-    def Applicant_Nationality(self, Nationality):
+    def Applicant_Nationality(self, data:PersonalDetailsData):
         nationality = self.driver.find_element(*self.Nationality)
         nationality.click()
-        nationality.send_keys(Nationality)
+        nationality.send_keys(data.Nationality)
 
         time.sleep(time_med)
         try:
@@ -155,7 +155,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
             nationality_options = self.driver.find_elements(*self.dropdown)
             for option in nationality_options:
                 option_text = option.text.strip()
-                if option_text == Nationality:
+                if option_text == data.Nationality:
                     option.click()
                     break
 
@@ -165,12 +165,12 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         time.sleep(time_short)
 
 
-    def Currency_Selection(self, Currency):
+    def Currency_Selection(self, data:PersonalDetailsData):
         currency = self.driver.find_element(*self.currency_dropdown)
         currency.click()
         time.sleep(time_short)
 
-        print(Currency)
+        print(data.Currency)
 
         currency_map = {
             1: self.currency_code_ARS,
@@ -202,7 +202,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         }
 
         # Get locator from map
-        locator = currency_map.get(Currency)
+        locator = currency_map.get(data.Currency)
 
         if locator:
             self.driver.find_element(*locator).click()
@@ -211,32 +211,32 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
 
         time.sleep(time_med)
 
-    def Applicant_Income(self, Monthly_Income):
+    def Applicant_Income(self, data:PersonalDetailsData):
         income = self.driver.find_element(*self.Monthly_Income)
         income.click()
         income.send_keys(Keys.CONTROL + "a")
         income.send_keys(Keys.DELETE)
         time.sleep(time_short)
-        income.send_keys(Monthly_Income)
+        income.send_keys(data.Monthly_Income)
         time.sleep(time_short)
 
-    def Applicant_Expense(self, Monthly_Expense):
+    def Applicant_Expense(self, data:PersonalDetailsData):
         expense = self.driver.find_element(*self.Monthly_Expense)
         expense.click()
         expense.send_keys(Keys.CONTROL + "a")
         expense.send_keys(Keys.DELETE)
         time.sleep(time_short)
-        expense.send_keys(Monthly_Expense)
+        expense.send_keys(data.Monthly_Expense)
         time.sleep(time_short)
 
 
 
-    def Financial_Dependent(self, Financially_Dependent):
+    def Financial_Dependent(self, data:PersonalDetailsData):
 
         not_dependent = self.driver.find_element(*self.Financial_Independent_Yes)
         dependent = self.driver.find_element(*self.Financial_Independent_No)
 
-        if Financially_Dependent == 1:
+        if data.Financially_Dependent == 1:
                 dependent.click()
 
         else:
@@ -245,10 +245,10 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         time.sleep(time_long)
 
 
-    def Has_Children(self, Has_Children):                  
+    def Has_Children(self, data:PersonalDetailsData):                  
         has_children = self.driver.find_element(*self.has_Children)
         does_not_have_children = self.driver.find_element(*self.does_Not_Have_Children)
-        if Has_Children == 1:
+        if data.Has_Children == 1:
             has_children.click()
 
         else:
@@ -257,7 +257,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         time.sleep(time_long)
 
 
-    def Number_of_children(self,Range_0to4, Range_5to12, Range_13to18, Range_18plus):
+    def Number_of_children(self,data:PersonalDetailsData):
 
 
         try:
@@ -270,25 +270,25 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
             zero_To_four.click()
             zero_To_four.send_keys(Keys.BACKSPACE+Keys.BACKSPACE)
             time.sleep(time_short)
-            zero_To_four.send_keys(Range_0to4)
+            zero_To_four.send_keys(data.Range_0to4)
             time.sleep(time_short)
 
             five_To_twelve.click()
             five_To_twelve.send_keys(Keys.BACKSPACE+Keys.BACKSPACE)
             time.sleep(time_short)
-            five_To_twelve.send_keys(Range_5to12)
+            five_To_twelve.send_keys(data.Range_5to12)
             time.sleep(time_short)
 
             thirteen_To_eighteen.click()
             thirteen_To_eighteen.send_keys(Keys.BACKSPACE+Keys.BACKSPACE)
             time.sleep(time_short)
-            thirteen_To_eighteen.send_keys(Range_13to18)
+            thirteen_To_eighteen.send_keys(data.Range_13to18)
             time.sleep(time_short)
 
             eighteen_Plus.click()
             eighteen_Plus.send_keys(Keys.BACKSPACE+Keys.BACKSPACE)
             time.sleep(time_short)
-            eighteen_Plus.send_keys(Range_18plus)
+            eighteen_Plus.send_keys(data.Range_18plus)
             time.sleep(time_short)
 
             print("All fields filled.")
@@ -298,13 +298,6 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
 
         except Exception as e:
             print(f"No children Field, found : {e}")
-            folder_path = "screenshots"
-            os.makedirs(folder_path, exist_ok=True)
-            timestamp = time.strftime("%Y%m%d-%H%M%S")
-            screenshot_name = f"{folder_path}/snackbar_exception_{timestamp}.png"
-
-            # Take screenshot
-            self.driver.save_screenshot(screenshot_name)
             time.sleep(time_med)
 
 

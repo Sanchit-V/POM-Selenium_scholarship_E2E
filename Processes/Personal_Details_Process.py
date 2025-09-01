@@ -1,22 +1,23 @@
+from Pydentic_Model.models import PersonalDetailsData
 class PersonalDetailsProcess:
     def __init__(self, personal_details):
         self.personal_details = personal_details
 
-    def run_process(self, document_type, Document_number, Martial_status, Profession, Date_Of_Birth, Country, State, City, Nationality,Currency,Monthly_Income, Monthly_Expense,  Financially_Dependent, Has_Children, Range_0to4, Range_5to12, Range_13to18, Range_18plus):
-        self.personal_details.document_type_selection(document_type)
-        self.personal_details.document_number(Document_number)
-        self.personal_details.marital_status(Martial_status)
-        self.personal_details.Applicant_profession(Profession)
-        self.personal_details.Applicant_DOB(Date_Of_Birth)
-        self.personal_details.Applicant_Nation(Country)
-        self.personal_details.Applicant_State(State)
-        self.personal_details.Applicant_City(City)
-        self.personal_details.Applicant_Nationality(Nationality)
-        self.personal_details.Currency_Selection(Currency)
-        self.personal_details.Applicant_Income(Monthly_Income)
-        self.personal_details.Applicant_Expense(Monthly_Expense)
-        self.personal_details.Financial_Dependent(Financially_Dependent)
-        self.personal_details.Has_Children(Has_Children)
-        self.personal_details.Number_of_children(Range_0to4, Range_5to12, Range_13to18, Range_18plus)
+    def run_process(self, data:PersonalDetailsData):
+        self.personal_details.document_type_selection(data)
+        self.personal_details.document_number(data)
+        self.personal_details.marital_status(data)
+        self.personal_details.Applicant_profession(data)
+        self.personal_details.Applicant_DOB(data)
+        self.personal_details.Applicant_Nation(data)
+        self.personal_details.Applicant_State(data)
+        self.personal_details.Applicant_City(data)
+        self.personal_details.Applicant_Nationality(data)
+        self.personal_details.Currency_Selection(data)
+        self.personal_details.Applicant_Income(data)
+        self.personal_details.Applicant_Expense(data)
+        self.personal_details.Financial_Dependent(data)
+        self.personal_details.Has_Children(data)
+        self.personal_details.Number_of_children(data)
         self.personal_details.Continue_button()
 

@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 
 import Data.user_details as user_details
+from Pydentic_Model.models import EmploymentInfoData
 
 time_short = user_details.time_short
 time_med = user_details.time_med
@@ -14,14 +15,14 @@ time_long = user_details.time_long
 from Page_Objects.Employments_Information_Page import EmploymentInformationObjects
 
 class EmploymentInformationFunction(EmploymentInformationObjects):
-    def Currently_working(self, currently_working):
+    def Currently_working(self, data:EmploymentInfoData):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.currently_working_yes))
-        if currently_working == 1:
+        if data.currently_working == 1:
             yes_radio = self.driver.find_element(*self.currently_working_yes)
             yes_radio.click()
             time.sleep(time_med)
 
-        elif currently_working == 0:
+        elif data.currently_working == 0:
             no_radio = self.driver.find_element(*self.currently_working_no)
             no_radio.click()
             time.sleep(time_med)
@@ -29,7 +30,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
         else:
             print('Wrong input given.')
 
-    def position_info(self, Institution_Name, Position, Area, work_category, Activity, seniority_position, Monthly_Salary):
+    def position_info(self, data:EmploymentInfoData):
         try:
             Institution_name = self.driver.find_element(*self.institution_name)
             Institution_name.click()
@@ -37,7 +38,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             Institution_name.send_keys(Keys.CONTROL + "a")
             Institution_name.send_keys(Keys.DELETE)
             time.sleep(time_short)
-            Institution_name.send_keys(Institution_Name)
+            Institution_name.send_keys(data.Institution_Name)
             time.sleep(time_short)
 
         except:
@@ -50,7 +51,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             Position_name.send_keys(Keys.CONTROL + "a")
             Position_name.send_keys(Keys.DELETE)
             time.sleep(time_short)
-            Position_name.send_keys(Position)
+            Position_name.send_keys(data.Position)
             time.sleep(time_short)
 
         except:
@@ -63,7 +64,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             Area_name.send_keys(Keys.CONTROL + "a")
             Area_name.send_keys(Keys.DELETE)
             time.sleep(time_short)
-            Area_name.send_keys(Area)
+            Area_name.send_keys(data.Area)
             time.sleep(time_short)
 
         except:
@@ -74,12 +75,12 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             Worker_category.click()
             time.sleep(time_short)
 
-            if work_category == 1:
+            if data.work_category == 1:
                 Dependent=self.driver.find_element(*self.dependent)
                 Dependent.click()
                 time.sleep(time_short)
 
-            elif work_category == 0:
+            elif data.work_category == 0:
                 Independent = self.driver.find_element(*self.independent)
                 Independent.click()
                 time.sleep(time_short)
@@ -97,7 +98,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             Activity_name.send_keys(Keys.CONTROL + "a")
             Activity_name.send_keys(Keys.DELETE)
             time.sleep(time_short)
-            Activity_name.send_keys(Activity)
+            Activity_name.send_keys(data.Activity)
             time.sleep(time_short)
 
         except:
@@ -119,7 +120,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             }
 
             # Select based on input
-            selected_option = seniority_map.get(seniority_position)
+            selected_option = seniority_map.get(data.seniority_position)
 
             if selected_option:
                 selected_option.click()
@@ -138,20 +139,20 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             Monthly_salary.send_keys(Keys.CONTROL + "a")
             Monthly_salary.send_keys(Keys.DELETE)
             time.sleep(time_short)
-            Monthly_salary.send_keys(Monthly_Salary)
+            Monthly_salary.send_keys(data.Monthly_Salary)
             time.sleep(time_short)
 
         except:
             print('Monthly salary section not available.')
 
-    def Currency_Selection(self, Emp_Currency):
+    def Currency_Selection(self, data:EmploymentInfoData):
         try:
 
             currency = self.driver.find_element(*self.currency_code_dropdown)
             currency.click()
             time.sleep(time_short)
 
-            print(Emp_Currency)
+            print(data.Emp_Currency)
 
             currency_map = {
                 1: self.currency_code_ARS,
@@ -183,7 +184,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             }
 
             # Get locator from map
-            locator = currency_map.get(Emp_Currency)
+            locator = currency_map.get(data.Emp_Currency)
 
             if locator:
                 self.driver.find_element(*locator).click()
@@ -194,7 +195,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
         except:
             print('Currency selection not available.')
             
-    def employment_country(self, Emp_Country, Emp_State, Emp_City, Zip_Code, Address): #, Zip_Code, Address
+    def employment_country(self, data:EmploymentInfoData): #, Zip_Code, Address
         try:
             country_select = self.driver.find_element(*self.country)
             country_select.click()
@@ -202,9 +203,9 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             country_select.send_keys(Keys.DELETE)
             time.sleep(time_short)
 
-            country_select.send_keys(Emp_Country)
+            country_select.send_keys(data.Emp_Country)
 
-            if Emp_Country == 'India':
+            if data.Emp_Country == 'India':
                 for i in range(2):
                     self.driver.find_element(*self.country).send_keys(Keys.ARROW_DOWN)
 
@@ -228,7 +229,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             state_select.send_keys(Keys.DELETE)
             time.sleep(time_short)
 
-            state_select.send_keys(Emp_State)
+            state_select.send_keys(data.Emp_State)
             self.driver.find_element(*self.state).send_keys(Keys.ARROW_DOWN)
             self.driver.find_element(*self.state).send_keys(Keys.ENTER)
 
@@ -244,7 +245,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             city_select.send_keys(Keys.DELETE)
             time.sleep(time_short)
 
-            city_select.send_keys(Emp_City)
+            city_select.send_keys(data.Emp_City)
             self.driver.find_element(*self.city).send_keys(Keys.ARROW_DOWN)
             self.driver.find_element(*self.city).send_keys(Keys.ENTER)
 
@@ -261,7 +262,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             time.sleep(time_short)
             Zip_code.send_keys(Keys.DELETE)
             time.sleep(time_short)
-            Zip_code.send_keys(Zip_Code)
+            Zip_code.send_keys(data.Zip_Code)
             time.sleep(time_short)
 
         except:
@@ -275,7 +276,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             time.sleep(time_short)
             AddresS.send_keys(Keys.DELETE)
             time.sleep(time_short)
-            AddresS.send_keys(Address)
+            AddresS.send_keys(data.Address)
             time.sleep(time_short)
 
         except:
@@ -283,7 +284,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
 
 
 
-    def employment_contact(self, Landline_Phone, Phone_Mobile,Website):
+    def employment_contact(self, data:EmploymentInfoData):
 
         try:
             landline_phune = self.driver.find_element(*self.landline_number)
@@ -292,7 +293,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             landline_phune.send_keys(Keys.CONTROL + "a")
             landline_phune.send_keys(Keys.DELETE)
             time.sleep(time_short)
-            landline_phune.send_keys(Landline_Phone)
+            landline_phune.send_keys(data.Landline_Phone)
             time.sleep(time_short)
 
         except:
@@ -306,7 +307,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             mobile_phune.send_keys(Keys.CONTROL + "a")
             mobile_phune.send_keys(Keys.DELETE)
             time.sleep(time_short)
-            mobile_phune.send_keys(Phone_Mobile)
+            mobile_phune.send_keys(data.Phone_Mobile)
             time.sleep(time_short)
 
         except:
@@ -320,7 +321,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             website.send_keys(Keys.CONTROL + "a")
             website.send_keys(Keys.DELETE)
             time.sleep(time_short)
-            website.send_keys(Website)
+            website.send_keys(data.Website)
             time.sleep(time_short)
 
         except:
@@ -328,7 +329,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
 
 
 
-    def nations(self, Landline_Nation, Mobile_Nation):
+    def nations(self, data:EmploymentInfoData):
         try:
             landline_phune_country = self.driver.find_element(*self.landline_number_country)
             landline_phune_country.click()
@@ -339,10 +340,10 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             CountrY.send_keys(Keys.CONTROL + "a")
             CountrY.send_keys(Keys.DELETE)
             time.sleep(time_short)
-            CountrY.send_keys(Landline_Nation)
+            CountrY.send_keys(data.Landline_Nation)
             time.sleep(time_long)
 
-            if Landline_Nation == 'India':
+            if data.Landline_Nation == 'India':
                 for i in range(2):
                     self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 
@@ -365,10 +366,10 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
             CountrY.send_keys(Keys.CONTROL + "a")
             CountrY.send_keys(Keys.DELETE)
             time.sleep(time_short)
-            CountrY.send_keys(Mobile_Nation)
+            CountrY.send_keys(data.Mobile_Nation)
             time.sleep(time_long)
 
-            if Mobile_Nation == 'India':
+            if data.Mobile_Nation == 'India':
                 for i in range(2):
                     self.driver.find_element(*self.country_menu).send_keys(Keys.ARROW_DOWN)
 

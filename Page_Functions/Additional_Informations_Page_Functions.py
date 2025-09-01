@@ -6,12 +6,13 @@ from selenium.webdriver.support import expected_conditions as EC
 import Data.user_details as user_details
 from Page_Objects.Additional_Informations_Page import AdditionalInfoObjects
 import time
+from Pydentic_Model.models import AdditionalInfoData
 time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
 
 class AdditionalInformationFunctions(AdditionalInfoObjects):
-    def select_Option(self, additional_type,Text_Additional_field):
+    def select_Option(self, data:AdditionalInfoData):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.google))
 
         time.sleep(time_med)
@@ -28,7 +29,7 @@ class AdditionalInformationFunctions(AdditionalInfoObjects):
     }
 
         # Get locator from map (default to webinar if not found)
-        locator = option_map.get(additional_type, self.webinar)
+        locator = option_map.get(data.additional_type, self.webinar)
 
         # Find and click
         element = self.driver.find_element(*locator)
@@ -44,7 +45,7 @@ class AdditionalInformationFunctions(AdditionalInfoObjects):
             print('*****************************************\t')
             print('Web element found\t')
             print('*****************************************')
-            text_field.send_keys(Text_Additional_field)
+            text_field.send_keys(data.Text_Additional_field)
 
         except:
             print("No text field found")

@@ -54,65 +54,41 @@ document_page_functions = DocumentsPageFunctions(_driver)
 
 def test_login_process():
     login_process = LoginPageProcess(login_page_functions)
-    login_process.run_process(user_details.access_code, user_details.selected_language)
+    login_process.run_process(user_details)
 
 def test_welcome_page():
     welcome_process = Welcome_Process(welcome_page_functions)
-    welcome_process.run_process(user_details.expected_message, user_details.user_greeting)
+    welcome_process.run_process(user_details)
 
 
 def test_personal_details():
     personal_details = PersonalDetailsProcess(personal_details_functions)
-    personal_details.run_process(user_details.document_type, user_details.Document_number, user_details.Martial_status,
-                                 user_details.Profession, user_details.Date_Of_Birth,
-                                 user_details.Country, user_details.State, user_details.City, user_details.Nationality,
-                                 user_details.Currency,user_details.Monthly_Income,
-                                 user_details.Monthly_Expense, user_details.Financially_Dependent,
-                                 user_details.Has_Children, user_details.Range_0to4,
-                                 user_details.Range_5to12, user_details.Range_13to18, user_details.Range_18plus) 
+    personal_details.run_process(user_details) 
 
 def test_address_details():
     address_details = AddressPageProcess(address_page_functions)
-    address_details.run_processes(user_details.additional_emails_to_be_added, user_details.email_Ids,user_details.default_phone,
-                                  user_details.default_whatsapp,user_details.total_additionals, user_details.number_of_additional_phone,
-                                  user_details.number_of_additional_whatsapp, user_details.additional_1, user_details.additional_2,
-                                  user_details.additional_3,user_details.country_0,user_details.country_1,
-                                  user_details.country_2, user_details.country_3, user_details.country_4,user_details.housing_type,
-                                  user_details.housing_conditions, user_details.Country,user_details.State,
-                                  user_details.City, user_details.home_address, user_details.zip_code)
+    address_details.run_processes(user_details)
 
 def test_academic_records():
     academic_details = AcademicRecordsProcess(academic_page_functions)
-    academic_details.run_processes(user_details.additional_education,user_details.education_level_1,user_details.education_level_2,user_details.education_level_3,
-                                   user_details.University_Institution_1,user_details.University_Institution_2,user_details.University_Institution_3,
-                                   user_details.degree_1,user_details.degree_2,user_details.degree_3,
-                                   user_details.starting_Date_0,user_details.graduation_Date_0,
-                                   user_details.starting_Date_1,user_details.graduation_Date_1,
-                                   user_details.starting_Date_2,user_details.graduation_Date_2,
-                                   user_details.online_mode_study, user_details.training_type_university, user_details.training_type_employment,
-                                   user_details.training_type_second_language, user_details.Other_Expertise)
+    academic_details.run_processes(user_details)
 
 def test_employment_information():
     employment_details = EmployementInfoProcess(employment_page_functions)
-    employment_details.run_processes(user_details.currently_working,user_details.Institution_Name, user_details.Position, user_details.Area,
-                      user_details.work_category, user_details.Activity, user_details.seniority_position, user_details.Monthly_Salary,user_details.Emp_Currency,
-                        user_details.Emp_Country, user_details.Emp_State, user_details.Emp_City, user_details.Zip_Code, user_details.Address,
-                                     user_details.Landline_Phone, user_details.Phone_Mobile, user_details.Website, user_details.Mobile_Nation, user_details.Landline_Nation)
+    employment_details.run_processes(user_details)
 
 
 def test_reference_page():
     references_page = ReferencePageProcess(reference_page_functions)
-    references_page.run_processes(user_details.additional_references, user_details.ref_First_Name, user_details.ref_Last_Name,
-                                  user_details.ref_Pos_Occupation, user_details.ref_Emails, user_details.ref_phone_numbers,
-                                  user_details.ref_landline_numbers, user_details.ref_phone_CC, user_details.ref_landline_CC)
+    references_page.run_processes(user_details)
 
 def test_documents_upload_page():
     documents_upload = DocumentsPageProcess(document_page_functions)
-    documents_upload.run_processes(user_details.have_degree_checkbox)
+    documents_upload.run_processes(user_details)
 
 def test_additional_info_page():
     addition_info = AdditionalInfoProcess(additional_page_functions)
-    addition_info.run_processes(user_details.additional_type,user_details.Text_Additional_field)
+    addition_info.run_processes(user_details)
 
 def test_submit_page():
     submit_page = SummaryPageProcess(submit_report_page_functions)

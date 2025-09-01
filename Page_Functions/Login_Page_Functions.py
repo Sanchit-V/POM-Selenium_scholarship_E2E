@@ -4,6 +4,7 @@ import time
 import os
 import Data.user_details as user_details
 from Page_Objects.Login_Page import LoginPageObjects
+from Pydentic_Model.models import LoginData
 
 time_short = user_details.time_short
 time_med = user_details.time_med
@@ -11,7 +12,7 @@ time_long = user_details.time_long
 
 class LoginPageFunctions(LoginPageObjects):
 
-    def select_language(self, selected_language):
+    def select_language(self, data:LoginData):
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.Access_Code))
         
         selected_language_button = self.driver.find_element(*self.Language_Button)
@@ -19,24 +20,24 @@ class LoginPageFunctions(LoginPageObjects):
         selected_language_button.click()
         time.sleep(time_med)
 
-        if selected_language == 1 :
+        if data.selected_language == 1 :
             select_english = self.driver.find_element(*self.Language_English)
             select_english.click()
             print("Selected Language: English")
         
-        if selected_language == 0:
+        if data.selected_language == 0:
             select_spanish = self.driver.find_element(*self.Language_Spanish)
             select_spanish.click()
             print("Selected Language: Spanish")
 
         time.sleep(time_med)
 
-    def enter_access_code(self, access_code):
+    def enter_access_code(self, data:LoginData):
         access_code_element = self.driver.find_element(*self.Access_Code)
         time.sleep(time_short)
-        access_code_element.send_keys(access_code)
+        access_code_element.send_keys(data.access_code)
         time.sleep(time_short)
-        print(f"Entered Access Code: {access_code}")
+        print(f"Entered Access Code: {data.access_code}")
         time.sleep(time_short)
         # access_visible = self.driver.find_element(*self.Visible_Icon)
         # access_visible.click()

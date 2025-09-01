@@ -9,6 +9,7 @@ import time
 
 import Data.user_details as user_details
 from Page_Objects.References_Page import ReferencesPageObjects
+from Pydentic_Model.models import ReferencePageData
 time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
@@ -17,16 +18,16 @@ selected_language = user_details.selected_language
 
 class ReferencesPageFunctions (ReferencesPageObjects):
 
-    def add_references(self, additional_references):
+    def add_references(self, data:ReferencePageData):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.add_reference))
         try:
-            if 0 < additional_references <=2 :
-                for additional_reference in range(additional_references):
+            if 0 < data.additional_references <=2 :
+                for additional_reference in range(data.additional_references):
                     added_references = self.driver.find_element(*self.add_reference)
                     added_references.click()
                     time.sleep(time_short)
 
-            elif additional_references == 0:
+            elif data.additional_references == 0:
                 print("No references added, 0 option selected.")
 
             else:
@@ -35,9 +36,9 @@ class ReferencesPageFunctions (ReferencesPageObjects):
         except:
             print(f'The error occurred adding the references.')
 
-    def delete_references(self, additional_references):
+    def delete_references(self, data:ReferencePageData):
         try:
-            for delete in range (additional_references + 2):
+            for delete in range (data.additional_references + 2):
                 delete_reference = self.driver.find_element(*self.delete_additional_reference)
                 delete_reference.click()
                 time.sleep(time_short)
@@ -47,8 +48,7 @@ class ReferencesPageFunctions (ReferencesPageObjects):
             print("No additional field to be deleted.")
 
     
-    def add_references_details(self, ref_First_Name, ref_Last_Name, ref_Pos_Occupation, ref_Emails,
-                               ref_phone_numbers, ref_landline_numbers, ref_phone_CC, ref_landline_CC):
+    def add_references_details(self, data:ReferencePageData):
         
         for i in range(1, 6):
 
@@ -62,7 +62,7 @@ class ReferencesPageFunctions (ReferencesPageObjects):
                 ref_First_name.send_keys(Keys.CONTROL + "a")
                 ref_First_name.send_keys(Keys.DELETE)
                 time.sleep(time_short)
-                ref_First_name.send_keys(ref_First_Name[i-1])
+                ref_First_name.send_keys(data.ref_First_Name[i-1])
                 time.sleep(time_short)
 
                 ref_Last_name = self.driver.find_element(*self.ref_last_name[i-1])
@@ -71,7 +71,7 @@ class ReferencesPageFunctions (ReferencesPageObjects):
                 ref_Last_name.send_keys(Keys.CONTROL + "a")
                 ref_Last_name.send_keys(Keys.DELETE)
                 time.sleep(time_short)
-                ref_Last_name.send_keys(ref_Last_Name[i-1])
+                ref_Last_name.send_keys(data.ref_Last_Name[i-1])
                 time.sleep(time_short)
 
                 ref_position_occupation = self.driver.find_element(*self.ref_occupation[i-1])
@@ -80,7 +80,7 @@ class ReferencesPageFunctions (ReferencesPageObjects):
                 ref_position_occupation.send_keys(Keys.CONTROL + "a")
                 ref_position_occupation.send_keys(Keys.DELETE)
                 time.sleep(time_short)
-                ref_position_occupation.send_keys(ref_Pos_Occupation[i-1])
+                ref_position_occupation.send_keys(data.ref_Pos_Occupation[i-1])
                 time.sleep(time_short)
 
                 ref_Email = self.driver.find_element(*self.ref_email[i-1])
@@ -89,7 +89,7 @@ class ReferencesPageFunctions (ReferencesPageObjects):
                 ref_Email.send_keys(Keys.CONTROL + "a")
                 ref_Email.send_keys(Keys.DELETE)
                 time.sleep(time_short)
-                ref_Email.send_keys(ref_Emails[i-1])
+                ref_Email.send_keys(data.ref_Emails[i-1])
                 time.sleep(time_short)
 
                 ref_Phone_Number = self.driver.find_element(*self.ref_phone_number[i-1])
@@ -98,7 +98,7 @@ class ReferencesPageFunctions (ReferencesPageObjects):
                 ref_Phone_Number.send_keys(Keys.CONTROL + "a")
                 ref_Phone_Number.send_keys(Keys.DELETE)
                 time.sleep(time_short)
-                ref_Phone_Number.send_keys(ref_phone_numbers[i-1])
+                ref_Phone_Number.send_keys(data.ref_phone_numbers[i-1])
                 time.sleep(time_short)
 
                 ref_Landline_Number = self.driver.find_element(*self.ref_landline[i-1])
@@ -107,7 +107,7 @@ class ReferencesPageFunctions (ReferencesPageObjects):
                 ref_Landline_Number.send_keys(Keys.CONTROL + "a")
                 ref_Landline_Number.send_keys(Keys.DELETE)
                 time.sleep(time_short)
-                ref_Landline_Number.send_keys(ref_landline_numbers[i-1])
+                ref_Landline_Number.send_keys(data.ref_landline_numbers[i-1])
                 time.sleep(time_short)
 
                 
@@ -121,9 +121,9 @@ class ReferencesPageFunctions (ReferencesPageObjects):
                 Country_menu.send_keys(Keys.CONTROL + "a")
                 Country_menu.send_keys(Keys.DELETE)
                 time.sleep(time_short)
-                Country_menu.send_keys(ref_phone_CC[i-1])
+                Country_menu.send_keys(data.ref_phone_CC[i-1])
                 time.sleep(time_long)
-                country_lower = ref_phone_CC[i-1].lower()
+                country_lower = data.ref_phone_CC[i-1].lower()
                 print(country_lower)
 
                 if selected_language == 0:
@@ -159,9 +159,9 @@ class ReferencesPageFunctions (ReferencesPageObjects):
                 Country_menu.send_keys(Keys.CONTROL + "a")
                 Country_menu.send_keys(Keys.DELETE)
                 time.sleep(time_short)
-                Country_menu.send_keys(*ref_landline_CC[i-1])
+                Country_menu.send_keys(data.ref_landline_CC[i-1])
                 time.sleep(time_long)
-                country_lower = ref_landline_CC[i-1].lower()
+                country_lower = data.ref_landline_CC[i-1].lower()
                 print(country_lower)
 
                 if selected_language == 0:

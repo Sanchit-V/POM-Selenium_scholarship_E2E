@@ -8,13 +8,14 @@ import time
 import Data.user_details as user_details
 
 from Page_Objects.Welcome_Page import WelcomePage
+from Pydentic_Model.models import WecomePageData
 
 time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
 
 class Welcome_Page(WelcomePage):
-    def Check_snack_bar(self, expected_message):
+    def Check_snack_bar(self, data:WecomePageData):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.logged_in_snack))
 
         try:
@@ -22,29 +23,28 @@ class Welcome_Page(WelcomePage):
             actual_message = snack_bar.text
 
             print("Snack-Bar message Extracted as: " + actual_message)
+            if actual_message == data.expected_message(f"✅ Expected message: '{data.expected_message}' and got '{actual_message}'"):
+                assert True
 
         except :
             print(f"No Snackbar Encountered.")
 
+        
 
-
-
-
-
-    def Check_Greetings(self, user_greeting):
+    def Check_Greetings(self, data:WecomePageData):
         try:
             greeting = self.driver.find_element(*self.user_greetings)
 
             actual_greeting = greeting.text
 
             print("Greetings Extracted as: " + actual_greeting)
+            if actual_greeting == data.user_greeting(f"✅ Expected greeting: '{data.user_greeting}' and got '{actual_greeting}'"):
+                assert True
 
         except:
             print(f"No Greeting-Message Encountered.")
-
-
-
-
+        
+        
 
     def Get_Started(self):
         try:

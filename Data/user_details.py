@@ -62,9 +62,7 @@ additional_type = random.randint(1, 8) # 1-Google 2-Facebook 3-Instagram 4-Refer
 
 additional_education = random.randint(0, 2)
 
-education_level_1 = random.randint(1, 4) # 1-Postgraduate 2-University 3-Technical 4-High School
-education_level_2 = random.randint(1, 4) # 1-Postgraduate 2-University 3-Technical 4-High School
-education_level_3 = random.randint(1, 4) # 1-Postgraduate 2-University 3-Technical 4-High School
+education_level = [random.randint(1, 4) for _ in range(3)] # 1-Postgraduate 2-University 3-Technical 4-High School
 online_mode_study = random.randint(0, 1) # 0 for No, 1 for Yes
 
 training_type_university = random.randint(0, 1) # 0 for No, 1 for Yes
@@ -134,83 +132,46 @@ def generate_financials():
         "expense": expense
     }
 
-# Example usage
+
 finances = generate_financials()
 
 
-# Monthly_Income = json_data['Monthly_Income']
-# Monthly_Expense = json_data['Monthly_Expense']
+
 Monthly_Income = finances['income']
 Monthly_Expense = finances['expense']
 
-# print(Monthly_Income)
-# print(Monthly_Expense)
 
-#Range_0to4 = json_data['range_0to4']
-# Range_5to12 = json_data['range_5to12']
-# Range_13to18 = json_data['range_13to18']
-# Range_18plus = json_data['range_18plus']
 Range_0to4 = random.randint(0,99)
 Range_5to12 = random.randint(0,99)
 Range_13to18 = random.randint(0,99)
 Range_18plus = random.randint(0,99)
 
-# print(Range_0to4)
-# print(Range_5to12)
-# print(Range_13to18)
-# print(Range_18plus)
 
-
-# email_Ids = json_data['email_ids']
 
 
 email_Ids = [fake.email() for _ in range(5)]
 
 print(email_Ids)
 
-# default_phone = json_data['default_phone']
+
 def generate_phone_number():
     length = random.randint(10, 20)
     return str(random.randint(10**(length - 1), 10**length - 1))
 
-# Example usage
+
 default_phone = generate_phone_number()
-#print(default_phone)
 
-# default_whatsapp = json_data['default_whatsapp']
 default_whatsapp = generate_phone_number()
-#print(default_whatsapp)
 
-#additional_numbers = json_data['additional_phones']
 
 
 additional_numbers = [generate_phone_number() for _ in range(3)]
 
-additional_1 = additional_numbers[0]
-additional_2 = additional_numbers[1]
-additional_3 = additional_numbers[2]
 
-# print(additional_1)
-# print(additional_2)
-# print(additional_3)
 
-#countries = json_data['countries_visited']
-country_0 =random.choice(json_data['countries_visited']) #fake.country()
-#print(country_0)
-country_1 =random.choice(json_data['countries_visited']) #fake.country()
-#print(country_1)
-country_2 =random.choice(json_data['countries_visited']) #fake.country()
-#print(country_2)
-country_3 =random.choice(json_data['countries_visited']) #fake.country()
-#print(country_3)
-country_4 =random.choice(json_data['countries_visited']) #fake.country()
-#print(country_4)
+country = [random.choice(json_data['countries_visited']) for _ in range(5)] #fake.country()
 
-# home_address = json_data['home_address']
 home_address = fake.address().replace('\n', ', ')
-#print(home_address)
-
-# zip_code = json_data['zip_code']
 
 def zip(length=10):
     chars = string.ascii_uppercase + string.digits
@@ -226,57 +187,20 @@ Text_Additional_field=description
 
 #University_Institution = json_data['University/Institution']
 University_Institution = [fake.company() + " University" for _ in range(3)]
-# Degree = json_data['Degree']
-#Starting_Date = json_data['Starting_Date']
-#Graduation_Date = json_data['Graduation_Date']
 
-University_Institution_1 = University_Institution[0]
+
+
 #print(University_Institution_1)
-degree_1 = random.choice(json_data['Degree'])
+degree = [random.choice(json_data['Degree']) for _ in range(3)]
 #print(degree_1)
 
-#starting_Date_0 = random.choice(json_data['Starting_Date'])
-#graduation_Date_0 = random.choice(json_data['Graduation_Date'])
+
 fake_date = fake.date_between(start_date='-10y', end_date='-5y')
-starting_Date_0 = fake_date.strftime("%m%Y")
-starting_datetime = datetime.strptime(starting_Date_0, "%m%Y")
+starting_Date = [fake_date.strftime("%m%Y") for _ in range(3)]
+starting_datetime = datetime.strptime(starting_Date[0], "%m%Y")
 graduation_datetime = starting_datetime + relativedelta(years=5)
-graduation_Date_0 = graduation_datetime.strftime("%m%Y")
-print(starting_Date_0)
-print(graduation_Date_0)
+graduation_Date = [graduation_datetime.strftime("%m%Y") for _ in range(3)]
 
-University_Institution_2 = University_Institution[1]
-#print(University_Institution_2)
-
-degree_2 = random.choice(json_data['Degree'])
-#print(degree_2)
-
-#starting_Date_1 = random.choice(json_data['Starting_Date'])
-starting_Date_1 = fake_date.strftime("%m%Y")
-starting_datetime = datetime.strptime(starting_Date_1, "%m%Y")
-graduation_datetime = starting_datetime + relativedelta(years=5)
-graduation_Date_1 = graduation_datetime.strftime("%m%Y")
-print(starting_Date_1)
-print(graduation_Date_1)
-#graduation_Date_1 = random.choice(json_data['Graduation_Date'])
-# print(starting_Date_1)
-# print(graduation_Date_1)
-
-University_Institution_3 = University_Institution[2]
-#print(University_Institution_3)
-degree_3 = random.choice(json_data['Degree'])
-#print(degree_3)
-
-# starting_Date_2 = random.choice(json_data['Starting_Date'])
-# graduation_Date_2 = random.choice(json_data['Graduation_Date'])
-starting_Date_2 = fake_date.strftime("%m%Y")
-starting_datetime = datetime.strptime(starting_Date_2, "%m%Y")
-graduation_datetime = starting_datetime + relativedelta(years=5)
-graduation_Date_2 = graduation_datetime.strftime("%m%Y")
-print(starting_Date_2)
-print(graduation_Date_2)
-# print(starting_Date_2)
-# print(graduation_Date_2)
 
 Other_Expertise = random.choice(json_data['Other_Expertise'])
 #print(Other_Expertise)
@@ -366,20 +290,11 @@ else:
 
 
 if selected_language == 0:
-
-    country_0 = GoogleTranslator(source='en', target='es').translate(country_0)
-    country_1 = GoogleTranslator(source='en', target='es').translate(country_1)
-    country_2 = GoogleTranslator(source='en', target='es').translate(country_2)
-    country_3 = GoogleTranslator(source='en', target='es').translate(country_3)
-    country_4 = GoogleTranslator(source='en', target='es').translate(country_4)
-
+    for i in range (5):
+        country[i] = GoogleTranslator(source='en', target='es').translate(country[i])
 
 else:
-    country_0 = country_0
-    country_1 = country_1
-    country_2 = country_2
-    country_3 = country_3
-    country_4 = country_4
+    country = country
 
 
 if selected_language == 0:
