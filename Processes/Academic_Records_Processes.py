@@ -1,9 +1,9 @@
-from Pydentic_Model.models import AcademicRecordsData
+from Model.Academic_Records_Page_Model import AcademicRecordsPageModel
 class AcademicRecordsProcess:
     def __init__(self, academic_records_page):
         self.academic_records_page = academic_records_page
 
-    def run_processes(self, data:AcademicRecordsData):
+    def run_processes(self, data:AcademicRecordsPageModel):
         self.academic_records_page.del_added_edu()
         self.academic_records_page.education_details(data)
         self.academic_records_page.education_Level_1(data)

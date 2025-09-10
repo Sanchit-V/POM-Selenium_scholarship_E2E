@@ -3,16 +3,16 @@ import os
 from selenium.webdriver import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import Data.user_details as user_details
+import Data.Additional_Information_Page_Data as user_details
 from Page_Objects.Additional_Informations_Page import AdditionalInfoObjects
 import time
-from Pydentic_Model.models import AdditionalInfoData
+from Model.Additional_Information_Page_Model import AdditionalInformationDetailsModel
 time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
 
 class AdditionalInformationFunctions(AdditionalInfoObjects):
-    def select_Option(self, data:AdditionalInfoData):
+    def select_Option(self, data:AdditionalInformationDetailsModel):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.google))
 
         time.sleep(time_med)

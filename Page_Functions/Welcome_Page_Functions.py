@@ -5,10 +5,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-import Data.user_details as user_details
+import Data.Welcome_Page_Data as user_details
 
 from Page_Objects.Welcome_Page import WelcomePage
-from Pydentic_Model.models import WecomePageData
+from Model.Welcome_Page_Model import WecomePageData
 
 time_short = user_details.time_short
 time_med = user_details.time_med

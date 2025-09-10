@@ -1,4 +1,4 @@
-from Pydentic_Model.models import DocumentUploadData
+from Model.Documents_Page_Model import DocumentUploadData
 class DocumentsPageProcess:
     def __init__(self, documents_page):
         self.documents_page = documents_page

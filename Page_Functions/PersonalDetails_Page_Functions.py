@@ -6,9 +6,9 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import calendar
 
-import Data.user_details as user_details
+import Data.Personal_Page_Data as user_details
 from Page_Objects.Personal_Deltails_Page import PersonalDetailObjects
-from Pydentic_Model.models import PersonalDetailsData
+from Model.Personal_Page_Model import PersonalDetailsPageModel
 
 time_short = user_details.time_short
 time_med = user_details.time_med
@@ -17,7 +17,7 @@ selected_language = user_details.selected_language
 
 
 class PersonalDetailsFunctions(PersonalDetailObjects):
-    def document_type_selection(self, data:PersonalDetailsData):
+    def document_type_selection(self, data:PersonalDetailsPageModel):
         WebDriverWait(self.driver, 12).until(EC.presence_of_element_located(self.document_type_button))
         Document_click = self.driver.find_element(*self.document_type_button)
         Document_click.click()
@@ -37,7 +37,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         self.driver.find_element(*locator).click()
         time.sleep(time_short)
 
-    def document_number(self, data:PersonalDetailsData):
+    def document_number(self, data:PersonalDetailsPageModel):
         Doc_number_click = self.driver.find_element(*self.document_number_field)
         Doc_number_click.click()
 
@@ -49,7 +49,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         number.send_keys(data.Document_number)
         time.sleep(time_short)
 
-    def marital_status(self, data:PersonalDetailsData):
+    def marital_status(self, data:PersonalDetailsPageModel):
         # Open marital status dropdown
         marital_status_click = self.driver.find_element(*self.martial_status)
         marital_status_click.click()
@@ -68,7 +68,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         self.driver.find_element(*locator).click()
         time.sleep(time_short)
 
-    def Applicant_profession(self, data:PersonalDetailsData):
+    def Applicant_profession(self, data:PersonalDetailsPageModel):
         prof_click = self.driver.find_element(*self.profession_field)
         prof_click.click()
 
@@ -81,7 +81,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
 
         time.sleep(time_med)
 
-    def Applicant_DOB(self,data:PersonalDetailsData):
+    def Applicant_DOB(self,data:PersonalDetailsPageModel):
         enter_DOB = self.driver.find_element(*self.DOB)
         if selected_language == 1:
             month = data.Date_Of_Birth[0:2]
@@ -99,7 +99,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
 
         time.sleep(time_med)
 
-    def Applicant_Nation(self, data:PersonalDetailsData):
+    def Applicant_Nation(self, data:PersonalDetailsPageModel):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.Country))
         country = self.driver.find_element(*self.Country)
         country.click()
@@ -115,7 +115,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
 
         time.sleep(time_short)
 
-    def Applicant_State(self, data:PersonalDetailsData):
+    def Applicant_State(self, data:PersonalDetailsPageModel):
         state = self.driver.find_element(*self.State)
         state.click()
         state.send_keys(data.State)
@@ -130,7 +130,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
 
         time.sleep(time_short)
 
-    def Applicant_City(self, data:PersonalDetailsData):
+    def Applicant_City(self, data:PersonalDetailsPageModel):
         city = self.driver.find_element(*self.City)
         city.click()
         city.send_keys(data.City)
@@ -145,7 +145,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
 
         time.sleep(time_short)
 
-    def Applicant_Nationality(self, data:PersonalDetailsData):
+    def Applicant_Nationality(self, data:PersonalDetailsPageModel):
         nationality = self.driver.find_element(*self.Nationality)
         nationality.click()
         nationality.send_keys(data.Nationality)
@@ -166,7 +166,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         time.sleep(time_short)
 
 
-    def Currency_Selection(self, data:PersonalDetailsData):
+    def Currency_Selection(self, data:PersonalDetailsPageModel):
         currency = self.driver.find_element(*self.currency_dropdown)
         currency.click()
         time.sleep(time_short)
@@ -212,7 +212,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
 
         time.sleep(time_med)
 
-    def Applicant_Income(self, data:PersonalDetailsData):
+    def Applicant_Income(self, data:PersonalDetailsPageModel):
         income = self.driver.find_element(*self.Monthly_Income)
         income.click()
         income.send_keys(Keys.CONTROL + "a")
@@ -221,7 +221,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         income.send_keys(data.Monthly_Income)
         time.sleep(time_short)
 
-    def Applicant_Expense(self, data:PersonalDetailsData):
+    def Applicant_Expense(self, data:PersonalDetailsPageModel):
         expense = self.driver.find_element(*self.Monthly_Expense)
         expense.click()
         expense.send_keys(Keys.CONTROL + "a")
@@ -232,7 +232,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
 
 
 
-    def Financial_Dependent(self, data:PersonalDetailsData):
+    def Financial_Dependent(self, data:PersonalDetailsPageModel):
 
         not_dependent = self.driver.find_element(*self.Financial_Independent_Yes)
         dependent = self.driver.find_element(*self.Financial_Independent_No)
@@ -246,7 +246,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         time.sleep(time_long)
 
 
-    def Has_Children(self, data:PersonalDetailsData):                  
+    def Has_Children(self, data:PersonalDetailsPageModel):                  
         has_children = self.driver.find_element(*self.has_Children)
         does_not_have_children = self.driver.find_element(*self.does_Not_Have_Children)
         if data.Has_Children == 1:
@@ -258,7 +258,7 @@ class PersonalDetailsFunctions(PersonalDetailObjects):
         time.sleep(time_long)
 
 
-    def Number_of_children(self,data:PersonalDetailsData):
+    def Number_of_children(self,data:PersonalDetailsPageModel):
 
 
         try:

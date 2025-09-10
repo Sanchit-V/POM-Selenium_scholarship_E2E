@@ -1,6 +1,6 @@
 import time
 
-import Data.user_details as user_details
+import Data.Submit_Page_Data as user_details
 from Page_Objects.Summary_Page import SummaryPageObjects
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC

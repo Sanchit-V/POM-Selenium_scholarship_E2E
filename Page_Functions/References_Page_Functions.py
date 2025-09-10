@@ -7,9 +7,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-import Data.user_details as user_details
+import Data.Reference_Page_Data as user_details
 from Page_Objects.References_Page import ReferencesPageObjects
-from Pydentic_Model.models import ReferencePageData
+from Model.Reference_Page_Model import PersonalOrEmploymentReferencesPage
 time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
@@ -18,7 +18,7 @@ selected_language = user_details.selected_language
 
 class ReferencesPageFunctions (ReferencesPageObjects):
 
-    def add_references(self, data:ReferencePageData):
+    def add_references(self, data:PersonalOrEmploymentReferencesPage):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.add_reference))
         try:
             if 0 < data.additional_references <=2 :
@@ -36,7 +36,7 @@ class ReferencesPageFunctions (ReferencesPageObjects):
         except:
             print(f'The error occurred adding the references.')
 
-    def delete_references(self, data:ReferencePageData):
+    def delete_references(self, data:PersonalOrEmploymentReferencesPage):
         try:
             for delete in range (data.additional_references + 2):
                 delete_reference = self.driver.find_element(*self.delete_additional_reference)
@@ -48,7 +48,7 @@ class ReferencesPageFunctions (ReferencesPageObjects):
             print("No additional field to be deleted.")
 
     
-    def add_references_details(self, data:ReferencePageData):
+    def add_references_details(self, data:PersonalOrEmploymentReferencesPage):
         
         for i in range(1, 6):
 

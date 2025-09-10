@@ -1,4 +1,4 @@
-from Pydentic_Model.models import WecomePageData
+from Model.Welcome_Page_Model import WecomePageData
 class Welcome_Process:
     def __init__(self, welcome_page):
         self.welcome_page=welcome_page

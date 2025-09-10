@@ -1,9 +1,9 @@
-from Pydentic_Model.models import PersonalDetailsData
+from Model.Personal_Page_Model import PersonalDetailsPageModel
 class PersonalDetailsProcess:
     def __init__(self, personal_details):
         self.personal_details = personal_details
 
-    def run_process(self, data:PersonalDetailsData):
+    def run_process(self, data:PersonalDetailsPageModel):
         self.personal_details.document_type_selection(data)
         self.personal_details.document_number(data)
         self.personal_details.marital_status(data)

@@ -5,8 +5,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-import Data.user_details as user_details
-from Pydentic_Model.models import AcademicRecordsData
+import Data.Academic_Page_Data as user_details
+from Model.Academic_Records_Page_Model import AcademicRecordsPageModel
 
 time_short = user_details.time_short
 time_med = user_details.time_med
@@ -15,7 +15,7 @@ time_long = user_details.time_long
 from Page_Objects.Academic_Records_Page import AcademicRecordObjects
 
 class AcademicRecordsFunctions(AcademicRecordObjects):
-    def education_details(self, data:AcademicRecordsData):  #additional_education, education_level_1, education_level_2, education_level_3,
+    def education_details(self, data:AcademicRecordsPageModel):  #additional_education, education_level_1, education_level_2, education_level_3,
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.add_education))
         try:
             if 0 < data.additional_education <= 2:
@@ -55,7 +55,7 @@ class AcademicRecordsFunctions(AcademicRecordObjects):
             print('Edu 3 box not found')
 
 
-    def education_Level_1(self, data:AcademicRecordsData):#, education_level
+    def education_Level_1(self, data:AcademicRecordsPageModel):#, education_level
         uni_inst_1 = self.driver.find_element(*self.Education_Level_1)
         uni_inst_1.click()
         time.sleep(time_short)
@@ -84,7 +84,7 @@ class AcademicRecordsFunctions(AcademicRecordObjects):
             print('Correct option not selected.')
         time.sleep(time_short)
 
-    def education_Level_2(self, data:AcademicRecordsData):
+    def education_Level_2(self, data:AcademicRecordsPageModel):
         try:
             uni_inst_2 = self.driver.find_element(*self.Education_Level_2)
             uni_inst_2.click()
@@ -117,7 +117,7 @@ class AcademicRecordsFunctions(AcademicRecordObjects):
         except:
             print('Education 2 not selected.')
 
-    def education_Level_3(self, data:AcademicRecordsData):
+    def education_Level_3(self, data:AcademicRecordsPageModel):
         try:
             uni_inst_3 = self.driver.find_element(*self.Education_Level_3)
             uni_inst_3.click()
@@ -150,7 +150,7 @@ class AcademicRecordsFunctions(AcademicRecordObjects):
         except:
             print('Education 3 not selected.')
 
-    def university_institute(self, data:AcademicRecordsData):
+    def university_institute(self, data:AcademicRecordsPageModel):
         uni_name_1 = self.driver.find_element(*self.University_School_1)
         uni_name_1.click()
         time.sleep(time_short)
@@ -187,7 +187,7 @@ class AcademicRecordsFunctions(AcademicRecordObjects):
             print('Other eduction level-3 not selected.')
 
 
-    def degree_details(self, data:AcademicRecordsData):
+    def degree_details(self, data:AcademicRecordsPageModel):
         degree_name_1 = self.driver.find_element(*self.Degree_1)
         degree_name_1.click()
         time.sleep(time_short)
@@ -224,7 +224,7 @@ class AcademicRecordsFunctions(AcademicRecordObjects):
             print('Other eduction level-3 not selected.')
 
 
-    def degree_date(self, data:AcademicRecordsData):
+    def degree_date(self, data:AcademicRecordsPageModel):
         starting_date_1 = self.driver.find_element(*self.Starting_Date__1)
         starting_date_1.click()
         time.sleep(time_short)
@@ -288,7 +288,7 @@ class AcademicRecordsFunctions(AcademicRecordObjects):
             print('Other eduction level-2 not selected.')
 
 
-    def previous_online_mode(self, data:AcademicRecordsData):
+    def previous_online_mode(self, data:AcademicRecordsPageModel):
 
         if data.online_mode_study == 1:
             yes_online_mode = self.driver.find_element(*self.yes_previous_service)
@@ -407,7 +407,7 @@ class AcademicRecordsFunctions(AcademicRecordObjects):
         else:
             print('Correct option not selected.')
 
-    def other_expertise(self, data:AcademicRecordsData):
+    def other_expertise(self, data:AcademicRecordsPageModel):
 
         other_exp = self.driver.find_element(*self.other_lang_study_knowledge)
         other_exp.click()

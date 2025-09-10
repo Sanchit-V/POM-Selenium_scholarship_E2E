@@ -2,9 +2,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import os
-import Data.user_details as user_details
+import Data.Login_Page_Data as user_details
 from Page_Objects.Login_Page import LoginPageObjects
-from Pydentic_Model.models import LoginData
+from Model.Login_Page_Model import LoginPageData
 
 time_short = user_details.time_short
 time_med = user_details.time_med
@@ -12,7 +12,7 @@ time_long = user_details.time_long
 
 class LoginPageFunctions(LoginPageObjects):
 
-    def select_language(self, data:LoginData):
+    def select_language(self, data:LoginPageData):
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.Access_Code))
         
         selected_language_button = self.driver.find_element(*self.Language_Button)
@@ -25,14 +25,14 @@ class LoginPageFunctions(LoginPageObjects):
             select_english.click()
             print("Selected Language: English")
         
-        if data.selected_language == 0:
+        elif data.selected_language == 0:
             select_spanish = self.driver.find_element(*self.Language_Spanish)
             select_spanish.click()
             print("Selected Language: Spanish")
 
         time.sleep(time_med)
 
-    def enter_access_code(self, data:LoginData):
+    def enter_access_code(self, data:LoginPageData):
         access_code_element = self.driver.find_element(*self.Access_Code)
         time.sleep(time_short)
         access_code_element.send_keys(data.access_code)

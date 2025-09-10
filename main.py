@@ -28,10 +28,19 @@ from Processes.Summary_Page_Process import SummaryPageProcess
 from Processes.Welcome_Process import Welcome_Process
 from Processes.Submitted_Page_Processes import SubmittedPageProcess
 
-import Data.user_details as user_details
+import Data.Login_Page_Data as Login_Page_Data
+import Data.Welcome_Page_Data as Welcome_Page_Data
+import Data.Personal_Page_Data as Personal_Page_Data
+import Data.Address_Page_Data as Address_Page_Data
+import Data.Academic_Page_Data as Academic_Page_Data
+import Data.Employment_Page_Data as Employment_Page_Data
+import Data.Reference_Page_Data as Reference_Page_Data
+import Data.Document_Page_Data as Document_Page_Data
+import Data.Additional_Information_Page_Data as Additional_Information_Page_Data
+
 
 _driver = Import_libraries.get_driver()
-_driver.get(user_details.url)
+_driver.get(Login_Page_Data.url)
 
 
 time.sleep(4)
@@ -54,40 +63,40 @@ document_page_functions = DocumentsPageFunctions(_driver)
 
 def test_login_process():
     login_process = LoginPageProcess(login_page_functions)
-    login_process.run_process(user_details)
+    login_process.run_process(Login_Page_Data)
 
 def test_welcome_page():
     welcome_process = Welcome_Process(welcome_page_functions)
-    welcome_process.run_process(user_details)
+    welcome_process.run_process(Welcome_Page_Data)
 
 
 def test_personal_details():
     personal_details = PersonalDetailsProcess(personal_details_functions)
-    personal_details.run_process(user_details) 
+    personal_details.run_process(Personal_Page_Data) 
 
 def test_address_details():
     address_details = AddressPageProcess(address_page_functions)
-    address_details.run_processes(user_details)
+    address_details.run_processes(Address_Page_Data)
 
 def test_academic_records():
     academic_details = AcademicRecordsProcess(academic_page_functions)
-    academic_details.run_processes(user_details)
+    academic_details.run_processes(Academic_Page_Data)
 
 def test_employment_information():
     employment_details = EmployementInfoProcess(employment_page_functions)
-    employment_details.run_processes(user_details)
+    employment_details.run_processes(Employment_Page_Data)
 
 def test_reference_page():
     references_page = ReferencePageProcess(reference_page_functions)
-    references_page.run_processes(user_details)
+    references_page.run_processes(Reference_Page_Data)
 
 def test_documents_upload_page():
     documents_upload = DocumentsPageProcess(document_page_functions)
-    documents_upload.run_processes(user_details)
+    documents_upload.run_processes(Document_Page_Data)
 
 def test_additional_info_page():
     addition_info = AdditionalInfoProcess(additional_page_functions)
-    addition_info.run_processes(user_details)
+    addition_info.run_processes(Additional_Information_Page_Data)
 
 def test_submit_page():
     submit_page = SummaryPageProcess(submit_report_page_functions)

@@ -1,4 +1,3 @@
-#URL
 import os
 from dotenv import load_dotenv, dotenv_values
 import calendar
@@ -11,7 +10,7 @@ from dateutil.relativedelta import relativedelta
 from deep_translator import GoogleTranslator
 from faker import Faker
 import json
-import os
+
 
 load_dotenv()
 fake = Faker()

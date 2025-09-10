@@ -6,9 +6,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-import Data.user_details as user_details
+import Data.Address_Page_Data as user_details
 from Page_Objects.Address_Page import AddressPageObjects
-from Pydentic_Model.models import AddressDetailsData
+from Model.Address_Page_Model import AddressPageDetailsModel
 
 time_short = user_details.time_short
 time_med = user_details.time_med
@@ -24,13 +24,13 @@ class AddressPageFunctions(AddressPageObjects):
         except :
             print(f"Error locating default email.")
 
-    def add_email(self, data:AddressDetailsData):
+    def add_email(self, data:AddressPageDetailsModel):
         for email in range(data.additional_emails_to_be_added):
             added_emails = self.driver.find_element(*self.add_email_button)
             added_emails.click()
             time.sleep(time_short)
 
-    def delete_email(self, data:AddressDetailsData):
+    def delete_email(self, data:AddressPageDetailsModel):
 
         if data.access_code == data.previous_access_code:
             try:
@@ -54,7 +54,7 @@ class AddressPageFunctions(AddressPageObjects):
         else:
             print("No previously added emails found")
 
-    def add_additional_emails(self, data:AddressDetailsData):
+    def add_additional_emails(self, data:AddressPageDetailsModel):
     # Map index to locators
         try:
 
@@ -80,7 +80,7 @@ class AddressPageFunctions(AddressPageObjects):
         time.sleep(time_med)
 
 
-    def phone_number(self, data:AddressDetailsData):   #number_of_additional_phone, number_of_additional_whatsapp, total_additionals
+    def phone_number(self, data:AddressPageDetailsModel):   #number_of_additional_phone, number_of_additional_whatsapp, total_additionals
         Default_Phone = self.driver.find_element(*self.add_default_phone_number)
         Default_Phone.click()
         Default_Phone.send_keys(Keys.CONTROL + "a")
@@ -95,7 +95,7 @@ class AddressPageFunctions(AddressPageObjects):
         Default_Whatsapp.send_keys(data.default_whatsapp)
         time.sleep(time_short)
 
-    def delete_phone(self, data:AddressDetailsData):
+    def delete_phone(self, data:AddressPageDetailsModel):
 
         if data.access_code == data.previous_access_code:
             try:
@@ -123,7 +123,7 @@ class AddressPageFunctions(AddressPageObjects):
 
 
 
-    def add_phone_number(self, data:AddressDetailsData):
+    def add_phone_number(self, data:AddressPageDetailsModel):
         add_new_number = self.driver.find_element(*self.add_additional_phone_number_button)
 
         for i in range (data.number_of_additional_phone):
@@ -137,7 +137,7 @@ class AddressPageFunctions(AddressPageObjects):
 
         time.sleep(time_med)
 
-    def add_whats_number(self, data:AddressDetailsData):
+    def add_whats_number(self, data:AddressPageDetailsModel):
         add_new_number = self.driver.find_element(*self.add_additional_phone_number_button)
 
         for i in range(data.number_of_additional_whatsapp):
@@ -151,7 +151,7 @@ class AddressPageFunctions(AddressPageObjects):
 
         time.sleep(time_med)
 
-    def add_the_additional_numbers(self, data:AddressDetailsData):
+    def add_the_additional_numbers(self, data:AddressPageDetailsModel):
         try:
             add_1 = self.driver.find_element(*self.add_new_phone_2)
             add_1.click()
@@ -182,7 +182,7 @@ class AddressPageFunctions(AddressPageObjects):
         time.sleep(time_med)
 
 
-    def country_code(self,data:AddressDetailsData):  #, country_1, country_2, country_3, country_4
+    def country_code(self,data:AddressPageDetailsModel):  #, country_1, country_2, country_3, country_4
 
         try:
             CC_0 = self.driver.find_element(*self.select_country_code_0)
@@ -314,7 +314,7 @@ class AddressPageFunctions(AddressPageObjects):
 
         time.sleep(time_med)
 
-    def housing_details(self, data:AddressDetailsData):
+    def housing_details(self, data:AddressPageDetailsModel):
         housing_Type = self.driver.find_element(*self.housing_type)
         housing_Type.click()
 
@@ -336,7 +336,7 @@ class AddressPageFunctions(AddressPageObjects):
 
 
 
-    def housing_Conditions(self, data:AddressDetailsData):
+    def housing_Conditions(self, data:AddressPageDetailsModel):
         housing_Conditions = self.driver.find_element(*self.Housing_conditions)
         housing_Conditions.click()
         time.sleep(time_short)
@@ -356,7 +356,7 @@ class AddressPageFunctions(AddressPageObjects):
         time.sleep(time_med)
 
 
-    def Nationality(self, data:AddressDetailsData):
+    def Nationality(self, data:AddressPageDetailsModel):
         country_select = self.driver.find_element(*self.country_residence)
         country_select.click()
 
@@ -411,7 +411,7 @@ class AddressPageFunctions(AddressPageObjects):
         time.sleep(time_long)
 
 
-    def Address_ZipCode(self, data:AddressDetailsData):
+    def Address_ZipCode(self, data:AddressPageDetailsModel):
 
         address_box = self.driver.find_element(*self.address)
         address_box.click()

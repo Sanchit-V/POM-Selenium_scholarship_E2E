@@ -1,9 +1,9 @@
-from Pydentic_Model.models import AddressDetailsData
+from Model.Address_Page_Model import AddressPageDetailsModel
 class AddressPageProcess:
     def __init__(self, address_page):
         self.address_page = address_page
 
-    def run_processes(self, data:AddressDetailsData):
+    def run_processes(self, data:AddressPageDetailsModel):
         self.address_page.default_Email()
         self.address_page.delete_email(data)
         self.address_page.add_email(data)

@@ -1,9 +1,9 @@
-from Pydentic_Model.models import EmploymentInfoData
+from Model.Employement_Information_Page_Model import EmploymentInformationPageData
 class EmployementInfoProcess:
     def __init__(self, employment_info_page):
         self.employment_info_page = employment_info_page
 
-    def run_processes(self, data:EmploymentInfoData):
+    def run_processes(self, data:EmploymentInformationPageData):
 
         self.employment_info_page.Currently_working(data)
 

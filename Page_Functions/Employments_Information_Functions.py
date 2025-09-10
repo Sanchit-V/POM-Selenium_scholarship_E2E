@@ -5,8 +5,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-import Data.user_details as user_details
-from Pydentic_Model.models import EmploymentInfoData
+import Data.Employment_Page_Data as user_details
+from Model.Employement_Information_Page_Model import EmploymentInformationPageData
 
 time_short = user_details.time_short
 time_med = user_details.time_med
@@ -15,7 +15,7 @@ time_long = user_details.time_long
 from Page_Objects.Employments_Information_Page import EmploymentInformationObjects
 
 class EmploymentInformationFunction(EmploymentInformationObjects):
-    def Currently_working(self, data:EmploymentInfoData):
+    def Currently_working(self, data:EmploymentInformationPageData):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.currently_working_yes))
         if data.currently_working == 1:
             yes_radio = self.driver.find_element(*self.currently_working_yes)
@@ -30,7 +30,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
         else:
             print('Wrong input given.')
 
-    def position_info(self, data:EmploymentInfoData):
+    def position_info(self, data:EmploymentInformationPageData):
         try:
             Institution_name = self.driver.find_element(*self.institution_name)
             Institution_name.click()
@@ -145,7 +145,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
         except:
             print('Monthly salary section not available.')
 
-    def Currency_Selection(self, data:EmploymentInfoData):
+    def Currency_Selection(self, data:EmploymentInformationPageData):
         try:
 
             currency = self.driver.find_element(*self.currency_code_dropdown)
@@ -195,7 +195,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
         except:
             print('Currency selection not available.')
             
-    def employment_country(self, data:EmploymentInfoData): #, Zip_Code, Address
+    def employment_country(self, data:EmploymentInformationPageData): #, Zip_Code, Address
         try:
             country_select = self.driver.find_element(*self.country)
             country_select.click()
@@ -284,7 +284,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
 
 
 
-    def employment_contact(self, data:EmploymentInfoData):
+    def employment_contact(self, data:EmploymentInformationPageData):
 
         try:
             landline_phune = self.driver.find_element(*self.landline_number)
@@ -329,7 +329,7 @@ class EmploymentInformationFunction(EmploymentInformationObjects):
 
 
 
-    def nations(self, data:EmploymentInfoData):
+    def nations(self, data:EmploymentInformationPageData):
         try:
             landline_phune_country = self.driver.find_element(*self.landline_number_country)
             landline_phune_country.click()

@@ -4,8 +4,8 @@ from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import Data.user_details as user_details
-from Pydentic_Model.models import DocumentUploadData
+import Data.Document_Page_Data as user_details
+from Model.Documents_Page_Model import DocumentUploadData
 
 
 from Page_Objects.Documents_Page import DocumentsPageObjects
