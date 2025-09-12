@@ -29,15 +29,6 @@ from Processes.Welcome_Process import Welcome_Process
 from Processes.Submitted_Page_Processes import SubmittedPageProcess
 
 import Data.Login_Page_Data as Login_Page_Data
-import Data.Welcome_Page_Data as Welcome_Page_Data
-import Data.Personal_Page_Data as Personal_Page_Data
-import Data.Address_Page_Data as Address_Page_Data
-import Data.Academic_Page_Data as Academic_Page_Data
-import Data.Employment_Page_Data as Employment_Page_Data
-import Data.Reference_Page_Data as Reference_Page_Data
-import Data.Document_Page_Data as Document_Page_Data
-import Data.Additional_Information_Page_Data as Additional_Information_Page_Data
-
 
 _driver = Import_libraries.get_driver()
 _driver.get(Login_Page_Data.url)
