@@ -1,15 +1,17 @@
 import os
+import dotenv
+from Model.Login_Page_Model import LoginPageData, LanguageSelectionData, AccessCodeData
 
 url = os.getenv("URL")  #"https://sales-scholarship-application-requests-develop-iymj66chvq-uc.a.run.app/"
-selected_language = os.getenv("SELECTED_LANGUAGE")
+raw_selected_language = os.getenv("SELECTED_LANGUAGE")
 time_long = int(os.getenv("TIME_LONG"))  # Default to 5 seconds if not set
 time_med = int(os.getenv("TIME_MED"))  # Default to 2 seconds if not set
 time_short = int(os.getenv("TIME_SHORT"))
 
 
-def get_language_code(selected_language):
+def get_language_code(raw_selected_language):
     # Normalize input (lowercase and remove accents for consistency)
-    normalized = selected_language.strip().lower()
+    normalized = raw_selected_language.strip().lower()
 
     language_map = {
         0: {"spanish", "español", "espana", "españa"},
@@ -23,11 +25,13 @@ def get_language_code(selected_language):
     print("Please select a valid language option.")
     return None
 
-selected_language = get_language_code(selected_language)
-print(selected_language)
+class LoginPageMother:
+    @staticmethod
+    def get() -> LoginPageData:
+        return LoginPageData(
+            LanguageSelectionData=LanguageSelectionData(selected_language=get_language_code(raw_selected_language)) ,
+            AccessCodeData=AccessCodeData(access_code= os.getenv("ACCESS_CODE")),
+            #previous_access_code= os.getenv("PREVIOUS_ACCESS_CODE")  
+            )     
+        
 
-access_code = os.getenv("ACCESS_CODE")    #json_data['access_code']
-previous_access_code = os.getenv("PREVIOUS_ACCESS_CODE")       #json_data['previous_access_code']
-
-print(access_code)
-print(previous_access_code)

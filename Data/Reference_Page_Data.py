@@ -7,6 +7,7 @@ from datetime import date
 from deep_translator import GoogleTranslator
 from faker import Faker
 import json
+from Model.Reference_Page_Model import PersonalOrEmploymentReferencesPage
 
 from dateutil.relativedelta import relativedelta
 
@@ -45,7 +46,7 @@ def generate_phone_number():
 
 selected_language = get_language_code(selected_language)
 
-additional_references =  random.randint(0, 2) 
+additional_references = 2 #random.randint(0, 2) 
 ref_First_Name = [fake.first_name() for _ in range(5)]
 ref_Last_Name = [fake.last_name() for _ in range(5)]
 ref_Pos_Occupation = [fake.job() for _ in range(5)]
@@ -65,3 +66,20 @@ else:
     ref_phone_CC = ref_phone_CC
     ref_landline_CC = ref_landline_CC
 
+class ReferencesPageMother:
+    @staticmethod
+    def get() -> PersonalOrEmploymentReferencesPage:
+        return PersonalOrEmploymentReferencesPage(
+            additional_references=additional_references,
+            ref_First_Name=ref_First_Name,
+            ref_Last_Name=ref_Last_Name,
+            ref_Pos_Occupation=ref_Pos_Occupation,
+            ref_Emails=ref_Emails,
+            ref_phone_numbers=ref_phone_numbers,
+            ref_landline_numbers=ref_landline_numbers,
+            ref_phone_CC=ref_phone_CC,
+            ref_landline_CC=ref_landline_CC
+
+        )
+
+           

@@ -6,6 +6,6 @@ class ExpectedMessageData(BaseModel):
 class UserGreetingData(BaseModel):
     user_greeting: str
 
-class WecomePageData(BaseModel):
+class WelcomePageData(BaseModel):
     ExpectedMessageData: ExpectedMessageData
     UserGreetingData: UserGreetingData

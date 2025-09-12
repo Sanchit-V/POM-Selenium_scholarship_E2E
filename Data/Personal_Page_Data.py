@@ -6,6 +6,8 @@ from datetime import datetime
 from datetime import date
 from deep_translator import GoogleTranslator
 from faker import Faker
+from Model.Personal_Page_Model import PersonalDetailsPageModel, BasicData, BirthData, FinancialData, FamilyDetailsData  
+
 import json
 
 from dateutil.relativedelta import relativedelta
@@ -119,3 +121,36 @@ else:
     State = State
     City = City
     Nationality = Nationality
+
+class PersonalPageMother:
+    @staticmethod
+    def get() -> PersonalDetailsPageModel:
+        return PersonalDetailsPageModel(
+            BasicData=BasicData(
+                document_type=document_type,
+                Document_number=Document_number,
+                Martial_status=Martial_status,
+                Profession=Profession
+            ),
+            BirthData=BirthData(
+                Date_Of_Birth=Date_Of_Birth,
+                Country=Country,
+                State=State,
+                City=City,
+                Nationality=Nationality
+            ),
+            FinancialData=FinancialData(
+                Currency=Currency,
+                Monthly_Income=Monthly_Income,
+                Monthly_Expense=Monthly_Expense,
+                Financially_Dependent=Financially_Dependent
+            ),
+            FamilyDetailsData=FamilyDetailsData(
+                Has_Children=Has_Children,
+                Range_0to4=Range_0to4,
+                Range_5to12=Range_5to12,
+                Range_13to18=Range_13to18,
+                Range_18plus=Range_18plus
+            ))
+
+         

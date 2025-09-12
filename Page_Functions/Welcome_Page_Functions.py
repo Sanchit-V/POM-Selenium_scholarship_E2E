@@ -8,14 +8,14 @@ import time
 import Data.Welcome_Page_Data as user_details
 
 from Page_Objects.Welcome_Page import WelcomePage
-from Model.Welcome_Page_Model import WecomePageData
+from Model.Welcome_Page_Model import WelcomePageData
 
 time_short = user_details.time_short
 time_med = user_details.time_med
 time_long = user_details.time_long
 
 class Welcome_Page(WelcomePage):
-    def Check_snack_bar(self, data:WecomePageData):
+    def Check_snack_bar(self, data:WelcomePageData):
         WebDriverWait(self.driver,12).until(EC.presence_of_element_located(self.logged_in_snack))
 
         try:
@@ -31,7 +31,7 @@ class Welcome_Page(WelcomePage):
 
         
 
-    def Check_Greetings(self, data:WecomePageData):
+    def Check_Greetings(self, data:WelcomePageData):
         try:
             greeting = self.driver.find_element(*self.user_greetings)
 

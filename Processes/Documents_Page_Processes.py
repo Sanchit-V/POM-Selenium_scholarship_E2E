@@ -1,9 +1,10 @@
-from Model.Documents_Page_Model import DocumentUploadData
+from Data.Document_Page_Data import DocumentPageMother
 class DocumentsPageProcess:
     def __init__(self, documents_page):
         self.documents_page = documents_page
 
-    def run_processes(self, data:DocumentUploadData):
+    def run_processes(self):
+        data = DocumentPageMother.get()
         self.documents_page.delete_documents()
         self.documents_page.ID_Passport()
         self.documents_page.Curriculum()

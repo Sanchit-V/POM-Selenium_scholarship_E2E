@@ -6,6 +6,7 @@ from datetime import datetime
 from datetime import date
 from deep_translator import GoogleTranslator
 from faker import Faker
+from Model.Academic_Records_Page_Model import AcademicRecordsPageModel, EducationDetailsData, OnlineStudyExperienceData, OtherExpertiseData
 import json
 
 from dateutil.relativedelta import relativedelta
@@ -39,17 +40,23 @@ def get_language_code(selected_language):
 
 selected_language = get_language_code(selected_language)
 
-additional_education = random.randint(0, 2)
+additional_education = 2 #random.randint(0, 2)
 
 education_level = [random.randint(1, 4) for _ in range(3)]
 University_Institution = [fake.company() + " University" for _ in range(3)]
 degree = [random.choice(json_data['Degree']) for _ in range(3)]
 
-fake_date = fake.date_between(start_date='-10y', end_date='-5y')
-starting_Date = [fake_date.strftime("%m%Y") for _ in range(3)]
-starting_datetime = datetime.strptime(starting_Date[0], "%m%Y")
-graduation_datetime = starting_datetime + relativedelta(years=5)
-graduation_Date = [graduation_datetime.strftime("%m%Y") for _ in range(3)]
+starting_Date = []
+graduation_Date = []
+for _ in range(3):
+    fake_date = fake.date_between(start_date='-10y', end_date='-5y')
+    start_str = fake_date.strftime("%m%Y")
+    grad_str = (datetime.strptime(start_str, "%m%Y") + relativedelta(years=5)).strftime("%m%Y")
+
+    starting_Date.append(start_str)
+    graduation_Date.append(grad_str)
+
+
 
 online_mode_study = random.randint(0, 1)
 training_type_university = random.randint(0, 1)
@@ -57,6 +64,30 @@ training_type_employment = random.randint(0, 1)
 training_type_second_language =  1 #random.randint(0, 1)
 
 Other_Expertise = random.choice(json_data['Other_Expertise'])
+
+
+class AcademicRecordsPageMother:
+    @staticmethod
+    def get() -> AcademicRecordsPageModel:
+        return AcademicRecordsPageModel(
+            EducationDetailsData=EducationDetailsData(
+                additional_education=additional_education,
+                education_level=education_level,
+                University_Institution=University_Institution,
+                degree=degree,
+                starting_Date=starting_Date,
+                graduation_Date=graduation_Date),
+
+            OnlineStudyExperienceData=OnlineStudyExperienceData(
+                online_mode_study=online_mode_study,
+                training_type_university=training_type_university,
+                training_type_employment=training_type_employment,
+                training_type_second_language=training_type_second_language),
+
+            OtherExpertiseData=OtherExpertiseData(
+                Other_Expertise=Other_Expertise
+            )
+        )
 
 
 

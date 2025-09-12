@@ -7,6 +7,7 @@ from datetime import date
 from deep_translator import GoogleTranslator
 from faker import Faker
 import json
+from Model.Employement_Information_Page_Model import EmploymentInformationPageData, EmploymentStatusData, PositionInformationData, EmploymentAddressData, EmploymentContactData
 
 from dateutil.relativedelta import relativedelta
 
@@ -39,7 +40,7 @@ def get_language_code(selected_language):
 
 selected_language = get_language_code(selected_language)
 
-currently_working = random.randint(0, 1) # 0 for No, 1 for Yes
+currently_working = 1 #random.randint(0, 1) # 0 for No, 1 for Yes
 
 Institution_Name = fake.company()
 
@@ -97,6 +98,39 @@ else:
     Emp_City = Emp_City
     Landline_Nation = Landline_Nation
     Mobile_Nation = Mobile_Nation
+
+
+class EmploymentInformationPageMother:
+    @staticmethod
+    def get() -> EmploymentInformationPageData:
+        return EmploymentInformationPageData(
+            EmploymentStatusData=EmploymentStatusData(currently_working= currently_working),
+            
+            PositionInformationData=PositionInformationData(
+               Institution_Name= Institution_Name,
+                Position= Position,
+                Area= Area,
+                Activity= Activity,
+                work_category= work_category,
+                seniority_position= seniority_position,
+                Monthly_Salary= Monthly_Salary,
+                Emp_Currency= Emp_Currency,
+            ),
+            EmploymentAddressData=EmploymentAddressData(
+                Emp_Country= Emp_Country,
+                Emp_State= Emp_State,
+                Emp_City= Emp_City,
+                Zip_Code= Zip_Code,
+                Address= Address,
+            ),
+            EmploymentContactData=EmploymentContactData(
+            Landline_Phone= Landline_Phone,
+            Phone_Mobile= Phone_Mobile,
+            Website= Website,
+            Landline_Nation= Landline_Nation,
+            Mobile_Nation= Mobile_Nation,
+        )
+        )
 
 
 

@@ -63,40 +63,40 @@ document_page_functions = DocumentsPageFunctions(_driver)
 
 def test_login_process():
     login_process = LoginPageProcess(login_page_functions)
-    login_process.run_process(Login_Page_Data)
+    login_process.run_process()
 
 def test_welcome_page():
     welcome_process = Welcome_Process(welcome_page_functions)
-    welcome_process.run_process(Welcome_Page_Data)
+    welcome_process.run_process()
 
 
 def test_personal_details():
     personal_details = PersonalDetailsProcess(personal_details_functions)
-    personal_details.run_process(Personal_Page_Data) 
+    personal_details.run_process() 
 
 def test_address_details():
     address_details = AddressPageProcess(address_page_functions)
-    address_details.run_processes(Address_Page_Data)
+    address_details.run_processes()
 
 def test_academic_records():
     academic_details = AcademicRecordsProcess(academic_page_functions)
-    academic_details.run_processes(Academic_Page_Data)
+    academic_details.run_processes()
 
 def test_employment_information():
     employment_details = EmployementInfoProcess(employment_page_functions)
-    employment_details.run_processes(Employment_Page_Data)
+    employment_details.run_processes()
 
 def test_reference_page():
     references_page = ReferencePageProcess(reference_page_functions)
-    references_page.run_processes(Reference_Page_Data)
+    references_page.run_processes()
 
 def test_documents_upload_page():
     documents_upload = DocumentsPageProcess(document_page_functions)
-    documents_upload.run_processes(Document_Page_Data)
+    documents_upload.run_processes()
 
 def test_additional_info_page():
     addition_info = AdditionalInfoProcess(additional_page_functions)
-    addition_info.run_processes(Additional_Information_Page_Data)
+    addition_info.run_processes()
 
 def test_submit_page():
     submit_page = SummaryPageProcess(submit_report_page_functions)

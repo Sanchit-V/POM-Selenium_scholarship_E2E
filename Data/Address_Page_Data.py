@@ -7,6 +7,7 @@ from datetime import date
 from deep_translator import GoogleTranslator
 from faker import Faker
 import json
+from Model.Address_Page_Model import AddressPageDetailsModel, ContactDetailsData, ResidenceDetailsData
 
 from dateutil.relativedelta import relativedelta
 
@@ -41,7 +42,7 @@ selected_language = get_language_code(selected_language)
 
 access_code = os.getenv("ACCESS_CODE")   
 previous_access_code = os.getenv("PREVIOUS_ACCESS_CODE")   
-additional_emails_to_be_added = random.randint(1, 5)
+additional_emails_to_be_added = 5  #random.randint(1, 5)
 number_of_additional_phone=2
 number_of_additional_whatsapp=1
 total_additionals = number_of_additional_phone + number_of_additional_whatsapp
@@ -85,3 +86,30 @@ if selected_language == 0:
 else:
     country = country
 
+class AddressPageMother:
+    @staticmethod
+    def get() -> AddressPageDetailsModel:
+        return AddressPageDetailsModel(
+            ContactDetailsData=ContactDetailsData(
+                additional_emails_to_be_added=additional_emails_to_be_added,
+                previous_access_code=previous_access_code,
+                access_code=access_code,
+                email_Ids=email_Ids,
+                default_phone=default_phone,
+                default_whatsapp=default_whatsapp,
+                number_of_additional_phone=number_of_additional_phone,
+                number_of_additional_whatsapp=number_of_additional_whatsapp,
+                total_additionals=total_additionals,
+                additional_numbers=additional_numbers,
+                country=country
+            ),
+            ResidenceDetailsData=ResidenceDetailsData(
+                housing_type=housing_type,
+                housing_conditions=housing_conditions,
+                Country=Country,
+                State=State,
+                City=City,
+                home_address=home_address,
+                zip_code=zip_code
+            )
+        )
