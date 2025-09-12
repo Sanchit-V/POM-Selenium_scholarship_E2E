@@ -40,7 +40,7 @@ def get_language_code(selected_language):
 
 selected_language = get_language_code(selected_language)
 
-additional_education = 2 #random.randint(0, 2)
+additional_education = random.randint(0, 2)
 
 education_level = [random.randint(1, 4) for _ in range(3)]
 University_Institution = [fake.company() + " University" for _ in range(3)]

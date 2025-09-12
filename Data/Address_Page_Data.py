@@ -42,7 +42,7 @@ selected_language = get_language_code(selected_language)
 
 access_code = os.getenv("ACCESS_CODE")   
 previous_access_code = os.getenv("PREVIOUS_ACCESS_CODE")   
-additional_emails_to_be_added = 5  #random.randint(1, 5)
+additional_emails_to_be_added = random.randint(1, 5)
 number_of_additional_phone=2
 number_of_additional_whatsapp=1
 total_additionals = number_of_additional_phone + number_of_additional_whatsapp

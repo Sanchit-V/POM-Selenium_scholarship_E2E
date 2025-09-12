@@ -89,11 +89,6 @@ Range_18plus = random.randint(0,99)
 
 
 Emp_Currency = random.randint(1, 26) # 1 for USD    # 2 for EUR    # 3 for GBP    # 4 for JPY    # 5 for CNY    # 6 for INR    # 7 for RUB    # 8 for BRL    # 9 for CAD    # 10 for AUD   # 11 for CHF   # 12 for SEK   # 13 for NZD   # 14 for MXN   # 15 for SGD   # 16 for HKD   # 17 for KRW   # 18 for NOK   # 19 for TRY   # 20 for ZAR   # 21 for DKK   # 22 for PLN   # 23 for TWD   # 24 for THB   # 25 for IDR   # 26 for MYR
-   # 0 for No    # 1 for Yes
-  # 0 for No     # 1 for Yes
-
-
-
 
 
 Range_0to4 = random.randint(0,99)

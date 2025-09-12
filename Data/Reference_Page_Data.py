@@ -46,7 +46,7 @@ def generate_phone_number():
 
 selected_language = get_language_code(selected_language)
 
-additional_references = 2 #random.randint(0, 2) 
+additional_references = random.randint(0, 2) 
 ref_First_Name = [fake.first_name() for _ in range(5)]
 ref_Last_Name = [fake.last_name() for _ in range(5)]
 ref_Pos_Occupation = [fake.job() for _ in range(5)]

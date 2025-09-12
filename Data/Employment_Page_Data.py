@@ -40,7 +40,7 @@ def get_language_code(selected_language):
 
 selected_language = get_language_code(selected_language)
 
-currently_working = 1 #random.randint(0, 1) # 0 for No, 1 for Yes
+currently_working = random.randint(0, 1) # 0 for No, 1 for Yes
 
 Institution_Name = fake.company()
 
